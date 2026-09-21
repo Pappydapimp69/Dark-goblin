@@ -72,3 +72,50 @@ storage degrades to a clean first run, never a white screen.
 **D-12 — All meter arithmetic is integer.** The §5.3 half-bill test is written
 `paid * 2 >= bill` rather than `paid >= bill / 2`, so no float ever reaches
 authoritative state.
+
+## Phase 1 — decisions taken while building the engine
+
+**D-13 — `money` never goes below zero.** The `{ money: n }` effect floors at 0.
+Affordability is a choice's `available` condition, not the applier's problem; a
+negative balance would poison `paid = min(money, bill)` at the next pressure
+check. (§5.3, §6)
+
+**D-14 — A goal event moves the meter only when the player caused it — for
+player-owned goals too.** §5.2's table leaves rows 3-4 unqualified but the
+sentence under it is a blanket rule, so the two readings disagree. The step
+order in §5.3 settles it: the meter is cashed out into lifespan at step 3,
+*before* the world tick at step 4, so a goal the world advances cannot change
+lifespan under either reading. The event is still written to the ledger, so the
+verdict and the goblin still see it — which is what makes `player_clear_debt`
+(D-1) worth pursuing even though it completes at a world tick and scores 0.
+
+**D-15 — `RngState` carries `{ seed, state, count }`, not `{ seed, count }`.**
+`state` is the generator's live register, so a reload is O(1) instead of
+replaying `count` draws. `count` is kept as an assertable trace: a test can see
+a draw that was skipped, which is how D-9 is enforced rather than just
+documented.
+
+**D-16 — Three files exist that §3's layout does not list:**
+`engine/errors.ts` (the shared `ContentError` / `RuleError`, extracted to keep
+`validate.ts` out of a cycle with `conditions.ts`), `engine/canonical.ts`
+(sorted-key serialization + fingerprint, needed by D-10 and later by save/load),
+and `content/rules.json` (D-7's home for rent, and for the numbers §6 states in
+prose). `tests/harness.ts` is a test driver, not engine code.
+
+**D-17 — `Choice` gains `aftermath?: boolean`.** §5.4 requires a broken NPC to
+keep "one authored aftermath choice", but §4's `Choice` has no field to mark it.
+
+**D-18 — The break can also fire at the end of the day, and the engine gains
+`acknowledgeGoblin`.** §5.6 calls the break mid-day, but §6's hurt route works
+by *scheduling* foreclosure a loop out, so the critical failure it causes lands
+in the world tick — and §10 requires that route to produce a break. A break
+therefore fires wherever a player-caused critical failure appears, and records
+where play resumes (mid-day, or the rest of end-of-day) so §5.3's remaining
+steps still run in order afterwards. `acknowledgeGoblin` exists because a break
+has no questions to answer, so `answerGoblin` has nothing to take.
+
+**D-19 — A tie in the final verdict reads as "others".** §5.7 defines self as
+`selfPoints > othersPoints` and everything else as others.
+
+**D-20 — `{ all: [] }` is the always-true condition.** `every` over an empty
+list is true, so an unconditional choice needs no new DSL variant.
