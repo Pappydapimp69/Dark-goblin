@@ -8,6 +8,7 @@ import {
   sleep,
 } from "../engine/engine";
 import type { Choice, GameState } from "../engine/types";
+import { save } from "./save";
 
 export type Listener = (state: GameState) => void;
 
@@ -23,8 +24,14 @@ export class Store {
   private current: GameState;
   private readonly listeners = new Set<Listener>();
 
-  constructor(readonly seed: number) {
-    this.current = newGame(seed, content);
+  constructor(seedOrState: number | GameState) {
+    this.current =
+      typeof seedOrState === "number" ? newGame(seedOrState, content) : seedOrState;
+    save(this.current);
+  }
+
+  get seed(): number {
+    return this.current.seed;
   }
 
   get state(): GameState {
@@ -62,6 +69,10 @@ export class Store {
 
   private commit(next: GameState): void {
     this.current = next;
+    // Every change is a save point. There is one slot and the game is a loop;
+    // a player who closes the tab mid-afternoon should come back to that
+    // afternoon, not to the morning.
+    save(next);
     for (const listener of [...this.listeners]) listener(next);
   }
 }

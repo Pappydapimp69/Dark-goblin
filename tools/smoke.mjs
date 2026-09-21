@@ -1,5 +1,5 @@
-// Drives the BUILT game through one whole loop in a real browser and fails on
-// any console error. Tests cover the rules; this covers the thing people
+// Drives the BUILT game through a whole loop in a real browser and fails on
+// any console error. Unit tests cover the rules; this covers the thing people
 // actually touch — it is what found the aftermath choice appearing before the
 // break, eight people standing at a location the game does not draw, and a
 // dialogue overlay you could read the street through.
@@ -7,12 +7,19 @@
 //   npm run build && npx vite preview --port 4173 &
 //   npm run smoke
 //
+// It POLLS the live scene rather than sleeping for fixed durations. A headless
+// browser renders slowly and Phaser clamps its frame delta, so in-game time can
+// run at a third of wall-clock — any fixed wait is a guess that rots.
+//
 // CHROMIUM and SMOKE_URL override the defaults.
+import { readFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 const OUT = process.argv[2] ?? "smoke-shots";
 const URL = process.env.SMOKE_URL ?? "http://localhost:4173/";
 const EXE = process.env.CHROMIUM ?? "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+const KEY = "darkgoblin:v1:save";
+
 const browser = await chromium.launch({ executablePath: EXE });
 const page = await browser.newPage({ viewport: { width: 720, height: 1280 }, deviceScaleFactor: 1 });
 
@@ -20,46 +27,183 @@ const errors = [];
 page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
+/** What the running game is doing right now, read off the live scene graph. */
+const peek = () =>
+  page.evaluate(() => {
+    const game = globalThis.darkGoblin;
+    if (!game) return { scenes: [] };
+    const scenes = game.scene.scenes.filter((s) => s.scene.isActive()).map((s) => s.scene.key);
+    // Buttons are Containers holding their label, so this has to recurse.
+    const collect = (nodes) =>
+      nodes.flatMap((n) =>
+        n.type === "Text" ? [n.text] : Array.isArray(n.list) ? collect(n.list) : [],
+      );
+    const texts = game.scene.scenes
+      .filter((s) => s.scene.isActive())
+      .flatMap((s) => collect(s.children.list))
+      .filter((t) => t.length > 0);
+    let save = null;
+    try { save = JSON.parse(localStorage.getItem("darkgoblin:v1:save")); } catch { /* blocked */ }
+    return { scenes, texts, loop: save?.state?.loop ?? null, status: save?.state?.status ?? null };
+  });
+
+async function until(what, predicate, ms = 25_000) {
+  const deadline = Date.now() + ms;
+  for (;;) {
+    const seen = await peek();
+    if (predicate(seen)) return seen;
+    if (Date.now() > deadline) {
+      errors.push(`timed out waiting for ${what}; saw ${JSON.stringify(seen).slice(0, 300)}`);
+      return seen;
+    }
+    await page.waitForTimeout(150);
+  }
+}
+
+const on = (key) => (s) => s.scenes.includes(key);
+const shot = (name) => page.screenshot({ path: `${OUT}/${name}.png` });
+
+/**
+ * Click a thing by its LABEL, not by where it was last time. The town is dealt
+ * fresh each run, so a panel can hold two people or five and every fixed
+ * coordinate is a guess about a world that has already changed.
+ */
+async function press(label) {
+  const spot = await page.evaluate((wanted) => {
+    const game = globalThis.darkGoblin;
+    const labelOf = (node) => {
+      if (node.type === "Text") return node.text;
+      if (Array.isArray(node.list)) {
+        for (const child of node.list) {
+          const found = labelOf(child);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+    for (const scene of game.scene.scenes.filter((s) => s.scene.isActive()).reverse()) {
+      for (const node of scene.children.list) {
+        if (!node.input) continue;
+        const text = Array.isArray(node.list)
+          ? node.list.filter((c) => c.type === "Text").map((c) => c.text)
+          : node.type === "Text"
+            ? [node.text]
+            : [];
+        if (text.some((t) => t === wanted) || labelOf(node) === wanted) {
+          return { x: node.x, y: node.y };
+        }
+      }
+    }
+    return null;
+  }, label);
+
+  if (!spot) {
+    errors.push(`nothing labelled "${label}" to press`);
+    return false;
+  }
+  await page.mouse.click(spot.x, spot.y);
+  return true;
+}
+
+/** The name of someone actually standing in the street this run. */
+const someoneOut = () =>
+  page.evaluate(() => {
+    const game = globalThis.darkGoblin;
+    const street = game.scene.getScene("Street");
+    const named = street.children.list
+      .filter((n) => n.input && Array.isArray(n.list))
+      .map((n) => n.list.filter((c) => c.type === "Text").map((c) => c.text))
+      .filter((labels) => labels.length >= 2);
+    return named[0]?.[1] ?? null;
+  });
+
 await page.goto(URL, { waitUntil: "networkidle" });
-await page.waitForTimeout(1200);
-await page.screenshot({ path: `${OUT}/01-boot.png` });
 
-// Boot: tap anywhere
-await page.mouse.click(360, 640);
-await page.waitForTimeout(900);
-await page.screenshot({ path: `${OUT}/02-mirror.png` });
+// Always drive the fresh-start path: a save left over from a previous run puts
+// "Go on" where "Begin" is expected.
+await page.evaluate(() => { try { localStorage.clear(); } catch { /* blocked */ } });
+await page.reload({ waitUntil: "networkidle" });
+await until("the title", on("Boot"));
+await shot("01-boot");
 
-// Mirror: "Go out" sits at HEIGHT-260
-await page.mouse.click(360, 1280 - 260);
-await page.waitForTimeout(900);
-await page.screenshot({ path: `${OUT}/03-street.png` });
+await press("Begin");
+await until("the mirror", on("Mirror"));
+await shot("02-mirror");
 
-// Street: first location panel's first token. top=90, panelHeight=(1280-90-120-48)/4=255.5
-const panelH = (1280 - 90 - 120 - 48) / 4;
-const firstPanelY = 90 + panelH / 2;
-await page.mouse.click(360, firstPanelY + 16);
-await page.waitForTimeout(700);
-await page.screenshot({ path: `${OUT}/04-dialogue.png` });
+await press("Go out");
+await until("the street", on("Street"));
+await shot("03-street");
 
-// Dialogue: first choice button at y=300
-await page.mouse.click(360, 300);
-await page.waitForTimeout(900);
-await page.screenshot({ path: `${OUT}/05-after-choice.png` });
+const neighbour = await someoneOut();
+if (!neighbour) errors.push("nobody was standing in the street");
+await press(neighbour);
+await until(`a conversation with ${neighbour}`, on("Dialogue"));
+await shot("04-dialogue");
 
-// Back on Street: go to Your Room (4th panel) and sleep
-const fourthY = 90 + 3 * (panelH + 16) + panelH / 2;
-await page.mouse.click(360, fourthY + 22);
-await page.waitForTimeout(900);
-await page.screenshot({ path: `${OUT}/06-night.png` });
+const offered = (await peek()).texts;
+const firstChoice = offered.find((t) => t.length > 12 && t !== "Leave them be");
+await press(firstChoice);
+await until("the street again", (s) => on("Street")(s) && !on("Dialogue")(s));
+await shot("05-after-choice");
 
-await page.mouse.click(360, 1280 - 300);
-await page.waitForTimeout(900);
-await page.screenshot({ path: `${OUT}/07-slept.png` });
+await press("Sleep"); // in Your Room
+await until("nightfall", on("Night"));
+await shot("06-night");
+
+await press("Sleep");
+await until("a new morning", (s) => s.loop === 2);
+await shot("07-slept");
+
+const stored = await page.evaluate((k) => { try { return localStorage.getItem(k); } catch { return null; } }, KEY);
+if (!stored) errors.push("no save was written after a full day");
+else if (JSON.parse(stored).schema !== 1) errors.push(`save schema is ${JSON.parse(stored).schema}, expected 1`);
+
+// The save has to survive the thing people actually do: close it and come back.
+await page.reload({ waitUntil: "networkidle" });
+await until("the title, with a save waiting", on("Boot"));
+await shot("08-returned");
+
+await press("Go on");
+await until("the life continuing", (s) => !on("Boot")(s) && s.loop === 2);
+await shot("09-resumed");
+
+/** Park the game on a state a scripted click-through cannot reliably reach. */
+async function parkOn(name) {
+  const envelope = readFileSync(`${OUT}/${name}.json`, "utf8");
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, envelope]);
+  await page.reload({ waitUntil: "networkidle" });
+  await until("the title", on("Boot"));
+  await press("Go on");
+}
+
+await parkOn("goblin_nightfall");
+await until("the goblin", on("Goblin"));
+// He is there and has not spoken yet — the pause is the whole effect.
+const silent = await peek();
+if (silent.texts.length > 0) errors.push(`the goblin spoke before his pause: ${silent.texts.join(" | ")}`);
+await shot("10-goblin-pause");
+
+// Wait for the line to SETTLE, not for its first character — polling catches
+// a typewriter mid-word and any assertion on that first sighting is a lie.
+const spoken = await until(
+  "his question and his answers",
+  (s) => on("Goblin")(s) && s.texts.filter((t) => t.length > 8).length >= 3,
+);
+await shot("11-goblin-spoken");
+if (!spoken.texts.some((t) => t.endsWith("?"))) {
+  errors.push(`the goblin's question never finished: ${JSON.stringify(spoken.texts)}`);
+}
+
+await parkOn("review");
+await until("the review", on("Review"));
+await page.mouse.click(360, 640); // one tap brings the rest of the reading
+await until("the verdict", (s) => s.texts.some((t) => /lived for/.test(t)));
+await shot("12-review");
 
 await browser.close();
 
 if (errors.length) {
-  console.error("CONSOLE ERRORS:\n" + errors.join("\n"));
+  console.error("SMOKE FAILURES:\n" + errors.join("\n"));
   process.exit(1);
 }
-console.log(`clean run — ${OUT}/01-boot.png through 07-slept.png`);
+console.log(`clean run — ${OUT}/01-boot.png through 12-review.png`);

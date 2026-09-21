@@ -260,3 +260,65 @@ arrive late. Neighbouring stages differ slightly, which is the point.
 whole loop and fails on any console error. It found all three Phase 4 bugs;
 91 unit tests found none of them, because none of them was a rule. A green
 build is not a running game.
+
+## Phase 5 — decisions taken while building the goblin, the review and the save
+
+**D-38 — The version gate branches three ways, not one.** A dispatcher written
+as `schema < LATEST` treats a *missing* version and a version from a *later*
+build identically to "already current": both fail the comparison and fall
+through, handing unmigrated or unknown data to the game. `load()` therefore
+separates invalid, newer, older and current explicitly. A newer save is left on
+disk untouched rather than overwritten — it belongs to a build that can read it.
+
+**D-39 — A save is checked by crossing the real format, then by meaning.** A
+round trip proves the serialiser agrees with itself; it does not prove the
+restored ids still resolve. So `isGameState` checks shape, then that every npc,
+slot and goal id still exists in today's content, then runs `availableChoices`
+against it — the cheapest end-to-end proof that the engine will still accept
+the thing. The tests assert on `canonical()` after a real `JSON` round trip,
+because a field holding `undefined` survives a property read and vanishes at
+`stringify`.
+
+**D-40 — Every change is a save point.** The game is a loop of short days; a
+player who closes the tab mid-afternoon should return to that afternoon. The
+store writes on every commit. A failed write never throws — a game that cannot
+save still plays.
+
+**D-41 — A save that cannot be opened is said out loud, once.** A player who
+had a save and is silently dropped into a fresh start reads that as lost data,
+not as a format they have outgrown. Boot prints one quiet line naming what
+happened, and only when there was something there.
+
+**D-42 — The pause is the effect, and every slow line can be skipped.** §9 asks
+for "slow text and a pause before he speaks": he arrives, his eyes open, and
+then nothing happens for 1.4 seconds before a word appears. A tap finishes any
+line at once — unskippable slow text is a tax on fast readers and on anyone
+seeing it a second time.
+
+**D-43 — The review positions off measured text height.** The two endings wrap
+to different heights, and a fixed y put "Again" through the last sentence of
+one of them.
+
+**D-44 — The smoke driver polls live scene state and clicks by label.** Two
+fixed assumptions broke it, both the same mistake in different clothes. It
+slept for wall-clock durations, but a headless browser renders slowly and
+Phaser clamps its frame delta, so in-game time ran at roughly a *third* of real
+time and the goblin appeared mute — the game was fine, the wait was a guess.
+And it clicked person tokens at computed coordinates, but the town is dealt
+fresh every run, so a panel holding four people instead of two moved everything.
+It now waits on the thing it actually cares about and finds controls by their
+label. It also asserts on the SETTLED text, never the first sighting: polling
+catches a typewriter mid-word, and asserting on that is a lie.
+
+**D-45 — `globalThis.darkGoblin` exposes the game to the smoke driver,** so it
+can assert on live scene state rather than on pixels. The dev overlay already
+exposes far more.
+
+## Open finding for the designer (§9 posture: report, do not tune)
+
+**A life in which the player does nothing is read back as generosity.** §5.7
+gives the verdict as self when `selfPoints > othersPoints` and others
+otherwise, so 0–0 resolves to "others" (D-19) and the review says "you gave it
+away" to someone who gave nothing. The rule is the spec's, so it stands. If it
+should read differently, the fix is a third ending for an empty life rather
+than a change to the comparison.

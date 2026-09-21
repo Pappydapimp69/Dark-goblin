@@ -75,3 +75,45 @@ export function leave(scene: Phaser.Scene, to: string, data?: object): void {
   scene.cameras.main.fadeOut(220, 0, 0, 0);
   scene.cameras.main.once("camerafadeoutcomplete", () => scene.scene.start(to, data));
 }
+
+/**
+ * Reveal text a character at a time. Tapping anywhere finishes it at once —
+ * slow text without a way past it is a tax on anyone who reads quickly, or on
+ * anyone reading it a second time.
+ */
+export function typeOut(
+  scene: Phaser.Scene,
+  target: Phaser.GameObjects.Text,
+  full: string,
+  opts: { msPerChar?: number; delay?: number; onDone?: () => void } = {},
+): () => void {
+  const msPerChar = opts.msPerChar ?? 26;
+  let index = 0;
+  let finished = false;
+  target.setText("");
+
+  const finish = (): void => {
+    if (finished) return;
+    finished = true;
+    timer?.remove();
+    target.setText(full);
+    opts.onDone?.();
+  };
+
+  let timer: Phaser.Time.TimerEvent | undefined;
+  scene.time.delayedCall(opts.delay ?? 0, () => {
+    if (finished) return;
+    timer = scene.time.addEvent({
+      delay: msPerChar,
+      repeat: full.length - 1,
+      callback: () => {
+        index += 1;
+        target.setText(full.slice(0, index));
+        if (index >= full.length) finish();
+      },
+    });
+  });
+
+  scene.input.once("pointerdown", finish);
+  return finish;
+}

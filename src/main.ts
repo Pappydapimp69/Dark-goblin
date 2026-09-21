@@ -8,7 +8,7 @@ import { Review } from "./scenes/Review";
 import { Street } from "./scenes/Street";
 import { COLOR, HEIGHT, WIDTH } from "./ui/theme";
 
-new Phaser.Game({
+const game = new Phaser.Game({
   type: Phaser.AUTO,
   parent: "game",
   backgroundColor: COLOR.night,
@@ -20,3 +20,7 @@ new Phaser.Game({
   },
   scene: [Boot, Mirror, Street, Dialogue, Night, Goblin, Review],
 });
+
+// A handle for tools/smoke.mjs, which asserts on live scene state rather than
+// on pixels. The dev overlay already exposes far more than this does.
+(globalThis as Record<string, unknown>)["darkGoblin"] = game;

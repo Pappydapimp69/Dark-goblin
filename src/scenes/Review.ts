@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { content } from "../content";
 import { computeVerdict } from "../engine/verdict";
+import { clear } from "../ui/save";
 import type { Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
 import { button } from "../ui/widgets";
@@ -16,8 +17,15 @@ function inWords(part: number, whole: number): string {
   return "very little of it";
 }
 
-/** §5.7, read back in order. Phase 5 slows it down and gives it its pauses. */
+/**
+ * §5.7, read back in order: the breaks, the answers, what was taken against
+ * what was given, the child kept separate, then one verdict.
+ *
+ * Paced, one line at a time. Tapping brings the rest at once.
+ */
 export class Review extends Phaser.Scene {
+  private pending: Phaser.Time.TimerEvent[] = [];
+
   constructor() {
     super("Review");
   }
@@ -28,45 +36,71 @@ export class Review extends Phaser.Scene {
     const total = verdict.selfPoints + verdict.othersPoints;
 
     this.cameras.main.setBackgroundColor(0x0d0b0a);
-    this.cameras.main.fadeIn(900, 0, 0, 0);
+    this.cameras.main.fadeIn(1200, 0, 0, 0);
 
     const lines: string[] = [];
-
     for (const entry of verdict.breaks) {
-      const line = content.goblin.breaks.find((b) => b.id === entry.lineId);
-      const first = line?.text.split(". ")[0];
+      const spoken = content.goblin.breaks.find((b) => b.id === entry.lineId);
+      const first = spoken?.text.split(". ")[0];
       lines.push(first ? `${first}.` : "Someone here was ruined, and you did it.");
     }
-
     for (const entry of verdict.answers) {
       const question = content.goblin.questions.find((q) => q.id === entry.questionId);
       const answer = question?.answers.find((a) => a.id === entry.answerId);
-      if (question && answer) lines.push(`"${question.text}"  —  "${answer.text}"`);
+      if (question && answer) lines.push(`“${question.text}”\n“${answer.text}”`);
     }
-
-    lines.push("");
     lines.push(`You kept ${inWords(verdict.selfPoints, total)} for yourself.`);
     lines.push(`You gave ${inWords(verdict.othersPoints, total)} away.`);
-
-    if (verdict.childOutcomes.length > 0) {
-      lines.push("");
-      for (const child of verdict.childOutcomes) {
-        lines.push(`The child: ${child.label} — ${child.outcome}.`);
-      }
+    for (const child of verdict.childOutcomes) {
+      lines.push(`The child: ${child.label} — ${child.outcome}.`);
     }
 
-    this.add
-      .text(WIDTH / 2, 120, lines.join("\n\n"), { ...font(24, CSS.inkDim), align: "center" })
-      .setOrigin(0.5, 0);
+    const shown = lines.slice(-7); // he reads back a life, not a transcript
+    const objects = shown.map((text, i) =>
+      this.add
+        .text(WIDTH / 2, 150 + i * 96, text, { ...font(23, CSS.inkDim), align: "center" })
+        .setOrigin(0.5, 0)
+        .setAlpha(0),
+    );
 
-    const ending = content.goblin.verdicts[verdict.verdict].join("\n");
-    this.add
-      .text(WIDTH / 2, HEIGHT - 430, ending, { ...font(29), align: "center" })
-      .setOrigin(0.5, 0);
+    const ending = this.add
+      .text(WIDTH / 2, 0, content.goblin.verdicts[verdict.verdict].join("\n"), {
+        ...font(29),
+        align: "center",
+      })
+      .setOrigin(0.5, 0)
+      .setAlpha(0);
 
-    button(this, WIDTH / 2, HEIGHT - 140, "Again", () => {
-      this.registry.remove("store");
-      this.scene.start("Boot");
-    }, { tone: COLOR.dusk });
+    // Sit the ending and the button off the MEASURED height: the verdict lines
+    // wrap differently per ending, and a fixed y put "Again" through the last
+    // sentence of one of them.
+    const again = button(this, WIDTH / 2, 0, "Again", () => this.restart(), {
+      tone: COLOR.dusk,
+    }).setAlpha(0);
+    again.y = HEIGHT - 110;
+    ending.y = again.y - again.height / 2 - 40 - ending.height;
+
+    const reveal = [...objects, ending, again];
+    reveal.forEach((object, i) => {
+      this.pending.push(
+        this.time.delayedCall(700 + i * 900, () =>
+          this.tweens.add({ targets: object, alpha: 1, duration: 700 }),
+        ),
+      );
+    });
+
+    // Tap once and the rest of the reading arrives together.
+    this.input.once("pointerdown", () => {
+      for (const timer of this.pending) timer.remove();
+      this.tweens.add({ targets: reveal, alpha: 1, duration: 300 });
+    });
+  }
+
+  private restart(): void {
+    // The life is over and the slot holds its last moment. Starting again
+    // means starting again.
+    clear();
+    this.registry.remove("store");
+    this.scene.start("Boot");
   }
 }
