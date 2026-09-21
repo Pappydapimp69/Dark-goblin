@@ -119,3 +119,46 @@ has no questions to answer, so `answerGoblin` has nothing to take.
 
 **D-20 — `{ all: [] }` is the always-true condition.** `every` over an empty
 list is true, so an unconditional choice needs no new DSL variant.
+
+## Phase 2 — decisions taken while building the simulator
+
+**D-21 — Each bot draws from its own RNG stream.** The bot's seed is derived
+from the game seed and its own id, so two bots played on seed 7 meet the same
+world, but a bot's deliberation never advances the world's stream. A bot
+sharing the game's RNG would perturb the world it is supposed to be measuring —
+and the harder the bot thinks, the more it would perturb it. Tested: `isolated`
+produces a life bit-identical to the same game driven by hand. (§9)
+
+**D-22 — A fifth bot, `human`, alongside §9's four.** §9's four are policies
+over `impacts` tags, and `selfish` additionally looks ahead by trial-applying a
+choice to see whether it completes a player goal. No player can do either: §0
+hides every number, and nobody gets to try a move and take it back. The balance
+target in §9 is a claim about what a *person* experiences, so it needs a bot
+that plays on what the screen actually shows — who is in front of you, what the
+choice says, and the five-stage portrait (§5.8), which is the only lifespan
+feedback in the game.
+
+It differs from a policy in three human ways: it keeps returning to whoever it
+has been spending time with rather than re-deciding from scratch; it goes to
+bed after four to nine interactions instead of spending every day to the last;
+and as the face in the mirror ages it drifts from helping to looking after
+itself — self-preservation arriving late and gradually, which is the trade the
+game is about. It never looks ahead.
+
+§9's four are built exactly as specified and reported unchanged. The fifth is
+an addition, not a substitution.
+
+**D-23 — `src/sim/report.ts` holds the simulator's logic; `run.ts` is only the
+entry point.** §3's layout lists just `bots.ts` and `run.ts`, but a file that
+runs 500 games on import cannot be imported by a test. `run.ts` now does I/O
+and nothing else.
+
+**D-24 — Phase 2's balance verdict is provisional.** The simulator runs against
+the Phase 1 fixture, where one choice fulfils an NPC goal outright, so the
+generous bot clears §9's target in 100% of games trivially. The number that
+matters is the other one: **a purely generous life is exactly 7 loops long,
+every seed** (−11 lifespan a day against 75). Phase 3's builder chain needs
+three loops of help plus a two-loop schedule before the shop exists at all,
+which leaves roughly one loop of slack for the baker to take it. Phase 3 should
+be authored against that ceiling, and the target re-run on real content before
+anyone believes it.
