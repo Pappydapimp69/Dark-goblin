@@ -39,5 +39,11 @@
     "builder_work",
     "shopkeeper_retire",
     "shopkeeper_income"
+  ],
+  "locations": [
+    "storefront",
+    "market",
+    "wrecked",
+    "room"
   ]
 }

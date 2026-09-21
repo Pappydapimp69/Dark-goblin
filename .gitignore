@@ -6,3 +6,4 @@ sim-report.csv
 
 # Brain local store — managed by the `brain` CLI, not project content
 .brain/
+smoke-shots/

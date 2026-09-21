@@ -299,6 +299,8 @@ export interface RulesContent {
    * ones. Content names them so the simulator needs no knowledge of the town.
    */
   trackedGoals?: GoalId[];
+  /** The places a person can be found. An npc placed anywhere else is unreachable. */
+  locations?: string[];
 }
 
 export interface Content {

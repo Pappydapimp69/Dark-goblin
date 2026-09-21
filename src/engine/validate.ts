@@ -57,7 +57,16 @@ export function validateContent(content: Content): void {
     }
   }
 
+  const locations = new Set(content.rules.locations ?? []);
   for (const npc of content.npcs) {
+    // A person standing at a location the game does not draw is in town and
+    // unreachable — they simply never appear. Caught here, not in playtesting.
+    if (locations.size > 0 && npc.location !== undefined && !locations.has(npc.location)) {
+      throw new ContentError(
+        `is at "${npc.location}", which is not one of: ${[...locations].join(", ")}`,
+        `${FILES.npcs} "${npc.id}"`,
+      );
+    }
     for (const id of npc.goalIds) {
       if (!goalIds.has(id)) {
         throw new ContentError(`unknown goal "${id}"`, `${FILES.npcs} "${npc.id}"`);

@@ -105,7 +105,9 @@ export function availableChoices(state: GameState, content: Content): Choice[] {
   return content.choices.filter((choice) => {
     const npc = state.npcs[choice.npc];
     if (!npc || !npc.present) return false;
-    if (npc.broken && choice.aftermath !== true) return false;
+    // A broken person offers only their aftermath line — and that line does
+    // not exist until they break.
+    if (npc.broken !== (choice.aftermath === true)) return false;
     return evaluate(choice.available, state, `choices.json "${choice.id}".available`);
   });
 }

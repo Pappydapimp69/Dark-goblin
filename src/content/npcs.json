@@ -149,7 +149,7 @@
   {
     "id": "otto",
     "name": "Otto",
-    "location": "street",
+    "location": "wrecked",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -188,7 +188,7 @@
   {
     "id": "greta",
     "name": "Greta",
-    "location": "street",
+    "location": "storefront",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -214,7 +214,7 @@
   {
     "id": "tobias",
     "name": "Tobias",
-    "location": "street",
+    "location": "storefront",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -227,7 +227,7 @@
   {
     "id": "anneke",
     "name": "Anneke",
-    "location": "street",
+    "location": "market",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -396,7 +396,7 @@
   {
     "id": "rurik",
     "name": "Rurik",
-    "location": "street",
+    "location": "market",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -422,7 +422,7 @@
   {
     "id": "stefan",
     "name": "Stefan",
-    "location": "street",
+    "location": "wrecked",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -552,7 +552,7 @@
   {
     "id": "erik",
     "name": "Erik",
-    "location": "street",
+    "location": "wrecked",
     "state": {
       "helped": 0,
       "trusts_player": false,
@@ -630,7 +630,7 @@
   {
     "id": "wilhelm",
     "name": "Wilhelm",
-    "location": "street",
+    "location": "storefront",
     "state": {
       "helped": 0,
       "trusts_player": false,

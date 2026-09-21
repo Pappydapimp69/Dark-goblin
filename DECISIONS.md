@@ -216,3 +216,47 @@ and the builder's in 16%. Softening the lock to a 0.6 chance of returning —
 with drift to whoever else is in front of you — moved those to 12% and 62%.
 A bot used to judge a design is code under test like any other, and an argmax
 in a behavioural model is a red flag.
+
+## Phase 4 — decisions taken while building the shell
+
+**D-31 — `src/ui/store.ts` is the only seam.** Scenes read `store.state` and
+call `interact` / `sleep` / `answer` / `acknowledge`. Nothing under `/scenes`
+touches `GameState`, so the render layer has no way to quietly invent a rule.
+A test asserts the store replaces state rather than mutating it, and another
+greps `src/engine` for Phaser imports — §2's rule, now enforced rather than
+merely intended.
+
+**D-32 — `"night"` is a scene, not an engine status.** §4 lists `"night"` in
+`GameStatus` but §5.3's flow never enters it: `sleep()` runs the whole
+end-of-day and comes out at the next morning, a goblin, or the review. The
+Night scene is the UI beat before that call. The status stays in the union
+because `sceneFor` must be exhaustive, and it is the honest place to grow one
+if end-of-day ever needs to pause.
+
+**D-33 — Goblin and Review are built plain here, not deferred to Phase 5.**
+§9 gives them to Phase 5, but a break can fire on the first afternoon, so
+leaving them out would leave the loop open. They work; Phase 5 owes them the
+slow text, the pause before he speaks, and save/load.
+
+**D-34 — Locations are declared in `rules.json` and validated.** Found by
+playing the built game: eight townspeople were standing at `"street"`, which is
+not one of §6's four locations. They were dealt into town and drawn nowhere —
+in the game and unreachable, with nothing failing. Content now declares its own
+locations and `validateContent` rejects a person standing outside them.
+
+**D-35 — `availableChoices`' aftermath guard was asymmetric.** It hid a broken
+person's ordinary choices but never hid the aftermath line, so Aldo offered
+"He is sitting on the step. He doesn't look up." on the first morning. §5.4
+means the aftermath line replaces the others, which is one condition, not two:
+`npc.broken !== (choice.aftermath === true)`.
+
+**D-36 — The portrait ages by degree, not by five drawings.** §5.8 asks for
+five stages; drawing five faces would make each step an announcement. One face
+is drawn from shapes parameterised on the stage, so the skull narrows, the
+sockets deepen while the eyes shrink, the hair recedes and greys, and two lines
+arrive late. Neighbouring stages differ slightly, which is the point.
+
+**D-37 — `tools/smoke.mjs` drives the built game in a real browser** through a
+whole loop and fails on any console error. It found all three Phase 4 bugs;
+91 unit tests found none of them, because none of them was a rule. A green
+build is not a running game.
