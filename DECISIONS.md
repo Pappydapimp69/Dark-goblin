@@ -1,0 +1,74 @@
+# DECISIONS.md — The Dark Goblin
+
+Every entry here is a point where `CLAUDE.md` was silent or under-specified.
+Per §0, each takes the simplest choice that preserves the rules.
+
+Format: **D-n — decision** · *why* · *spec ref*
+
+---
+
+## Spec gaps resolved
+
+**D-1 — `player_clear_debt` ("debt 0 at end of day for 3 consecutive loops")
+is tracked as `npcs.player.state.debt_clear_streak`, not a flag.**
+The Condition DSL's `{flag}` variant supports only `eq`; `{npc,key,gte}`
+supports `gte`. §4 already declares `"player"` a valid `NpcId`, so the streak
+lives on the player's `NpcState` and the goal path reads
+`{npc:"player", key:"debt_clear_streak", gte:3}`. No DSL extension. (§4, §6)
+
+**D-2 — "3 NPCs trust the player" is authored as an explicit `all` of the
+three prototype NPCs.**
+The DSL has no count-across-NPCs quantifier. With a fixed cast of 3, an `all`
+block is exact and needs no new condition kind. Revisit if the cast grows. (§6)
+
+**D-3 — `player_own_place` resolves to `storefront` or `wrecked_shop`.**
+No slot of kind `house` exists in the prototype, so "any slot of kind
+storefront or house" is authored as an `any` over the two real storefront
+slots. (§6)
+
+**D-4 — `shopkeeper_income` gets two authored paths so §7 validation passes.**
+§6 describes only its *closed* condition, but §7 requires every critical goal
+to have ≥2 paths open at game start. Paths: **A** he still holds `storefront`
+and his debt is under the ruin threshold; **B** `flag shopkeeper_retired = true`
+(the shift route, which §6 says fulfils the critical goal peacefully). (§6, §7)
+
+**D-5 — On the final day the Nightfall goblin resolves before the Review.**
+§5.3 runs the nightfall check (step 5) before the lifespan check (step 6), so
+a day that both ends a life and fails a player goal shows the goblin first;
+`answerGoblin` then transitions to `review`. (§5.3, §5.6, §5.7)
+
+**D-6 — Baker readiness counts *loops in which she was helped*, not
+interactions.** §6 says "3 helpful loops". A per-loop `helped_this_loop` bit is
+set by help choices and folded into `readiness` at world tick, then cleared —
+so ten helps in one day still counts as one loop. (§5.5, §6)
+
+**D-7 — `rentModifiers` is authored in `content/rules.json`,** not in code, per
+the §5.3 note. Prototype content: base 5, `+3` while the player holds a
+storefront slot.
+
+## Engineering constraints (from prior lessons — `brain query`)
+
+**D-8 — One seeded RNG (mulberry32); its `{seed, count}` is part of
+`GameState` and is saved.** Ambient `Math.random()`/`Date.now()` are banned in
+`/src/engine` and `/src/sim`, enforced by a grep test.
+
+**D-9 — Adjacent-pool rolls always draw, then conditionally use.**
+A roll skipped on a branch (goal not failed, pool empty, forced single
+candidate) shifts the shared stream and desyncs every later draw. The draw
+count per goal-check is constant by construction; the result is discarded when
+unused.
+
+**D-10 — Determinism is fingerprinted per step, not only at end state.**
+`determinism.test.ts` hashes a canonical (sorted-key) serialization of
+`GameState` after every interaction, not just at review — an end-state match
+hides a mid-run divergence.
+
+**D-11 — `localStorage` is namespaced (`darkgoblin:v1:save`) and every access
+is wrapped in try/catch with the restored state re-validated.** A shared host
+origin (itch.io, GitHub Pages) otherwise collides with a sibling game, and
+sandboxed webviews can throw on the access itself. Unavailable or corrupt
+storage degrades to a clean first run, never a white screen.
+
+**D-12 — All meter arithmetic is integer.** The §5.3 half-bill test is written
+`paid * 2 >= bill` rather than `paid >= bill / 2`, so no float ever reaches
+authoritative state.

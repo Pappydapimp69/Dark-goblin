@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+sim-report.csv
+.DS_Store
+
+# Brain local store — managed by the `brain` CLI, not project content
+.brain/
