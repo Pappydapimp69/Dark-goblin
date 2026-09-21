@@ -46,7 +46,7 @@ function npcTickEffects(state: GameState, content: Content): Effect[] {
   const effects: Effect[] = [];
   for (const npc of [...content.npcs].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))) {
     const live = state.npcs[npc.id];
-    if (!live || live.broken) continue;
+    if (!live || live.broken || !live.present) continue;
     for (const rule of npc.tick ?? []) {
       if (evaluate(rule.when, state, `npcs.json "${npc.id}".tick "${rule.id}"`)) {
         effects.push(...rule.effects);

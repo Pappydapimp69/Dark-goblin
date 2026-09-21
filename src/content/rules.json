@@ -1,0 +1,43 @@
+{
+  "baseRent": 5,
+  "rentModifiers": [
+    {
+      "id": "holds_a_storefront",
+      "when": {
+        "slotHolder": "storefront",
+        "is": "player"
+      },
+      "amount": 3
+    },
+    {
+      "id": "holds_the_rebuilt_shop",
+      "when": {
+        "slotHolder": "wrecked_shop",
+        "is": "player"
+      },
+      "amount": 3
+    }
+  ],
+  "startingMoney": 12,
+  "startingDebt": 0,
+  "lifespanMax": 75,
+  "interactionsPerDay": 10,
+  "playerGoalPool": [
+    "player_own_place",
+    "player_clear_debt",
+    "player_be_known"
+  ],
+  "playerGoalsAtStart": 2,
+  "townSize": 8,
+  "pinnedNpcs": [
+    "baker",
+    "shopkeeper",
+    "builder"
+  ],
+  "trackedGoals": [
+    "baker_shop",
+    "builder_work",
+    "shopkeeper_retire",
+    "shopkeeper_income"
+  ]
+}

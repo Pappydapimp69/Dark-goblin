@@ -1,0 +1,150 @@
+{
+  "questions": [
+    {
+      "id": "q_wanted",
+      "text": "You wanted that. What changed?",
+      "forGoals": [
+        "player_own_place",
+        "player_clear_debt",
+        "player_be_known"
+      ],
+      "answers": [
+        {
+          "id": "q_wanted_a",
+          "text": "Nothing changed. I ran out of days."
+        },
+        {
+          "id": "q_wanted_b",
+          "text": "Someone needed the day more than I did."
+        },
+        {
+          "id": "q_wanted_c",
+          "text": "I stopped wanting it and didn't notice."
+        },
+        {
+          "id": "q_wanted_d",
+          "text": "I never really wanted it."
+        }
+      ]
+    },
+    {
+      "id": "q_first",
+      "text": "Who did you think of first, this morning?",
+      "answers": [
+        {
+          "id": "q_first_a",
+          "text": "Myself. I usually do."
+        },
+        {
+          "id": "q_first_b",
+          "text": "Someone out there in the cold."
+        },
+        {
+          "id": "q_first_c",
+          "text": "No one. I just got up."
+        }
+      ]
+    },
+    {
+      "id": "q_worth",
+      "text": "Was it worth what it cost you?",
+      "answers": [
+        {
+          "id": "q_worth_a",
+          "text": "Yes. Ask me again tomorrow."
+        },
+        {
+          "id": "q_worth_b",
+          "text": "No. But I'd do it again."
+        },
+        {
+          "id": "q_worth_c",
+          "text": "I don't know what it cost."
+        },
+        {
+          "id": "q_worth_d",
+          "text": "Nothing costs anything here. It all comes back."
+        }
+      ]
+    },
+    {
+      "id": "q_name",
+      "text": "Could you still say their name?",
+      "answers": [
+        {
+          "id": "q_name_a",
+          "text": "Of course I could."
+        },
+        {
+          "id": "q_name_b",
+          "text": "I could this morning."
+        },
+        {
+          "id": "q_name_c",
+          "text": "Does it matter, if the day starts over?"
+        }
+      ]
+    },
+    {
+      "id": "q_again",
+      "text": "Tomorrow you'll have the same hours. Same order?",
+      "answers": [
+        {
+          "id": "q_again_a",
+          "text": "The same. It works."
+        },
+        {
+          "id": "q_again_b",
+          "text": "I'll start somewhere else."
+        },
+        {
+          "id": "q_again_c",
+          "text": "I'll try to get further."
+        },
+        {
+          "id": "q_again_d",
+          "text": "I've stopped planning it."
+        }
+      ]
+    },
+    {
+      "id": "q_notice",
+      "text": "Did anyone notice?",
+      "answers": [
+        {
+          "id": "q_notice_a",
+          "text": "They noticed."
+        },
+        {
+          "id": "q_notice_b",
+          "text": "I hope not."
+        },
+        {
+          "id": "q_notice_c",
+          "text": "Only you."
+        }
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "id": "break_shopkeeper",
+      "goalId": "shopkeeper_income",
+      "text": "Aldo had the shop, and the debt, and a daughter on the coast. You had a word with his creditor. You gained a morning. He lost the forty years behind that counter, and the coast he was going to see. That one is finished now. It does not start again tomorrow."
+    }
+  ],
+  "verdicts": {
+    "self": [
+      "You had the same day, every day, and you spent it on yourself.",
+      "That is not nothing — you were owed a life too.",
+      "But the town went on around you, and it went on without you in it.",
+      "You lived for yourself."
+    ],
+    "others": [
+      "You had the same day, every day, and you gave it away.",
+      "It cost you. You can see what it cost you.",
+      "They kept what you gave them; that part did not start over.",
+      "You lived for others."
+    ]
+  }
+}

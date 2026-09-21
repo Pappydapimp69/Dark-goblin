@@ -68,6 +68,12 @@ export interface NpcState {
   state: Record<string, NpcStateValue>;
   broken: boolean;
   goalIds: GoalId[];
+  /**
+   * Whether this person is in town this life. The whole roster is
+   * instantiated so conditions can always resolve, but only the present are
+   * met, tick, or offer choices.
+   */
+  present: boolean;
 }
 
 export interface Slot {
@@ -213,6 +219,14 @@ export interface NpcDef {
   goalIds: GoalId[];
   /** Per-NPC advancement applied at the world tick (§5.5). */
   tick?: TickRule[];
+  /**
+   * "player" is the state holder for the person playing — always present,
+   * never rolled, never counted against the town's size. Everyone else is a
+   * townsperson.
+   */
+  role?: "player" | "townsperson";
+  /** Which of the four locations they are found at. Read by the Street scene. */
+  location?: string;
 }
 
 export interface SlotDef {
@@ -272,6 +286,19 @@ export interface RulesContent {
   /** Player goal templates to roll from, and how many to roll at newGame. */
   playerGoalPool: GoalId[];
   playerGoalsAtStart: number;
+  /**
+   * How many townspeople are in town in one life. Omit for "all of them".
+   * The roster is bigger than the town: each seed deals a different cast.
+   */
+  townSize?: number;
+  /** Townspeople who are always in town, whatever the seed. */
+  pinnedNpcs?: NpcId[];
+  /**
+   * Goals the balance report follows by name — the authored chains whose
+   * completion rate is the thing worth watching, as opposed to the incidental
+   * ones. Content names them so the simulator needs no knowledge of the town.
+   */
+  trackedGoals?: GoalId[];
 }
 
 export interface Content {

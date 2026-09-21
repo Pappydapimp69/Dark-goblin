@@ -1,0 +1,1911 @@
+[
+  {
+    "id": "player_own_place",
+    "owner": "player",
+    "critical": false,
+    "label": "a place of your own",
+    "paths": [
+      {
+        "id": "any_shop",
+        "complete": {
+          "any": [
+            {
+              "slotHolder": "storefront",
+              "is": "player"
+            },
+            {
+              "slotHolder": "wrecked_shop",
+              "is": "player"
+            }
+          ]
+        },
+        "closed": {
+          "all": [
+            {
+              "slotHolder": "storefront",
+              "is": "baker"
+            },
+            {
+              "slotExists": "wrecked_shop"
+            },
+            {
+              "slotHolder": "wrecked_shop",
+              "is": "baker"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "player_clear_debt",
+    "owner": "player",
+    "critical": false,
+    "label": "owe nothing to anyone",
+    "paths": [
+      {
+        "id": "three_clear",
+        "complete": {
+          "npc": "player",
+          "key": "debt_clear_streak",
+          "gte": 3
+        },
+        "closed": {
+          "npc": "player",
+          "key": "debt",
+          "gte": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "player_be_known",
+    "owner": "player",
+    "critical": false,
+    "label": "be someone here",
+    "paths": [
+      {
+        "id": "three_trust",
+        "complete": {
+          "npc": "player",
+          "key": "trust_count",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "you_are_nobody"
+        }
+      }
+    ]
+  },
+  {
+    "id": "baker_shop",
+    "owner": "baker",
+    "critical": false,
+    "label": "a storefront of her own",
+    "adjacentPool": [
+      "baker_work_at_shop",
+      "baker_leave_town"
+    ],
+    "paths": [
+      {
+        "id": "the_old_shop",
+        "complete": {
+          "slotHolder": "storefront",
+          "is": "baker"
+        },
+        "closed": {
+          "any": [
+            {
+              "flag": "baker_left_town"
+            },
+            {
+              "slotHolder": "storefront",
+              "is": "player"
+            }
+          ]
+        }
+      },
+      {
+        "id": "the_wrecked_one",
+        "complete": {
+          "all": [
+            {
+              "slotExists": "wrecked_shop"
+            },
+            {
+              "slotHolder": "wrecked_shop",
+              "is": "baker"
+            }
+          ]
+        },
+        "closed": {
+          "any": [
+            {
+              "flag": "baker_left_town"
+            },
+            {
+              "slotHolder": "wrecked_shop",
+              "is": "player"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "baker_work_at_shop",
+    "owner": "baker",
+    "critical": false,
+    "label": "work in someone else's shop",
+    "paths": [
+      {
+        "id": "any_open_shop",
+        "complete": {
+          "all": [
+            {
+              "not": {
+                "flag": "baker_left_town"
+              }
+            },
+            {
+              "not": {
+                "slotHolder": "storefront",
+                "is": null
+              }
+            }
+          ]
+        },
+        "closed": {
+          "flag": "baker_left_town"
+        }
+      }
+    ]
+  },
+  {
+    "id": "baker_leave_town",
+    "owner": "baker",
+    "critical": false,
+    "label": "go somewhere else",
+    "paths": [
+      {
+        "id": "gone",
+        "complete": {
+          "flag": "baker_left_town"
+        },
+        "closed": {
+          "flag": "baker_stays_forever"
+        }
+      }
+    ]
+  },
+  {
+    "id": "shopkeeper_income",
+    "owner": "shopkeeper",
+    "critical": true,
+    "label": "keep the shop, stay solvent",
+    "paths": [
+      {
+        "id": "hold_it",
+        "complete": {
+          "all": [
+            {
+              "slotHolder": "storefront",
+              "is": "shopkeeper"
+            },
+            {
+              "npc": "shopkeeper",
+              "key": "debt",
+              "lte": 0
+            }
+          ]
+        },
+        "closed": {
+          "flag": "shopkeeper_foreclosed"
+        }
+      },
+      {
+        "id": "let_it_go_well",
+        "complete": {
+          "flag": "shopkeeper_retired"
+        },
+        "closed": {
+          "flag": "shopkeeper_foreclosed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "shopkeeper_retire",
+    "owner": "shopkeeper",
+    "critical": false,
+    "label": "move near his daughter",
+    "adjacentPool": [
+      "shopkeeper_stay"
+    ],
+    "paths": [
+      {
+        "id": "packed",
+        "complete": {
+          "npc": "shopkeeper",
+          "key": "retire_ready",
+          "gte": 3
+        },
+        "closed": {
+          "any": [
+            {
+              "flag": "shopkeeper_foreclosed"
+            },
+            {
+              "flag": "shopkeeper_wont_go"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "shopkeeper_stay",
+    "owner": "shopkeeper",
+    "critical": false,
+    "label": "see out his days behind the counter",
+    "paths": [
+      {
+        "id": "still_here",
+        "complete": {
+          "all": [
+            {
+              "slotHolder": "storefront",
+              "is": "shopkeeper"
+            },
+            {
+              "loopGte": 4
+            }
+          ]
+        },
+        "closed": {
+          "flag": "shopkeeper_foreclosed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "builder_work",
+    "owner": "builder",
+    "critical": false,
+    "label": "work again",
+    "adjacentPool": [
+      "builder_odd_jobs"
+    ],
+    "paths": [
+      {
+        "id": "back_on_the_tools",
+        "complete": {
+          "npc": "builder",
+          "key": "jobs",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "builder_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "builder_odd_jobs",
+    "owner": "builder",
+    "critical": false,
+    "label": "whatever work there is",
+    "paths": [
+      {
+        "id": "enough_of_it",
+        "complete": {
+          "npc": "builder",
+          "key": "jobs",
+          "gte": 6
+        },
+        "closed": {
+          "flag": "builder_never_works"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mara_need",
+    "owner": "mara",
+    "critical": false,
+    "label": "Mara, the well-keeper",
+    "adjacentPool": [
+      "mara_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "mara",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "mara_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mara_settle",
+    "owner": "mara",
+    "critical": false,
+    "label": "Mara makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "mara",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "mara_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "otto_need",
+    "owner": "otto",
+    "critical": false,
+    "label": "Otto, the night watchman",
+    "adjacentPool": [
+      "otto_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "otto",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "otto_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "otto_settle",
+    "owner": "otto",
+    "critical": false,
+    "label": "Otto makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "otto",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "otto_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lise_need",
+    "owner": "lise",
+    "critical": false,
+    "label": "Lise, the seamstress",
+    "adjacentPool": [
+      "lise_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "lise",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "lise_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lise_settle",
+    "owner": "lise",
+    "critical": false,
+    "label": "Lise makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "lise",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "lise_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "per_need",
+    "owner": "per",
+    "critical": false,
+    "label": "Per, the fishmonger",
+    "adjacentPool": [
+      "per_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "per",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "per_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "per_settle",
+    "owner": "per",
+    "critical": false,
+    "label": "Per makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "per",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "per_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "greta_need",
+    "owner": "greta",
+    "critical": false,
+    "label": "Greta, the widow",
+    "adjacentPool": [
+      "greta_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "greta",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "greta_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "greta_settle",
+    "owner": "greta",
+    "critical": false,
+    "label": "Greta makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "greta",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "greta_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hansi_need",
+    "owner": "hansi",
+    "critical": false,
+    "label": "Hansi, the boy",
+    "adjacentPool": [
+      "hansi_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "hansi",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "hansi_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hansi_settle",
+    "owner": "hansi",
+    "critical": false,
+    "label": "Hansi makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "hansi",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "hansi_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tobias_need",
+    "owner": "tobias",
+    "critical": false,
+    "label": "Tobias, the schoolteacher",
+    "adjacentPool": [
+      "tobias_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "tobias",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "tobias_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tobias_settle",
+    "owner": "tobias",
+    "critical": false,
+    "label": "Tobias makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "tobias",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "tobias_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "anneke_need",
+    "owner": "anneke",
+    "critical": false,
+    "label": "Anneke, the midwife",
+    "adjacentPool": [
+      "anneke_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "anneke",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "anneke_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "anneke_settle",
+    "owner": "anneke",
+    "critical": false,
+    "label": "Anneke makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "anneke",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "anneke_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "klaus_need",
+    "owner": "klaus",
+    "critical": false,
+    "label": "Klaus, the cooper",
+    "adjacentPool": [
+      "klaus_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "klaus",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "klaus_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "klaus_settle",
+    "owner": "klaus",
+    "critical": false,
+    "label": "Klaus makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "klaus",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "klaus_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sofie_need",
+    "owner": "sofie",
+    "critical": false,
+    "label": "Sofie, the laundress",
+    "adjacentPool": [
+      "sofie_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "sofie",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "sofie_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sofie_settle",
+    "owner": "sofie",
+    "critical": false,
+    "label": "Sofie makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "sofie",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "sofie_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "emil_need",
+    "owner": "emil",
+    "critical": false,
+    "label": "Emil, the smith's son",
+    "adjacentPool": [
+      "emil_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "emil",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "emil_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "emil_settle",
+    "owner": "emil",
+    "critical": false,
+    "label": "Emil makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "emil",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "emil_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rike_need",
+    "owner": "rike",
+    "critical": false,
+    "label": "Rike, the beekeeper",
+    "adjacentPool": [
+      "rike_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "rike",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "rike_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rike_settle",
+    "owner": "rike",
+    "critical": false,
+    "label": "Rike makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "rike",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "rike_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jonas_need",
+    "owner": "jonas",
+    "critical": false,
+    "label": "Jonas, the ferryman",
+    "adjacentPool": [
+      "jonas_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "jonas",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "jonas_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jonas_settle",
+    "owner": "jonas",
+    "critical": false,
+    "label": "Jonas makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "jonas",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "jonas_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hedda_need",
+    "owner": "hedda",
+    "critical": false,
+    "label": "Hedda, the innkeeper",
+    "adjacentPool": [
+      "hedda_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "hedda",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "hedda_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hedda_settle",
+    "owner": "hedda",
+    "critical": false,
+    "label": "Hedda makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "hedda",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "hedda_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "viktor_need",
+    "owner": "viktor",
+    "critical": false,
+    "label": "Viktor, the cartwright",
+    "adjacentPool": [
+      "viktor_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "viktor",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "viktor_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "viktor_settle",
+    "owner": "viktor",
+    "critical": false,
+    "label": "Viktor makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "viktor",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "viktor_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nell_need",
+    "owner": "nell",
+    "critical": false,
+    "label": "Nell, the herbalist",
+    "adjacentPool": [
+      "nell_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "nell",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "nell_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nell_settle",
+    "owner": "nell",
+    "critical": false,
+    "label": "Nell makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "nell",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "nell_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bram_need",
+    "owner": "bram",
+    "critical": false,
+    "label": "Bram, the ropemaker",
+    "adjacentPool": [
+      "bram_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "bram",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "bram_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bram_settle",
+    "owner": "bram",
+    "critical": false,
+    "label": "Bram makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "bram",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "bram_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ilse_need",
+    "owner": "ilse",
+    "critical": false,
+    "label": "Ilse, the goatherd",
+    "adjacentPool": [
+      "ilse_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "ilse",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "ilse_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ilse_settle",
+    "owner": "ilse",
+    "critical": false,
+    "label": "Ilse makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "ilse",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "ilse_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ansel_need",
+    "owner": "ansel",
+    "critical": false,
+    "label": "Ansel, the stonemason",
+    "adjacentPool": [
+      "ansel_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "ansel",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "ansel_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ansel_settle",
+    "owner": "ansel",
+    "critical": false,
+    "label": "Ansel makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "ansel",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "ansel_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dorte_need",
+    "owner": "dorte",
+    "critical": false,
+    "label": "Dorte, the candlemaker",
+    "adjacentPool": [
+      "dorte_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "dorte",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "dorte_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dorte_settle",
+    "owner": "dorte",
+    "critical": false,
+    "label": "Dorte makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "dorte",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "dorte_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rurik_need",
+    "owner": "rurik",
+    "critical": false,
+    "label": "Rurik, the drover",
+    "adjacentPool": [
+      "rurik_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "rurik",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "rurik_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rurik_settle",
+    "owner": "rurik",
+    "critical": false,
+    "label": "Rurik makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "rurik",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "rurik_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "maike_need",
+    "owner": "maike",
+    "critical": false,
+    "label": "Maike, the potter",
+    "adjacentPool": [
+      "maike_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "maike",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "maike_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "maike_settle",
+    "owner": "maike",
+    "critical": false,
+    "label": "Maike makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "maike",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "maike_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "stefan_need",
+    "owner": "stefan",
+    "critical": false,
+    "label": "Stefan, the sexton",
+    "adjacentPool": [
+      "stefan_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "stefan",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "stefan_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "stefan_settle",
+    "owner": "stefan",
+    "critical": false,
+    "label": "Stefan makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "stefan",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "stefan_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ebba_need",
+    "owner": "ebba",
+    "critical": false,
+    "label": "Ebba, the weaver",
+    "adjacentPool": [
+      "ebba_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "ebba",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "ebba_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ebba_settle",
+    "owner": "ebba",
+    "critical": false,
+    "label": "Ebba makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "ebba",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "ebba_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lukas_need",
+    "owner": "lukas",
+    "critical": false,
+    "label": "Lukas, the miller",
+    "adjacentPool": [
+      "lukas_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "lukas",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "lukas_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lukas_settle",
+    "owner": "lukas",
+    "critical": false,
+    "label": "Lukas makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "lukas",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "lukas_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gunda_need",
+    "owner": "gunda",
+    "critical": false,
+    "label": "Gunda, the cheesemaker",
+    "adjacentPool": [
+      "gunda_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "gunda",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "gunda_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gunda_settle",
+    "owner": "gunda",
+    "critical": false,
+    "label": "Gunda makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "gunda",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "gunda_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "arne_need",
+    "owner": "arne",
+    "critical": false,
+    "label": "Arne, the thatcher",
+    "adjacentPool": [
+      "arne_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "arne",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "arne_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "arne_settle",
+    "owner": "arne",
+    "critical": false,
+    "label": "Arne makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "arne",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "arne_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pia_need",
+    "owner": "pia",
+    "critical": false,
+    "label": "Pia, the apothecary's girl",
+    "adjacentPool": [
+      "pia_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "pia",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "pia_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pia_settle",
+    "owner": "pia",
+    "critical": false,
+    "label": "Pia makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "pia",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "pia_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "henrik_need",
+    "owner": "henrik",
+    "critical": false,
+    "label": "Henrik, the tanner",
+    "adjacentPool": [
+      "henrik_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "henrik",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "henrik_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "henrik_settle",
+    "owner": "henrik",
+    "critical": false,
+    "label": "Henrik makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "henrik",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "henrik_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "birgit_need",
+    "owner": "birgit",
+    "critical": false,
+    "label": "Birgit, the glazier",
+    "adjacentPool": [
+      "birgit_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "birgit",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "birgit_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "birgit_settle",
+    "owner": "birgit",
+    "critical": false,
+    "label": "Birgit makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "birgit",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "birgit_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "matthias_need",
+    "owner": "matthias",
+    "critical": false,
+    "label": "Matthias, the charcoal burner",
+    "adjacentPool": [
+      "matthias_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "matthias",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "matthias_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "matthias_settle",
+    "owner": "matthias",
+    "critical": false,
+    "label": "Matthias makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "matthias",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "matthias_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "runa_need",
+    "owner": "runa",
+    "critical": false,
+    "label": "Runa, the spinner",
+    "adjacentPool": [
+      "runa_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "runa",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "runa_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "runa_settle",
+    "owner": "runa",
+    "critical": false,
+    "label": "Runa makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "runa",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "runa_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "erik_need",
+    "owner": "erik",
+    "critical": false,
+    "label": "Erik, the farrier",
+    "adjacentPool": [
+      "erik_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "erik",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "erik_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "erik_settle",
+    "owner": "erik",
+    "critical": false,
+    "label": "Erik makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "erik",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "erik_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "thea_need",
+    "owner": "thea",
+    "critical": false,
+    "label": "Thea, the basketmaker",
+    "adjacentPool": [
+      "thea_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "thea",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "thea_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "thea_settle",
+    "owner": "thea",
+    "critical": false,
+    "label": "Thea makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "thea",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "thea_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jost_need",
+    "owner": "jost",
+    "critical": false,
+    "label": "Jost, the woodcutter",
+    "adjacentPool": [
+      "jost_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "jost",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "jost_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jost_settle",
+    "owner": "jost",
+    "critical": false,
+    "label": "Jost makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "jost",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "jost_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "alva_need",
+    "owner": "alva",
+    "critical": false,
+    "label": "Alva, the dairymaid",
+    "adjacentPool": [
+      "alva_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "alva",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "alva_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "alva_settle",
+    "owner": "alva",
+    "critical": false,
+    "label": "Alva makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "alva",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "alva_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nikolas_need",
+    "owner": "nikolas",
+    "critical": false,
+    "label": "Nikolas, the clockmaker",
+    "adjacentPool": [
+      "nikolas_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "nikolas",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "nikolas_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nikolas_settle",
+    "owner": "nikolas",
+    "critical": false,
+    "label": "Nikolas makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "nikolas",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "nikolas_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sanne_need",
+    "owner": "sanne",
+    "critical": false,
+    "label": "Sanne, the netmaker",
+    "adjacentPool": [
+      "sanne_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "sanne",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "sanne_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sanne_settle",
+    "owner": "sanne",
+    "critical": false,
+    "label": "Sanne makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "sanne",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "sanne_beyond_help"
+        }
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_need",
+    "owner": "wilhelm",
+    "critical": false,
+    "label": "Wilhelm, the old soldier",
+    "adjacentPool": [
+      "wilhelm_settle"
+    ],
+    "paths": [
+      {
+        "id": "seen_to",
+        "complete": {
+          "npc": "wilhelm",
+          "key": "helped",
+          "gte": 2
+        },
+        "closed": {
+          "flag": "wilhelm_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_settle",
+    "owner": "wilhelm",
+    "critical": false,
+    "label": "Wilhelm makes do",
+    "paths": [
+      {
+        "id": "makes_do",
+        "complete": {
+          "npc": "wilhelm",
+          "key": "helped",
+          "gte": 3
+        },
+        "closed": {
+          "flag": "wilhelm_beyond_help"
+        }
+      }
+    ]
+  }
+]

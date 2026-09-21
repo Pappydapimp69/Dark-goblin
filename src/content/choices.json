@@ -1,0 +1,5559 @@
+[
+  {
+    "id": "baker_help_first",
+    "npc": "baker",
+    "text": "Buy her flour before she asks.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "baker_left_town"
+          }
+        },
+        {
+          "not": {
+            "npc": "baker",
+            "key": "trusts_player",
+            "eq": true
+          }
+        },
+        {
+          "npc": "baker",
+          "key": "helped_this_loop",
+          "lte": 0
+        }
+      ]
+    },
+    "effects": [
+      {
+        "setNpc": "baker",
+        "key": "helped_this_loop",
+        "value": 1
+      },
+      {
+        "setNpc": "baker",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -2
+      }
+    ],
+    "impacts": [
+      {
+        "target": "baker",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "baker_help_again",
+    "npc": "baker",
+    "text": "Tell her the corner shop could be hers.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "baker_left_town"
+          }
+        },
+        {
+          "npc": "baker",
+          "key": "trusts_player",
+          "eq": true
+        },
+        {
+          "npc": "baker",
+          "key": "helped_this_loop",
+          "lte": 0
+        }
+      ]
+    },
+    "effects": [
+      {
+        "setNpc": "baker",
+        "key": "helped_this_loop",
+        "value": 1
+      },
+      {
+        "money": -2
+      }
+    ],
+    "impacts": [
+      {
+        "target": "baker",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "baker_takes_storefront",
+    "npc": "baker",
+    "text": "Put her name to the empty storefront.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "baker_left_town"
+          }
+        },
+        {
+          "npc": "baker",
+          "key": "readiness",
+          "gte": 3
+        },
+        {
+          "slotHolder": "storefront",
+          "is": null
+        }
+      ]
+    },
+    "effects": [
+      {
+        "moveSlot": "storefront",
+        "to": "baker"
+      }
+    ],
+    "impacts": [
+      {
+        "target": "baker",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "baker_takes_wrecked",
+    "npc": "baker",
+    "text": "Walk her through the rebuilt shop.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "baker_left_town"
+          }
+        },
+        {
+          "npc": "baker",
+          "key": "readiness",
+          "gte": 3
+        },
+        {
+          "slotExists": "wrecked_shop"
+        },
+        {
+          "slotHolder": "wrecked_shop",
+          "is": null
+        }
+      ]
+    },
+    "effects": [
+      {
+        "moveSlot": "wrecked_shop",
+        "to": "baker"
+      }
+    ],
+    "impacts": [
+      {
+        "target": "baker",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "baker_shop_for_self",
+    "npc": "baker",
+    "text": "Put your own name to the storefront.",
+    "available": {
+      "slotHolder": "storefront",
+      "is": null
+    },
+    "effects": [
+      {
+        "moveSlot": "storefront",
+        "to": "player"
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      },
+      {
+        "target": "baker",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "baker_wrecked_for_self",
+    "npc": "baker",
+    "text": "Take the rebuilt shop for yourself.",
+    "available": {
+      "all": [
+        {
+          "slotExists": "wrecked_shop"
+        },
+        {
+          "slotHolder": "wrecked_shop",
+          "is": null
+        }
+      ]
+    },
+    "effects": [
+      {
+        "moveSlot": "wrecked_shop",
+        "to": "player"
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      },
+      {
+        "target": "baker",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "baker_sell_her_flour",
+    "npc": "baker",
+    "text": "Sell her flour at the price she'll pay.",
+    "available": {
+      "not": {
+        "flag": "baker_left_town"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "baker_drive_out",
+    "npc": "baker",
+    "text": "Tell her there's nothing here for her.",
+    "available": {
+      "not": {
+        "flag": "baker_left_town"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "baker_left_town",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "baker",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "shop_pay_down",
+    "npc": "shopkeeper",
+    "text": "Put three against what he owes.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "shopkeeper_foreclosed"
+          }
+        },
+        {
+          "npc": "shopkeeper",
+          "key": "debt",
+          "gte": 1
+        },
+        {
+          "money": {
+            "gte": 3
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "money": -3
+      },
+      {
+        "addNpc": "shopkeeper",
+        "key": "debt",
+        "delta": -3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "shop_listen_first",
+    "npc": "shopkeeper",
+    "text": "Ask about his daughter, and listen.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "shopkeeper_foreclosed"
+          }
+        },
+        {
+          "not": {
+            "npc": "shopkeeper",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "setNpc": "shopkeeper",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "addNpc": "shopkeeper",
+        "key": "retire_ready",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "shop_listen_again",
+    "npc": "shopkeeper",
+    "text": "Say the coast would suit him.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "shopkeeper_foreclosed"
+          }
+        },
+        {
+          "npc": "shopkeeper",
+          "key": "trusts_player",
+          "eq": true
+        },
+        {
+          "npc": "shopkeeper",
+          "key": "retire_ready",
+          "lte": 1
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "shopkeeper",
+        "key": "retire_ready",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "shop_help_him_go",
+    "npc": "shopkeeper",
+    "text": "Help him pack the shop up.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "shopkeeper_foreclosed"
+          }
+        },
+        {
+          "npc": "shopkeeper",
+          "key": "retire_ready",
+          "gte": 2
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "shopkeeper",
+        "key": "retire_ready",
+        "delta": 1
+      },
+      {
+        "setFlag": "shopkeeper_retired",
+        "value": true
+      },
+      {
+        "moveSlot": "storefront",
+        "to": null
+      }
+    ],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "shop_tell_creditor",
+    "npc": "shopkeeper",
+    "text": "Mention to his creditor that he's behind.",
+    "available": {
+      "not": {
+        "flag": "shopkeeper_foreclosed"
+      }
+    },
+    "effects": [
+      {
+        "schedule": {
+          "setFlag": "shopkeeper_foreclosed",
+          "value": true
+        },
+        "inLoops": 1
+      },
+      {
+        "schedule": {
+          "moveSlot": "storefront",
+          "to": null
+        },
+        "inLoops": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "shop_buy_cheap",
+    "npc": "shopkeeper",
+    "text": "Buy his stock at what he'll take.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "shopkeeper_foreclosed"
+          }
+        },
+        {
+          "money": {
+            "gte": 1
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "money": 3
+      },
+      {
+        "addNpc": "shopkeeper",
+        "key": "debt",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      },
+      {
+        "target": "shopkeeper",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "shop_aftermath",
+    "npc": "shopkeeper",
+    "text": "He is sitting on the step. He doesn't look up.",
+    "available": {
+      "all": []
+    },
+    "aftermath": true,
+    "effects": [],
+    "impacts": [
+      {
+        "target": "shopkeeper",
+        "kind": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "builder_tools_first",
+    "npc": "builder",
+    "text": "Buy his tools back out of pawn.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "builder_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "builder",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "money": -3
+      },
+      {
+        "addNpc": "builder",
+        "key": "jobs",
+        "delta": 1
+      },
+      {
+        "setNpc": "builder",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "builder",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "builder_encourage",
+    "npc": "builder",
+    "text": "Stand in the ruin and tell him it can be rebuilt.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "builder_gone"
+          }
+        },
+        {
+          "npc": "builder",
+          "key": "trusts_player",
+          "eq": true
+        },
+        {
+          "npc": "builder",
+          "key": "jobs",
+          "lte": 1
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "builder",
+        "key": "jobs",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "builder",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "builder_first_job",
+    "npc": "builder",
+    "text": "Find him the first small job.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "builder_gone"
+          }
+        },
+        {
+          "npc": "builder",
+          "key": "jobs",
+          "gte": 2
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "builder",
+        "key": "jobs",
+        "delta": 1
+      },
+      {
+        "schedule": {
+          "createSlot": "wrecked_shop"
+        },
+        "inLoops": 2
+      }
+    ],
+    "impacts": [
+      {
+        "target": "builder",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "builder_hire_out",
+    "npc": "builder",
+    "text": "Hire his hands out and keep the difference.",
+    "available": {
+      "not": {
+        "flag": "builder_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 4
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      },
+      {
+        "target": "builder",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "builder_drive_off",
+    "npc": "builder",
+    "text": "Tell him the ruin is coming down.",
+    "available": {
+      "not": {
+        "flag": "builder_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "builder_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "builder",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "mara_help_first",
+    "npc": "mara",
+    "text": "Splice the fraying rope for her.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "mara_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "mara",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "mara",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "mara",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "mara",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "mara_help_again",
+    "npc": "mara",
+    "text": "Draw the day's water before she wakes.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "mara_gone"
+          }
+        },
+        {
+          "npc": "mara",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "mara",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "mara",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "mara_self",
+    "npc": "mara",
+    "text": "Sell her a length of rope at your price.",
+    "available": {
+      "not": {
+        "flag": "mara_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "mara_harm",
+    "npc": "mara",
+    "text": "Tell her the rope will hold another winter.",
+    "available": {
+      "not": {
+        "flag": "mara_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "mara_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "mara",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "otto_help_first",
+    "npc": "otto",
+    "text": "Walk his round with him.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "otto_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "otto",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "otto",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "otto",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "otto",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "otto_help_again",
+    "npc": "otto",
+    "text": "Take the cold end of his round again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "otto_gone"
+          }
+        },
+        {
+          "npc": "otto",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "otto",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "otto",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "otto_self",
+    "npc": "otto",
+    "text": "Doze in his lantern-light and let him walk.",
+    "available": {
+      "not": {
+        "flag": "otto_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "otto_harm",
+    "npc": "otto",
+    "text": "Report that he sleeps on the wall.",
+    "available": {
+      "not": {
+        "flag": "otto_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "otto_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "otto",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "lise_help_first",
+    "npc": "lise",
+    "text": "Thread her needles for the week.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "lise_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "lise",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "lise",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "lise",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lise",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "lise_help_again",
+    "npc": "lise",
+    "text": "Sit and thread for her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "lise_gone"
+          }
+        },
+        {
+          "npc": "lise",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "lise",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lise",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "lise_self",
+    "npc": "lise",
+    "text": "Buy her last good coat cheap.",
+    "available": {
+      "not": {
+        "flag": "lise_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "lise_harm",
+    "npc": "lise",
+    "text": "Tell her customers her stitching has gone.",
+    "available": {
+      "not": {
+        "flag": "lise_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "lise_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lise",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "per_help_first",
+    "npc": "per",
+    "text": "Help him tar the leak in his boat.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "per_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "per",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "per",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "per",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "per",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "per_help_again",
+    "npc": "per",
+    "text": "Bail with him before the tide.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "per_gone"
+          }
+        },
+        {
+          "npc": "per",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "per",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "per",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "per_self",
+    "npc": "per",
+    "text": "Take his morning catch on credit you won't pay.",
+    "available": {
+      "not": {
+        "flag": "per_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "per_harm",
+    "npc": "per",
+    "text": "Cut his mooring line loose in the night.",
+    "available": {
+      "not": {
+        "flag": "per_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "per_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "per",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "greta_help_first",
+    "npc": "greta",
+    "text": "Split a week of firewood for her.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "greta_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "greta",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "greta",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "greta",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "greta",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "greta_help_again",
+    "npc": "greta",
+    "text": "Stack another cord against her wall.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "greta_gone"
+          }
+        },
+        {
+          "npc": "greta",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "greta",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "greta",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "greta_self",
+    "npc": "greta",
+    "text": "Take her husband's tools; she won't use them.",
+    "available": {
+      "not": {
+        "flag": "greta_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "greta_harm",
+    "npc": "greta",
+    "text": "Tell her the house is wanted by someone else.",
+    "available": {
+      "not": {
+        "flag": "greta_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "greta_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "greta",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "hansi_help_first",
+    "npc": "hansi",
+    "text": "Walk the ditches with him calling for his dog.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "hansi_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "hansi",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "hansi",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "hansi",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hansi",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "hansi_help_again",
+    "npc": "hansi",
+    "text": "Call for the dog again, further out.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "hansi_gone"
+          }
+        },
+        {
+          "npc": "hansi",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "hansi",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hansi",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "hansi_self",
+    "npc": "hansi",
+    "text": "Sell him a story about where the dog went.",
+    "available": {
+      "not": {
+        "flag": "hansi_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "hansi_harm",
+    "npc": "hansi",
+    "text": "Tell him the dog is dead. It isn't.",
+    "available": {
+      "not": {
+        "flag": "hansi_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "hansi_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hansi",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "tobias_help_first",
+    "npc": "tobias",
+    "text": "Give him the chalk you were saving.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "tobias_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "tobias",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "tobias",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "tobias",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "tobias",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "tobias_help_again",
+    "npc": "tobias",
+    "text": "Sit with the slow ones while he teaches.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "tobias_gone"
+          }
+        },
+        {
+          "npc": "tobias",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "tobias",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "tobias",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "tobias_self",
+    "npc": "tobias",
+    "text": "Sell the school's last books for what they'll fetch.",
+    "available": {
+      "not": {
+        "flag": "tobias_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "tobias_harm",
+    "npc": "tobias",
+    "text": "Tell the parents he drinks.",
+    "available": {
+      "not": {
+        "flag": "tobias_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "tobias_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "tobias",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "anneke_help_first",
+    "npc": "anneke",
+    "text": "Walk her home from the far farms.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "anneke_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "anneke",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "anneke",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "anneke",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "anneke",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "anneke_help_again",
+    "npc": "anneke",
+    "text": "Take the lantern and walk her out again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "anneke_gone"
+          }
+        },
+        {
+          "npc": "anneke",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "anneke",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "anneke",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "anneke_self",
+    "npc": "anneke",
+    "text": "Charge her for the lantern oil.",
+    "available": {
+      "not": {
+        "flag": "anneke_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "anneke_harm",
+    "npc": "anneke",
+    "text": "Let her walk the dark road alone.",
+    "available": {
+      "not": {
+        "flag": "anneke_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "anneke_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "anneke",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "klaus_help_first",
+    "npc": "klaus",
+    "text": "Take two barrels off his hands.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "klaus_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "klaus",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "klaus",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "klaus",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "klaus",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "klaus_help_again",
+    "npc": "klaus",
+    "text": "Buy another barrel you don't need.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "klaus_gone"
+          }
+        },
+        {
+          "npc": "klaus",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "klaus",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "klaus",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "klaus_self",
+    "npc": "klaus",
+    "text": "Haggle him down below his cost.",
+    "available": {
+      "not": {
+        "flag": "klaus_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "klaus_harm",
+    "npc": "klaus",
+    "text": "Tell the brewer his barrels leak.",
+    "available": {
+      "not": {
+        "flag": "klaus_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "klaus_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "klaus",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "sofie_help_first",
+    "npc": "sofie",
+    "text": "Bring her the good salve for her hands.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "sofie_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "sofie",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "sofie",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "sofie",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sofie",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "sofie_help_again",
+    "npc": "sofie",
+    "text": "Turn the mangle for her an hour.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "sofie_gone"
+          }
+        },
+        {
+          "npc": "sofie",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "sofie",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sofie",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "sofie_self",
+    "npc": "sofie",
+    "text": "Pay her late, and less.",
+    "available": {
+      "not": {
+        "flag": "sofie_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "sofie_harm",
+    "npc": "sofie",
+    "text": "Say the linen came back grey.",
+    "available": {
+      "not": {
+        "flag": "sofie_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "sofie_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sofie",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "emil_help_first",
+    "npc": "emil",
+    "text": "Sit with him over his father's ledgers.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "emil_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "emil",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "emil",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "emil",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "emil",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "emil_help_again",
+    "npc": "emil",
+    "text": "Take a share of the debt onto your name.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "emil_gone"
+          }
+        },
+        {
+          "npc": "emil",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "emil",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "emil",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "emil_self",
+    "npc": "emil",
+    "text": "Buy the forge tools at a widow's price.",
+    "available": {
+      "not": {
+        "flag": "emil_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "emil_harm",
+    "npc": "emil",
+    "text": "Tell the creditors where the tools are kept.",
+    "available": {
+      "not": {
+        "flag": "emil_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "emil_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "emil",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "rike_help_first",
+    "npc": "rike",
+    "text": "Help her move the failing hives to the sun.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "rike_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "rike",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "rike",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "rike",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rike",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "rike_help_again",
+    "npc": "rike",
+    "text": "Carry the frames out for her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "rike_gone"
+          }
+        },
+        {
+          "npc": "rike",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "rike",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rike",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "rike_self",
+    "npc": "rike",
+    "text": "Take a jar of the last honey for nothing.",
+    "available": {
+      "not": {
+        "flag": "rike_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "rike_harm",
+    "npc": "rike",
+    "text": "Leave the hive lids off overnight.",
+    "available": {
+      "not": {
+        "flag": "rike_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "rike_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rike",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "jonas_help_first",
+    "npc": "jonas",
+    "text": "Help him drag the boat over the low bar.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "jonas_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "jonas",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "jonas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "jonas",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jonas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "jonas_help_again",
+    "npc": "jonas",
+    "text": "Pull the rope with him again at dusk.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "jonas_gone"
+          }
+        },
+        {
+          "npc": "jonas",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "jonas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jonas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "jonas_self",
+    "npc": "jonas",
+    "text": "Cross without paying; he won't ask twice.",
+    "available": {
+      "not": {
+        "flag": "jonas_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "jonas_harm",
+    "npc": "jonas",
+    "text": "Tell travellers the ferry has stopped running.",
+    "available": {
+      "not": {
+        "flag": "jonas_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "jonas_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jonas",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "hedda_help_first",
+    "npc": "hedda",
+    "text": "Sweep out her empty rooms with her.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "hedda_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "hedda",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "hedda",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "hedda",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hedda",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "hedda_help_again",
+    "npc": "hedda",
+    "text": "Sit in her empty room so it isn't empty.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "hedda_gone"
+          }
+        },
+        {
+          "npc": "hedda",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "hedda",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hedda",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "hedda_self",
+    "npc": "hedda",
+    "text": "Take a bed and a meal, and settle later.",
+    "available": {
+      "not": {
+        "flag": "hedda_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "hedda_harm",
+    "npc": "hedda",
+    "text": "Tell the carters her beds have lice.",
+    "available": {
+      "not": {
+        "flag": "hedda_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "hedda_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "hedda",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "viktor_help_first",
+    "npc": "viktor",
+    "text": "Stay late and help him finish the wheel.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "viktor_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "viktor",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "viktor",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "viktor",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "viktor",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "viktor_help_again",
+    "npc": "viktor",
+    "text": "Hold the rim while he sets the tyre.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "viktor_gone"
+          }
+        },
+        {
+          "npc": "viktor",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "viktor",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "viktor",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "viktor_self",
+    "npc": "viktor",
+    "text": "Take the wheel he made for someone else.",
+    "available": {
+      "not": {
+        "flag": "viktor_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "viktor_harm",
+    "npc": "viktor",
+    "text": "Tell his customer the order will not come.",
+    "available": {
+      "not": {
+        "flag": "viktor_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "viktor_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "viktor",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "nell_help_first",
+    "npc": "nell",
+    "text": "Stand in her doorway where people can see you.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "nell_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "nell",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "nell",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "nell",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nell",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "nell_help_again",
+    "npc": "nell",
+    "text": "Buy from her in front of the others.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "nell_gone"
+          }
+        },
+        {
+          "npc": "nell",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "nell",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nell",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "nell_self",
+    "npc": "nell",
+    "text": "Take her remedy and pay her in talk.",
+    "available": {
+      "not": {
+        "flag": "nell_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "nell_harm",
+    "npc": "nell",
+    "text": "Repeat what they say about her, louder.",
+    "available": {
+      "not": {
+        "flag": "nell_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "nell_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nell",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "bram_help_first",
+    "npc": "bram",
+    "text": "Help him spread the spoiled hemp to dry.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "bram_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "bram",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "bram",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "bram",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "bram",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "bram_help_again",
+    "npc": "bram",
+    "text": "Turn the hemp with him again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "bram_gone"
+          }
+        },
+        {
+          "npc": "bram",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "bram",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "bram",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "bram_self",
+    "npc": "bram",
+    "text": "Buy his good rope for the price of the bad.",
+    "available": {
+      "not": {
+        "flag": "bram_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "bram_harm",
+    "npc": "bram",
+    "text": "Tell the boatmen his rope is rotten.",
+    "available": {
+      "not": {
+        "flag": "bram_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "bram_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "bram",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "ilse_help_first",
+    "npc": "ilse",
+    "text": "Sit the night watch on the high field.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ilse_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "ilse",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ilse",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "ilse",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ilse",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ilse_help_again",
+    "npc": "ilse",
+    "text": "Take the cold watch again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ilse_gone"
+          }
+        },
+        {
+          "npc": "ilse",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ilse",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ilse",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ilse_self",
+    "npc": "ilse",
+    "text": "Take a kid from the herd; she's lost count.",
+    "available": {
+      "not": {
+        "flag": "ilse_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "ilse_harm",
+    "npc": "ilse",
+    "text": "Leave the gate open behind you.",
+    "available": {
+      "not": {
+        "flag": "ilse_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "ilse_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ilse",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "ansel_help_first",
+    "npc": "ansel",
+    "text": "Carry the stone he can't lift any more.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ansel_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "ansel",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ansel",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "ansel",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ansel",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ansel_help_again",
+    "npc": "ansel",
+    "text": "Shoulder his load again, and say nothing.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ansel_gone"
+          }
+        },
+        {
+          "npc": "ansel",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ansel",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ansel",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ansel_self",
+    "npc": "ansel",
+    "text": "Take the job he's too slow for now.",
+    "available": {
+      "not": {
+        "flag": "ansel_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "ansel_harm",
+    "npc": "ansel",
+    "text": "Say his walls are coming down.",
+    "available": {
+      "not": {
+        "flag": "ansel_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "ansel_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ansel",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "dorte_help_first",
+    "npc": "dorte",
+    "text": "Bring her tallow from your own store.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "dorte_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "dorte",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "dorte",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "dorte",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "dorte",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "dorte_help_again",
+    "npc": "dorte",
+    "text": "Bring her tallow again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "dorte_gone"
+          }
+        },
+        {
+          "npc": "dorte",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "dorte",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "dorte",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "dorte_self",
+    "npc": "dorte",
+    "text": "Buy her candles cheap and sell them dear.",
+    "available": {
+      "not": {
+        "flag": "dorte_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "dorte_harm",
+    "npc": "dorte",
+    "text": "Tell her buyers her candles smoke.",
+    "available": {
+      "not": {
+        "flag": "dorte_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "dorte_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "dorte",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "rurik_help_first",
+    "npc": "rurik",
+    "text": "Help him find a way round the washed-out road.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "rurik_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "rurik",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "rurik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "rurik",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rurik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "rurik_help_again",
+    "npc": "rurik",
+    "text": "Walk the long way with him again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "rurik_gone"
+          }
+        },
+        {
+          "npc": "rurik",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "rurik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rurik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "rurik_self",
+    "npc": "rurik",
+    "text": "Take his beasts' grazing for your own.",
+    "available": {
+      "not": {
+        "flag": "rurik_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "rurik_harm",
+    "npc": "rurik",
+    "text": "Send him down the road that's gone.",
+    "available": {
+      "not": {
+        "flag": "rurik_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "rurik_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "rurik",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "maike_help_first",
+    "npc": "maike",
+    "text": "Help her re-lay the cracked kiln.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "maike_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "maike",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "maike",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "maike",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "maike",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "maike_help_again",
+    "npc": "maike",
+    "text": "Pack the kiln with her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "maike_gone"
+          }
+        },
+        {
+          "npc": "maike",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "maike",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "maike",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "maike_self",
+    "npc": "maike",
+    "text": "Take the pots that survived, for nothing.",
+    "available": {
+      "not": {
+        "flag": "maike_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "maike_harm",
+    "npc": "maike",
+    "text": "Tell her the clay here was always bad.",
+    "available": {
+      "not": {
+        "flag": "maike_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "maike_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "maike",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "stefan_help_first",
+    "npc": "stefan",
+    "text": "Climb up and re-hang the bell rope.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "stefan_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "stefan",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "stefan",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "stefan",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "stefan",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "stefan_help_again",
+    "npc": "stefan",
+    "text": "Ring the hours for him.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "stefan_gone"
+          }
+        },
+        {
+          "npc": "stefan",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "stefan",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "stefan",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "stefan_self",
+    "npc": "stefan",
+    "text": "Take the lead off the roof; no one looks up.",
+    "available": {
+      "not": {
+        "flag": "stefan_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "stefan_harm",
+    "npc": "stefan",
+    "text": "Let the bell stay silent and say nothing.",
+    "available": {
+      "not": {
+        "flag": "stefan_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "stefan_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "stefan",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "ebba_help_first",
+    "npc": "ebba",
+    "text": "Help her true the warped loom.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ebba_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "ebba",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ebba",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "ebba",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ebba",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ebba_help_again",
+    "npc": "ebba",
+    "text": "Wind her bobbins for the evening.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "ebba_gone"
+          }
+        },
+        {
+          "npc": "ebba",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "ebba",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ebba",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "ebba_self",
+    "npc": "ebba",
+    "text": "Take the cloth she wove for another.",
+    "available": {
+      "not": {
+        "flag": "ebba_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "ebba_harm",
+    "npc": "ebba",
+    "text": "Tell the market her cloth runs short.",
+    "available": {
+      "not": {
+        "flag": "ebba_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "ebba_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "ebba",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "lukas_help_first",
+    "npc": "lukas",
+    "text": "Help him dress the millstone.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "lukas_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "lukas",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "lukas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "lukas",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lukas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "lukas_help_again",
+    "npc": "lukas",
+    "text": "Turn the stone with him again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "lukas_gone"
+          }
+        },
+        {
+          "npc": "lukas",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "lukas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lukas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "lukas_self",
+    "npc": "lukas",
+    "text": "Take your flour and settle at harvest, maybe.",
+    "available": {
+      "not": {
+        "flag": "lukas_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "lukas_harm",
+    "npc": "lukas",
+    "text": "Say his flour has grit in it.",
+    "available": {
+      "not": {
+        "flag": "lukas_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "lukas_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "lukas",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "gunda_help_first",
+    "npc": "gunda",
+    "text": "Bail out her flooded cellar.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "gunda_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "gunda",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "gunda",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "gunda",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "gunda",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "gunda_help_again",
+    "npc": "gunda",
+    "text": "Carry the wheels up out of the wet.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "gunda_gone"
+          }
+        },
+        {
+          "npc": "gunda",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "gunda",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "gunda",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "gunda_self",
+    "npc": "gunda",
+    "text": "Take the cheese that's still good.",
+    "available": {
+      "not": {
+        "flag": "gunda_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "gunda_harm",
+    "npc": "gunda",
+    "text": "Tell them her cellar is fouled.",
+    "available": {
+      "not": {
+        "flag": "gunda_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "gunda_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "gunda",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "arne_help_first",
+    "npc": "arne",
+    "text": "Cut reeds with him while there's light.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "arne_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "arne",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "arne",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "arne",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "arne",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "arne_help_again",
+    "npc": "arne",
+    "text": "Bundle the reeds with him again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "arne_gone"
+          }
+        },
+        {
+          "npc": "arne",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "arne",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "arne",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "arne_self",
+    "npc": "arne",
+    "text": "Have him thatch yours first, and pay last.",
+    "available": {
+      "not": {
+        "flag": "arne_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "arne_harm",
+    "npc": "arne",
+    "text": "Tell the village his roofs let water.",
+    "available": {
+      "not": {
+        "flag": "arne_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "arne_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "arne",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "pia_help_first",
+    "npc": "pia",
+    "text": "Read the labels aloud until she knows them.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "pia_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "pia",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "pia",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "pia",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "pia",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "pia_help_again",
+    "npc": "pia",
+    "text": "Sit and read the hard ones again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "pia_gone"
+          }
+        },
+        {
+          "npc": "pia",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "pia",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "pia",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "pia_self",
+    "npc": "pia",
+    "text": "Let her guess, and buy what she mislabels.",
+    "available": {
+      "not": {
+        "flag": "pia_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "pia_harm",
+    "npc": "pia",
+    "text": "Tell the apothecary she can't read.",
+    "available": {
+      "not": {
+        "flag": "pia_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "pia_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "pia",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "henrik_help_first",
+    "npc": "henrik",
+    "text": "Help him move the pits downwind.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "henrik_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "henrik",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "henrik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "henrik",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "henrik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "henrik_help_again",
+    "npc": "henrik",
+    "text": "Dig with him again at the new pits.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "henrik_gone"
+          }
+        },
+        {
+          "npc": "henrik",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "henrik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "henrik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "henrik_self",
+    "npc": "henrik",
+    "text": "Buy his leather at the price the smell allows.",
+    "available": {
+      "not": {
+        "flag": "henrik_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "henrik_harm",
+    "npc": "henrik",
+    "text": "Complain about the smell where it carries.",
+    "available": {
+      "not": {
+        "flag": "henrik_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "henrik_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "henrik",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "birgit_help_first",
+    "npc": "birgit",
+    "text": "Help her sort the glass that survived.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "birgit_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "birgit",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "birgit",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "birgit",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "birgit",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "birgit_help_again",
+    "npc": "birgit",
+    "text": "Sweep the broken glass with her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "birgit_gone"
+          }
+        },
+        {
+          "npc": "birgit",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "birgit",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "birgit",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "birgit_self",
+    "npc": "birgit",
+    "text": "Take the whole panes for your own window.",
+    "available": {
+      "not": {
+        "flag": "birgit_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "birgit_harm",
+    "npc": "birgit",
+    "text": "Say she broke the shipment herself.",
+    "available": {
+      "not": {
+        "flag": "birgit_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "birgit_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "birgit",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "matthias_help_first",
+    "npc": "matthias",
+    "text": "Speak for him about the closed forest.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "matthias_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "matthias",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "matthias",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "matthias",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "matthias",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "matthias_help_again",
+    "npc": "matthias",
+    "text": "Speak for him again, to someone who matters.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "matthias_gone"
+          }
+        },
+        {
+          "npc": "matthias",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "matthias",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "matthias",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "matthias_self",
+    "npc": "matthias",
+    "text": "Buy his last charcoal for nothing.",
+    "available": {
+      "not": {
+        "flag": "matthias_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "matthias_harm",
+    "npc": "matthias",
+    "text": "Agree that the forest should stay shut.",
+    "available": {
+      "not": {
+        "flag": "matthias_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "matthias_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "matthias",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "runa_help_first",
+    "npc": "runa",
+    "text": "Bring her wool from your own back.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "runa_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "runa",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "runa",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "runa",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "runa",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "runa_help_again",
+    "npc": "runa",
+    "text": "Bring her what wool you can spare.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "runa_gone"
+          }
+        },
+        {
+          "npc": "runa",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "runa",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "runa",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "runa_self",
+    "npc": "runa",
+    "text": "Take her yarn and pay her in thanks.",
+    "available": {
+      "not": {
+        "flag": "runa_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "runa_harm",
+    "npc": "runa",
+    "text": "Tell them her yarn breaks.",
+    "available": {
+      "not": {
+        "flag": "runa_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "runa_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "runa",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "erik_help_first",
+    "npc": "erik",
+    "text": "Bring your horse to him, not the town smith.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "erik_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "erik",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "erik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "erik",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "erik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "erik_help_again",
+    "npc": "erik",
+    "text": "Bring the neighbour's horse to him too.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "erik_gone"
+          }
+        },
+        {
+          "npc": "erik",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "erik",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "erik",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "erik_self",
+    "npc": "erik",
+    "text": "Take a shoeing and forget to pay.",
+    "available": {
+      "not": {
+        "flag": "erik_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "erik_harm",
+    "npc": "erik",
+    "text": "Say his nails lame the horses.",
+    "available": {
+      "not": {
+        "flag": "erik_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "erik_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "erik",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "thea_help_first",
+    "npc": "thea",
+    "text": "Cut willow with her by the river.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "thea_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "thea",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "thea",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "thea",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "thea",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "thea_help_again",
+    "npc": "thea",
+    "text": "Strip the willow with her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "thea_gone"
+          }
+        },
+        {
+          "npc": "thea",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "thea",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "thea",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "thea_self",
+    "npc": "thea",
+    "text": "Take a basket each time you pass.",
+    "available": {
+      "not": {
+        "flag": "thea_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "thea_harm",
+    "npc": "thea",
+    "text": "Cut the willow stand back to nothing.",
+    "available": {
+      "not": {
+        "flag": "thea_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "thea_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "thea",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "jost_help_first",
+    "npc": "jost",
+    "text": "Help him re-hang the loose axe head.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "jost_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "jost",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "jost",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "jost",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jost",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "jost_help_again",
+    "npc": "jost",
+    "text": "Swing with him until the cord is cut.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "jost_gone"
+          }
+        },
+        {
+          "npc": "jost",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "jost",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jost",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "jost_self",
+    "npc": "jost",
+    "text": "Take his cut wood; he'll blame the road.",
+    "available": {
+      "not": {
+        "flag": "jost_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "jost_harm",
+    "npc": "jost",
+    "text": "Leave the head loose and say it's fine.",
+    "available": {
+      "not": {
+        "flag": "jost_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "jost_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "jost",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "alva_help_first",
+    "npc": "alva",
+    "text": "Sit up with the dry cow through the night.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "alva_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "alva",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "alva",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "alva",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "alva",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "alva_help_again",
+    "npc": "alva",
+    "text": "Sit up with her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "alva_gone"
+          }
+        },
+        {
+          "npc": "alva",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "alva",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "alva",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "alva_self",
+    "npc": "alva",
+    "text": "Take the last of the milk for yourself.",
+    "available": {
+      "not": {
+        "flag": "alva_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "alva_harm",
+    "npc": "alva",
+    "text": "Tell the farmer she let the cow go dry.",
+    "available": {
+      "not": {
+        "flag": "alva_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "alva_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "alva",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "nikolas_help_first",
+    "npc": "nikolas",
+    "text": "Hold the glass steady while he works.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "nikolas_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "nikolas",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "nikolas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "nikolas",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nikolas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "nikolas_help_again",
+    "npc": "nikolas",
+    "text": "Hold the light for him again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "nikolas_gone"
+          }
+        },
+        {
+          "npc": "nikolas",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "nikolas",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nikolas",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "nikolas_self",
+    "npc": "nikolas",
+    "text": "Buy the clock his hands can't finish.",
+    "available": {
+      "not": {
+        "flag": "nikolas_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "nikolas_harm",
+    "npc": "nikolas",
+    "text": "Say his clocks all run slow.",
+    "available": {
+      "not": {
+        "flag": "nikolas_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "nikolas_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "nikolas",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "sanne_help_first",
+    "npc": "sanne",
+    "text": "Sit and mend net with her.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "sanne_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "sanne",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "sanne",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "sanne",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sanne",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "sanne_help_again",
+    "npc": "sanne",
+    "text": "Mend the long net with her again.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "sanne_gone"
+          }
+        },
+        {
+          "npc": "sanne",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "sanne",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sanne",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "sanne_self",
+    "npc": "sanne",
+    "text": "Take a net and settle after the season.",
+    "available": {
+      "not": {
+        "flag": "sanne_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "sanne_harm",
+    "npc": "sanne",
+    "text": "Tell the boats her nets part.",
+    "available": {
+      "not": {
+        "flag": "sanne_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "sanne_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "sanne",
+        "kind": "harm"
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_help_first",
+    "npc": "wilhelm",
+    "text": "Write to the town about his pension.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "wilhelm_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "wilhelm",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "wilhelm",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "wilhelm",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "wilhelm",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_help_again",
+    "npc": "wilhelm",
+    "text": "Write again, and this time sign it.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "wilhelm_gone"
+          }
+        },
+        {
+          "npc": "wilhelm",
+          "key": "trusts_player",
+          "eq": true
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "wilhelm",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "wilhelm",
+        "kind": "help"
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_self",
+    "npc": "wilhelm",
+    "text": "Drink what's left of his pension with him.",
+    "available": {
+      "not": {
+        "flag": "wilhelm_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ]
+  },
+  {
+    "id": "wilhelm_harm",
+    "npc": "wilhelm",
+    "text": "Tell them he was never in the regiment.",
+    "available": {
+      "not": {
+        "flag": "wilhelm_gone"
+      }
+    },
+    "effects": [
+      {
+        "setFlag": "wilhelm_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "wilhelm",
+        "kind": "harm"
+      }
+    ]
+  }
+]

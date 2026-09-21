@@ -83,6 +83,31 @@ export function validateContent(content: Content): void {
     throw new ContentError("playerGoalPool is smaller than playerGoalsAtStart", FILES.rules);
   }
 
+  const townspeople = content.npcs.filter((n) => n.role !== "player");
+  const pinned = content.rules.pinnedNpcs ?? [];
+  for (const id of pinned) {
+    if (!townspeople.some((n) => n.id === id)) {
+      throw new ContentError(`pinnedNpcs names "${id}", who is not a townsperson`, FILES.rules);
+    }
+  }
+  if (content.rules.townSize !== undefined) {
+    if (content.rules.townSize < pinned.length) {
+      throw new ContentError(
+        `townSize ${content.rules.townSize} is smaller than the ${pinned.length} pinned npc(s)`,
+        FILES.rules,
+      );
+    }
+    if (content.rules.townSize > townspeople.length) {
+      throw new ContentError(
+        `townSize ${content.rules.townSize} exceeds the roster of ${townspeople.length}`,
+        FILES.rules,
+      );
+    }
+  }
+  if (content.npcs.filter((n) => n.role === "player").length > 1) {
+    throw new ContentError('more than one npc has role "player"', FILES.npcs);
+  }
+
   for (const line of content.goblin.breaks) {
     if (!goalIds.has(line.goalId)) {
       throw new ContentError(`break line "${line.id}" keys unknown goal "${line.goalId}"`, FILES.goblin);

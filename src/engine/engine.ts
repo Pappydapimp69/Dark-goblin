@@ -13,6 +13,7 @@ import type {
   GameState,
   Goal,
   NpcState,
+  RngState,
   Slot,
 } from "./types";
 import { validateContent, validateStart } from "./validate";
@@ -26,6 +27,11 @@ import { validateContent, validateStart } from "./validate";
 export function newGame(seed: number, content: Content): GameState {
   validateContent(content);
 
+  // Deal the town before anything else touches the stream, so the same seed
+  // always assembles the same cast.
+  const rngStart = createRng(seed);
+  const [present, afterTown] = rollTown(rngStart, content);
+
   const npcs: Record<string, NpcState> = {};
   for (const def of content.npcs) {
     npcs[def.id] = {
@@ -34,6 +40,7 @@ export function newGame(seed: number, content: Content): GameState {
       state: { ...def.state },
       broken: false,
       goalIds: [...def.goalIds],
+      present: present.has(def.id),
     };
   }
 
@@ -42,6 +49,9 @@ export function newGame(seed: number, content: Content): GameState {
     slots[def.id] = { id: def.id, kind: def.kind, holder: def.holder, exists: def.exists };
   }
 
+  // The whole roster's goals are instantiated, not just the town's: a
+  // condition may name anyone, and an absent person's goal simply never moves
+  // because nothing in play touches their state.
   const goals: Record<string, Goal> = {};
   for (const def of content.npcs) {
     for (const id of def.goalIds) {
@@ -52,12 +62,11 @@ export function newGame(seed: number, content: Content): GameState {
 
   // The player's opening goals are rolled from the pool with the seeded
   // stream, so the same seed always deals the same life.
-  const rngStart = createRng(seed);
   const pool = content.rules.playerGoalPool
     .map((id) => content.goals.find((g) => g.id === id))
     .filter((g): g is NonNullable<typeof g> => g !== undefined);
   const [rolled, rng] = pickDistinct(
-    rngStart,
+    afterTown,
     pool,
     content.rules.playerGoalsAtStart,
     content.rules.playerGoalsAtStart,
@@ -95,7 +104,7 @@ export function availableChoices(state: GameState, content: Content): Choice[] {
   if (state.status !== "day") return [];
   return content.choices.filter((choice) => {
     const npc = state.npcs[choice.npc];
-    if (!npc) return false;
+    if (!npc || !npc.present) return false;
     if (npc.broken && choice.aftermath !== true) return false;
     return evaluate(choice.available, state, `choices.json "${choice.id}".available`);
   });
@@ -191,6 +200,32 @@ export function answerGoblin(state: GameState, answerId: string, content: Conten
 
   if (cursor < visit.questionIds.length) return next;
   return finishDay({ ...next, pendingGoblin: null }, content);
+}
+
+/**
+ * Who is in town this life. The pinned are always here — §10's three routes
+ * need their three people — and the rest of the town is dealt from the roster.
+ * The draw count is fixed by the rules, never by how the deal goes.
+ */
+function rollTown(rng: RngState, content: Content): [Set<string>, RngState] {
+  const townspeople = content.npcs.filter((n) => n.role !== "player");
+  const present = new Set(content.npcs.filter((n) => n.role === "player").map((n) => n.id));
+
+  const size = content.rules.townSize ?? townspeople.length;
+  const pinned = new Set(content.rules.pinnedNpcs ?? []);
+  const seated = townspeople.filter((n) => pinned.has(n.id));
+  for (const n of seated) present.add(n.id);
+
+  const rollable = townspeople
+    .map((n) => n.id)
+    .filter((id) => !present.has(id))
+    .sort();
+
+  const seats = Math.max(0, size - seated.length);
+  const [dealt, advanced] = pickDistinct(rng, rollable, seats, seats);
+  for (const id of dealt) present.add(id);
+
+  return [present, advanced];
 }
 
 // ------------------------------------------------------------------ internals

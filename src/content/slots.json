@@ -1,0 +1,14 @@
+[
+  {
+    "id": "storefront",
+    "kind": "storefront",
+    "holder": "shopkeeper",
+    "exists": true
+  },
+  {
+    "id": "wrecked_shop",
+    "kind": "storefront",
+    "holder": null,
+    "exists": false
+  }
+]

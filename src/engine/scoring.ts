@@ -113,8 +113,17 @@ export function pressureCheck(state: GameState, content: Content): GameState {
 
   const entry: LedgerEntry = { kind: "pressure", loop: state.loop, bill, paid, delta };
 
+  // Mirror the balance onto the player's own state so content can ask about
+  // it — the condition DSL can read an NPC key but has no `debt` variant.
+  // A plain mirror, with no notion of what any goal does with it.
+  const player = state.npcs["player"];
+  const npcs = player
+    ? { ...state.npcs, player: { ...player, state: { ...player.state, debt, money: state.money - paid } } }
+    : state.npcs;
+
   return {
     ...state,
+    npcs,
     money: state.money - paid,
     debt,
     day: { ...state.day, score: state.day.score + delta, max: state.day.max + 1 },

@@ -162,3 +162,57 @@ three loops of help plus a two-loop schedule before the shop exists at all,
 which leaves roughly one loop of slack for the baker to take it. Phase 3 should
 be authored against that ceiling, and the target re-run on real content before
 anyone believes it.
+
+## Phase 3 — decisions taken while authoring the town
+
+**D-25 — A roster of 42, a town of 8.** §6 names three people; the roster is
+42 and each seed deals 8 of them. Ilka (baker), Aldo (shopkeeper) and Ves
+(builder) are pinned, because §10's three routes need those three present.
+
+The whole roster is instantiated into `GameState`, not just the town, and each
+`NpcState` carries `present`. A condition may name anyone, so everyone has to
+resolve; absence gates what you can do, not what exists. Absent people offer no
+choices, do not tick, and their goals never move, because nothing in play
+touches their state. The alternative — instantiating only the town — would
+make `{ npc: "sofie", … }` throw in a life Sofie is not part of, which turns an
+ordinary authoring reference into a crash.
+
+**D-26 — A consequence rides on the choice that causes it, never on a tick
+rule.** §6 says completing the shopkeeper's retirement frees the storefront,
+but a goal has no effects on completion. Routing that through a world-tick rule
+("when `shopkeeper_retire` is fulfilled, free the slot") would work mechanically
+and destroy the attribution: the freeing would be world-sourced, the baker's
+goal would complete un-caused, and the player would get no credit for the
+kindest route in the game. So `shop_help_him_go` sets the flag and moves the
+slot itself, inside the player's own effect batch. Same for the builder's first
+job, which schedules the rebuild from the choice.
+
+**D-27 — The engine mirrors `debt` and `money` onto `npcs.player.state` at the
+pressure check.** D-1 puts the debt-free streak on the player's NpcState, but
+content cannot *read* debt: the DSL has `{ money }` and no `{ debt }`. Rather
+than add a variant, the pressure check writes both onto the player, which the
+existing `{ npc, key, lte }` can already see. The engine knows nothing about
+what any goal does with it; the streak rules live in `npcs.json`.
+
+**D-28 — Trust is counted by splitting each person's help in two.** D-2
+authored "3 NPCs trust the player" as an explicit `all` over a fixed cast of
+three. A rolled town of 8 from 42 kills that. Instead every person has a
+`_help_first` (available only while they do not trust you, and the only one
+that increments `player.trust_count`) and a `_help_again`. The counter reads
+with `{ npc: "player", key: "trust_count", gte: 3 }` — the same shape as D-1,
+and still no new DSL. It also reads better: the first time you help someone is
+not the fifth.
+
+**D-29 — `rules.trackedGoals` names the chains the balance report follows,** so
+the simulator needs no knowledge of the town. §9's target only asks whether
+*any* NPC goal completed, which the townsfolk satisfy for two helps; the
+tracked list is what asks the real question.
+
+**D-30 — The human bot's attachment is sticky (0.6), not absolute.** It was
+first written to always return to its most-visited person. That is obsession,
+not attachment, and it was a bug in the measuring instrument, not a finding:
+it reported that a realistic player completes the baker's chain in 0% of lives
+and the builder's in 16%. Softening the lock to a 0.6 chance of returning —
+with drift to whoever else is in front of you — moved those to 12% and 62%.
+A bot used to judge a design is code under test like any other, and an argmax
+in a behavioural model is a red flag.

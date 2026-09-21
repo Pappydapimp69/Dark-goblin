@@ -122,6 +122,9 @@ const isolated: Bot = {
 
 // ------------------------------------------------------------- the fifth bot
 
+/** How often you go back to the same person rather than whoever is in front of you. */
+const STICKINESS = 0.6;
+
 /** §5.8: the portrait is the only lifespan feedback a player ever gets. */
 function portraitStage(state: GameState): number {
   const ratio = state.lifespan.current / state.lifespan.max;
@@ -160,12 +163,16 @@ const human: Bot = {
     }
     if (state.day.interactions >= memory[bedtimeKey]!) return { move: "sleep", rng: current };
 
-    // Stick with whoever you have been seeing. Ties, and the first day, roll.
+    // Stick with whoever you have been seeing — but stickiness, not a lock.
+    // People drift: someone catches your eye on the way past.
     const visits = (id: string) => memory[`visits:${id}`] ?? 0;
     const cast = [...new Set(choices.map((c) => c.npc))].sort();
     const most = Math.max(...cast.map(visits));
-    const focused = cast.filter((id) => visits(id) === most);
-    const [focus, afterFocus] = pick(current, focused);
+    const familiar = cast.filter((id) => visits(id) === most);
+
+    const [drift, afterDrift] = next(current);
+    current = afterDrift;
+    const [focus, afterFocus] = pick(current, drift < STICKINESS ? familiar : cast);
     current = afterFocus;
 
     const theirs = choices.filter((c) => c.npc === focus);

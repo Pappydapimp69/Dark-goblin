@@ -27,6 +27,8 @@ export interface Row {
   interactions: number;
   finalDebt: number;
   verdict: string;
+  /** Which of the content's tracked chains this life completed. */
+  tracked: string;
 }
 
 /**
@@ -98,6 +100,9 @@ export function playGame(bot: Bot, seed: number, content: Content): Row {
     interactions,
     finalDebt: state.debt,
     verdict: verdict.verdict,
+    tracked: (content.rules.trackedGoals ?? [])
+      .filter((id) => state.goals[id]?.status === "fulfilled")
+      .join(";"),
   };
 }
 
@@ -113,7 +118,7 @@ export function runAll(content: Content, games = DEFAULT_GAMES): Row[] {
 
 const HEADERS: (keyof Row)[] = [
   "seed", "bot", "loops", "lifespanLeft", "npcGoalsFulfilled", "playerGoalsFulfilled",
-  "goalsFailed", "breaks", "nightfalls", "interactions", "finalDebt", "verdict",
+  "goalsFailed", "breaks", "nightfalls", "interactions", "finalDebt", "verdict", "tracked",
 ];
 
 export const CSV_HEADERS = HEADERS;
@@ -157,6 +162,33 @@ export function summarise(rows: readonly Row[]): string {
         mean(mine.map((r) => r.breaks)).toFixed(2).padStart(12),
         mean(mine.map((r) => r.nightfalls)).toFixed(1).padStart(12),
         pct(selfVerdicts, mine.length).padStart(12),
+      ].join(""),
+    );
+  }
+  return lines.join("\n");
+}
+
+/**
+ * How often each authored chain actually finishes, per bot. The §9 target only
+ * asks whether ANY npc goal completed, which the townsfolk satisfy cheaply —
+ * this is the question underneath it: does the content people came for get
+ * reached, and by whom.
+ */
+export function chainReport(rows: readonly Row[], tracked: readonly string[]): string {
+  if (tracked.length === 0) return "";
+
+  const lines = [
+    ["bot", ...tracked].map((h, i) => (i === 0 ? h.padEnd(10) : h.padStart(20))).join(""),
+  ];
+  for (const bot of BOTS) {
+    const mine = rows.filter((r) => r.bot === bot.id);
+    if (mine.length === 0) continue;
+    lines.push(
+      [
+        bot.id.padEnd(10),
+        ...tracked.map((goal) =>
+          pct(mine.filter((r) => r.tracked.split(";").includes(goal)).length, mine.length).padStart(20),
+        ),
       ].join(""),
     );
   }

@@ -1,0 +1,643 @@
+[
+  {
+    "id": "player",
+    "name": "You",
+    "role": "player",
+    "location": "room",
+    "state": {
+      "trust_count": 0,
+      "debt": 0,
+      "money": 0,
+      "debt_clear_streak": 0
+    },
+    "goalIds": [],
+    "tick": [
+      {
+        "id": "debt_streak_up",
+        "when": {
+          "npc": "player",
+          "key": "debt",
+          "lte": 0
+        },
+        "effects": [
+          {
+            "addNpc": "player",
+            "key": "debt_clear_streak",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "debt_streak_reset",
+        "when": {
+          "not": {
+            "npc": "player",
+            "key": "debt",
+            "lte": 0
+          }
+        },
+        "effects": [
+          {
+            "setNpc": "player",
+            "key": "debt_clear_streak",
+            "value": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "baker",
+    "name": "Ilka",
+    "location": "storefront",
+    "state": {
+      "readiness": 0,
+      "helped_this_loop": 0,
+      "trusts_player": false
+    },
+    "goalIds": [
+      "baker_shop"
+    ],
+    "tick": [
+      {
+        "id": "bank_the_help",
+        "when": {
+          "npc": "baker",
+          "key": "helped_this_loop",
+          "gte": 1
+        },
+        "effects": [
+          {
+            "addNpc": "baker",
+            "key": "readiness",
+            "delta": 1
+          },
+          {
+            "setNpc": "baker",
+            "key": "helped_this_loop",
+            "value": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shopkeeper",
+    "name": "Aldo",
+    "location": "storefront",
+    "state": {
+      "debt": 4,
+      "retire_ready": 0,
+      "trusts_player": false
+    },
+    "goalIds": [
+      "shopkeeper_income",
+      "shopkeeper_retire"
+    ],
+    "tick": [
+      {
+        "id": "debt_grows",
+        "when": {
+          "all": [
+            {
+              "not": {
+                "flag": "shopkeeper_retired"
+              }
+            },
+            {
+              "not": {
+                "flag": "shopkeeper_foreclosed"
+              }
+            }
+          ]
+        },
+        "effects": [
+          {
+            "addNpc": "shopkeeper",
+            "key": "debt",
+            "delta": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "builder",
+    "name": "Ves",
+    "location": "wrecked",
+    "state": {
+      "jobs": 0,
+      "trusts_player": false
+    },
+    "goalIds": [
+      "builder_work"
+    ]
+  },
+  {
+    "id": "mara",
+    "name": "Mara",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the well-keeper"
+    },
+    "goalIds": [
+      "mara_need"
+    ]
+  },
+  {
+    "id": "otto",
+    "name": "Otto",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the night watchman"
+    },
+    "goalIds": [
+      "otto_need"
+    ]
+  },
+  {
+    "id": "lise",
+    "name": "Lise",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the seamstress"
+    },
+    "goalIds": [
+      "lise_need"
+    ]
+  },
+  {
+    "id": "per",
+    "name": "Per",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the fishmonger"
+    },
+    "goalIds": [
+      "per_need"
+    ]
+  },
+  {
+    "id": "greta",
+    "name": "Greta",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the widow"
+    },
+    "goalIds": [
+      "greta_need"
+    ]
+  },
+  {
+    "id": "hansi",
+    "name": "Hansi",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the boy"
+    },
+    "goalIds": [
+      "hansi_need"
+    ]
+  },
+  {
+    "id": "tobias",
+    "name": "Tobias",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the schoolteacher"
+    },
+    "goalIds": [
+      "tobias_need"
+    ]
+  },
+  {
+    "id": "anneke",
+    "name": "Anneke",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the midwife"
+    },
+    "goalIds": [
+      "anneke_need"
+    ]
+  },
+  {
+    "id": "klaus",
+    "name": "Klaus",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the cooper"
+    },
+    "goalIds": [
+      "klaus_need"
+    ]
+  },
+  {
+    "id": "sofie",
+    "name": "Sofie",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the laundress"
+    },
+    "goalIds": [
+      "sofie_need"
+    ]
+  },
+  {
+    "id": "emil",
+    "name": "Emil",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the smith's son"
+    },
+    "goalIds": [
+      "emil_need"
+    ]
+  },
+  {
+    "id": "rike",
+    "name": "Rike",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the beekeeper"
+    },
+    "goalIds": [
+      "rike_need"
+    ]
+  },
+  {
+    "id": "jonas",
+    "name": "Jonas",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the ferryman"
+    },
+    "goalIds": [
+      "jonas_need"
+    ]
+  },
+  {
+    "id": "hedda",
+    "name": "Hedda",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the innkeeper"
+    },
+    "goalIds": [
+      "hedda_need"
+    ]
+  },
+  {
+    "id": "viktor",
+    "name": "Viktor",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the cartwright"
+    },
+    "goalIds": [
+      "viktor_need"
+    ]
+  },
+  {
+    "id": "nell",
+    "name": "Nell",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the herbalist"
+    },
+    "goalIds": [
+      "nell_need"
+    ]
+  },
+  {
+    "id": "bram",
+    "name": "Bram",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the ropemaker"
+    },
+    "goalIds": [
+      "bram_need"
+    ]
+  },
+  {
+    "id": "ilse",
+    "name": "Ilse",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the goatherd"
+    },
+    "goalIds": [
+      "ilse_need"
+    ]
+  },
+  {
+    "id": "ansel",
+    "name": "Ansel",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the stonemason"
+    },
+    "goalIds": [
+      "ansel_need"
+    ]
+  },
+  {
+    "id": "dorte",
+    "name": "Dorte",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the candlemaker"
+    },
+    "goalIds": [
+      "dorte_need"
+    ]
+  },
+  {
+    "id": "rurik",
+    "name": "Rurik",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the drover"
+    },
+    "goalIds": [
+      "rurik_need"
+    ]
+  },
+  {
+    "id": "maike",
+    "name": "Maike",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the potter"
+    },
+    "goalIds": [
+      "maike_need"
+    ]
+  },
+  {
+    "id": "stefan",
+    "name": "Stefan",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the sexton"
+    },
+    "goalIds": [
+      "stefan_need"
+    ]
+  },
+  {
+    "id": "ebba",
+    "name": "Ebba",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the weaver"
+    },
+    "goalIds": [
+      "ebba_need"
+    ]
+  },
+  {
+    "id": "lukas",
+    "name": "Lukas",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the miller"
+    },
+    "goalIds": [
+      "lukas_need"
+    ]
+  },
+  {
+    "id": "gunda",
+    "name": "Gunda",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the cheesemaker"
+    },
+    "goalIds": [
+      "gunda_need"
+    ]
+  },
+  {
+    "id": "arne",
+    "name": "Arne",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the thatcher"
+    },
+    "goalIds": [
+      "arne_need"
+    ]
+  },
+  {
+    "id": "pia",
+    "name": "Pia",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the apothecary's girl"
+    },
+    "goalIds": [
+      "pia_need"
+    ]
+  },
+  {
+    "id": "henrik",
+    "name": "Henrik",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the tanner"
+    },
+    "goalIds": [
+      "henrik_need"
+    ]
+  },
+  {
+    "id": "birgit",
+    "name": "Birgit",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the glazier"
+    },
+    "goalIds": [
+      "birgit_need"
+    ]
+  },
+  {
+    "id": "matthias",
+    "name": "Matthias",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the charcoal burner"
+    },
+    "goalIds": [
+      "matthias_need"
+    ]
+  },
+  {
+    "id": "runa",
+    "name": "Runa",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the spinner"
+    },
+    "goalIds": [
+      "runa_need"
+    ]
+  },
+  {
+    "id": "erik",
+    "name": "Erik",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the farrier"
+    },
+    "goalIds": [
+      "erik_need"
+    ]
+  },
+  {
+    "id": "thea",
+    "name": "Thea",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the basketmaker"
+    },
+    "goalIds": [
+      "thea_need"
+    ]
+  },
+  {
+    "id": "jost",
+    "name": "Jost",
+    "location": "wrecked",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the woodcutter"
+    },
+    "goalIds": [
+      "jost_need"
+    ]
+  },
+  {
+    "id": "alva",
+    "name": "Alva",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the dairymaid"
+    },
+    "goalIds": [
+      "alva_need"
+    ]
+  },
+  {
+    "id": "nikolas",
+    "name": "Nikolas",
+    "location": "storefront",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the clockmaker"
+    },
+    "goalIds": [
+      "nikolas_need"
+    ]
+  },
+  {
+    "id": "sanne",
+    "name": "Sanne",
+    "location": "market",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the netmaker"
+    },
+    "goalIds": [
+      "sanne_need"
+    ]
+  },
+  {
+    "id": "wilhelm",
+    "name": "Wilhelm",
+    "location": "street",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "trade": "the old soldier"
+    },
+    "goalIds": [
+      "wilhelm_need"
+    ]
+  }
+]
