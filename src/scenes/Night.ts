@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { sceneFor, type Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
+import { cue, CUES } from "../ui/sound";
 import { button, leave } from "../ui/widgets";
 
 /**
@@ -29,6 +30,7 @@ export class Night extends Phaser.Scene {
   }
 
   private rest(store: Store): void {
+    cue(this, CUES.sleep);
     store.sleep();
 
     const last = [...store.state.ledger].reverse().find((e) => e.kind === "pressure");

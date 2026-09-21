@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { load, type LoadFailure } from "../ui/save";
 import { sceneFor, Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
-import { button } from "../ui/widgets";
+import { button, leave } from "../ui/widgets";
 
 /**
  * A player who had a save and is silently given a fresh start reads that as
@@ -24,6 +24,7 @@ export class Boot extends Phaser.Scene {
 
   create(): void {
     this.cameras.main.setBackgroundColor(COLOR.night);
+    this.cameras.main.fadeIn(600, 0, 0, 0);
     this.add.text(WIDTH / 2, 420, "The Dark Goblin", font(52)).setOrigin(0.5);
 
     const found = load();
@@ -38,7 +39,7 @@ export class Boot extends Phaser.Scene {
 
       button(this, WIDTH / 2, HEIGHT - 480, "Go on", () => {
         const next = sceneFor(store.state);
-        this.scene.start(next === "Street" ? "Mirror" : next);
+        leave(this, next === "Street" ? "Mirror" : next);
       });
       button(this, WIDTH / 2, HEIGHT - 370, "Start again", () => this.fresh(), {
         tone: COLOR.dusk,
@@ -57,6 +58,6 @@ export class Boot extends Phaser.Scene {
     // derived from it.
     const seed = (Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0;
     this.registry.set("store", new Store(seed));
-    this.scene.start("Mirror");
+    leave(this, "Mirror");
   }
 }

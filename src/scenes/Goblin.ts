@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { content } from "../content";
 import { sceneFor, type Store } from "../ui/store";
 import { COLOR, HEIGHT, WIDTH, font } from "../ui/theme";
+import { cue, CUES } from "../ui/sound";
 import { button, leave, typeOut } from "../ui/widgets";
 
 /** He waits this long, saying nothing, before he starts. */
@@ -27,6 +28,7 @@ export class Goblin extends Phaser.Scene {
 
     this.cameras.main.setBackgroundColor(0x0d0b0a);
     this.cameras.main.fadeIn(900, 0, 0, 0);
+    cue(this, visit.kind === "break" ? CUES.broke : CUES.goblin, 0.5);
 
     const body = this.add.ellipse(WIDTH / 2, 270, 130, 165, 0x171310).setStrokeStyle(2, COLOR.edge);
     const eyes = [-1, 1].map((side) =>

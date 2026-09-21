@@ -11,7 +11,9 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "sim": "vite-node src/sim/run.ts",
-    "smoke": "vite-node tools/fixture-saves.ts && node tools/smoke.mjs smoke-shots"
+    "smoke": "vite-node tools/fixture-saves.ts && node tools/smoke.mjs smoke-shots",
+    "package": "sh tools/package.sh",
+    "verify:itch": "sh tools/verify-itch.sh"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",

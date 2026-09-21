@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { cue, CUES } from "./sound";
 import { COLOR, CSS, WIDTH, font } from "./theme";
 
 /** A tappable slab of text. Tap and click are the same event in Phaser. */
@@ -35,6 +36,7 @@ export function button(
   });
   container.on("pointerup", () => {
     plate.setFillStyle(tone);
+    cue(scene, CUES.tap);
     onPick();
   });
 
@@ -65,13 +67,17 @@ export function personToken(
   container.setInteractive(new Phaser.Geom.Circle(0, 0, radius), Phaser.Geom.Circle.Contains);
   container.on("pointerover", () => disc.setScale(1.06));
   container.on("pointerout", () => disc.setScale(1));
-  container.on("pointerup", onPick);
+  container.on("pointerup", () => {
+    cue(scene, CUES.tap);
+    onPick();
+  });
 
   return container;
 }
 
 /** Fade the whole scene out, then hand over. */
 export function leave(scene: Phaser.Scene, to: string, data?: object): void {
+  cue(scene, CUES.door, 0.35);
   scene.cameras.main.fadeOut(220, 0, 0, 0);
   scene.cameras.main.once("camerafadeoutcomplete", () => scene.scene.start(to, data));
 }

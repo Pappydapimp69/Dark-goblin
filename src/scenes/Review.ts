@@ -4,6 +4,7 @@ import { computeVerdict } from "../engine/verdict";
 import { clear } from "../ui/save";
 import type { Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
+import { cue, CUES } from "../ui/sound";
 import { button } from "../ui/widgets";
 
 /** How much of a life that was, in words. §5.7 forbids the number. */
@@ -37,6 +38,7 @@ export class Review extends Phaser.Scene {
 
     this.cameras.main.setBackgroundColor(0x0d0b0a);
     this.cameras.main.fadeIn(1200, 0, 0, 0);
+    cue(this, CUES.end, 0.5);
 
     const lines: string[] = [];
     for (const entry of verdict.breaks) {

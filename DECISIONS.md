@@ -322,3 +322,37 @@ otherwise, so 0–0 resolves to "others" (D-19) and the review says "you gave it
 away" to someone who gave nothing. The rule is the spec's, so it stands. If it
 should read differently, the fix is a third ending for an empty life rather
 than a change to the comparison.
+
+## Phase 6 — decisions taken in the polish pass
+
+**D-46 — Sound hooks exist; sound does not.** §9 asks for the hooks with no
+assets. `cue()` no-ops unless a clip is actually loaded under the key, so every
+beat that will want audio already calls it and adding files later is a matter
+of loading them in Boot — no scene changes, and no hunting months later for
+where the right moment was. Half a set of files is as safe as none.
+
+**D-47 — The dialogue rises as it arrives.** Opening a conversation fades the
+veil and lifts the panel eighteen pixels, so it reads as a step toward someone
+rather than a popup. This nested the buttons in a container, which broke the
+smoke driver a third time — see D-48.
+
+**D-48 — The smoke driver finds controls by walking the whole tree and asking
+for world transforms.** Nesting buttons inside a container for the animation
+hid them from a harness that only looked at a scene's top-level children, and
+their coordinates became local. This is the third time one instrument has been
+wrong about a moving world (D-30's argmax, D-44's fixed waits and coordinates),
+and the shape is always the same: an assumption about structure that was true
+when the harness was written. It now recurses and calls
+`getWorldTransformMatrix()`, so legitimate scene structure cannot break it.
+
+**D-49 — "No numbers are ever shown" is checked, not asserted by hand.** The
+smoke driver collects every string the game draws across a whole playthrough,
+the goblin and the review included, and fails if any of them contains a digit.
+§0's hardest rule to hold by discipline is the easiest to hold mechanically:
+52 distinct strings, none numeric.
+
+**D-50 — The itch build is verified from a nested path.** `base: './'` makes
+asset references relative, but `vite preview` serves from a domain root, which
+is exactly the case where an absolute path would still work. `verify:itch`
+unpacks the shipping zip under `/html/<id>/` and plays the whole game there,
+the way itch actually serves it.

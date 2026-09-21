@@ -27,9 +27,14 @@ const errors = [];
 page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
+// §10's first line: a player goes from the first morning to the final review
+// with no numbers visible. Every string the game draws is collected as it is
+// drawn, and checked at the end.
+const everythingSeen = new Set();
+
 /** What the running game is doing right now, read off the live scene graph. */
-const peek = () =>
-  page.evaluate(() => {
+const peek = async () => {
+  const seen = await page.evaluate(() => {
     const game = globalThis.darkGoblin;
     if (!game) return { scenes: [] };
     const scenes = game.scene.scenes.filter((s) => s.scene.isActive()).map((s) => s.scene.key);
@@ -46,6 +51,9 @@ const peek = () =>
     try { save = JSON.parse(localStorage.getItem("darkgoblin:v1:save")); } catch { /* blocked */ }
     return { scenes, texts, loop: save?.state?.loop ?? null, status: save?.state?.status ?? null };
   });
+  for (const text of seen.texts) everythingSeen.add(text);
+  return seen;
+};
 
 async function until(what, predicate, ms = 25_000) {
   const deadline = Date.now() + ms;
@@ -71,28 +79,29 @@ const shot = (name) => page.screenshot({ path: `${OUT}/${name}.png` });
 async function press(label) {
   const spot = await page.evaluate((wanted) => {
     const game = globalThis.darkGoblin;
-    const labelOf = (node) => {
-      if (node.type === "Text") return node.text;
-      if (Array.isArray(node.list)) {
-        for (const child of node.list) {
-          const found = labelOf(child);
-          if (found) return found;
+    const labelsOf = (node) => {
+      if (node.type === "Text") return [node.text];
+      if (Array.isArray(node.list)) return node.list.flatMap(labelsOf);
+      return [];
+    };
+    // Walk the whole tree, not just the top of it — a control may be nested in
+    // a container for animation, and its x/y is then LOCAL. Ask the object for
+    // its world transform rather than assuming it is already world space.
+    const find = (nodes) => {
+      for (const node of nodes) {
+        if (node.input && labelsOf(node).includes(wanted)) return node;
+        if (Array.isArray(node.list)) {
+          const deeper = find(node.list);
+          if (deeper) return deeper;
         }
       }
       return null;
     };
     for (const scene of game.scene.scenes.filter((s) => s.scene.isActive()).reverse()) {
-      for (const node of scene.children.list) {
-        if (!node.input) continue;
-        const text = Array.isArray(node.list)
-          ? node.list.filter((c) => c.type === "Text").map((c) => c.text)
-          : node.type === "Text"
-            ? [node.text]
-            : [];
-        if (text.some((t) => t === wanted) || labelOf(node) === wanted) {
-          return { x: node.x, y: node.y };
-        }
-      }
+      const node = find(scene.children.list);
+      if (!node) continue;
+      const m = node.getWorldTransformMatrix();
+      return { x: m.tx, y: m.ty };
     }
     return null;
   }, label);
@@ -199,6 +208,12 @@ await until("the review", on("Review"));
 await page.mouse.click(360, 640); // one tap brings the rest of the reading
 await until("the verdict", (s) => s.texts.some((t) => /lived for/.test(t)));
 await shot("12-review");
+
+const numbers = [...everythingSeen].filter((t) => /\d/.test(t));
+if (numbers.length > 0) {
+  errors.push(`a number reached the player: ${JSON.stringify(numbers)}`);
+}
+console.log(`${everythingSeen.size} distinct strings drawn, none of them numeric`);
 
 await browser.close();
 
