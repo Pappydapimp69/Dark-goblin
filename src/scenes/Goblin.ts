@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { GOBLIN_KEY } from "../art";
 import { content } from "../content";
 import { sceneFor, type Store } from "../ui/store";
 import { COLOR, HEIGHT, WIDTH, font } from "../ui/theme";
@@ -30,14 +31,25 @@ export class Goblin extends Phaser.Scene {
     this.cameras.main.fadeIn(900, 0, 0, 0);
     cue(this, visit.kind === "break" ? CUES.broke : CUES.goblin, 0.5);
 
-    const body = this.add.ellipse(WIDTH / 2, 270, 130, 165, 0x171310).setStrokeStyle(2, COLOR.edge);
+    // The block is 240x320 and its lights sit at (120 +/- 13, 104), so at this
+    // display size they land 62px above centre — derived, not eyeballed, which
+    // is what stopped him having four eyes.
+    const SCALE = 1.1;
+    const eyeY = 300 + (104 - 160) * SCALE;
+    const eyeX = 13 * SCALE;
+
+    const body = this.add.image(WIDTH / 2, 300, GOBLIN_KEY).setOrigin(0.5, 0.5);
+    body.setDisplaySize(240 * SCALE, 320 * SCALE);
+
+    // A halo over the lights that are already cut into the block, not a second
+    // pair: it comes up through the silence, so he arrives before he looks up.
     const eyes = [-1, 1].map((side) =>
-      this.add.ellipse(WIDTH / 2 + side * 28, 254, 22, 12, COLOR.warm, 0),
+      this.add.ellipse(WIDTH / 2 + side * eyeX, eyeY, 34, 22, COLOR.warm, 0),
     );
 
     // The eyes open during the silence. Nothing else happens in it.
-    this.tweens.add({ targets: eyes, fillAlpha: 0.9, duration: 900, delay: 300 });
-    this.tweens.add({ targets: body, y: 262, duration: 2600, yoyo: true, repeat: -1, ease: "Sine.InOut" });
+    this.tweens.add({ targets: eyes, fillAlpha: 0.22, duration: 1200, delay: 400 });
+    this.tweens.add({ targets: [body, ...eyes], y: "-=9", duration: 2900, yoyo: true, repeat: -1, ease: "Sine.InOut" });
 
     const line = this.add.text(WIDTH / 2, 470, "", font(28)).setOrigin(0.5, 0);
 

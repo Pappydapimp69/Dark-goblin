@@ -356,3 +356,67 @@ asset references relative, but `vite preview` serves from a domain root, which
 is exactly the case where an absolute path would still work. `verify:itch`
 unpacks the shipping zip under `/html/<id>/` and plays the whole game there,
 the way itch actually serves it.
+
+## Visual assets — decisions taken cutting the blocks
+
+**D-51 — The art is source, not files.** Every asset is SVG assembled by code
+in `src/art`, handed to the game as a texture and written out to `art/` by
+`npm run art`. It is diffable, it scales to any screen, there are no binaries
+in the repository, and — the reason that matters — it can be *composed*.
+
+**D-52 — Forty-two people is a system, not forty-two drawings.** Six builds,
+six head coverings, twelve carried objects, five cloth tones. A town is eight
+people dealt from the roster, so what has to read is *individual* and *trade*,
+not portraiture. Colour is the last cue rather than the first: two palettes
+chosen independently can land on the same colour-vision confusion axis at
+nearly the same luminance, and at that point only silhouette separates them.
+So silhouette carries, and a test records which tone pairs are relying on that.
+Ilka, Aldo and Ves get bespoke marks — an apron, a ledger, a plank — which is
+the escape hatch for anyone the composition would render as a stranger.
+
+**D-53 — The portrait stays parametric.** This is the one place "add visual
+assets" cut against a decision already made. D-36 made the face parametric so
+that neighbouring stages differ only slightly; five authored illustrations
+would turn every morning into an announcement, and §5.8 makes this the only
+lifespan feedback in the game. It is now a woodcut, but still one block
+re-inked at five pressures rather than five drawings.
+
+**D-54 — A covering is drawn in two parts, behind the skull and in front of
+it.** The first version drew each head covering as one shape over the head,
+which buried the face: a headscarf and a hood both enclose a head, and the two
+marks that make a figure a person are the first thing they cover. Nine of the
+forty-two had no face at all, which the contact sheet showed at a glance and
+no test would ever have caught. The mass now goes behind and only the near
+edge — a brim, a drape, a fringe — comes back over, always clear of the eyes.
+
+**D-55 — Builds are dealt round-robin over the cast, not by hash-modulo.** A
+modulo of a hash is uniform over ids, not over forty-two of them: the first
+deal gave thirteen bent figures against three tall ones, and a town of eight
+drawn from that looks like every other town.
+
+**D-56 — The SVGs are rasterised before the game is constructed, not loaded.**
+Phaser's `load.svg` runs a data URI through `atob`, so a percent-encoded
+document kills the game before the first scene — nothing rendered at all.
+Rather than switching to base64 and staying inside a loader that clearly did
+not expect this, each asset goes through an `Image` and a canvas in `main.ts`,
+and Boot registers the results as textures. It is simpler, it gives exact
+control over raster size, and it cannot be broken by the loader's opinions.
+
+**D-57 — Every art spec is narrowed loudly, and the whole cast is walked
+through it.** A presentation-side lookup that falls back to a placeholder
+gives no signal when an entry is missing — the figure just draws as something
+generic for months. `readSpec` throws, a test walks all forty-two, and another
+cuts every build/head/prop combination the system allows. Two more checks earn
+their place for procedural art specifically: no asset may contain `NaN` (one
+in a path makes a browser drop the shape silently) and every document must be
+well-formed with a viewBox.
+
+**D-58 — The smoke driver waits for the camera to settle before it
+photographs.** Screenshots were landing mid-fade, which made every scene look
+murkier than it is and nearly sent me tuning the palette to fix a problem that
+did not exist. Same mistake as D-44 and D-48, now about pixels: it polled for
+"the scene is active" when it meant "the scene has finished arriving".
+
+**D-59 — The goblin's eye halo is derived from the block's own coordinates.**
+Placed by eye, it sat nineteen pixels off the lights cut into the drawing, and
+he had four eyes.

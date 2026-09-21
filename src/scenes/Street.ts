@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { brokenKey, figureKey, placeKey } from "../art";
 import { content } from "../content";
 import type { NpcState } from "../engine/types";
 import { DevOverlay } from "../ui/DevOverlay";
@@ -38,25 +39,37 @@ export class Street extends Phaser.Scene {
     PLACES.forEach((place, index) => {
       const y = top + index * (panelHeight + gap) + panelHeight / 2;
 
-      this.add.rectangle(WIDTH / 2, y, WIDTH - 60, panelHeight, COLOR.panel, 0.9)
-        .setStrokeStyle(2, COLOR.edge);
-      this.add.text(50, y - panelHeight / 2 + 22, place.name, font(24, CSS.inkDim)).setOrigin(0, 0);
+      // The backdrop, then a scrim over it so the figures still read.
+      const backdrop = this.add.image(WIDTH / 2, y, placeKey(place.id));
+      backdrop.setDisplaySize(WIDTH - 60, panelHeight);
+      this.add.rectangle(WIDTH / 2, y, WIDTH - 60, panelHeight, COLOR.night, 0.2);
+      this.add.rectangle(WIDTH / 2, y, WIDTH - 60, panelHeight).setStrokeStyle(2, COLOR.edge);
+      this.add.text(50, y - panelHeight / 2 + 20, place.name, font(22, CSS.inkDim)).setOrigin(0, 0);
 
       const here = Object.values(store.state.npcs).filter(
         (npc): npc is NpcState => npc.present && npc.id !== "player" && where.get(npc.id) === place.id,
       );
 
+      // Everyone stands on the same line, near the bottom of their place,
+      // with room under it for a name.
+      const groundLine = y + panelHeight / 2 - 32;
       const spread = Math.min(here.length, 5);
       here.slice(0, 5).forEach((npc, i) => {
-        const x = WIDTH / 2 + (i - (spread - 1) / 2) * 130;
-        personToken(this, x, y + 16, npc.name, () => this.open(store, npc.id), {
-          broken: npc.broken,
-          radius: 36,
-        });
+        const x = WIDTH / 2 + (i - (spread - 1) / 2) * (spread > 3 ? 118 : 138);
+        const key = npc.broken ? brokenKey(npc.id) : figureKey(npc.id);
+        personToken(
+          this,
+          x,
+          groundLine,
+          npc.name,
+          this.textures.exists(key) ? key : figureKey(npc.id),
+          () => this.open(store, npc.id),
+          { broken: npc.broken, height: Math.min(140, panelHeight - 86) },
+        );
       });
 
       if (place.id === "room") {
-        button(this, WIDTH / 2, y + 22, "Sleep", () => leave(this, "Night"), {
+        button(this, WIDTH / 2, y + panelHeight / 2 - 60, "Sleep", () => leave(this, "Night"), {
           width: 300,
           size: 26,
         });

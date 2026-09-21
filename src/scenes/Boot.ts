@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { CUT } from "../main";
 import { load, type LoadFailure } from "../ui/save";
 import { sceneFor, Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
@@ -20,6 +21,16 @@ const EXCUSE: Partial<Record<LoadFailure, string>> = {
 export class Boot extends Phaser.Scene {
   constructor() {
     super("Boot");
+  }
+
+  /**
+   * Register the cut blocks as textures. They were rasterised before the game
+   * was constructed, so there is nothing to load and no loader to wait on.
+   */
+  init(): void {
+    for (const [key, canvas] of CUT) {
+      if (!this.textures.exists(key)) this.textures.addCanvas(key, canvas);
+    }
   }
 
   create(): void {

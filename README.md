@@ -34,10 +34,11 @@ npm run verify:itch    # unpacks the zip under a nested path and plays it there
 ```
 src/engine   pure TypeScript, zero Phaser imports. (state, input) -> state.
 src/content  the town, as JSON. 42 townspeople; a town is 8 of them.
+src/art      the woodcut, as parametric SVG source. Every asset is built here.
 src/sim      headless bots, for balance.
 src/scenes   Phaser only. Reads state, dispatches actions, decides nothing.
-src/ui       the store (the single seam), save, portrait, dev overlay, sound hooks.
-tools        the browser smoke driver and the itch packaging.
+src/ui       the store (the single seam), save, dev overlay, sound hooks.
+tools        the browser smoke driver, the art writer and the itch packaging.
 ```
 
 The engine never imports Phaser and the scenes never touch `GameState` —
@@ -47,6 +48,27 @@ seed plays the same life.
 
 Press the backtick key for the dev overlay, which shows everything the game
 hides. It cannot be reached by touch.
+
+## The art
+
+Every asset is cut from source in `src/art` — SVG assembled by code, not
+image files. `npm run art` writes all 53 of them into `art/` as real `.svg`
+documents, plus a contact sheet of the whole cast, which is the only practical
+way to spot two neighbours who happen to have come out the same.
+
+A cast of forty-two is a system rather than forty-two drawings: six builds,
+six head coverings, twelve carried objects and five cloth tones, composed.
+That is not only a budget decision. Two palettes chosen independently can land
+on the same colour-vision confusion axis at the same luminance, and then only
+the silhouettes tell the figures apart — so the silhouette does the work and
+colour is the last cue, not the first. Ilka, Aldo and Ves get bespoke marks
+(an apron, a ledger, a plank), which is the escape hatch for anyone the system
+would otherwise render as just another neighbour.
+
+The portrait is the exception that proves it. It is one block re-inked at five
+pressures rather than five drawings, because §5.8 makes it the only lifespan
+feedback in the game and the effect depends on neighbouring stages differing
+so little that the change is felt instead of announced.
 
 ## Definition of done (§10)
 

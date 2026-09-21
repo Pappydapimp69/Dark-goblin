@@ -47,9 +47,12 @@ const peek = async () => {
       .filter((s) => s.scene.isActive())
       .flatMap((s) => collect(s.children.list))
       .filter((t) => t.length > 0);
+    const settling = game.scene.scenes
+      .filter((s) => s.scene.isActive())
+      .some((s) => s.cameras?.main?.fadeEffect?.isRunning || s.cameras?.main?.panEffect?.isRunning);
     let save = null;
     try { save = JSON.parse(localStorage.getItem("darkgoblin:v1:save")); } catch { /* blocked */ }
-    return { scenes, texts, loop: save?.state?.loop ?? null, status: save?.state?.status ?? null };
+    return { scenes, texts, settling, loop: save?.state?.loop ?? null, status: save?.state?.status ?? null };
   });
   for (const text of seen.texts) everythingSeen.add(text);
   return seen;
@@ -68,7 +71,7 @@ async function until(what, predicate, ms = 25_000) {
   }
 }
 
-const on = (key) => (s) => s.scenes.includes(key);
+const on = (key) => (s) => s.scenes.includes(key) && !s.settling;
 const shot = (name) => page.screenshot({ path: `${OUT}/${name}.png` });
 
 /**
@@ -119,11 +122,14 @@ const someoneOut = () =>
   page.evaluate(() => {
     const game = globalThis.darkGoblin;
     const street = game.scene.getScene("Street");
+    // A person token is an interactive container holding a figure image and
+    // one name label. The Sleep button is the other interactive container in
+    // the street, so it is named and skipped rather than counted on shape.
     const named = street.children.list
       .filter((n) => n.input && Array.isArray(n.list))
-      .map((n) => n.list.filter((c) => c.type === "Text").map((c) => c.text))
-      .filter((labels) => labels.length >= 2);
-    return named[0]?.[1] ?? null;
+      .flatMap((n) => n.list.filter((c) => c.type === "Text").map((c) => c.text))
+      .filter((label) => label && label !== "Sleep");
+    return named[0] ?? null;
   });
 
 await page.goto(URL, { waitUntil: "networkidle" });

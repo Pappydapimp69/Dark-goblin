@@ -13,7 +13,8 @@
     "sim": "vite-node src/sim/run.ts",
     "smoke": "vite-node tools/fixture-saves.ts && node tools/smoke.mjs smoke-shots",
     "package": "sh tools/package.sh",
-    "verify:itch": "sh tools/verify-itch.sh"
+    "verify:itch": "sh tools/verify-itch.sh",
+    "art": "vite-node tools/write-art.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",

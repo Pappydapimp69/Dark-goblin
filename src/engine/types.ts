@@ -227,6 +227,12 @@ export interface NpcDef {
   role?: "player" | "townsperson";
   /** Which of the four locations they are found at. Read by the Street scene. */
   location?: string;
+  /**
+   * How this person is drawn. Plain strings, not art types: the engine stays
+   * free of anything to do with presentation, and the art layer narrows and
+   * validates them.
+   */
+  art?: { build: string; head: string; prop: string; tone: string };
 }
 
 export interface SlotDef {

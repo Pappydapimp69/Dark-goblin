@@ -43,30 +43,33 @@ export function button(
   return container;
 }
 
-/** A person, as a token: initial in a circle. Placeholder art, §9 Phase 4. */
+/** A person, printed. The figure is cut from the composition system in src/art. */
 export function personToken(
   scene: Phaser.Scene,
   x: number,
   y: number,
   name: string,
+  textureKey: string,
   onPick: () => void,
-  opts: { broken?: boolean; radius?: number } = {},
+  opts: { broken?: boolean; height?: number } = {},
 ): Phaser.GameObjects.Container {
-  const radius = opts.radius ?? 40;
-  const tone = opts.broken ? COLOR.cold : COLOR.warm;
+  const height = opts.height ?? 150;
 
-  const disc = scene.add.circle(0, 0, radius, tone, opts.broken ? 0.35 : 0.9).setStrokeStyle(2, COLOR.edge);
-  const initial = scene.add
-    .text(0, -2, name.slice(0, 1).toUpperCase(), font(Math.round(radius * 0.9), "#1a1614"))
-    .setOrigin(0.5);
+  // The container's origin is where the figure's feet meet the ground, so a
+  // caller positions a person by the spot they stand on and the label always
+  // lands just below it instead of somewhere under the panel's edge.
+  const figure = scene.add.image(0, 0, textureKey).setOrigin(0.5, 1);
+  figure.setDisplaySize((figure.width / figure.height) * height, height);
+
   const label = scene.add
-    .text(0, radius + 20, name, { ...font(20, CSS.inkDim), wordWrap: { width: radius * 3 } })
-    .setOrigin(0.5);
+    .text(0, 7, name, { ...font(19, CSS.inkDim), wordWrap: { width: 150 } })
+    .setOrigin(0.5, 0);
 
-  const container = scene.add.container(x, y, [disc, initial, label]);
-  container.setInteractive(new Phaser.Geom.Circle(0, 0, radius), Phaser.Geom.Circle.Contains);
-  container.on("pointerover", () => disc.setScale(1.06));
-  container.on("pointerout", () => disc.setScale(1));
+  const container = scene.add.container(x, y, [figure, label]);
+  const hit = new Phaser.Geom.Rectangle(-figure.displayWidth / 2, -height, figure.displayWidth, height + 26);
+  container.setInteractive(hit, Phaser.Geom.Rectangle.Contains);
+  container.on("pointerover", () => figure.setScale(figure.scaleX * 1.05, figure.scaleY * 1.05));
+  container.on("pointerout", () => figure.setDisplaySize((figure.width / figure.height) * height, height));
   container.on("pointerup", () => {
     cue(scene, CUES.tap);
     onPick();

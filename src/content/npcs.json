@@ -79,7 +79,13 @@
           }
         ]
       }
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "scarf",
+      "prop": "apron",
+      "tone": "ash"
+    }
   },
   {
     "id": "shopkeeper",
@@ -119,7 +125,13 @@
           }
         ]
       }
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "cap",
+      "prop": "ledger",
+      "tone": "moss"
+    }
   },
   {
     "id": "builder",
@@ -131,7 +143,13 @@
     },
     "goalIds": [
       "builder_work"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "hood",
+      "prop": "plank",
+      "tone": "moss"
+    }
   },
   {
     "id": "mara",
@@ -144,7 +162,13 @@
     },
     "goalIds": [
       "mara_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "hat",
+      "prop": "rope",
+      "tone": "moss"
+    }
   },
   {
     "id": "otto",
@@ -157,7 +181,13 @@
     },
     "goalIds": [
       "otto_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "hood",
+      "prop": "lamp",
+      "tone": "ash"
+    }
   },
   {
     "id": "lise",
@@ -170,7 +200,13 @@
     },
     "goalIds": [
       "lise_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "scarf",
+      "prop": "cloth",
+      "tone": "umber"
+    }
   },
   {
     "id": "per",
@@ -183,7 +219,13 @@
     },
     "goalIds": [
       "per_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "bare",
+      "prop": "fish",
+      "tone": "rust"
+    }
   },
   {
     "id": "greta",
@@ -196,7 +238,13 @@
     },
     "goalIds": [
       "greta_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "scarf",
+      "prop": "none",
+      "tone": "ash"
+    }
   },
   {
     "id": "hansi",
@@ -209,7 +257,13 @@
     },
     "goalIds": [
       "hansi_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "bare",
+      "prop": "none",
+      "tone": "moss"
+    }
   },
   {
     "id": "tobias",
@@ -222,7 +276,13 @@
     },
     "goalIds": [
       "tobias_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "bare",
+      "prop": "book",
+      "tone": "ash"
+    }
   },
   {
     "id": "anneke",
@@ -235,7 +295,13 @@
     },
     "goalIds": [
       "anneke_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "scarf",
+      "prop": "lamp",
+      "tone": "bone"
+    }
   },
   {
     "id": "klaus",
@@ -248,7 +314,13 @@
     },
     "goalIds": [
       "klaus_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "cap",
+      "prop": "tool",
+      "tone": "umber"
+    }
   },
   {
     "id": "sofie",
@@ -261,7 +333,13 @@
     },
     "goalIds": [
       "sofie_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "hat",
+      "prop": "cloth",
+      "tone": "moss"
+    }
   },
   {
     "id": "emil",
@@ -274,7 +352,13 @@
     },
     "goalIds": [
       "emil_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "hat",
+      "prop": "tool",
+      "tone": "rust"
+    }
   },
   {
     "id": "rike",
@@ -287,7 +371,13 @@
     },
     "goalIds": [
       "rike_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "tied",
+      "prop": "basket",
+      "tone": "bone"
+    }
   },
   {
     "id": "jonas",
@@ -300,7 +390,13 @@
     },
     "goalIds": [
       "jonas_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "bare",
+      "prop": "lamp",
+      "tone": "umber"
+    }
   },
   {
     "id": "hedda",
@@ -313,7 +409,13 @@
     },
     "goalIds": [
       "hedda_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "tied",
+      "prop": "none",
+      "tone": "ash"
+    }
   },
   {
     "id": "viktor",
@@ -326,7 +428,13 @@
     },
     "goalIds": [
       "viktor_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "scarf",
+      "prop": "tool",
+      "tone": "ash"
+    }
   },
   {
     "id": "nell",
@@ -339,7 +447,13 @@
     },
     "goalIds": [
       "nell_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "bare",
+      "prop": "basket",
+      "tone": "rust"
+    }
   },
   {
     "id": "bram",
@@ -352,7 +466,13 @@
     },
     "goalIds": [
       "bram_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "scarf",
+      "prop": "rope",
+      "tone": "bone"
+    }
   },
   {
     "id": "ilse",
@@ -365,7 +485,13 @@
     },
     "goalIds": [
       "ilse_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "scarf",
+      "prop": "basket",
+      "tone": "ash"
+    }
   },
   {
     "id": "ansel",
@@ -378,7 +504,13 @@
     },
     "goalIds": [
       "ansel_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "cap",
+      "prop": "tool",
+      "tone": "rust"
+    }
   },
   {
     "id": "dorte",
@@ -391,7 +523,13 @@
     },
     "goalIds": [
       "dorte_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "tied",
+      "prop": "vessel",
+      "tone": "bone"
+    }
   },
   {
     "id": "rurik",
@@ -404,7 +542,13 @@
     },
     "goalIds": [
       "rurik_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "cap",
+      "prop": "none",
+      "tone": "ash"
+    }
   },
   {
     "id": "maike",
@@ -417,7 +561,13 @@
     },
     "goalIds": [
       "maike_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "tied",
+      "prop": "vessel",
+      "tone": "rust"
+    }
   },
   {
     "id": "stefan",
@@ -430,7 +580,13 @@
     },
     "goalIds": [
       "stefan_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "hat",
+      "prop": "book",
+      "tone": "moss"
+    }
   },
   {
     "id": "ebba",
@@ -443,7 +599,13 @@
     },
     "goalIds": [
       "ebba_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "bare",
+      "prop": "cloth",
+      "tone": "umber"
+    }
   },
   {
     "id": "lukas",
@@ -456,7 +618,13 @@
     },
     "goalIds": [
       "lukas_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "cap",
+      "prop": "vessel",
+      "tone": "bone"
+    }
   },
   {
     "id": "gunda",
@@ -469,7 +637,13 @@
     },
     "goalIds": [
       "gunda_need"
-    ]
+    ],
+    "art": {
+      "build": "tall",
+      "head": "bare",
+      "prop": "vessel",
+      "tone": "moss"
+    }
   },
   {
     "id": "arne",
@@ -482,7 +656,13 @@
     },
     "goalIds": [
       "arne_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "scarf",
+      "prop": "tool",
+      "tone": "rust"
+    }
   },
   {
     "id": "pia",
@@ -495,7 +675,13 @@
     },
     "goalIds": [
       "pia_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "tied",
+      "prop": "book",
+      "tone": "rust"
+    }
   },
   {
     "id": "henrik",
@@ -508,7 +694,13 @@
     },
     "goalIds": [
       "henrik_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "cap",
+      "prop": "cloth",
+      "tone": "ash"
+    }
   },
   {
     "id": "birgit",
@@ -521,7 +713,13 @@
     },
     "goalIds": [
       "birgit_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "hat",
+      "prop": "none",
+      "tone": "umber"
+    }
   },
   {
     "id": "matthias",
@@ -534,7 +732,13 @@
     },
     "goalIds": [
       "matthias_need"
-    ]
+    ],
+    "art": {
+      "build": "broad",
+      "head": "hood",
+      "prop": "none",
+      "tone": "ash"
+    }
   },
   {
     "id": "runa",
@@ -547,7 +751,13 @@
     },
     "goalIds": [
       "runa_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "bare",
+      "prop": "cloth",
+      "tone": "moss"
+    }
   },
   {
     "id": "erik",
@@ -560,7 +770,13 @@
     },
     "goalIds": [
       "erik_need"
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "bare",
+      "prop": "tool",
+      "tone": "ash"
+    }
   },
   {
     "id": "thea",
@@ -573,7 +789,13 @@
     },
     "goalIds": [
       "thea_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "hood",
+      "prop": "basket",
+      "tone": "umber"
+    }
   },
   {
     "id": "jost",
@@ -586,7 +808,13 @@
     },
     "goalIds": [
       "jost_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "scarf",
+      "prop": "tool",
+      "tone": "bone"
+    }
   },
   {
     "id": "alva",
@@ -599,7 +827,13 @@
     },
     "goalIds": [
       "alva_need"
-    ]
+    ],
+    "art": {
+      "build": "small",
+      "head": "tied",
+      "prop": "vessel",
+      "tone": "bone"
+    }
   },
   {
     "id": "nikolas",
@@ -612,7 +846,13 @@
     },
     "goalIds": [
       "nikolas_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "bare",
+      "prop": "book",
+      "tone": "moss"
+    }
   },
   {
     "id": "sanne",
@@ -625,7 +865,13 @@
     },
     "goalIds": [
       "sanne_need"
-    ]
+    ],
+    "art": {
+      "build": "round",
+      "head": "bare",
+      "prop": "rope",
+      "tone": "moss"
+    }
   },
   {
     "id": "wilhelm",
@@ -638,6 +884,12 @@
     },
     "goalIds": [
       "wilhelm_need"
-    ]
+    ],
+    "art": {
+      "build": "bent",
+      "head": "cap",
+      "prop": "none",
+      "tone": "bone"
+    }
   }
 ]
