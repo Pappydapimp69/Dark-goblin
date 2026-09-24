@@ -420,3 +420,22 @@ did not exist. Same mistake as D-44 and D-48, now about pixels: it polled for
 **D-59 — The goblin's eye halo is derived from the block's own coordinates.**
 Placed by eye, it sat nineteen pixels off the lights cut into the drawing, and
 he had four eyes.
+
+## Deployment
+
+**D-60 — Pages is served from an orphan `gh-pages` branch, not from a
+workflow.** Both work, and a GitHub Actions workflow would redeploy on every
+push, but it needs Pages set to *GitHub Actions* as its source AND a token
+permitted to write `.github/workflows/`, and it fails invisibly if either is
+missing. A branch holding the built files needs one settings change, no Actions
+minutes, and it is live within a minute of being enabled. `npm run deploy`
+rebuilds and force-pushes it; the branch shares no history with the source and
+nothing of value lives there.
+
+**D-61 — The save key was already namespaced, and on Pages that stops being
+housekeeping.** GitHub Pages serves every project of one account from a single
+origin — the project name is only a path, while `localStorage` is scoped to the
+origin. Two games shipped by the same author share a save slot unless their
+keys are namespaced, and with a schema guard in place the collision presents to
+a player as "no save" rather than as a conflict, which reads as lost data.
+`darkgoblin:v1:save` (D-11) was chosen for exactly this and is now load-bearing.

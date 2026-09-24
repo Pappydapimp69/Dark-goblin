@@ -14,7 +14,8 @@
     "smoke": "vite-node tools/fixture-saves.ts && node tools/smoke.mjs smoke-shots",
     "package": "sh tools/package.sh",
     "verify:itch": "sh tools/verify-itch.sh",
-    "art": "vite-node tools/write-art.ts"
+    "art": "vite-node tools/write-art.ts",
+    "deploy": "sh tools/deploy-pages.sh"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",
