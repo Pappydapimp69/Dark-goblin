@@ -6,9 +6,9 @@
 # shares no history with the source branch, so it is rebuilt from scratch each
 # time and force-pushed; nothing of value ever lives there.
 #
-# GitHub Pages serves this at a PATH (/dark-goblin/), not at a domain root,
-# which is what `base: './'` in vite.config.ts is for and what
-# `npm run verify:itch` proves.
+# GitHub Pages serves this at a PATH (/Dark-goblin/ — it keeps the repository's
+# own casing, and the lowercase form 404s), not at a domain root. That is what
+# `base: './'` in vite.config.ts is for and what `npm run verify:itch` proves.
 set -e
 
 REMOTE=$(git remote get-url origin)

@@ -22,11 +22,14 @@ npm run package        # dist/ zipped for itch.io
 npm run deploy         # rebuild and push the build to the gh-pages branch
 ```
 
-Live at **https://pappydapimp69.github.io/dark-goblin/** once Pages is enabled
-for the repository (Settings → Pages → Source: *Deploy from a branch* →
-`gh-pages` / `/ (root)`). Pages serves it from a path rather than a domain
-root, which is what `base: './'` is for; `npm run verify:itch` proves that
-same shape locally before anything is pushed.
+Live at **https://pappydapimp69.github.io/Dark-goblin/** — note the capital D:
+Pages preserves the repository's own casing in the path, and the lowercase
+form 404s. Served from the `gh-pages` branch (Settings → Pages → Source:
+*Deploy from a branch* → `gh-pages` / `/ (root)`).
+
+Pages serves the game from a path rather than a domain root, which is what
+`base: './'` is for; `npm run verify:itch` proves that same shape locally
+before anything is pushed.
 
 Two browser checks, both needing a served build:
 

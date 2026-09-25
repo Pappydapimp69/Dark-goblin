@@ -439,3 +439,11 @@ origin. Two games shipped by the same author share a save slot unless their
 keys are namespaced, and with a schema guard in place the collision presents to
 a player as "no save" rather than as a conflict, which reads as lost data.
 `darkgoblin:v1:save` (D-11) was chosen for exactly this and is now load-bearing.
+
+**D-62 — The Pages URL keeps the repository's casing.** The site is at
+`/Dark-goblin/`, not `/dark-goblin/`; the lowercase form 404s even though every
+git remote, clone path and API call in this project uses it and GitHub resolves
+repository URLs case-insensitively. Only the Pages path is strict. Worth
+knowing because the failure is indistinguishable from "Pages is not enabled
+yet" — same 404, and you can watch a successful `pages build and deployment`
+run complete while still looking at one.
