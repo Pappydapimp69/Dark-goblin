@@ -488,3 +488,19 @@ textures, so refresh only when the rect has moved), then the hit test itself.
 Each fix was necessary and none was sufficient, and after each one the symptom
 was unchanged — "tapping Begin does nothing" — which is worth remembering the
 next time an unchanged symptom is taken as evidence that a fix did nothing.
+
+## Dialogue Reactivity
+
+**D-67 — The response line is content, not engine.** `Choice.response` is an
+optional string shown by `Dialogue.ts` after `interact()` returns; the engine
+never reads it, so it cannot affect scoring or determinism. The ambient
+greeting above the choice list is the same kind of thing: read straight from
+`npc.state.trusts_player` in the scene, nothing written back. A broken NPC gets
+no greeting because their aftermath choice already carries the whole of what's
+left to say.
+
+**D-68 — Hidden dialogue buttons must also be inactive.** The repo's mobile
+touch fix routes taps through scene-level hotspots in `widgets.ts`, where a
+control is considered live by `active`, not by visibility. When a response line
+is typing, old choices are both hidden and deactivated so their invisible
+hotspots cannot eat the tap that should advance the conversation.

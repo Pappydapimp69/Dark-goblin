@@ -49,7 +49,8 @@
         "target": "baker",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ilka's shoulders drop, just for a moment."
   },
   {
     "id": "baker_help_again",
@@ -89,7 +90,8 @@
         "target": "baker",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ilka doesn't look surprised to see you helping again. That's its own kind of trust."
   },
   {
     "id": "baker_takes_storefront",
@@ -124,7 +126,8 @@
         "target": "baker",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "For a moment Ilka just stands there, taking it in."
   },
   {
     "id": "baker_takes_wrecked",
@@ -162,7 +165,8 @@
         "target": "baker",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ilka's eyes go wide, like they hadn't let themself expect this."
   },
   {
     "id": "baker_shop_for_self",
@@ -187,7 +191,8 @@
         "target": "baker",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Ilka steps back, like distance is the only thing left to give."
   },
   {
     "id": "baker_wrecked_for_self",
@@ -219,7 +224,8 @@
         "target": "baker",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Ilka looks at what's left, then at you."
   },
   {
     "id": "baker_sell_her_flour",
@@ -240,7 +246,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Ilka pockets it and says nothing more."
   },
   {
     "id": "baker_drive_out",
@@ -262,7 +269,8 @@
         "target": "baker",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Ilka something to hear."
   },
   {
     "id": "shop_pay_down",
@@ -302,7 +310,8 @@
         "target": "shopkeeper",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "shop_listen_first",
@@ -346,7 +355,8 @@
         "target": "shopkeeper",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Aldo nods slowly, like deciding whether to trust it."
   },
   {
     "id": "shop_listen_again",
@@ -383,7 +393,8 @@
         "target": "shopkeeper",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Aldo hands you the next thing before you ask."
   },
   {
     "id": "shop_help_him_go",
@@ -423,7 +434,8 @@
         "target": "shopkeeper",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Aldo's eyes go wide, like they hadn't let themself expect this."
   },
   {
     "id": "shop_tell_creditor",
@@ -455,7 +467,8 @@
         "target": "shopkeeper",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Aldo something to hear."
   },
   {
     "id": "shop_buy_cheap",
@@ -494,7 +507,8 @@
         "target": "shopkeeper",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Aldo steps back, like distance is the only thing left to give."
   },
   {
     "id": "shop_aftermath",
@@ -557,7 +571,8 @@
         "target": "builder",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ves looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "builder_encourage",
@@ -594,7 +609,8 @@
         "target": "builder",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ves makes room for you without thinking about it."
   },
   {
     "id": "builder_first_job",
@@ -632,7 +648,8 @@
         "target": "builder",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ves's eyes go wide, like they hadn't let themself expect this."
   },
   {
     "id": "builder_hire_out",
@@ -657,7 +674,8 @@
         "target": "builder",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Something closes in Ves's face."
   },
   {
     "id": "builder_drive_off",
@@ -679,7 +697,8 @@
         "target": "builder",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Somewhere, Ves's life just got smaller, and they don't know why yet."
   },
   {
     "id": "mara_help_first",
@@ -726,7 +745,8 @@
         "target": "mara",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Mara looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "mara_help_again",
@@ -761,7 +781,8 @@
         "target": "mara",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "mara_self",
@@ -782,7 +803,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Mara doesn't linger on it."
   },
   {
     "id": "mara_harm",
@@ -804,7 +826,8 @@
         "target": "mara",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Mara doesn't know yet. That's the worst part."
   },
   {
     "id": "otto_help_first",
@@ -851,7 +874,8 @@
         "target": "otto",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Otto eases, just slightly."
   },
   {
     "id": "otto_help_again",
@@ -886,7 +910,8 @@
         "target": "otto",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Otto makes room for you without thinking about it."
   },
   {
     "id": "otto_self",
@@ -907,7 +932,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Otto shrugs and moves on to the next thing."
   },
   {
     "id": "otto_harm",
@@ -929,7 +955,8 @@
         "target": "otto",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Otto even hears about it."
   },
   {
     "id": "lise_help_first",
@@ -976,7 +1003,8 @@
         "target": "lise",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Lise looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "lise_help_again",
@@ -1011,7 +1039,8 @@
         "target": "lise",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "lise_self",
@@ -1032,7 +1061,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Lise doesn't linger on it."
   },
   {
     "id": "lise_harm",
@@ -1054,7 +1084,8 @@
         "target": "lise",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Lise doesn't know yet. That's the worst part."
   },
   {
     "id": "per_help_first",
@@ -1101,7 +1132,8 @@
         "target": "per",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Per looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "per_help_again",
@@ -1136,7 +1168,8 @@
         "target": "per",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "per_self",
@@ -1157,7 +1190,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Per doesn't linger on it."
   },
   {
     "id": "per_harm",
@@ -1179,7 +1213,8 @@
         "target": "per",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Per doesn't know yet. That's the worst part."
   },
   {
     "id": "greta_help_first",
@@ -1226,7 +1261,8 @@
         "target": "greta",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Greta looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "greta_help_again",
@@ -1261,7 +1297,8 @@
         "target": "greta",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "greta_self",
@@ -1282,7 +1319,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Greta doesn't linger on it."
   },
   {
     "id": "greta_harm",
@@ -1304,7 +1342,8 @@
         "target": "greta",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Greta doesn't know yet. That's the worst part."
   },
   {
     "id": "hansi_help_first",
@@ -1351,7 +1390,8 @@
         "target": "hansi",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Hansi looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "hansi_help_again",
@@ -1386,7 +1426,8 @@
         "target": "hansi",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "hansi_self",
@@ -1407,7 +1448,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Hansi doesn't linger on it."
   },
   {
     "id": "hansi_harm",
@@ -1429,7 +1471,8 @@
         "target": "hansi",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Hansi doesn't know yet. That's the worst part."
   },
   {
     "id": "tobias_help_first",
@@ -1476,7 +1519,8 @@
         "target": "tobias",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Tobias nods slowly, like deciding whether to trust it."
   },
   {
     "id": "tobias_help_again",
@@ -1511,7 +1555,8 @@
         "target": "tobias",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Tobias hands you the next thing before you ask."
   },
   {
     "id": "tobias_self",
@@ -1532,7 +1577,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Tobias pockets it and says nothing more."
   },
   {
     "id": "tobias_harm",
@@ -1554,7 +1600,8 @@
         "target": "tobias",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "The words are already out. There's no taking them back."
   },
   {
     "id": "anneke_help_first",
@@ -1601,7 +1648,8 @@
         "target": "anneke",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Anneke looks at you a beat too long before saying thanks."
   },
   {
     "id": "anneke_help_again",
@@ -1636,7 +1684,8 @@
         "target": "anneke",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Anneke works alongside you like it's ordinary now."
   },
   {
     "id": "anneke_self",
@@ -1657,7 +1706,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Anneke takes the deal. It's just business, today."
   },
   {
     "id": "anneke_harm",
@@ -1679,7 +1729,8 @@
         "target": "anneke",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Anneke something to hear."
   },
   {
     "id": "klaus_help_first",
@@ -1726,7 +1777,8 @@
         "target": "klaus",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Klaus eases, just slightly."
   },
   {
     "id": "klaus_help_again",
@@ -1761,7 +1813,8 @@
         "target": "klaus",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Klaus makes room for you without thinking about it."
   },
   {
     "id": "klaus_self",
@@ -1782,7 +1835,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Klaus shrugs and moves on to the next thing."
   },
   {
     "id": "klaus_harm",
@@ -1804,7 +1858,8 @@
         "target": "klaus",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Klaus even hears about it."
   },
   {
     "id": "sofie_help_first",
@@ -1851,7 +1906,8 @@
         "target": "sofie",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Sofie nods slowly, like deciding whether to trust it."
   },
   {
     "id": "sofie_help_again",
@@ -1886,7 +1942,8 @@
         "target": "sofie",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Sofie hands you the next thing before you ask."
   },
   {
     "id": "sofie_self",
@@ -1907,7 +1964,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Sofie pockets it and says nothing more."
   },
   {
     "id": "sofie_harm",
@@ -1929,7 +1987,8 @@
         "target": "sofie",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "The words are already out. There's no taking them back."
   },
   {
     "id": "emil_help_first",
@@ -1976,7 +2035,8 @@
         "target": "emil",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Emil looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "emil_help_again",
@@ -2011,7 +2071,8 @@
         "target": "emil",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "emil_self",
@@ -2032,7 +2093,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Emil doesn't linger on it."
   },
   {
     "id": "emil_harm",
@@ -2054,7 +2116,8 @@
         "target": "emil",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Emil doesn't know yet. That's the worst part."
   },
   {
     "id": "rike_help_first",
@@ -2101,7 +2164,8 @@
         "target": "rike",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Rike's shoulders drop, just for a moment."
   },
   {
     "id": "rike_help_again",
@@ -2136,7 +2200,8 @@
         "target": "rike",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Rike doesn't look surprised to see you helping again. That's its own kind of trust."
   },
   {
     "id": "rike_self",
@@ -2157,7 +2222,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Rike counts it out without meeting your eyes."
   },
   {
     "id": "rike_harm",
@@ -2179,7 +2245,8 @@
         "target": "rike",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Somewhere, Rike's life just got smaller, and they don't know why yet."
   },
   {
     "id": "jonas_help_first",
@@ -2226,7 +2293,8 @@
         "target": "jonas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Jonas doesn't say much, but they remember it."
   },
   {
     "id": "jonas_help_again",
@@ -2261,7 +2329,8 @@
         "target": "jonas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "jonas_self",
@@ -2282,7 +2351,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Jonas's face says whether it cost them anything."
   },
   {
     "id": "jonas_harm",
@@ -2304,7 +2374,8 @@
         "target": "jonas",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Jonas find out."
   },
   {
     "id": "hedda_help_first",
@@ -2351,7 +2422,8 @@
         "target": "hedda",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Hedda eases, just slightly."
   },
   {
     "id": "hedda_help_again",
@@ -2386,7 +2458,8 @@
         "target": "hedda",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Hedda makes room for you without thinking about it."
   },
   {
     "id": "hedda_self",
@@ -2407,7 +2480,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Hedda shrugs and moves on to the next thing."
   },
   {
     "id": "hedda_harm",
@@ -2429,7 +2503,8 @@
         "target": "hedda",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Hedda even hears about it."
   },
   {
     "id": "viktor_help_first",
@@ -2476,7 +2551,8 @@
         "target": "viktor",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Viktor doesn't say much, but they remember it."
   },
   {
     "id": "viktor_help_again",
@@ -2511,7 +2587,8 @@
         "target": "viktor",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "viktor_self",
@@ -2532,7 +2609,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Viktor's face says whether it cost them anything."
   },
   {
     "id": "viktor_harm",
@@ -2554,7 +2632,8 @@
         "target": "viktor",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Viktor find out."
   },
   {
     "id": "nell_help_first",
@@ -2601,7 +2680,8 @@
         "target": "nell",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Nell's shoulders drop, just for a moment."
   },
   {
     "id": "nell_help_again",
@@ -2636,7 +2716,8 @@
         "target": "nell",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Nell doesn't look surprised to see you helping again. That's its own kind of trust."
   },
   {
     "id": "nell_self",
@@ -2657,7 +2738,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nell counts it out without meeting your eyes."
   },
   {
     "id": "nell_harm",
@@ -2679,7 +2761,8 @@
         "target": "nell",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Somewhere, Nell's life just got smaller, and they don't know why yet."
   },
   {
     "id": "bram_help_first",
@@ -2726,7 +2809,8 @@
         "target": "bram",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Bram eases, just slightly."
   },
   {
     "id": "bram_help_again",
@@ -2761,7 +2845,8 @@
         "target": "bram",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Bram makes room for you without thinking about it."
   },
   {
     "id": "bram_self",
@@ -2782,7 +2867,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Bram shrugs and moves on to the next thing."
   },
   {
     "id": "bram_harm",
@@ -2804,7 +2890,8 @@
         "target": "bram",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Bram even hears about it."
   },
   {
     "id": "ilse_help_first",
@@ -2851,7 +2938,8 @@
         "target": "ilse",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ilse looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "ilse_help_again",
@@ -2886,7 +2974,8 @@
         "target": "ilse",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "ilse_self",
@@ -2907,7 +2996,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Ilse doesn't linger on it."
   },
   {
     "id": "ilse_harm",
@@ -2929,7 +3019,8 @@
         "target": "ilse",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Ilse doesn't know yet. That's the worst part."
   },
   {
     "id": "ansel_help_first",
@@ -2976,7 +3067,8 @@
         "target": "ansel",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ansel looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "ansel_help_again",
@@ -3011,7 +3103,8 @@
         "target": "ansel",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "ansel_self",
@@ -3032,7 +3125,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Ansel doesn't linger on it."
   },
   {
     "id": "ansel_harm",
@@ -3054,7 +3148,8 @@
         "target": "ansel",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Ansel doesn't know yet. That's the worst part."
   },
   {
     "id": "dorte_help_first",
@@ -3101,7 +3196,8 @@
         "target": "dorte",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Dorte looks at you a beat too long before saying thanks."
   },
   {
     "id": "dorte_help_again",
@@ -3136,7 +3232,8 @@
         "target": "dorte",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Dorte works alongside you like it's ordinary now."
   },
   {
     "id": "dorte_self",
@@ -3157,7 +3254,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Dorte takes the deal. It's just business, today."
   },
   {
     "id": "dorte_harm",
@@ -3179,7 +3277,8 @@
         "target": "dorte",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Dorte something to hear."
   },
   {
     "id": "rurik_help_first",
@@ -3226,7 +3325,8 @@
         "target": "rurik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Rurik doesn't say much, but they remember it."
   },
   {
     "id": "rurik_help_again",
@@ -3261,7 +3361,8 @@
         "target": "rurik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "rurik_self",
@@ -3282,7 +3383,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Rurik's face says whether it cost them anything."
   },
   {
     "id": "rurik_harm",
@@ -3304,7 +3406,8 @@
         "target": "rurik",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Rurik find out."
   },
   {
     "id": "maike_help_first",
@@ -3351,7 +3454,8 @@
         "target": "maike",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Maike looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "maike_help_again",
@@ -3386,7 +3490,8 @@
         "target": "maike",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "maike_self",
@@ -3407,7 +3512,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Maike doesn't linger on it."
   },
   {
     "id": "maike_harm",
@@ -3429,7 +3535,8 @@
         "target": "maike",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Maike doesn't know yet. That's the worst part."
   },
   {
     "id": "stefan_help_first",
@@ -3476,7 +3583,8 @@
         "target": "stefan",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Stefan doesn't say much, but they remember it."
   },
   {
     "id": "stefan_help_again",
@@ -3511,7 +3619,8 @@
         "target": "stefan",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "stefan_self",
@@ -3532,7 +3641,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Stefan's face says whether it cost them anything."
   },
   {
     "id": "stefan_harm",
@@ -3554,7 +3664,8 @@
         "target": "stefan",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Stefan find out."
   },
   {
     "id": "ebba_help_first",
@@ -3601,7 +3712,8 @@
         "target": "ebba",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Ebba eases, just slightly."
   },
   {
     "id": "ebba_help_again",
@@ -3636,7 +3748,8 @@
         "target": "ebba",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Ebba makes room for you without thinking about it."
   },
   {
     "id": "ebba_self",
@@ -3657,7 +3770,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Ebba shrugs and moves on to the next thing."
   },
   {
     "id": "ebba_harm",
@@ -3679,7 +3793,8 @@
         "target": "ebba",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Ebba even hears about it."
   },
   {
     "id": "lukas_help_first",
@@ -3726,7 +3841,8 @@
         "target": "lukas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Lukas eases, just slightly."
   },
   {
     "id": "lukas_help_again",
@@ -3761,7 +3877,8 @@
         "target": "lukas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Lukas makes room for you without thinking about it."
   },
   {
     "id": "lukas_self",
@@ -3782,7 +3899,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Lukas shrugs and moves on to the next thing."
   },
   {
     "id": "lukas_harm",
@@ -3804,7 +3922,8 @@
         "target": "lukas",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Lukas even hears about it."
   },
   {
     "id": "gunda_help_first",
@@ -3851,7 +3970,8 @@
         "target": "gunda",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Gunda doesn't say much, but they remember it."
   },
   {
     "id": "gunda_help_again",
@@ -3886,7 +4006,8 @@
         "target": "gunda",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "gunda_self",
@@ -3907,7 +4028,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Gunda's face says whether it cost them anything."
   },
   {
     "id": "gunda_harm",
@@ -3929,7 +4051,8 @@
         "target": "gunda",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Gunda find out."
   },
   {
     "id": "arne_help_first",
@@ -3976,7 +4099,8 @@
         "target": "arne",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Arne looks at you a beat too long before saying thanks."
   },
   {
     "id": "arne_help_again",
@@ -4011,7 +4135,8 @@
         "target": "arne",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Arne works alongside you like it's ordinary now."
   },
   {
     "id": "arne_self",
@@ -4032,7 +4157,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Arne takes the deal. It's just business, today."
   },
   {
     "id": "arne_harm",
@@ -4054,7 +4180,8 @@
         "target": "arne",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Arne something to hear."
   },
   {
     "id": "pia_help_first",
@@ -4101,7 +4228,8 @@
         "target": "pia",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Pia looks at you a beat too long before saying thanks."
   },
   {
     "id": "pia_help_again",
@@ -4136,7 +4264,8 @@
         "target": "pia",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Pia works alongside you like it's ordinary now."
   },
   {
     "id": "pia_self",
@@ -4157,7 +4286,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Pia takes the deal. It's just business, today."
   },
   {
     "id": "pia_harm",
@@ -4179,7 +4309,8 @@
         "target": "pia",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It costs you nothing to say. It will cost Pia something to hear."
   },
   {
     "id": "henrik_help_first",
@@ -4226,7 +4357,8 @@
         "target": "henrik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Henrik doesn't say much, but they remember it."
   },
   {
     "id": "henrik_help_again",
@@ -4261,7 +4393,8 @@
         "target": "henrik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "henrik_self",
@@ -4282,7 +4415,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Henrik's face says whether it cost them anything."
   },
   {
     "id": "henrik_harm",
@@ -4304,7 +4438,8 @@
         "target": "henrik",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Henrik find out."
   },
   {
     "id": "birgit_help_first",
@@ -4351,7 +4486,8 @@
         "target": "birgit",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Birgit doesn't say much, but they remember it."
   },
   {
     "id": "birgit_help_again",
@@ -4386,7 +4522,8 @@
         "target": "birgit",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "birgit_self",
@@ -4407,7 +4544,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Birgit's face says whether it cost them anything."
   },
   {
     "id": "birgit_harm",
@@ -4429,7 +4567,8 @@
         "target": "birgit",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Birgit find out."
   },
   {
     "id": "matthias_help_first",
@@ -4476,7 +4615,8 @@
         "target": "matthias",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Matthias's shoulders drop, just for a moment."
   },
   {
     "id": "matthias_help_again",
@@ -4511,7 +4651,8 @@
         "target": "matthias",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Matthias doesn't look surprised to see you helping again. That's its own kind of trust."
   },
   {
     "id": "matthias_self",
@@ -4532,7 +4673,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Matthias counts it out without meeting your eyes."
   },
   {
     "id": "matthias_harm",
@@ -4554,7 +4696,8 @@
         "target": "matthias",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Somewhere, Matthias's life just got smaller, and they don't know why yet."
   },
   {
     "id": "runa_help_first",
@@ -4601,7 +4744,8 @@
         "target": "runa",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Runa nods slowly, like deciding whether to trust it."
   },
   {
     "id": "runa_help_again",
@@ -4636,7 +4780,8 @@
         "target": "runa",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Runa hands you the next thing before you ask."
   },
   {
     "id": "runa_self",
@@ -4657,7 +4802,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Runa pockets it and says nothing more."
   },
   {
     "id": "runa_harm",
@@ -4679,7 +4825,8 @@
         "target": "runa",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "The words are already out. There's no taking them back."
   },
   {
     "id": "erik_help_first",
@@ -4726,7 +4873,8 @@
         "target": "erik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Erik's shoulders drop, just for a moment."
   },
   {
     "id": "erik_help_again",
@@ -4761,7 +4909,8 @@
         "target": "erik",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Erik doesn't look surprised to see you helping again. That's its own kind of trust."
   },
   {
     "id": "erik_self",
@@ -4782,7 +4931,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Erik counts it out without meeting your eyes."
   },
   {
     "id": "erik_harm",
@@ -4804,7 +4954,8 @@
         "target": "erik",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Somewhere, Erik's life just got smaller, and they don't know why yet."
   },
   {
     "id": "thea_help_first",
@@ -4851,7 +5002,8 @@
         "target": "thea",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Thea eases, just slightly."
   },
   {
     "id": "thea_help_again",
@@ -4886,7 +5038,8 @@
         "target": "thea",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Thea makes room for you without thinking about it."
   },
   {
     "id": "thea_self",
@@ -4907,7 +5060,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Thea shrugs and moves on to the next thing."
   },
   {
     "id": "thea_harm",
@@ -4929,7 +5083,8 @@
         "target": "thea",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Thea even hears about it."
   },
   {
     "id": "jost_help_first",
@@ -4976,7 +5131,8 @@
         "target": "jost",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Jost eases, just slightly."
   },
   {
     "id": "jost_help_again",
@@ -5011,7 +5167,8 @@
         "target": "jost",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Jost makes room for you without thinking about it."
   },
   {
     "id": "jost_self",
@@ -5032,7 +5189,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Jost shrugs and moves on to the next thing."
   },
   {
     "id": "jost_harm",
@@ -5054,7 +5212,8 @@
         "target": "jost",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Jost even hears about it."
   },
   {
     "id": "alva_help_first",
@@ -5101,7 +5260,8 @@
         "target": "alva",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Alva nods slowly, like deciding whether to trust it."
   },
   {
     "id": "alva_help_again",
@@ -5136,7 +5296,8 @@
         "target": "alva",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Alva hands you the next thing before you ask."
   },
   {
     "id": "alva_self",
@@ -5157,7 +5318,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Alva pockets it and says nothing more."
   },
   {
     "id": "alva_harm",
@@ -5179,7 +5341,8 @@
         "target": "alva",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "The words are already out. There's no taking them back."
   },
   {
     "id": "nikolas_help_first",
@@ -5226,7 +5389,8 @@
         "target": "nikolas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Nikolas looks caught off guard, like no one does this without being asked."
   },
   {
     "id": "nikolas_help_again",
@@ -5261,7 +5425,8 @@
         "target": "nikolas",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "No words pass between you. None are needed anymore."
   },
   {
     "id": "nikolas_self",
@@ -5282,7 +5447,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "A plain trade. Nikolas doesn't linger on it."
   },
   {
     "id": "nikolas_harm",
@@ -5304,7 +5470,8 @@
         "target": "nikolas",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "Nikolas doesn't know yet. That's the worst part."
   },
   {
     "id": "sanne_help_first",
@@ -5351,7 +5518,8 @@
         "target": "sanne",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Sanne doesn't say much, but they remember it."
   },
   {
     "id": "sanne_help_again",
@@ -5386,7 +5554,8 @@
         "target": "sanne",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "It's become a habit between you, and neither of you comments on it."
   },
   {
     "id": "sanne_self",
@@ -5407,7 +5576,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Nothing in Sanne's face says whether it cost them anything."
   },
   {
     "id": "sanne_harm",
@@ -5429,7 +5599,8 @@
         "target": "sanne",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "You don't stay to see Sanne find out."
   },
   {
     "id": "wilhelm_help_first",
@@ -5476,7 +5647,8 @@
         "target": "wilhelm",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Something in Wilhelm eases, just slightly."
   },
   {
     "id": "wilhelm_help_again",
@@ -5511,7 +5683,8 @@
         "target": "wilhelm",
         "kind": "help"
       }
-    ]
+    ],
+    "response": "Wilhelm makes room for you without thinking about it."
   },
   {
     "id": "wilhelm_self",
@@ -5532,7 +5705,8 @@
         "target": "player",
         "kind": "self"
       }
-    ]
+    ],
+    "response": "Wilhelm shrugs and moves on to the next thing."
   },
   {
     "id": "wilhelm_harm",
@@ -5554,6 +5728,7 @@
         "target": "wilhelm",
         "kind": "harm"
       }
-    ]
+    ],
+    "response": "It's done before Wilhelm even hears about it."
   }
 ]

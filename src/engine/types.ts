@@ -108,6 +108,7 @@ export interface Choice {
   id: string;
   npc: NpcId;
   text: string;
+  response?: string;
   available: Condition;
   effects: Effect[];
   impacts: Impact[];

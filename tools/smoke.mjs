@@ -184,8 +184,34 @@ await until(`a conversation with ${neighbour}`, on("Dialogue"));
 await shot("04-dialogue");
 
 const offered = (await peek()).texts;
-const firstChoice = offered.find((t) => t.length > 12 && t !== "Leave them be");
-await press(firstChoice);
+const firstChoice = await page.evaluate(() => {
+  const game = globalThis.darkGoblin;
+  const dialogue = game.scene.getScene("Dialogue");
+  const labelsOf = (node) => {
+    if (node.type === "Text") return [node.text];
+    if (Array.isArray(node.list)) return node.list.flatMap(labelsOf);
+    return [];
+  };
+  const controls = [];
+  const walk = (nodes) => {
+    for (const node of nodes) {
+      if (node.input && Array.isArray(node.list) && node.active) controls.push(node);
+      if (Array.isArray(node.list)) walk(node.list);
+    }
+  };
+  walk(dialogue.children.list);
+  const label = controls.flatMap(labelsOf).find((text) => text && text !== "Leave them be") ?? null;
+  const store = game.registry.get("store");
+  const response = store?.choices.find((choice) => choice.text === label)?.response ?? null;
+  return label ? { label, response } : null;
+});
+if (!firstChoice) errors.push(`no dialogue choice was pressable; saw ${JSON.stringify(offered)}`);
+await press(firstChoice?.label);
+if (firstChoice?.response) {
+  await until("the response line", (s) => s.texts.includes(firstChoice.response));
+  await page.waitForTimeout(350);
+  await poke(VW / 2, VH / 2);
+}
 await until("the street again", (s) => on("Street")(s) && !on("Dialogue")(s));
 await shot("05-after-choice");
 
