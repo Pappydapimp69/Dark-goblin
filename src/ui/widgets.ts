@@ -2,6 +2,77 @@ import Phaser from "phaser";
 import { cue, CUES } from "./sound";
 import { COLOR, CSS, WIDTH, font } from "./theme";
 
+/**
+ * Hit testing, done here rather than by Phaser.
+ *
+ * Measured on a real Android: a tap reported at 354,858 against a button
+ * spanning x 60-660, y 808-892 — provably inside — with Phaser seeing both the
+ * press and the release, nothing cancelled, and the Container's own handler
+ * never firing. Phaser's Container hit test was refusing a point inside its own
+ * hit area, on that device only. Rather than keep chasing why, every control
+ * registers its rectangle here and one scene-level listener does the
+ * containment arithmetic, which is four comparisons and cannot disagree with
+ * itself across devices.
+ *
+ * Controls still call setInteractive so they remain discoverable to the smoke
+ * driver, but nothing is bound to their own pointer events: there is exactly
+ * one path from a touch to a handler.
+ */
+interface Hotspot {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  press(): void;
+  release(): void;
+  pick(): void;
+  alive(): boolean;
+}
+
+const HOTSPOTS = new WeakMap<Phaser.Scene, Hotspot[]>();
+
+function spotsFor(scene: Phaser.Scene): Hotspot[] {
+  const existing = HOTSPOTS.get(scene);
+  if (existing) return existing;
+
+  const spots: Hotspot[] = [];
+  HOTSPOTS.set(scene, spots);
+
+  // Last registered wins: later controls are drawn on top of earlier ones.
+  const at = (p: Phaser.Input.Pointer): Hotspot | undefined => {
+    for (let i = spots.length - 1; i >= 0; i -= 1) {
+      const s = spots[i]!;
+      if (!s.alive()) continue;
+      if (p.x >= s.x1 && p.x <= s.x2 && p.y >= s.y1 && p.y <= s.y2) return s;
+    }
+    return undefined;
+  };
+
+  let armed: Hotspot | undefined;
+
+  scene.input.on("pointerdown", (p: Phaser.Input.Pointer) => {
+    armed = at(p);
+    armed?.press();
+  });
+
+  scene.input.on("pointerup", (p: Phaser.Input.Pointer) => {
+    const over = at(p);
+    for (const s of spots) if (s.alive()) s.release();
+    if (over && over === armed) over.pick();
+    armed = undefined;
+  });
+
+  scene.input.on("pointermove", (p: Phaser.Input.Pointer) => {
+    if (p.isDown) return;
+    const over = at(p);
+    for (const s of spots) if (s.alive()) (s === over ? s.press : s.release).call(s);
+  });
+
+  scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => HOTSPOTS.delete(scene));
+  scene.events.once(Phaser.Scenes.Events.DESTROY, () => HOTSPOTS.delete(scene));
+  return spots;
+}
+
 /** A tappable slab of text. Tap and click are the same event in Phaser. */
 export function button(
   scene: Phaser.Scene,
@@ -28,16 +99,23 @@ export function button(
     Phaser.Geom.Rectangle.Contains,
   );
 
-  container.on("pointerover", () => plate.setFillStyle(COLOR.panelLit));
-  container.on("pointerout", () => plate.setFillStyle(tone));
-  container.on("pointerdown", () => {
-    plate.setFillStyle(COLOR.panelLit);
-    scene.tweens.add({ targets: container, scale: 0.98, duration: 70, yoyo: true });
-  });
-  container.on("pointerup", () => {
-    plate.setFillStyle(tone);
-    cue(scene, CUES.tap);
-    onPick();
+  spotsFor(scene).push({
+    x1: x - width / 2,
+    y1: y - height / 2,
+    x2: x + width / 2,
+    y2: y + height / 2,
+    alive: () => container.active,
+    press: () => {
+      plate.setFillStyle(COLOR.panelLit);
+    },
+    release: () => {
+      plate.setFillStyle(tone);
+    },
+    pick: () => {
+      scene.tweens.add({ targets: container, scale: 0.98, duration: 70, yoyo: true });
+      cue(scene, CUES.tap);
+      onPick();
+    },
   });
 
   return container;
@@ -68,11 +146,22 @@ export function personToken(
   const container = scene.add.container(x, y, [figure, label]);
   const hit = new Phaser.Geom.Rectangle(-figure.displayWidth / 2, -height, figure.displayWidth, height + 26);
   container.setInteractive(hit, Phaser.Geom.Rectangle.Contains);
-  container.on("pointerover", () => figure.setScale(figure.scaleX * 1.05, figure.scaleY * 1.05));
-  container.on("pointerout", () => figure.setDisplaySize((figure.width / figure.height) * height, height));
-  container.on("pointerup", () => {
-    cue(scene, CUES.tap);
-    onPick();
+  const natural = (): void => {
+    figure.setDisplaySize((figure.width / figure.height) * height, height);
+  };
+  spotsFor(scene).push({
+    x1: x - figure.displayWidth / 2,
+    y1: y - height,
+    x2: x + figure.displayWidth / 2,
+    y2: y + 26,
+    alive: () => container.active,
+    press: () => figure.setDisplaySize((figure.width / figure.height) * height * 1.05, height * 1.05),
+    release: natural,
+    pick: () => {
+      natural();
+      cue(scene, CUES.tap);
+      onPick();
+    },
   });
 
   return container;
