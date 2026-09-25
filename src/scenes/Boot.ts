@@ -3,6 +3,7 @@ import { CUT } from "../main";
 import { load, type LoadFailure } from "../ui/save";
 import { sceneFor, Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
+import { TouchProbe } from "../ui/TouchProbe";
 import { button, leave } from "../ui/widgets";
 
 /**
@@ -38,6 +39,7 @@ export class Boot extends Phaser.Scene {
     this.cameras.main.fadeIn(600, 0, 0, 0);
     this.add.text(WIDTH / 2, 420, "The Dark Goblin", font(52)).setOrigin(0.5);
 
+    const probe = new TouchProbe(this); // TEMPORARY — see TouchProbe.ts
     const found = load();
     const excuse = found.ok ? undefined : EXCUSE[found.reason];
     if (excuse) {
@@ -49,6 +51,7 @@ export class Boot extends Phaser.Scene {
       this.registry.set("store", store);
 
       button(this, WIDTH / 2, HEIGHT - 480, "Go on", () => {
+        probe.countHit();
         const next = sceneFor(store.state);
         leave(this, next === "Street" ? "Mirror" : next);
       });
@@ -60,7 +63,10 @@ export class Boot extends Phaser.Scene {
       return;
     }
 
-    button(this, WIDTH / 2, HEIGHT - 430, "Begin", () => this.fresh());
+    button(this, WIDTH / 2, HEIGHT - 430, "Begin", () => {
+      probe.countHit();
+      this.fresh();
+    });
   }
 
   private fresh(): void {
