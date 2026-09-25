@@ -20,8 +20,15 @@ const URL = process.env.SMOKE_URL ?? "http://localhost:4173/";
 const EXE = process.env.CHROMIUM ?? "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
 const KEY = "darkgoblin:v1:save";
 
+// A REAL viewport, not the game's own 720x1280. At that exact size Phaser's
+// scale factor is 1 and the canvas sits at 0,0, so game coordinates and page
+// coordinates coincide — which silently excused this driver from ever testing
+// the scaling and letterboxing every actual player gets. SMOKE_VIEWPORT
+// overrides it (e.g. "390x844" for a phone).
+const [VW, VH] = (process.env.SMOKE_VIEWPORT ?? "1440x900").split("x").map(Number);
+
 const browser = await chromium.launch({ executablePath: EXE });
-const page = await browser.newPage({ viewport: { width: 720, height: 1280 }, deviceScaleFactor: 1 });
+const page = await browser.newPage({ viewport: { width: VW, height: VH }, deviceScaleFactor: 1 });
 
 const errors = [];
 page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
@@ -103,8 +110,14 @@ async function press(label) {
     for (const scene of game.scene.scenes.filter((s) => s.scene.isActive()).reverse()) {
       const node = find(scene.children.list);
       if (!node) continue;
+      // Game space -> page space. The canvas is scaled and offset by the
+      // Scale Manager, so a game coordinate is not a page coordinate.
       const m = node.getWorldTransformMatrix();
-      return { x: m.tx, y: m.ty };
+      const rect = game.canvas.getBoundingClientRect();
+      return {
+        x: rect.x + m.tx * (rect.width / game.scale.gameSize.width),
+        y: rect.y + m.ty * (rect.height / game.scale.gameSize.height),
+      };
     }
     return null;
   }, label);
@@ -227,4 +240,4 @@ if (errors.length) {
   console.error("SMOKE FAILURES:\n" + errors.join("\n"));
   process.exit(1);
 }
-console.log(`clean run — ${OUT}/01-boot.png through 12-review.png`);
+console.log(`clean run at ${VW}x${VH} — ${OUT}/01-boot.png through 12-review.png`);
