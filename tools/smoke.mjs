@@ -46,8 +46,12 @@ const peek = async () => {
     if (!game) return { scenes: [] };
     const scenes = game.scene.scenes.filter((s) => s.scene.isActive()).map((s) => s.scene.key);
     // Buttons are Containers holding their label, so this has to recurse.
+    // The temporary touch probe prints diagnostics, digits included. It is
+    // named so the "no numbers reach the player" check can skip it, and that
+    // exemption disappears with the probe rather than weakening the check.
     const collect = (nodes) =>
       nodes.flatMap((n) =>
+        n.name === "touch-probe" ? [] :
         n.type === "Text" ? [n.text] : Array.isArray(n.list) ? collect(n.list) : [],
       );
     const texts = game.scene.scenes

@@ -63,10 +63,11 @@ export class Boot extends Phaser.Scene {
       return;
     }
 
-    button(this, WIDTH / 2, HEIGHT - 430, "Begin", () => {
+    const begin = button(this, WIDTH / 2, HEIGHT - 430, "Begin", () => {
       probe.countHit();
       this.fresh();
     });
+    probe.target = `${Math.round(begin.x)},${Math.round(begin.y)}`;
   }
 
   private fresh(): void {
