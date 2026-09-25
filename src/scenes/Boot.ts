@@ -67,7 +67,7 @@ export class Boot extends Phaser.Scene {
       probe.countHit();
       this.fresh();
     });
-    probe.target = `${Math.round(begin.x)},${Math.round(begin.y)}`;
+    probe.setTarget(begin.x, begin.y, begin.width, begin.height);
   }
 
   private fresh(): void {
