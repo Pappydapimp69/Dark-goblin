@@ -81,6 +81,7 @@ export class TouchProbe {
         `${renderer}  canvas ${Math.round(rect.width)}x${Math.round(rect.height)} at ${Math.round(rect.x)},${Math.round(rect.y)}  dpr ${window.devicePixelRatio}`,
         `taps —  dom ${this.dom}   phaser ${this.phaser}   button ${this.hit}`,
         `tap landed at ${this.where}    button is at ${this.target}`,
+        `scale ${game.scale.displayScale.x.toFixed(3)},${game.scale.displayScale.y.toFixed(3)}   true ${(game.scale.gameSize.width / rect.width).toFixed(3)},${(game.scale.gameSize.height / rect.height).toFixed(3)}`,
       ].join("\n"),
     );
   }

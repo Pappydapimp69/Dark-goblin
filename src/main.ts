@@ -46,33 +46,40 @@ const game = new Phaser.Game({
  * arrives means the mapping uses a rect measured this instant.
  */
 /**
- * `updateBounds()`, not `refresh()`. Refresh re-runs the whole scale pass and
- * emits RESIZE, which on WebGL drops and rebuilds textures — called on every
- * tap that throws "reading 'glTexture'" mid-frame. Only the cached canvas
- * rectangle needs to be honest, and that is all this touches.
+ * Keeping the pointer mapping honest on a phone.
+ *
+ * Phaser turns a finger into game units with `displayScale`, which is
+ * gameSize / canvasBounds — and BOTH halves are cached. `updateBounds()`
+ * refreshes the rectangle but leaves displayScale stale, which is worth
+ * knowing because it fixes nothing on its own: measured on a real Android,
+ * a tap on a button at x=360 reported x=455, the y being correct and the x
+ * scaled by about 1.27. Only `refresh()` recomputes the scale.
+ *
+ * But refresh() re-runs the whole scale pass and emits RESIZE, and on WebGL
+ * that drops and rebuilds textures — called on every tap it throws on
+ * glTexture mid-frame. So: measure the rectangle on every touch, and pay for
+ * a refresh only when it has actually moved. On a still page that is never;
+ * when the address bar collapses it is once.
  */
-const rebound = (): void => {
-  game.scale.updateBounds();
-};
-
-/** A genuine layout change does want the full pass. */
-const refit = (): void => {
+let lastRect = "";
+const refitIfMoved = (): void => {
+  const r = game.canvas.getBoundingClientRect();
+  const now = `${Math.round(r.x)},${Math.round(r.y)},${Math.round(r.width)},${Math.round(r.height)}`;
+  if (now === lastRect) return;
+  lastRect = now;
   game.scale.refresh();
 };
 
-for (const event of ["resize", "orientationchange"]) {
-  window.addEventListener(event, refit);
+for (const event of ["resize", "orientationchange", "pageshow", "focus"]) {
+  window.addEventListener(event, refitIfMoved);
 }
-for (const event of ["scroll", "pageshow", "focus"]) {
-  window.addEventListener(event, rebound, { passive: true });
-}
-document.addEventListener("visibilitychange", rebound);
+window.addEventListener("scroll", refitIfMoved, { passive: true });
+document.addEventListener("visibilitychange", refitIfMoved);
 
-// The load-bearing one. Phaser queues input events and maps them on the next
-// step through a CACHED copy of the canvas's on-screen rectangle. On a phone
-// that rectangle moves whenever the URL bar collapses, so the cache goes stale
-// and a tap is mapped tens of pixels from where the finger landed. Recomputing
-// it in the capture phase means the mapping uses a rect measured this instant.
-// Invisible on desktop and in emulation: neither has a chrome bar that moves.
-game.canvas.addEventListener("pointerdown", rebound, { capture: true, passive: true });
-game.canvas.addEventListener("touchstart", rebound, { capture: true, passive: true });
+// Capture phase: Phaser queues input and maps it on the next step, so a rect
+// measured as the event arrives is the one the mapping will use.
+game.canvas.addEventListener("pointerdown", refitIfMoved, { capture: true, passive: true });
+game.canvas.addEventListener("touchstart", refitIfMoved, { capture: true, passive: true });
+
+// The address bar can settle after first paint without firing anything useful.
+for (const delay of [100, 400, 1200]) window.setTimeout(refitIfMoved, delay);
