@@ -1,43 +1,58 @@
 # The Dark Goblin
 
+## ▶ Play it: https://pappydapimp69.github.io/Dark-goblin/
+
+Open the link. That is the whole of it — nothing to install, no server to
+start. It is a static page; the game runs entirely in the browser, keeps its
+save in the browser, and talks to nothing.
+
+(Note the capital D. Pages keeps the repository's own casing in the path, and
+the lowercase spelling returns a 404.)
+
+---
+
 A 2D narrative prototype. You live the same day on repeat and never change.
 The town does. Every choice trades helping yourself against helping someone
 else, a goblin appears only when something becomes permanent, and when your
 lifespan runs out he reads back what you did and gives one verdict.
 
 The theme is never stated in the game. No number is ever shown to the player.
+Press the backtick key for a dev overlay showing everything it hides; touch
+cannot reach it.
 
 The build spec is [`CLAUDE.md`](CLAUDE.md) and is the source of truth. Every
 point where it was silent is recorded in [`DECISIONS.md`](DECISIONS.md).
 
-## Running it
+## Working on it
+
+None of this is needed to play — it is for changing the game.
 
 ```sh
 npm install
-npm run dev            # play it
-npm test               # 109 unit tests
+npm run dev            # dev server with hot reload
+npm test               # 122 unit tests
 npm run sim            # 100 games per bot, writes sim-report.csv
+npm run art            # write every SVG asset into art/, plus a contact sheet
 npm run build          # static build into dist/
+npm run deploy         # rebuild and publish it to the gh-pages branch
 npm run package        # dist/ zipped for itch.io
-npm run deploy         # rebuild and push the build to the gh-pages branch
 ```
 
-Live at **https://pappydapimp69.github.io/Dark-goblin/** — note the capital D:
-Pages preserves the repository's own casing in the path, and the lowercase
-form 404s. Served from the `gh-pages` branch (Settings → Pages → Source:
-*Deploy from a branch* → `gh-pages` / `/ (root)`).
+The live site is served from the `gh-pages` branch (Settings → Pages → Source:
+*Deploy from a branch* → `gh-pages` / `/ (root)`). `npm run deploy` rebuilds
+and force-pushes it.
 
 Pages serves the game from a path rather than a domain root, which is what
-`base: './'` is for; `npm run verify:itch` proves that same shape locally
-before anything is pushed.
-
-Two browser checks, both needing a served build:
+`base: './'` is for. Two browser checks prove that shape before anything ships:
 
 ```sh
 npm run build && npx vite preview --port 4173 &
 npm run smoke          # plays the built game in Chromium, fails on any console error
-npm run verify:itch    # unpacks the zip under a nested path and plays it there
+npm run verify:itch    # unpacks the shipping zip under a nested path and plays it there
 ```
+
+`npm run smoke` runs at 1440x900 by default; `SMOKE_VIEWPORT=390x844` plays it
+at phone size.
 
 ## How it is put together
 
