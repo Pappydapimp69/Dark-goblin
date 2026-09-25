@@ -447,3 +447,20 @@ repository URLs case-insensitively. Only the Pages path is strict. Worth
 knowing because the failure is indistinguishable from "Pages is not enabled
 yet" — same 404, and you can watch a successful `pages build and deployment`
 run complete while still looking at one.
+
+**D-63 — Touch gets its own smoke run, forbidden from the mouse.** A
+phone-shaped viewport proves the layout survives a narrow screen and nothing
+more; it says nothing about whether a touch-only player can press anything.
+`SMOKE_TOUCH=1` produces every input through `touchscreen.tap` and cannot reach
+the mouse, because the driver's one input helper is the only place events come
+from. The rule generalises: each input a game claims to support needs one run
+that is forbidden from using any other input's API.
+
+**D-64 — Headless cannot reproduce a mobile chrome bar, and that is a
+diagnosis, not an obstacle.** Five viewports, four pixel ratios, emulated touch
+on phone and tablet, and the bytes GitHub actually serves all passed while the
+game was unplayable on a real Android. No headless browser has an address bar
+that collapses, so the canvas rectangle never moves and the stale-bounds bug
+cannot occur. "Green in every harness, broken on device" should be read as
+naming the category — a mobile viewport condition the harness does not model —
+rather than as a reason to keep widening the harness.

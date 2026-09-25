@@ -27,8 +27,23 @@ const KEY = "darkgoblin:v1:save";
 // overrides it (e.g. "390x844" for a phone).
 const [VW, VH] = (process.env.SMOKE_VIEWPORT ?? "1440x900").split("x").map(Number);
 
+// SMOKE_TOUCH=1 drives the whole run with taps and NEVER touches the mouse.
+// A phone-shaped viewport only proves the layout survives; it proves nothing
+// about whether a touch-only player can press anything. Each input the game
+// claims to support needs one run forbidden from using any other one's API.
+const TOUCH = process.env.SMOKE_TOUCH === "1";
+
 const browser = await chromium.launch({ executablePath: EXE });
-const page = await browser.newPage({ viewport: { width: VW, height: VH }, deviceScaleFactor: 1 });
+const context = await browser.newContext({
+  viewport: { width: VW, height: VH },
+  deviceScaleFactor: TOUCH ? 3 : 1,
+  hasTouch: TOUCH,
+  isMobile: TOUCH,
+});
+const page = await context.newPage();
+
+/** The only place input is produced. Under SMOKE_TOUCH the mouse is unreachable. */
+const poke = (x, y) => (TOUCH ? page.touchscreen.tap(x, y) : page.mouse.click(x, y));
 
 const errors = [];
 page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
@@ -130,7 +145,7 @@ async function press(label) {
     errors.push(`nothing labelled "${label}" to press`);
     return false;
   }
-  await page.mouse.click(spot.x, spot.y);
+  await poke(spot.x, spot.y);
   return true;
 }
 
@@ -228,7 +243,7 @@ if (!spoken.texts.some((t) => t.endsWith("?"))) {
 
 await parkOn("review");
 await until("the review", on("Review"));
-await page.mouse.click(360, 640); // one tap brings the rest of the reading
+await poke(VW / 2, VH / 2); // one tap brings the rest of the reading
 await until("the verdict", (s) => s.texts.some((t) => /lived for/.test(t)));
 await shot("12-review");
 
@@ -244,4 +259,4 @@ if (errors.length) {
   console.error("SMOKE FAILURES:\n" + errors.join("\n"));
   process.exit(1);
 }
-console.log(`clean run at ${VW}x${VH} — ${OUT}/01-boot.png through 12-review.png`);
+console.log(`clean run at ${VW}x${VH} via ${TOUCH ? "TOUCH" : "mouse"} — ${OUT}/01-boot.png through 12-review.png`);

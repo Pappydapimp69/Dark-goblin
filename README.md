@@ -51,8 +51,15 @@ npm run smoke          # plays the built game in Chromium, fails on any console 
 npm run verify:itch    # unpacks the shipping zip under a nested path and plays it there
 ```
 
-`npm run smoke` runs at 1440x900 by default; `SMOKE_VIEWPORT=390x844` plays it
-at phone size.
+`npm run smoke` runs at 1440x900 by default. `SMOKE_VIEWPORT=390x844` plays it
+at phone size, and `SMOKE_TOUCH=1` drives the whole run with taps and never
+touches the mouse — a phone-shaped viewport only proves the layout survives,
+not that a touch-only player can press anything, so each input the game claims
+to support gets one run forbidden from using any other one's API.
+
+Neither can reproduce a mobile browser's collapsing address bar. Headless has
+no chrome that moves, so "green here, broken on a phone" is itself a signal
+that the trigger is a viewport condition headless does not model.
 
 ## How it is put together
 
