@@ -464,3 +464,27 @@ that collapses, so the canvas rectangle never moves and the stale-bounds bug
 cannot occur. "Green in every harness, broken on device" should be read as
 naming the category — a mobile viewport condition the harness does not model —
 rather than as a reason to keep widening the harness.
+
+**D-65 — Hit testing is done in `widgets.ts`, not by Phaser.** Measured on a
+real Android: a tap reported at 354,858 against a button spanning x 60-660,
+y 808-892 — inside by any reading — with Phaser seeing both the press and the
+release, nothing cancelled, and the Container's handler never firing. Phaser's
+Container hit test was refusing a point inside its own hit area, on that device
+only, after the coordinate mapping had already been proven correct.
+
+Every control now registers its rectangle with one scene-level dispatcher that
+does the containment itself: four comparisons, no framework hit test, nothing
+that can disagree with itself across devices. Later controls take priority over
+earlier ones, a release only fires the control its press armed, and hover is
+skipped while a pointer is down so touch never triggers it. Controls still call
+`setInteractive` so the smoke driver can find them by label, but nothing binds
+to their own pointer events — there is exactly one path from a touch to a
+handler.
+
+**D-66 — Three things had to be right before a tap worked, and each hid the
+next.** The viewport units (`100dvh`), then the pointer mapping (`displayScale`
+is cached and only `refresh()` recomputes it, but refresh per-tap drops WebGL
+textures, so refresh only when the rect has moved), then the hit test itself.
+Each fix was necessary and none was sufficient, and after each one the symptom
+was unchanged — "tapping Begin does nothing" — which is worth remembering the
+next time an unchanged symptom is taken as evidence that a fix did nothing.
