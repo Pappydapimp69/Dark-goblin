@@ -622,3 +622,14 @@ Measured after both (100 games per bot): selfish 19.5 loops (was 23.8 — the
 first days go on meetings), generous 7.0 (was 6.7); the child now comes on day
 6 rather than 4.5, in 85% of generous lives and 17% of the human bot's (was
 39%), because Wren has to be known before they can be courted.
+
+**D-77 — A repeated act gets a second line, then a line for the habit, then
+none.** Brain training measured that 33–86% of the reaction lines a life heard
+were the same person's same line again (a help taken daily, or an earning
+choice taken up to 119 times), and Brain 0101#E99 showed no pool keeps up with
+a choice taken that often. So every repeatable choice carries `again`: a line
+for the second time and one that names the act as routine, after which it
+happens without comment. The line is picked in `src/ui/reaction.ts` from the
+ledger the engine already keeps, so scoring and determinism are untouched.
+Measured after: repeats 0% for every bot; a life still hears 44–60 distinct
+lines.

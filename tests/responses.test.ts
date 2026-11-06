@@ -28,6 +28,18 @@ describe("reaction lines", () => {
   });
 
   it("no line shows a number", () => {
-    expect(content.choices.filter((c) => /\d/.test(c.response ?? "")).map((c) => c.id)).toEqual([]);
+    const lines = content.choices.flatMap((c) => [c.response ?? "", ...(c.again ?? [])].map((l) => [c.id, l] as const));
+    expect(lines.filter(([, l]) => /\d/.test(l)).map(([id]) => id)).toEqual([]);
+  });
+
+  // Repeats of the SAME person's same line were 33-86% of what a life heard
+  // (Brain training, same-person-line-repeats). Every repeatable choice now
+  // has a second line and a habit line, and then goes quiet (src/ui/reaction.ts).
+  it("every repeatable choice has a second line and a habit line, each its own", () => {
+    const repeatable = content.choices.filter((c) => !c.meeting && !c.aftermath);
+    expect(repeatable.filter((c) => c.again?.length !== 2).map((c) => c.id)).toEqual([]);
+    const all = content.choices.flatMap((c) => [c.response, ...(c.again ?? [])]).filter((l): l is string => !!l);
+    const masked = all.map(templateOf);
+    expect(masked.length - new Set(masked).size).toBe(0);
   });
 });

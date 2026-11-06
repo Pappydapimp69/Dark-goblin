@@ -141,7 +141,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka turns the sack over twice, like she's checking it's real, and goes back to the oven humming."
+    "response": "Ilka turns the sack over twice, like she's checking it's real, and goes back to the oven humming.",
+    "again": [
+      "Ilka has the oven swept and waiting when the flour comes, and pats the sack like an old dog.",
+      "Ilka just points at the corner where the flour sack lives now, and keeps on kneading."
+    ]
   },
   {
     "id": "baker_help_again",
@@ -191,7 +195,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka laughs, then stops laughing, and looks across the street at it for a long while."
+    "response": "Ilka laughs, then stops laughing, and looks across the street at it for a long while.",
+    "again": [
+      "Ilka says don't, but she's drawn the shop's window on a flour bag and doesn't hide it this time.",
+      "Ilka finishes your sentence for you now, and says 'my shop' without stopping to blush."
+    ]
   },
   {
     "id": "baker_takes_storefront",
@@ -236,7 +244,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka puts her hand flat on the door, the way you'd touch a sleeping animal."
+    "response": "Ilka puts her hand flat on the door, the way you'd touch a sleeping animal.",
+    "again": [
+      "Ilka has her bread in the window by dawn, and the street smells of it from the far end.",
+      "Ilka unlocks the storefront with her own key and doesn't look up at the sign any more."
+    ]
   },
   {
     "id": "baker_takes_wrecked",
@@ -284,7 +296,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka walks the new floor end to end, counting where the ovens will go under her breath."
+    "response": "Ilka walks the new floor end to end, counting where the ovens will go under her breath.",
+    "again": [
+      "Ilka has chalked the oven spots on the floor and walks you round them like a proud host.",
+      "Ilka is too busy at the ovens in the rebuilt shop to show you round. She waves a floury hand."
+    ]
   },
   {
     "id": "baker_shop_for_self",
@@ -319,7 +335,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilka wipes her hands on her apron and keeps wiping them long after they're clean."
+    "response": "Ilka wipes her hands on her apron and keeps wiping them long after they're clean.",
+    "again": [
+      "Ilka walks past your storefront the long way now, her flour sack over her shoulder, nearly empty.",
+      "Ilka no longer looks in your storefront's window. Her eyes go to the road instead."
+    ]
   },
   {
     "id": "baker_wrecked_for_self",
@@ -361,7 +381,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilka had already measured the window for her bread. She doesn't say so."
+    "response": "Ilka had already measured the window for her bread. She doesn't say so.",
+    "again": [
+      "Ilka sees your lamp in the rebuilt shop and turns down a side street before you can wave.",
+      "Ilka bakes in the borrowed oven again and has stopped asking anybody about empty shops."
+    ]
   },
   {
     "id": "baker_sell_her_flour",
@@ -392,7 +416,11 @@
         "kind": "self"
       }
     ],
-    "response": "Ilka counts out the coins slowly. The loaves will be smaller this week."
+    "response": "Ilka counts out the coins slowly. The loaves will be smaller this week.",
+    "again": [
+      "Ilka pays your price again and asks, quietly, whether it might come down a little next week.",
+      "Ilka leaves your price waiting on the sill in a twist of paper. Her loaves have gone thin."
+    ]
   },
   {
     "id": "baker_drive_out",
@@ -424,7 +452,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilka doesn't argue. She just starts looking at the road out of town."
+    "response": "Ilka doesn't argue. She just starts looking at the road out of town.",
+    "again": [
+      "Ilka has tied her bread tins up in a cloth bundle, and asks the carter what he charges.",
+      "Ilka's neighbour's oven stands cold at dawn now. Nobody in the lane remembers whose bread it was."
+    ]
   },
   {
     "id": "shopkeeper_meet_1",
@@ -556,7 +588,11 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo crosses a line out in his little book and doesn't thank you, which is how you know."
+    "response": "Aldo crosses a line out in his little book and doesn't thank you, which is how you know.",
+    "again": [
+      "Aldo has the little book open before you reach the till, the pen already uncapped and waiting.",
+      "Aldo just slides the book across the counter now, and you strike the line yourself while he weighs flour."
+    ]
   },
   {
     "id": "shop_listen_first",
@@ -610,7 +646,11 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo talks about his daughter's kitchen by the sea until the kettle goes cold."
+    "response": "Aldo talks about his daughter's kitchen by the sea until the kettle goes cold.",
+    "again": [
+      "Aldo has a new letter from the coast and reads you the part about the gulls on her roof.",
+      "Aldo puts the kettle on when the bell rings, before he even sees it's you, and starts where he left off."
+    ]
   },
   {
     "id": "shop_listen_again",
@@ -657,7 +697,11 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo looks at the shelves like he's already saying goodbye to them."
+    "response": "Aldo looks at the shelves like he's already saying goodbye to them.",
+    "again": [
+      "Aldo asks what the coast smells like in the morning, as if you'd know. You tell him salt, and he nods.",
+      "Aldo says the sea now the way other men say tomorrow, like it's a plain fact on the calendar."
+    ]
   },
   {
     "id": "shop_help_him_go",
@@ -707,7 +751,11 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo wraps the scales in a shirt so they won't knock on the cart. He leaves the bell on the door."
+    "response": "Aldo wraps the scales in a shirt so they won't knock on the cart. He leaves the bell on the door.",
+    "again": [
+      "Aldo labels every crate in his careful hand and leaves the brass weights out for whoever comes after.",
+      "Aldo doesn't ask any more. He hands you the twine and the crates and hums something from the coast."
+    ]
   },
   {
     "id": "shop_tell_creditor",
@@ -749,7 +797,11 @@
         "kind": "harm"
       }
     ],
-    "response": "The creditor writes something down. Across the street, Aldo is still sweeping his step."
+    "response": "The creditor writes something down. Across the street, Aldo is still sweeping his step.",
+    "again": [
+      "The creditor already knows what you'll say. Aldo has started locking the till at noon.",
+      "Aldo sees you at the creditor's door and waves anyway, the way he waves at everyone, but slower."
+    ]
   },
   {
     "id": "shop_buy_cheap",
@@ -798,7 +850,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Aldo helps you carry it out. He holds the door, because he always holds the door."
+    "response": "Aldo helps you carry it out. He holds the door, because he always holds the door.",
+    "again": [
+      "Aldo names a price before you ask, lower than last time, and doesn't look up from the scales.",
+      "Aldo has your crates stacked by the door before you arrive. The bell rings as you go. He doesn't hear it."
+    ]
   },
   {
     "id": "shop_aftermath",
@@ -953,7 +1009,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ves weighs the hammer in his hand and his whole arm remembers."
+    "response": "Ves weighs the hammer in his hand and his whole arm remembers.",
+    "again": [
+      "Ves oils the hammer's head on his step, slow, and sets it where he can see it from the door.",
+      "Ves doesn't look up when you pass now. The tools hang on his wall like they never left."
+    ]
   },
   {
     "id": "builder_encourage",
@@ -1000,7 +1060,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ves kicks a fallen beam, then crouches and looks at where it used to sit."
+    "response": "Ves kicks a fallen beam, then crouches and looks at where it used to sit.",
+    "again": [
+      "Ves pulls a beam upright and holds it there a while, testing whether it will stand.",
+      "Ves is already in the ruin when you arrive, chalking lines on stone, and nods you toward the far wall."
+    ]
   },
   {
     "id": "builder_first_job",
@@ -1048,7 +1112,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ves is up a ladder before you've finished talking. He's whistling something old."
+    "response": "Ves is up a ladder before you've finished talking. He's whistling something old.",
+    "again": [
+      "Ves asks who the job is for before you finish, and has his measuring rod out already.",
+      "Ves takes the job like it's the ordinary weather of his week, and goes off humming."
+    ]
   },
   {
     "id": "builder_hire_out",
@@ -1083,7 +1151,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ves takes what you hand him and doesn't ask what the job paid."
+    "response": "Ves takes what you hand him and doesn't ask what the job paid.",
+    "again": [
+      "Ves counts the coins in his palm, and his jaw goes tight, but he pockets them.",
+      "Ves holds out his hand for the pay without a word. He's stopped expecting it to be fair."
+    ]
   },
   {
     "id": "builder_drive_off",
@@ -1115,7 +1187,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ves leaves the tools where they are. He doesn't come back for them."
+    "response": "Ves leaves the tools where they are. He doesn't come back for them.",
+    "again": [
+      "Ves sits on his doorstep facing away from the ruin, and the rust is creeping up his saw.",
+      "Ves walks the long way round the ruin now, every morning, as if it was never his to mend."
+    ]
   },
   {
     "id": "mara_meet_1",
@@ -1254,7 +1330,11 @@
         "kind": "help"
       }
     ],
-    "response": "Mara runs the splice through her fingers, and the bucket comes up without a jerk for the first time in weeks."
+    "response": "Mara runs the splice through her fingers, and the bucket comes up without a jerk for the first time in weeks.",
+    "again": [
+      "Mara has saved the frayed end for you, already teased apart, and watches your hands this time.",
+      "Mara hands you the rope without a word as you come up the lane, and goes to fill her pail."
+    ]
   },
   {
     "id": "mara_help_again",
@@ -1299,7 +1379,11 @@
         "kind": "help"
       }
     ],
-    "response": "Mara finds the trough full and stands over it with her shawl still on, smiling at the water."
+    "response": "Mara finds the trough full and stands over it with her shawl still on, smiling at the water.",
+    "again": [
+      "Mara has left a cup of tea on the well's lip for you, gone cold, with a saucer over it.",
+      "Mara sleeps in now. The trough is full by the time her shutters open, and she expects it to be."
+    ]
   },
   {
     "id": "mara_self",
@@ -1330,7 +1414,11 @@
         "kind": "self"
       }
     ],
-    "response": "Mara pays, and knots the old rope back on anyway, to make the new one last."
+    "response": "Mara pays, and knots the old rope back on anyway, to make the new one last.",
+    "again": [
+      "Mara pays for more rope, then tells you, not unkindly, that the chandler downriver is cheaper.",
+      "Mara pays without haggling and without looking at you, the way she pays the tithe."
+    ]
   },
   {
     "id": "mara_harm",
@@ -1362,7 +1450,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Mara lowers the bucket the way she always has. The rope creaks, and she trusts it."
+    "response": "Mara lowers the bucket the way she always has. The rope creaks, and she trusts it.",
+    "again": [
+      "Mara's rope slips a hand's width near the top, and she laughs it off, because you said it would hold.",
+      "Mara has stopped checking the rope. The bucket comes up crooked now, and she hums over the creak."
+    ]
   },
   {
     "id": "otto_meet_1",
@@ -1501,7 +1593,11 @@
         "kind": "help"
       }
     ],
-    "response": "Otto talks the whole round, about nothing, like he's been saving it up for years."
+    "response": "Otto talks the whole round, about nothing, like he's been saving it up for years.",
+    "again": [
+      "Otto saves the good stories for the far wall now, where the wind drops and you can hear him.",
+      "Otto waits at the gate with a lantern lit for you, and the round goes quiet and easy between you."
+    ]
   },
   {
     "id": "otto_help_again",
@@ -1546,7 +1642,11 @@
         "kind": "help"
       }
     ],
-    "response": "Otto hands you the lantern at the cold corner without asking, and blows on his fingers."
+    "response": "Otto hands you the lantern at the cold corner without asking, and blows on his fingers.",
+    "again": [
+      "Otto stamps his feet at the sheltered end and calls out to you across the dark, just to hear you answer.",
+      "Otto doesn't pass the light over any more; it's simply yours at the far turn of the wall, and he whistles on."
+    ]
   },
   {
     "id": "otto_self",
@@ -1577,7 +1677,11 @@
         "kind": "self"
       }
     ],
-    "response": "Otto turns his lantern down a little so it won't wake you, and walks on alone."
+    "response": "Otto turns his lantern down a little so it won't wake you, and walks on alone.",
+    "again": [
+      "Otto drapes his coat over you before he sets off, and walks the frosty stretch without it.",
+      "Otto steps round your sleeping shape the way he steps round the loose stone, without breaking stride."
+    ]
   },
   {
     "id": "otto_harm",
@@ -1609,7 +1713,11 @@
         "kind": "harm"
       }
     ],
-    "response": "They take his lantern by morning. The wall is darker than you thought it would be."
+    "response": "They take his lantern by morning. The wall is darker than you thought it would be.",
+    "again": [
+      "Otto stands at the ruins gate in his plain coat at dusk, out of habit, with nothing to hold.",
+      "Otto has stopped coming down the hill at dusk. Someone says he asked who it was that told them."
+    ]
   },
   {
     "id": "lise_meet_1",
@@ -1748,7 +1856,11 @@
         "kind": "help"
       }
     ],
-    "response": "Lise holds a needle up to the window and laughs, because she can see the eye again."
+    "response": "Lise holds a needle up to the window and laughs, because she can see the eye again.",
+    "again": [
+      "Lise tucks the threaded needles in a pincushion by the lamp, a row of them ready, and pats it.",
+      "Lise leaves the needles in a little dish for you by the door, unthreaded, and goes on talking."
+    ]
   },
   {
     "id": "lise_help_again",
@@ -1793,7 +1905,11 @@
         "kind": "help"
       }
     ],
-    "response": "Lise sews faster with you there. She hums the same three notes over and over."
+    "response": "Lise sews faster with you there. She hums the same three notes over and over.",
+    "again": [
+      "Lise tells you about the bride whose dress she's making, and lets the hem drop while she talks.",
+      "Lise keeps a stool by her table for you now, and pushes the spools over without asking."
+    ]
   },
   {
     "id": "lise_self",
@@ -1824,7 +1940,11 @@
         "kind": "self"
       }
     ],
-    "response": "Lise folds the coat with care, the way she'd fold it for anyone, and says it suits you."
+    "response": "Lise folds the coat with care, the way she'd fold it for anyone, and says it suits you.",
+    "again": [
+      "Lise names the coat's price and looks at the hem, not at you, while you count it out.",
+      "Lise has the coat wrapped before you're in the door. Her own sleeve is darned at the elbow."
+    ]
   },
   {
     "id": "lise_harm",
@@ -1856,7 +1976,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Lise sits in the window with a dress half done, and nobody comes to collect it."
+    "response": "Lise sits in the window with a dress half done, and nobody comes to collect it.",
+    "again": [
+      "Lise's sign comes down from the window, and she sews by the back door where the light is bad.",
+      "Lise mends her own aprons now. The bell over her door has stopped ringing at all."
+    ]
   },
   {
     "id": "per_meet_1",
@@ -1995,7 +2119,11 @@
         "kind": "help"
       }
     ],
-    "response": "Per runs his hand along the seam and nods to the boat, not to you."
+    "response": "Per runs his hand along the seam and nods to the boat, not to you.",
+    "again": [
+      "Per heats the tar pot before you arrive and hands you the brush by the handle, like crew.",
+      "Per shifts along the hull to make space, and you tar side by side in the grey light without talking."
+    ]
   },
   {
     "id": "per_help_again",
@@ -2040,7 +2168,11 @@
         "kind": "help"
       }
     ],
-    "response": "Per bails with his back to the sea and talks about his father, who also bailed."
+    "response": "Per bails with his back to the sea and talks about his father, who also bailed.",
+    "again": [
+      "Per keeps a spare bailer under the thwart now, and tosses it to you without looking.",
+      "Per hums as you bail, an old tune of his father's, and doesn't stop to explain it any more."
+    ]
   },
   {
     "id": "per_self",
@@ -2071,7 +2203,11 @@
         "kind": "self"
       }
     ],
-    "response": "Per writes your name on the board by the stall. The chalk will still be there next week."
+    "response": "Per writes your name on the board by the stall. The chalk will still be there next week.",
+    "again": [
+      "Per chalks your name again under the old mark and rubs his thumb along the board, thinking.",
+      "Per wraps your fish before you ask and doesn't bother with the board now. There's no room left on it."
+    ]
   },
   {
     "id": "per_harm",
@@ -2103,7 +2239,11 @@
         "kind": "harm"
       }
     ],
-    "response": "In the morning Per stands on the jetty with the cut end of the line in his hand."
+    "response": "In the morning Per stands on the jetty with the cut end of the line in his hand.",
+    "again": [
+      "Per has knotted the cut line back together and sleeps in the boat now, a lantern by his feet.",
+      "Per's boat lies on the shingle, hauled up for good. He sells from a bucket at the jetty's end."
+    ]
   },
   {
     "id": "greta_meet_1",
@@ -2242,7 +2382,11 @@
         "kind": "help"
       }
     ],
-    "response": "Greta brings you tea in her husband's cup and doesn't explain why that one."
+    "response": "Greta brings you tea in her husband's cup and doesn't explain why that one.",
+    "again": [
+      "Greta has the kettle on before you've swung the axe, and the good cup is already set by the block.",
+      "Greta hums at her window while you split, not watching any more, the way she must have hummed for him."
+    ]
   },
   {
     "id": "greta_help_again",
@@ -2287,7 +2431,11 @@
         "kind": "help"
       }
     ],
-    "response": "Greta counts the cords by the wall and does the sum for winter. It comes out right."
+    "response": "Greta counts the cords by the wall and does the sum for winter. It comes out right.",
+    "again": [
+      "Greta sweeps the bark from the wall's foot and tells you which logs her husband would have kept back.",
+      "Greta has stopped reckoning the winter. The wall is high, and she leaves her gate open for you."
+    ]
   },
   {
     "id": "greta_self",
@@ -2318,7 +2466,11 @@
         "kind": "self"
       }
     ],
-    "response": "Greta watches you carry the tools out. She'd kept them oiled."
+    "response": "Greta watches you carry the tools out. She'd kept them oiled.",
+    "again": [
+      "Greta has left the last of the tools by the gate, wrapped in sacking, so you needn't come inside.",
+      "Greta waters the rose and doesn't turn when the gate creaks. There's nothing left in the shed to take."
+    ]
   },
   {
     "id": "greta_harm",
@@ -2350,7 +2502,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Greta starts wrapping her plates in newspaper, one at a time, very carefully."
+    "response": "Greta starts wrapping her plates in newspaper, one at a time, very carefully.",
+    "again": [
+      "Greta asks at the well who's taking the house, and nobody knows, and she goes home and keeps packing.",
+      "Greta knows now there was never anyone. She unpacks a few plates, and leaves the rest in the paper."
+    ]
   },
   {
     "id": "hansi_meet_1",
@@ -2489,7 +2645,11 @@
         "kind": "help"
       }
     ],
-    "response": "Hansi calls until his voice cracks, then lets you call for a while."
+    "response": "Hansi calls until his voice cracks, then lets you call for a while.",
+    "again": [
+      "Hansi knows the ditches by heart now and runs ahead to the deep ones, calling as he goes.",
+      "Hansi meets you at the ditch with a stick for each of you, and the calling starts like a song."
+    ]
   },
   {
     "id": "hansi_help_again",
@@ -2534,7 +2694,11 @@
         "kind": "help"
       }
     ],
-    "response": "Out past the last ditch, Hansi stops and listens hard, and you both hear something."
+    "response": "Out past the last ditch, Hansi stops and listens hard, and you both hear something.",
+    "again": [
+      "Hansi finds a pawprint in the mud out past the mill and kneels by it like it might move.",
+      "Hansi doesn't ask anymore. He's waiting at the far ditch, the dog's lead looped round his wrist."
+    ]
   },
   {
     "id": "hansi_self",
@@ -2565,7 +2729,11 @@
         "kind": "self"
       }
     ],
-    "response": "Hansi pays you everything in his pocket and runs off the wrong way, sure of it."
+    "response": "Hansi pays you everything in his pocket and runs off the wrong way, sure of it.",
+    "again": [
+      "Hansi pays again, slower this time, and asks why the dog wasn't where you said.",
+      "Hansi hands you his coins before you've made anything up. He doesn't run off now; he just walks."
+    ]
   },
   {
     "id": "hansi_harm",
@@ -2597,7 +2765,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Hansi stops calling. Somewhere out past the ditches, the dog is still waiting."
+    "response": "Hansi stops calling. Somewhere out past the ditches, the dog is still waiting.",
+    "again": [
+      "Hansi has dug a little grave by the fence and put the dog's lead in it, and he sits there.",
+      "Hansi doesn't skim stones anymore. He keeps to the yard, and the puddles stay still."
+    ]
   },
   {
     "id": "tobias_meet_1",
@@ -2736,7 +2908,11 @@
         "kind": "help"
       }
     ],
-    "response": "Tobias writes the date on the board in big letters, just because he can."
+    "response": "Tobias writes the date on the board in big letters, just because he can.",
+    "again": [
+      "Tobias breaks the new chalk so each child gets a piece, and keeps the stub for himself.",
+      "Tobias holds out his hand for the chalk as you pass the schoolroom door, mid-sentence, still teaching."
+    ]
   },
   {
     "id": "tobias_help_again",
@@ -2781,7 +2957,11 @@
         "kind": "help"
       }
     ],
-    "response": "Tobias catches your eye over the slow ones' heads and mouths, thank you."
+    "response": "Tobias catches your eye over the slow ones' heads and mouths, thank you.",
+    "again": [
+      "Tobias has moved a stool to the back for you, and the slow ones shuffle up to make room.",
+      "Tobias doesn't look round any more when you take the back stool. The slow ones have their slates out."
+    ]
   },
   {
     "id": "tobias_self",
@@ -2812,7 +2992,11 @@
         "kind": "self"
       }
     ],
-    "response": "Tobias reads the next lesson to them from memory. The shelf behind him is bare."
+    "response": "Tobias reads the next lesson to them from memory. The shelf behind him is bare.",
+    "again": [
+      "Tobias copies a lesson out by hand at night, by candle, and the children pass the sheet around.",
+      "Tobias teaches from memory every morning now, and has stopped glancing at the shelf at all."
+    ]
   },
   {
     "id": "tobias_harm",
@@ -2844,7 +3028,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Fewer children come on the second morning. Tobias sets out the same number of slates."
+    "response": "Fewer children come on the second morning. Tobias sets out the same number of slates.",
+    "again": [
+      "Tobias hears the word at the market, and goes home with his shopping bag still empty.",
+      "Tobias teaches to empty benches and the loyal faces that remain, and still sets out every slate."
+    ]
   },
   {
     "id": "anneke_meet_1",
@@ -2983,7 +3171,11 @@
         "kind": "help"
       }
     ],
-    "response": "Anneke tells you about every baby she's lost the road for, and the one that came early in a ditch."
+    "response": "Anneke tells you about every baby she's lost the road for, and the one that came early in a ditch.",
+    "again": [
+      "Anneke points out the stile she climbed in her nightgown for a breech birth by the mill, years back.",
+      "Anneke hardly talks on the walk now. She doesn't need to; she just walks closer, and the road is shorter."
+    ]
   },
   {
     "id": "anneke_help_again",
@@ -3028,7 +3220,11 @@
         "kind": "help"
       }
     ],
-    "response": "Anneke falls asleep walking, nearly, with her hand on your sleeve."
+    "response": "Anneke falls asleep walking, nearly, with her hand on your sleeve.",
+    "again": [
+      "Anneke lets you carry her bag too, and hums under her breath where the road dips toward the river.",
+      "Anneke comes out of the farmhouse already looking for your light, and takes your arm without a word."
+    ]
   },
   {
     "id": "anneke_self",
@@ -3059,7 +3255,11 @@
         "kind": "self"
       }
     ],
-    "response": "Anneke pays for the oil out of the eggs a farmer gave her. She doesn't argue."
+    "response": "Anneke pays for the oil out of the eggs a farmer gave her. She doesn't argue.",
+    "again": [
+      "Anneke has the oil money ready in a twist of cloth, counted out at the farm before she left.",
+      "Anneke leaves the coins on the step for you now and goes out with the lantern, saying nothing about it."
+    ]
   },
   {
     "id": "anneke_harm",
@@ -3091,7 +3291,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Anneke goes out without the lantern. She knows the road. She says she knows the road."
+    "response": "Anneke goes out without the lantern. She knows the road. She says she knows the road.",
+    "again": [
+      "Anneke comes in late with mud to her knees and a bruise on her wrist, and says the road was fine.",
+      "Anneke has stopped looking for you at the farm gate. She sets off into the dark like it was always so."
+    ]
   },
   {
     "id": "klaus_meet_1",
@@ -3230,7 +3434,11 @@
         "kind": "help"
       }
     ],
-    "response": "Klaus taps the barrels as you roll them off, listening, proud of the sound."
+    "response": "Klaus taps the barrels as you roll them off, listening, proud of the sound.",
+    "again": [
+      "Klaus has the barrels waiting by the gate this time, rolled out and wiped down for you.",
+      "Klaus doesn't stop his planing. He just tips his chin at the barrels by the gate, yours as always."
+    ]
   },
   {
     "id": "klaus_help_again",
@@ -3275,7 +3483,11 @@
         "kind": "help"
       }
     ],
-    "response": "Klaus knows you don't need it. He picks you a good one anyway."
+    "response": "Klaus knows you don't need it. He picks you a good one anyway.",
+    "again": [
+      "Klaus asks what you're doing with them all. You don't have an answer, and he grins anyway.",
+      "Klaus sets your barrel aside at dawn without being asked, and tells the brewer it's spoken for."
+    ]
   },
   {
     "id": "klaus_self",
@@ -3306,7 +3518,11 @@
         "kind": "self"
       }
     ],
-    "response": "Klaus takes it. He'll go without hoops this week to make it come out."
+    "response": "Klaus takes it. He'll go without hoops this week to make it come out.",
+    "again": [
+      "Klaus takes your price and doesn't grin. He looks at the stacks like they've let him down.",
+      "Klaus names your low price before you can, flatly, and wipes the mallet on his trousers."
+    ]
   },
   {
     "id": "klaus_harm",
@@ -3338,7 +3554,11 @@
         "kind": "harm"
       }
     ],
-    "response": "The brewer's cart goes past Klaus's yard without stopping."
+    "response": "The brewer's cart goes past Klaus's yard without stopping.",
+    "again": [
+      "Klaus burns a stave in his stove for warmth. The brewer's ordering from the next town now.",
+      "Klaus's yard is quiet at noon. He sits among the stacks, tapping a barrel nobody will buy."
+    ]
   },
   {
     "id": "sofie_meet_1",
@@ -3477,7 +3697,11 @@
         "kind": "help"
       }
     ],
-    "response": "Sofie rubs the salve in and keeps her hands open on her lap, as if they were new."
+    "response": "Sofie rubs the salve in and keeps her hands open on her lap, as if they were new.",
+    "again": [
+      "Sofie has kept the tin on the windowsill, and holds out her hands for you to see they've healed.",
+      "Sofie reaches for the salve on the shelf before her hands are even dry. It's simply where it lives."
+    ]
   },
   {
     "id": "sofie_help_again",
@@ -3522,7 +3746,11 @@
         "kind": "help"
       }
     ],
-    "response": "Sofie sits down on an upturned tub for the first time all day and just breathes."
+    "response": "Sofie sits down on an upturned tub for the first time all day and just breathes.",
+    "again": [
+      "Sofie oils the mangle before you come, so it hardly squeals, and puts the kettle on to boil.",
+      "Sofie has the tub turned up by the mangle, and sits on it the moment you take the handle."
+    ]
   },
   {
     "id": "sofie_self",
@@ -3553,7 +3781,11 @@
         "kind": "self"
       }
     ],
-    "response": "Sofie counts it twice to be sure, and then says it's fine, and folds your shirts."
+    "response": "Sofie counts it twice to be sure, and then says it's fine, and folds your shirts.",
+    "again": [
+      "Sofie tips the coins into her apron and says nothing. Your shirts come back folded, but not pressed.",
+      "Sofie has your bundle tied and waiting by the door. She has stopped expecting a fair price from you."
+    ]
   },
   {
     "id": "sofie_harm",
@@ -3585,7 +3817,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Sofie washes the same sheet three times. It came out white the first time."
+    "response": "Sofie washes the same sheet three times. It came out white the first time.",
+    "again": [
+      "Sofie loses the inn's sheets to the laundress across the river, and blames the lye.",
+      "Sofie scrubs every sheet until it thins, and holds each up to the window, and never believes it."
+    ]
   },
   {
     "id": "emil_meet_1",
@@ -3724,7 +3960,11 @@
         "kind": "help"
       }
     ],
-    "response": "Emil finds his father's handwriting in the margins and goes quiet over it."
+    "response": "Emil finds his father's handwriting in the margins and goes quiet over it.",
+    "again": [
+      "Emil reads a page aloud in his father's voice, and laughs at himself, and reads the next page plainly.",
+      "Emil has the ledgers open and the lamp trimmed when you come, and pushes the stool out with his foot."
+    ]
   },
   {
     "id": "emil_help_again",
@@ -3769,7 +4009,11 @@
         "kind": "help"
       }
     ],
-    "response": "Emil looks at your name next to his father's and doesn't know where to put his hands."
+    "response": "Emil looks at your name next to his father's and doesn't know where to put his hands.",
+    "again": [
+      "Emil brings you the creditors' letters with your name beside his, and reads it aloud like it's a wonder.",
+      "Emil signs for you at the foot of every page now, without asking, the way a partner would."
+    ]
   },
   {
     "id": "emil_self",
@@ -3800,7 +4044,11 @@
         "kind": "self"
       }
     ],
-    "response": "Emil helps you lift the anvil onto the cart. He knew it would go one day. Not today."
+    "response": "Emil helps you lift the anvil onto the cart. He knew it would go one day. Not today.",
+    "again": [
+      "Emil has the tongs and hammers set out on the bench for you, clean, the price chalked beside them.",
+      "Emil loads the cart before you've finished counting coins. The forge behind him is mostly bare walls."
+    ]
   },
   {
     "id": "emil_harm",
@@ -3832,7 +4080,11 @@
         "kind": "harm"
       }
     ],
-    "response": "They come at first light. Emil stands in the empty forge with the fire still in."
+    "response": "They come at first light. Emil stands in the empty forge with the fire still in.",
+    "again": [
+      "Emil goes from door to door asking who told them about the tools. He doesn't think to ask you.",
+      "Emil knows. He nods to you in the lane like a stranger would, and the forge stays dark behind him."
+    ]
   },
   {
     "id": "rike_meet_1",
@@ -3971,7 +4223,11 @@
         "kind": "help"
       }
     ],
-    "response": "Rike leans close to the hive in the sun and listens. The hum is louder."
+    "response": "Rike leans close to the hive in the sun and listens. The hum is louder.",
+    "again": [
+      "Rike walks the hives into the light ahead of you, and a bee rides along on her hat brim.",
+      "Rike has the hives on their new stands before you come. She just points where the sun's moved to."
+    ]
   },
   {
     "id": "rike_help_again",
@@ -4016,7 +4272,11 @@
         "kind": "help"
       }
     ],
-    "response": "Rike lets the bees walk over her bare wrist and doesn't brush them off."
+    "response": "Rike lets the bees walk over her bare wrist and doesn't brush them off.",
+    "again": [
+      "Rike hands you a frame heavy with comb and watches your hands to see if they'll shake.",
+      "Rike passes you the frames without looking, like you've always been part of the hive's day."
+    ]
   },
   {
     "id": "rike_self",
@@ -4047,7 +4307,11 @@
         "kind": "self"
       }
     ],
-    "response": "Rike watches you take it and says nothing. There aren't many jars left on the shelf."
+    "response": "Rike watches you take it and says nothing. There aren't many jars left on the shelf.",
+    "again": [
+      "Rike moves the jars to the back of the shelf. You reach past them anyway.",
+      "Rike leaves a jar on the step for you before you ask. The shelf behind her is nearly bare."
+    ]
   },
   {
     "id": "rike_harm",
@@ -4079,7 +4343,11 @@
         "kind": "harm"
       }
     ],
-    "response": "In the morning Rike walks the row of hives, lifting each lid, and stops speaking."
+    "response": "In the morning Rike walks the row of hives, lifting each lid, and stops speaking.",
+    "again": [
+      "Rike sits by the empty hive with the lid in her lap, and the bees that are left fly low.",
+      "Rike doesn't lift the lids anymore. The row of hives stands silent in the ruin's shadow."
+    ]
   },
   {
     "id": "jonas_meet_1",
@@ -4218,7 +4486,11 @@
         "kind": "help"
       }
     ],
-    "response": "Jonas pushes off into the deep water and lets out a long breath like he's been holding it since spring."
+    "response": "Jonas pushes off into the deep water and lets out a long breath like he's been holding it since spring.",
+    "again": [
+      "Jonas has a rope tied to the bow for you this time and calls the pulls, heave and heave.",
+      "Jonas throws you the bow rope as soon as he sees you on the bank. The bar is an old friend by now."
+    ]
   },
   {
     "id": "jonas_help_again",
@@ -4263,7 +4535,11 @@
         "kind": "help"
       }
     ],
-    "response": "Jonas sings on the far side of the rope, badly, and doesn't care that you hear."
+    "response": "Jonas sings on the far side of the rope, badly, and doesn't care that you hear.",
+    "again": [
+      "Jonas has made up a verse about you for his dusk song, and it doesn't rhyme, and he's pleased.",
+      "Jonas hands you the rope at dusk and starts singing before you've even got a grip."
+    ]
   },
   {
     "id": "jonas_self",
@@ -4294,7 +4570,11 @@
         "kind": "self"
       }
     ],
-    "response": "Jonas ties up behind you without a word, and rows back across for nobody."
+    "response": "Jonas ties up behind you without a word, and rows back across for nobody.",
+    "again": [
+      "Jonas glances at your empty hands this time, then at the river, and rows you across anyway.",
+      "Jonas doesn't hold out his palm now when you step aboard. He simply pushes off."
+    ]
   },
   {
     "id": "jonas_harm",
@@ -4326,7 +4606,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Jonas waits at the landing all afternoon with his hand on the bell."
+    "response": "Jonas waits at the landing all afternoon with his hand on the bell.",
+    "again": [
+      "Jonas paints RUNNING on a board and nails it to the landing post. Nobody stops to read it.",
+      "Jonas sits at the landing mending nets he doesn't need. The bell has gone green from disuse."
+    ]
   },
   {
     "id": "hedda_meet_1",
@@ -4465,7 +4749,11 @@
         "kind": "help"
       }
     ],
-    "response": "Hedda opens a window in every room, as if someone were coming."
+    "response": "Hedda opens a window in every room, as if someone were coming.",
+    "again": [
+      "Hedda shakes out the rugs in the yard with you and calls each room by the carter who used to sleep there.",
+      "Hedda leaves the broom propped by the stair for you now, and the rooms stay aired whether anyone comes."
+    ]
   },
   {
     "id": "hedda_help_again",
@@ -4510,7 +4798,11 @@
         "kind": "help"
       }
     ],
-    "response": "Hedda sets two cups on the table, and then, after a moment, a third for no one."
+    "response": "Hedda sets two cups on the table, and then, after a moment, a third for no one.",
+    "again": [
+      "Hedda brings you soup in the empty room and sits with you, talking to the door as much as to you.",
+      "Hedda doesn't lay the extra place any more. She sits across from you and lets the quiet be company."
+    ]
   },
   {
     "id": "hedda_self",
@@ -4541,7 +4833,11 @@
         "kind": "self"
       }
     ],
-    "response": "Hedda chalks it up behind the bar under the other names, where the chalk is thickest."
+    "response": "Hedda chalks it up behind the bar under the other names, where the chalk is thickest.",
+    "again": [
+      "Hedda rubs out a name above yours to make room on the board, and pours your soup a little thinner.",
+      "Hedda has stopped writing it down. She points you upstairs and counts the turnips for tomorrow's pot."
+    ]
   },
   {
     "id": "hedda_harm",
@@ -4573,7 +4869,11 @@
         "kind": "harm"
       }
     ],
-    "response": "The carters' wagons go through without stopping. Hedda keeps the fire lit anyway."
+    "response": "The carters' wagons go through without stopping. Hedda keeps the fire lit anyway.",
+    "again": [
+      "Hedda boils every sheet in the inn and hangs them across the yard where the road can see.",
+      "Hedda has heard who said it. She serves you at the bar all the same, and doesn't sit down with you."
+    ]
   },
   {
     "id": "viktor_meet_1",
@@ -4712,7 +5012,11 @@
         "kind": "help"
       }
     ],
-    "response": "Viktor spins the finished wheel on its pin and watches it till it stops, true."
+    "response": "Viktor spins the finished wheel on its pin and watches it till it stops, true.",
+    "again": [
+      "Viktor lights the lamp before dark for you this time, and the wheel comes together faster.",
+      "Viktor has bread and the lamp set out by the late hour, and starts talking spokes as you sit."
+    ]
   },
   {
     "id": "viktor_help_again",
@@ -4757,7 +5061,11 @@
         "kind": "help"
       }
     ],
-    "response": "The tyre hisses on and Viktor laughs out loud, once, at the steam."
+    "response": "The tyre hisses on and Viktor laughs out loud, once, at the steam.",
+    "again": [
+      "Viktor counts under his breath before the tyre drops. Your hands don't slip.",
+      "Viktor doesn't call for you now. He just holds the hot tyre out, sure your hands will be there."
+    ]
   },
   {
     "id": "viktor_self",
@@ -4788,7 +5096,11 @@
         "kind": "self"
       }
     ],
-    "response": "Viktor looks at the empty spot on the wall and starts the same wheel again from the hub."
+    "response": "Viktor looks at the empty spot on the wall and starts the same wheel again from the hub.",
+    "again": [
+      "Viktor sees you eyeing the wall and turns the new wheel face down so the work won't show.",
+      "Viktor stopped hanging finished wheels on the wall. He keeps them behind the door, out of your sight."
+    ]
   },
   {
     "id": "viktor_harm",
@@ -4820,7 +5132,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Viktor finishes the wheel anyway and leans it by the door for someone who isn't coming."
+    "response": "Viktor finishes the wheel anyway and leans it by the door for someone who isn't coming.",
+    "again": [
+      "Viktor's customer passes the shop on foot, and Viktor calls after him, and he doesn't turn.",
+      "Viktor's wheels line the door now, gathering dust, promised to people who stopped coming."
+    ]
   },
   {
     "id": "nell_meet_1",
@@ -4959,7 +5275,11 @@
         "kind": "help"
       }
     ],
-    "response": "Nell's first customer in a week comes in behind you, nervous, and buys mint."
+    "response": "Nell's first customer in a week comes in behind you, nervous, and buys mint.",
+    "again": [
+      "Nell keeps the door open while you lean on its frame, and a woman with a cough slips in past you.",
+      "Nell props the door with a stone each morning now, whether or not you're standing in it."
+    ]
   },
   {
     "id": "nell_help_again",
@@ -5004,7 +5324,11 @@
         "kind": "help"
       }
     ],
-    "response": "Nell wraps it in paper and ties it with string, like it was something fine."
+    "response": "Nell wraps it in paper and ties it with string, like it was something fine.",
+    "again": [
+      "Nell calls your order across the shop loud enough for the queue to hear, and winks.",
+      "Nell has your packet wrapped before you're through the door. The others are too busy to watch."
+    ]
   },
   {
     "id": "nell_self",
@@ -5035,7 +5359,11 @@
         "kind": "self"
       }
     ],
-    "response": "Nell listens to your talk and nods, and lets you go with the jar."
+    "response": "Nell listens to your talk and nods, and lets you go with the jar.",
+    "again": [
+      "Nell hears your talk again and smiles thinner, and gives you the smaller jar.",
+      "Nell hands over the jar before you've opened your mouth, so the talk won't take long."
+    ]
   },
   {
     "id": "nell_harm",
@@ -5067,7 +5395,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Nell takes her bunches of drying sage down from the window and closes the shutter."
+    "response": "Nell takes her bunches of drying sage down from the window and closes the shutter.",
+    "again": [
+      "Nell finds a word chalked on her shutter and scrubs it off before dawn, so nobody sees.",
+      "Nell sells from the back step after dark now, to whoever still knocks."
+    ]
   },
   {
     "id": "bram_meet_1",
@@ -5206,7 +5538,11 @@
         "kind": "help"
       }
     ],
-    "response": "Bram sniffs the hemp, then sniffs it again, and says it might do yet."
+    "response": "Bram sniffs the hemp, then sniffs it again, and says it might do yet.",
+    "again": [
+      "Bram finds a dry patch at the heart of the bale and holds it up to you like a found coin.",
+      "Bram has the shed doors propped and the hemp laid out in rows before you arrive, and just nods you in."
+    ]
   },
   {
     "id": "bram_help_again",
@@ -5251,7 +5587,11 @@
         "kind": "help"
       }
     ],
-    "response": "Bram starts twisting a strand while you turn, just to feel the hemp take."
+    "response": "Bram starts twisting a strand while you turn, just to feel the hemp take.",
+    "again": [
+      "Bram teaches you to twist a strand backwards, laughing when yours kinks, and twists it straight again.",
+      "Bram turns the hemp beside you without talking, the ropewalk smelling sweet again, as if it always had."
+    ]
   },
   {
     "id": "bram_self",
@@ -5282,7 +5622,11 @@
         "kind": "self"
       }
     ],
-    "response": "Bram coils it for you neatly. It's the best rope he has, and he knows you know."
+    "response": "Bram coils it for you neatly. It's the best rope he has, and he knows you know.",
+    "again": [
+      "Bram coils the good rope and names the bad price before you do, and looks off down the ropewalk.",
+      "Bram leaves your coil hanging by the door with the price already settled. He's out back, twisting."
+    ]
   },
   {
     "id": "bram_harm",
@@ -5314,7 +5658,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Bram twists rope all afternoon that no one will buy, because his hands don't know how to stop."
+    "response": "Bram twists rope all afternoon that no one will buy, because his hands don't know how to stop.",
+    "again": [
+      "Bram carries his rope down to the boats himself and the boatmen won't meet his eye on the quay.",
+      "Bram hears it was you. He keeps twisting, walking backwards, away from where you stand."
+    ]
   },
   {
     "id": "ilse_meet_1",
@@ -5453,7 +5801,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilse sleeps in the hut till dawn, properly, for the first time since lambing."
+    "response": "Ilse sleeps in the hut till dawn, properly, for the first time since lambing.",
+    "again": [
+      "Ilse lends you her heavy cloak for the watch and is asleep before you reach the high field.",
+      "Ilse hands you the crook at dusk without a word and goes in, yawning, as if it was always so."
+    ]
   },
   {
     "id": "ilse_help_again",
@@ -5498,7 +5850,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ilse brings you a cup of milk still warm from the goat and sits with you at the end."
+    "response": "Ilse brings you a cup of milk still warm from the goat and sits with you at the end.",
+    "again": [
+      "Ilse comes up before dawn and tells you which goat snores, and the pair of you listen for it.",
+      "Ilse doesn't thank you for the watch now. She brings the milk, and you drink it, and dawn comes."
+    ]
   },
   {
     "id": "ilse_self",
@@ -5529,7 +5885,11 @@
         "kind": "self"
       }
     ],
-    "response": "Ilse counts again in the evening and gets one less, and counts again."
+    "response": "Ilse counts again in the evening and gets one less, and counts again.",
+    "again": [
+      "Ilse calls the names down the slope, and stops at the gap where a name used to be.",
+      "Ilse has stopped counting the herd at evening. She calls them in and doesn't look back."
+    ]
   },
   {
     "id": "ilse_harm",
@@ -5561,7 +5921,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilse spends the whole day on the high field calling them in, one name at a time."
+    "response": "Ilse spends the whole day on the high field calling them in, one name at a time.",
+    "again": [
+      "Ilse ties the gate shut with her own scarf, and the fox has been in the lower field.",
+      "Ilse sleeps by the gate now, every night, and the herd comes down thinner each morning."
+    ]
   },
   {
     "id": "ansel_meet_1",
@@ -5700,7 +6064,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ansel sets the stone you carried and pats it, the way you'd pat a horse."
+    "response": "Ansel sets the stone you carried and pats it, the way you'd pat a horse.",
+    "again": [
+      "Ansel points to the stone he wants before you've set down your bag, and steadies it as you lift.",
+      "Ansel leaves the heavy stones for you at the end of the row and gets on with the mortar."
+    ]
   },
   {
     "id": "ansel_help_again",
@@ -5745,7 +6113,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ansel says nothing either. The wall goes up a course before dark."
+    "response": "Ansel says nothing either. The wall goes up a course before dark.",
+    "again": [
+      "Ansel hums under his breath now while you carry. It's the nearest he comes to talk.",
+      "Ansel has the trowel going before you arrive. Your silence and his are part of the wall now."
+    ]
   },
   {
     "id": "ansel_self",
@@ -5776,7 +6148,11 @@
         "kind": "self"
       }
     ],
-    "response": "Ansel watches you lay the first stone from across the road. He doesn't correct you."
+    "response": "Ansel watches you lay the first stone from across the road. He doesn't correct you.",
+    "again": [
+      "Ansel crosses the road to look at your wall, puts a stone straight with his thumb, and goes.",
+      "Ansel doesn't come to watch you work any more. The foreman asks for you by name."
+    ]
   },
   {
     "id": "ansel_harm",
@@ -5808,7 +6184,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ansel walks the length of his old walls with his hand on them, checking."
+    "response": "Ansel walks the length of his old walls with his hand on them, checking.",
+    "again": [
+      "Ansel is up a ladder at dawn re-pointing walls that never needed it, and his back is worse for it.",
+      "Ansel can't pass his walls now without stopping to press them, and the town has started to stare."
+    ]
   },
   {
     "id": "dorte_meet_1",
@@ -5947,7 +6327,11 @@
         "kind": "help"
       }
     ],
-    "response": "Dorte dips the first candle and holds it up to the light, pleased with the colour."
+    "response": "Dorte dips the first candle and holds it up to the light, pleased with the colour.",
+    "again": [
+      "Dorte melts your tallow with a pinch of beeswax and the whole shop smells like a church at Easter.",
+      "Dorte keeps a crock by the door for your tallow now and fills it without looking up from her dipping."
+    ]
   },
   {
     "id": "dorte_help_again",
@@ -5992,7 +6376,11 @@
         "kind": "help"
       }
     ],
-    "response": "Dorte has started leaving a lit candle in the window for when you pass."
+    "response": "Dorte has started leaving a lit candle in the window for when you pass.",
+    "again": [
+      "Dorte lights a candle for herself tonight, just the stub, and sits by it to sew.",
+      "Dorte takes the tallow and hands you a bundle of tapers in the same motion, an old trade between friends."
+    ]
   },
   {
     "id": "dorte_self",
@@ -6023,7 +6411,11 @@
         "kind": "self"
       }
     ],
-    "response": "Dorte wraps them in paper for you. Two streets over, you'll sell them by the pair."
+    "response": "Dorte wraps them in paper for you. Two streets over, you'll sell them by the pair.",
+    "again": [
+      "Dorte wraps the candles a little slower, and asks where you sell them, and you tell her somewhere else.",
+      "Dorte has your bundle tied before you come in. She asks no price. Her own window stays dark."
+    ]
   },
   {
     "id": "dorte_harm",
@@ -6055,7 +6447,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Dorte trims the wicks shorter and shorter, trying to find what's wrong with them."
+    "response": "Dorte trims the wicks shorter and shorter, trying to find what's wrong with them.",
+    "again": [
+      "Dorte melts down her whole batch and starts over with new wicks, and the new candles sell no better.",
+      "Dorte has learned who told them. She still nods when you pass, and her window has no candle in it."
+    ]
   },
   {
     "id": "rurik_meet_1",
@@ -6194,7 +6590,11 @@
         "kind": "help"
       }
     ],
-    "response": "Rurik whistles the beasts through the gap and laughs when the last one makes it."
+    "response": "Rurik whistles the beasts through the gap and laughs when the last one makes it.",
+    "again": [
+      "Rurik remembers the gap and leads the beasts there himself, but waits for you to come along.",
+      "Rurik takes the path round without asking you. It's just the road now, worn into the grass."
+    ]
   },
   {
     "id": "rurik_help_again",
@@ -6239,7 +6639,11 @@
         "kind": "help"
       }
     ],
-    "response": "Rurik walks with his hand on the lead cow's neck and tells you her name."
+    "response": "Rurik walks with his hand on the lead cow's neck and tells you her name.",
+    "again": [
+      "Rurik tells you which beast is stubborn and which is clever, and lets you walk with the clever ones.",
+      "Rurik hands you the lead without looking, and the long way passes in a comfortable quiet."
+    ]
   },
   {
     "id": "rurik_self",
@@ -6270,7 +6674,11 @@
         "kind": "self"
       }
     ],
-    "response": "Rurik's beasts stand at the fence looking at the grass. He moves them on."
+    "response": "Rurik's beasts stand at the fence looking at the grass. He moves them on.",
+    "again": [
+      "Rurik's beasts are thinner at the fence. He looks at you a long time before he moves them on.",
+      "Rurik doesn't bring the beasts past your fence anymore. He's found poorer grass up the hill."
+    ]
   },
   {
     "id": "rurik_harm",
@@ -6302,7 +6710,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Rurik is gone two days. He comes back with one beast fewer and doesn't say where."
+    "response": "Rurik is gone two days. He comes back with one beast fewer and doesn't say where.",
+    "again": [
+      "Rurik sells a beast at the market to cover the loss, and doesn't tip his hat to anyone.",
+      "Rurik rides out alone now and doesn't ask the way, from you or from anybody."
+    ]
   },
   {
     "id": "maike_meet_1",
@@ -6441,7 +6853,11 @@
         "kind": "help"
       }
     ],
-    "response": "Maike lights the kiln and sits right up against its warmth, like an old friend."
+    "response": "Maike lights the kiln and sits right up against its warmth, like an old friend.",
+    "again": [
+      "Maike has the bricks soaked and stacked when you arrive, and hums at the clay while you mortar.",
+      "Maike leaves the kiln door open for you and doesn't look up from her wheel."
+    ]
   },
   {
     "id": "maike_help_again",
@@ -6486,7 +6902,11 @@
         "kind": "help"
       }
     ],
-    "response": "Maike packs the last pot in and holds her breath, then lets it go."
+    "response": "Maike packs the last pot in and holds her breath, then lets it go.",
+    "again": [
+      "Maike lets you place the big jar at the back this time, and doesn't check it after.",
+      "Maike packs her side and leaves you yours, and the kiln is full before the bell."
+    ]
   },
   {
     "id": "maike_self",
@@ -6517,7 +6937,11 @@
         "kind": "self"
       }
     ],
-    "response": "Maike looks at the empty shelf where the good ones stood, and wedges more clay."
+    "response": "Maike looks at the empty shelf where the good ones stood, and wedges more clay.",
+    "again": [
+      "Maike moves the good pots to a high shelf now, out of reach, and brings you the chipped ones.",
+      "Maike has a crate of pots by the door for you. They're the ones she'd have thrown away."
+    ]
   },
   {
     "id": "maike_harm",
@@ -6549,7 +6973,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Maike stops at the wheel with her hands wet and looks at the clay for a long time."
+    "response": "Maike stops at the wheel with her hands wet and looks at the clay for a long time.",
+    "again": [
+      "Maike digs her clay from a new bank far out of town, and comes home late and muddy.",
+      "Maike's wheel sits under a sheet now. She buys her bowls from the carter like everybody else."
+    ]
   },
   {
     "id": "stefan_meet_1",
@@ -6688,7 +7116,11 @@
         "kind": "help"
       }
     ],
-    "response": "The bell sounds across the whole town, and Stefan stands under it with his cap off."
+    "response": "The bell sounds across the whole town, and Stefan stands under it with his cap off.",
+    "again": [
+      "Stefan climbs the bottom steps after you and calls up the old knots his own master used to tie.",
+      "Stefan just points up the tower when he sees you on the path, and goes to sit in the sun."
+    ]
   },
   {
     "id": "stefan_help_again",
@@ -6733,7 +7165,11 @@
         "kind": "help"
       }
     ],
-    "response": "Stefan sits on the step with his eyes shut and counts the hours with you."
+    "response": "Stefan sits on the step with his eyes shut and counts the hours with you.",
+    "again": [
+      "Stefan tells you which houses set their bread by the noon bell, and which never listened anyway.",
+      "Stefan has stopped counting with you. He dozes against the wall, and the bell keeps the town's time."
+    ]
   },
   {
     "id": "stefan_self",
@@ -6764,7 +7200,11 @@
         "kind": "self"
       }
     ],
-    "response": "It rains in the night. Stefan puts a bucket under the drip and doesn't look up either."
+    "response": "It rains in the night. Stefan puts a bucket under the drip and doesn't look up either.",
+    "again": [
+      "Stefan sets out a pan beside the bucket now, and listens to the drips the way he listens for feet.",
+      "Stefan sleeps in the vestry since the drips got into the tower room. He hasn't asked anyone about it."
+    ]
   },
   {
     "id": "stefan_harm",
@@ -6796,7 +7236,11 @@
         "kind": "harm"
       }
     ],
-    "response": "The town forgets what hour it is. Stefan climbs the tower, and climbs back down."
+    "response": "The town forgets what hour it is. Stefan climbs the tower, and climbs back down.",
+    "again": [
+      "Stefan rings a handbell from the church door at noon, and only the people nearby hear it.",
+      "Stefan stopped climbing. He sits on the step and asks you what time it is, as if you'd know better."
+    ]
   },
   {
     "id": "ebba_meet_1",
@@ -6935,7 +7379,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ebba throws the shuttle and it runs straight across for the first time all winter."
+    "response": "Ebba throws the shuttle and it runs straight across for the first time all winter.",
+    "again": [
+      "Ebba runs her hand down the trued frame and knocks on it for luck, the way her grandmother did.",
+      "Ebba sets the wedges ready for you at the loom's foot and goes on weaving while you tap them in."
+    ]
   },
   {
     "id": "ebba_help_again",
@@ -6980,7 +7428,11 @@
         "kind": "help"
       }
     ],
-    "response": "Ebba weaves into the dark, and the pattern comes out like she meant it."
+    "response": "Ebba weaves into the dark, and the pattern comes out like she meant it.",
+    "again": [
+      "Ebba hums the old pattern's tune while you wind, and teaches you where it turns.",
+      "Ebba drops the empty bobbins in your lap as they run out, and her shuttle never stops."
+    ]
   },
   {
     "id": "ebba_self",
@@ -7011,7 +7463,11 @@
         "kind": "self"
       }
     ],
-    "response": "Ebba starts the cloth again from the first thread. She doesn't sing at the loom this time."
+    "response": "Ebba starts the cloth again from the first thread. She doesn't sing at the loom this time.",
+    "again": [
+      "Ebba hides the finished cloth under her shawl when you come in, and goes on weaving.",
+      "Ebba weaves the same cloth over and over now, and keeps it folded behind the loom."
+    ]
   },
   {
     "id": "ebba_harm",
@@ -7043,7 +7499,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Ebba measures every bolt twice, then three times. They were always full length."
+    "response": "Ebba measures every bolt twice, then three times. They were always full length.",
+    "again": [
+      "Ebba's stall at the market stands bare. She sits behind it with a ruler in her lap.",
+      "Ebba sells her cloth to the rag man now, by weight, and doesn't bother measuring at all."
+    ]
   },
   {
     "id": "lukas_meet_1",
@@ -7182,7 +7642,11 @@
         "kind": "help"
       }
     ],
-    "response": "Lukas feels the new grooves with his thumb and grins with flour in his eyebrows."
+    "response": "Lukas feels the new grooves with his thumb and grins with flour in his eyebrows.",
+    "again": [
+      "Lukas has the pick sharpened for you and shows you the grooves he couldn't reach alone.",
+      "Lukas hands you the pick and goes back to his sacks. You know the furrows as well as he does."
+    ]
   },
   {
     "id": "lukas_help_again",
@@ -7227,7 +7691,11 @@
         "kind": "help"
       }
     ],
-    "response": "The stone turns sweet and Lukas listens to it the way other men listen to music."
+    "response": "The stone turns sweet and Lukas listens to it the way other men listen to music.",
+    "again": [
+      "Lukas puts his ear to the housing while it turns and nods, and doesn't need to say it's good.",
+      "Lukas sets the stone going with you and goes off to see to the hopper, whistling."
+    ]
   },
   {
     "id": "lukas_self",
@@ -7258,7 +7726,11 @@
         "kind": "self"
       }
     ],
-    "response": "Lukas writes it down on the mill door, under the other harvests that never came."
+    "response": "Lukas writes it down on the mill door, under the other harvests that never came.",
+    "again": [
+      "Lukas chalks your name on the mill door again, a little smaller, under the others.",
+      "Lukas fills your sack and has stopped mentioning harvest. The mill door says it all."
+    ]
   },
   {
     "id": "lukas_harm",
@@ -7290,7 +7762,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Lukas sifts his own flour three times looking for the grit, and doesn't find any."
+    "response": "Lukas sifts his own flour three times looking for the grit, and doesn't find any.",
+    "again": [
+      "Lukas loses the baker's order to the mill upriver, and sifts the whole store again, alone.",
+      "Lukas sifts every sack before it leaves now, and the wheel stands idle most afternoons."
+    ]
   },
   {
     "id": "gunda_meet_1",
@@ -7429,7 +7905,11 @@
         "kind": "help"
       }
     ],
-    "response": "Gunda stands in the cellar with the water gone and laughs at her wet boots."
+    "response": "Gunda stands in the cellar with the water gone and laughs at her wet boots.",
+    "again": [
+      "Gunda bails beside you this time, skirts hitched, and sings a cellar song that's mostly swearing.",
+      "Gunda has the buckets waiting at the top step and doesn't thank you. She just hands you the bigger pail."
+    ]
   },
   {
     "id": "gunda_help_again",
@@ -7474,7 +7954,11 @@
         "kind": "help"
       }
     ],
-    "response": "Gunda rubs salt into the rinds by the warm wall, telling each wheel it's safe now."
+    "response": "Gunda rubs salt into the rinds by the warm wall, telling each wheel it's safe now.",
+    "again": [
+      "Gunda names each wheel as you carry it up, and tells you which will be ready by midsummer.",
+      "Gunda has the planks set out along the warm wall for you, and goes on cutting curds while you carry."
+    ]
   },
   {
     "id": "gunda_self",
@@ -7505,7 +7989,11 @@
         "kind": "self"
       }
     ],
-    "response": "Gunda lets you take it. The ones left behind are going soft."
+    "response": "Gunda lets you take it. The ones left behind are going soft.",
+    "again": [
+      "Gunda wraps the good cheese in cloth for you and goes back down to the soft ones without a word.",
+      "Gunda doesn't come up from the cellar when you knock now. The good cheese is on the step, waiting."
+    ]
   },
   {
     "id": "gunda_harm",
@@ -7537,7 +8025,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Gunda opens her cellar door to show people. No one comes down to look."
+    "response": "Gunda opens her cellar door to show people. No one comes down to look.",
+    "again": [
+      "Gunda pours her soft cheeses into the pigs' trough, wheel after wheel, rather than sell them to nobody.",
+      "Gunda knows who said it. She lets you pass her stall and cuts the rind off a wheel nobody will buy."
+    ]
   },
   {
     "id": "arne_meet_1",
@@ -7676,7 +8168,11 @@
         "kind": "help"
       }
     ],
-    "response": "Arne cuts as the sun goes, quick and quiet, so you won't stop before he does."
+    "response": "Arne cuts as the sun goes, quick and quiet, so you won't stop before he does.",
+    "again": [
+      "Arne slows his sickle a little so you can keep pace, and shows you the cut at the root.",
+      "Arne whistles for you from the reed bed at the edge of dusk, and you fall in without a word."
+    ]
   },
   {
     "id": "arne_help_again",
@@ -7721,7 +8217,11 @@
         "kind": "help"
       }
     ],
-    "response": "Arne ties the last bundle and sits on it, and offers you half his bread."
+    "response": "Arne ties the last bundle and sits on it, and offers you half his bread.",
+    "again": [
+      "Arne ties the knot slowly so you can watch it, then makes you tie the next bundle yourself.",
+      "Arne saves the dry end of the pile for you to sit on, and the bread comes out by habit."
+    ]
   },
   {
     "id": "arne_self",
@@ -7752,7 +8252,11 @@
         "kind": "self"
       }
     ],
-    "response": "Arne thatches your roof first. His own still drips at the corner."
+    "response": "Arne thatches your roof first. His own still drips at the corner.",
+    "again": [
+      "Arne thatches yours again and puts a bucket under his own corner on the way home.",
+      "Arne is up on your roof at dawn without being asked. A pan sits under his own drip, always full."
+    ]
   },
   {
     "id": "arne_harm",
@@ -7784,7 +8288,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Arne climbs up on his own roof in the rain to show it doesn't leak. Nobody watches."
+    "response": "Arne climbs up on his own roof in the rain to show it doesn't leak. Nobody watches.",
+    "again": [
+      "Arne's ladder leans against his own house unused. Nobody's asked for a roof all week.",
+      "Arne cuts no reeds this year. The beds go to frost, and he doesn't go out to see them."
+    ]
   },
   {
     "id": "pia_meet_1",
@@ -7923,7 +8431,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pia says the word back to you, slowly, and then again, faster, proud of it."
+    "response": "Pia says the word back to you, slowly, and then again, faster, proud of it.",
+    "again": [
+      "Pia has the labels she still can't say set apart on the counter, waiting for you.",
+      "Pia reads the labels aloud to you now while you nod. Mostly you just listen."
+    ]
   },
   {
     "id": "pia_help_again",
@@ -7968,7 +8480,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pia reads one all on her own and looks up to see if you heard."
+    "response": "Pia reads one all on her own and looks up to see if you heard.",
+    "again": [
+      "Pia has copied the hard words onto a scrap and keeps it in her apron pocket.",
+      "Pia doesn't look up to check you heard any more. She's already reaching for the next jar."
+    ]
   },
   {
     "id": "pia_self",
@@ -7999,7 +8515,11 @@
         "kind": "self"
       }
     ],
-    "response": "Pia hands it over with a careful smile. She'll get it right one day. Not on yours."
+    "response": "Pia hands it over with a careful smile. She'll get it right one day. Not on yours.",
+    "again": [
+      "Pia hands you the wrong jar again and you pay, and the apothecary frowns at his ledger.",
+      "Pia doesn't smile at you now when you come in. She knows what you're waiting for."
+    ]
   },
   {
     "id": "pia_harm",
@@ -8031,7 +8551,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Pia sweeps the floor of the apothecary's shop and isn't allowed near the shelves now."
+    "response": "Pia sweeps the floor of the apothecary's shop and isn't allowed near the shelves now.",
+    "again": [
+      "Pia is sent to scrub the back step, and the new boy reaches past her for the jars.",
+      "Pia has stopped looking at the shelves. She keeps her eyes on her broom and her broom on the floor."
+    ]
   },
   {
     "id": "henrik_meet_1",
@@ -8170,7 +8694,11 @@
         "kind": "help"
       }
     ],
-    "response": "Henrik stands upwind of his own pits for once and breathes all the way in."
+    "response": "Henrik stands upwind of his own pits for once and breathes all the way in.",
+    "again": [
+      "Henrik shows you where the chimney smoke bends, and moves the pit stakes another stride downwind.",
+      "Henrik has the spades sharpened and leaning on the fence for you, and the wind is kind to him now."
+    ]
   },
   {
     "id": "henrik_help_again",
@@ -8215,7 +8743,11 @@
         "kind": "help"
       }
     ],
-    "response": "Henrik leans on his spade and tells you the town will come back round. Maybe."
+    "response": "Henrik leans on his spade and tells you the town will come back round. Maybe.",
+    "again": [
+      "Henrik tells you a baker came by and bought a strap, and laughs like he's not sure he should.",
+      "Henrik doesn't talk about the town any more. He digs beside you, steady, and the pits fill up clean."
+    ]
   },
   {
     "id": "henrik_self",
@@ -8246,7 +8778,11 @@
         "kind": "self"
       }
     ],
-    "response": "Henrik takes it, and holds his breath, and you can't tell if it's the smell."
+    "response": "Henrik takes it, and holds his breath, and you can't tell if it's the smell.",
+    "again": [
+      "Henrik rolls the leather before you name a price, and names a lower price himself, looking at the fence.",
+      "Henrik leaves your hides folded on the fence post and goes back to his pits before you reach the gate."
+    ]
   },
   {
     "id": "henrik_harm",
@@ -8278,7 +8814,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Henrik scrubs his hands until they're raw, and they still smell of the pits."
+    "response": "Henrik scrubs his hands until they're raw, and they still smell of the pits.",
+    "again": [
+      "Henrik hears your words come back to him from the market. He stops coming to the fence to say hello.",
+      "Henrik keeps to the far end of his yard now, and when you pass, he stays there."
+    ]
   },
   {
     "id": "birgit_meet_1",
@@ -8417,7 +8957,11 @@
         "kind": "help"
       }
     ],
-    "response": "Birgit holds a whole pane up to the sky and the light comes through it clean."
+    "response": "Birgit holds a whole pane up to the sky and the light comes through it clean.",
+    "again": [
+      "Birgit lays the good panes out on the grass and lets you choose which to hold up next.",
+      "Birgit sorts with you without talking, quick hands, and the whole panes stack up against the wall."
+    ]
   },
   {
     "id": "birgit_help_again",
@@ -8462,7 +9006,11 @@
         "kind": "help"
       }
     ],
-    "response": "Birgit picks a small piece of blue out of the sweepings and puts it in her pocket."
+    "response": "Birgit picks a small piece of blue out of the sweepings and puts it in her pocket.",
+    "again": [
+      "Birgit shows you the blue bits she's saved, a whole jar of them on the sill.",
+      "Birgit hands you the broom and takes the dustpan, and you sweep together like it's housework."
+    ]
   },
   {
     "id": "birgit_self",
@@ -8493,7 +9041,11 @@
         "kind": "self"
       }
     ],
-    "response": "Birgit wraps the panes in straw for your cart. Her own window still has a board in it."
+    "response": "Birgit wraps the panes in straw for your cart. Her own window still has a board in it.",
+    "again": [
+      "Birgit wraps the panes again but doesn't hold them to the light. She just ties the straw.",
+      "Birgit has your panes ready by the door. She's stopped saying what she'd have made of them."
+    ]
   },
   {
     "id": "birgit_harm",
@@ -8525,7 +9077,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Birgit stops leaving her glass out in the sun to show the colours."
+    "response": "Birgit stops leaving her glass out in the sun to show the colours.",
+    "again": [
+      "Birgit's supplier writes that he won't send glass to someone careless. She reads it in the dark.",
+      "Birgit's colours stay wrapped in the back room now. Her shop window is plain and clean and dull."
+    ]
   },
   {
     "id": "matthias_meet_1",
@@ -8664,7 +9220,11 @@
         "kind": "help"
       }
     ],
-    "response": "Matthias stands at the back while you speak, black to the elbows, and nods once."
+    "response": "Matthias stands at the back while you speak, black to the elbows, and nods once.",
+    "again": [
+      "Matthias waits for you outside the hall this time, washed as clean as he can get, which isn't very.",
+      "Matthias falls in beside you on the way to the hall without asking. It's simply what you do."
+    ]
   },
   {
     "id": "matthias_help_again",
@@ -8709,7 +9269,11 @@
         "kind": "help"
       }
     ],
-    "response": "Matthias doesn't say anything on the walk home. He just keeps looking at the trees."
+    "response": "Matthias doesn't say anything on the walk home. He just keeps looking at the trees.",
+    "again": [
+      "Matthias is let into the edge of the wood to gather deadfall, and brings you back a sack of it.",
+      "Matthias's clamp smokes at the wood's edge, and he waves you off to the hall with a black hand."
+    ]
   },
   {
     "id": "matthias_self",
@@ -8740,7 +9304,11 @@
         "kind": "self"
       }
     ],
-    "response": "Matthias shovels it into your sack and the last smoke goes out behind him."
+    "response": "Matthias shovels it into your sack and the last smoke goes out behind him.",
+    "again": [
+      "Matthias scrapes the clamp's floor for you and finds barely a sackful. He hands it over.",
+      "Matthias leaves a sack by the cold clamp for you and is gone before you come."
+    ]
   },
   {
     "id": "matthias_harm",
@@ -8772,7 +9340,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Matthias's clamp goes cold. He sits beside it at night as if it were still burning."
+    "response": "Matthias's clamp goes cold. He sits beside it at night as if it were still burning.",
+    "again": [
+      "Matthias hears you were for the order, and stops nodding to you in the street.",
+      "Matthias sells his shovel at the market. The clamp by the trees is just a ring of grey now."
+    ]
   },
   {
     "id": "runa_meet_1",
@@ -8911,7 +9483,11 @@
         "kind": "help"
       }
     ],
-    "response": "Runa pulls the wool between her fingers and starts spinning before you've gone."
+    "response": "Runa pulls the wool between her fingers and starts spinning before you've gone.",
+    "again": [
+      "Runa spins your wool finer this time, testing it in the window light, and says it's the best she's had.",
+      "Runa leaves a basket by her door for your wool now, and her wheel is going before the latch is down."
+    ]
   },
   {
     "id": "runa_help_again",
@@ -8956,7 +9532,11 @@
         "kind": "help"
       }
     ],
-    "response": "Runa spins your wool into something soft and gives you back a little of it."
+    "response": "Runa spins your wool into something soft and gives you back a little of it.",
+    "again": [
+      "Runa knits mittens from the wool and leaves them on your doorstep with no note.",
+      "Runa hums at the wheel as you come in and doesn't stop to greet you; your wool is simply hers to spin."
+    ]
   },
   {
     "id": "runa_self",
@@ -8987,7 +9567,11 @@
         "kind": "self"
       }
     ],
-    "response": "Runa says you're welcome and means it. Her wheel stops early that night."
+    "response": "Runa says you're welcome and means it. Her wheel stops early that night.",
+    "again": [
+      "Runa hands you the yarn and says you're welcome again, a little quieter, and winds the next skein slowly.",
+      "Runa has the yarn bundled on the sill for you. She's gone to bed early, and the wheel is cold."
+    ]
   },
   {
     "id": "runa_harm",
@@ -9019,7 +9603,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Runa tests every hank against her own strength. None of them break."
+    "response": "Runa tests every hank against her own strength. None of them break.",
+    "again": [
+      "Runa carries her hanks to market herself and pulls every hank hard in front of the buyers. They walk past.",
+      "Runa has heard where the talk began. She doesn't spin when you're in the lane; she waits till you've gone."
+    ]
   },
   {
     "id": "erik_meet_1",
@@ -9158,7 +9746,11 @@
         "kind": "help"
       }
     ],
-    "response": "Erik holds your horse's hoof in his lap like it was something precious."
+    "response": "Erik holds your horse's hoof in his lap like it was something precious.",
+    "again": [
+      "Erik knows your horse by name now and has the right shoe warming before you're through the gate.",
+      "Erik nods your horse into the stall like it lives there. The fire's hot for you every morning."
+    ]
   },
   {
     "id": "erik_help_again",
@@ -9203,7 +9795,11 @@
         "kind": "help"
       }
     ],
-    "response": "Erik has two horses tied at his post today. He doesn't say anything, but he's whistling."
+    "response": "Erik has two horses tied at his post today. He doesn't say anything, but he's whistling.",
+    "again": [
+      "Erik tells the neighbour's horse a joke while he works, and swears it laughed.",
+      "Erik's post is crowded these days, and he's stopped whistling about it. It's just the work now."
+    ]
   },
   {
     "id": "erik_self",
@@ -9234,7 +9830,11 @@
         "kind": "self"
       }
     ],
-    "response": "Erik waves you off. Later he writes it on the wall, with a little horse drawn next to it."
+    "response": "Erik waves you off. Later he writes it on the wall, with a little horse drawn next to it.",
+    "again": [
+      "Erik waves you off again, slower, and the little horse on the wall gets a friend.",
+      "Erik doesn't wave anymore. He just adds to the row of little horses on the wall, and says nothing."
+    ]
   },
   {
     "id": "erik_harm",
@@ -9266,7 +9866,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Erik shoes the same horse again, slower, checking every nail."
+    "response": "Erik shoes the same horse again, slower, checking every nail.",
+    "again": [
+      "Erik lets his fire burn low by midday. No horse has come past his post since yesterday.",
+      "Erik's fire has gone out. He sits by the cold forge reading hooves that aren't there."
+    ]
   },
   {
     "id": "thea_meet_1",
@@ -9405,7 +10009,11 @@
         "kind": "help"
       }
     ],
-    "response": "Thea weaves the first basket right there on the bank, quick, and gives it you."
+    "response": "Thea weaves the first basket right there on the bank, quick, and gives it you.",
+    "again": [
+      "Thea has a spare knife sharpened for you and shows you how her mother cut, low and slanted.",
+      "Thea is knee-deep in the willow when you get there and passes you the knife without turning round."
+    ]
   },
   {
     "id": "thea_help_again",
@@ -9450,7 +10058,11 @@
         "kind": "help"
       }
     ],
-    "response": "Thea's hands are green to the wrist and she's telling you about her mother."
+    "response": "Thea's hands are green to the wrist and she's telling you about her mother.",
+    "again": [
+      "Thea laughs at a story about her mother this time, instead of going quiet after it.",
+      "Thea strips beside you and doesn't talk about her mother now. The quiet is a comfortable kind."
+    ]
   },
   {
     "id": "thea_self",
@@ -9481,7 +10093,11 @@
         "kind": "self"
       }
     ],
-    "response": "Thea leaves one by the door each morning now, in case. She doesn't say why."
+    "response": "Thea leaves one by the door each morning now, in case. She doesn't say why.",
+    "again": [
+      "Thea's basket by the door is rougher this morning, woven quick, between other work.",
+      "Thea leaves a basket on the step as she'd leave milk for a cat, and doesn't wait to see it taken."
+    ]
   },
   {
     "id": "thea_harm",
@@ -9513,7 +10129,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Thea stands in the stubble where the willow was and doesn't know where to put her knife."
+    "response": "Thea stands in the stubble where the willow was and doesn't know where to put her knife.",
+    "again": [
+      "Thea walks the river for miles looking for another stand, and comes home with an armful of reeds.",
+      "Thea mends other people's baskets now, for coppers, and doesn't weave new ones."
+    ]
   },
   {
     "id": "jost_meet_1",
@@ -9652,7 +10272,11 @@
         "kind": "help"
       }
     ],
-    "response": "Jost swings the axe and it rings true, and he takes a whole tree down for the joy of it."
+    "response": "Jost swings the axe and it rings true, and he takes a whole tree down for the joy of it.",
+    "again": [
+      "Jost lets you take a swing yourself and laughs at where the chips fly, and shows you how to stand.",
+      "Jost tosses you the axe to check the head each morning without thinking, and it's always tight."
+    ]
   },
   {
     "id": "jost_help_again",
@@ -9697,7 +10321,11 @@
         "kind": "help"
       }
     ],
-    "response": "Jost stacks the last of the cord and leans on it, red-faced and pleased."
+    "response": "Jost stacks the last of the cord and leans on it, red-faced and pleased.",
+    "again": [
+      "Jost shares his bread on the woodstack and tells you which trees in the wood are too old to fell.",
+      "Jost hands you the other axe without a word, and you fall into his swing like you've always cut here."
+    ]
   },
   {
     "id": "jost_self",
@@ -9728,7 +10356,11 @@
         "kind": "self"
       }
     ],
-    "response": "Jost curses the road and the carters on it. He goes back out in the cold for more."
+    "response": "Jost curses the road and the carters on it. He goes back out in the cold for more.",
+    "again": [
+      "Jost blames the carters again, louder, and goes out before the frost lifts to cut more.",
+      "Jost has stopped cursing. He just cuts extra now, and his hands are cracked from the cold."
+    ]
   },
   {
     "id": "jost_harm",
@@ -9760,7 +10392,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Jost swings, and the head comes off and flies, and he looks at his empty hands."
+    "response": "Jost swings, and the head comes off and flies, and he looks at his empty hands.",
+    "again": [
+      "Jost has a bandage round his shin where the head caught him, and he asks you to look at the haft.",
+      "Jost knows you looked at it and said fine. He fixes his own axes now, and won't hand you his."
+    ]
   },
   {
     "id": "alva_meet_1",
@@ -9899,7 +10535,11 @@
         "kind": "help"
       }
     ],
-    "response": "Alva sleeps against the cow's warm side, and you let her."
+    "response": "Alva sleeps against the cow's warm side, and you let her.",
+    "again": [
+      "Alva brings a blanket for you this time, and talks to the cow until she falls asleep mid-word.",
+      "Alva settles against the cow's flank as soon as you sit down, and is asleep before the lamp is out."
+    ]
   },
   {
     "id": "alva_help_again",
@@ -9944,7 +10584,11 @@
         "kind": "help"
       }
     ],
-    "response": "By morning there's a little milk again. Alva laughs at the pail like it told her a joke."
+    "response": "By morning there's a little milk again. Alva laughs at the pail like it told her a joke.",
+    "again": [
+      "Alva milks with her eyes shut, listening to the drops ring, and they keep coming.",
+      "Alva hums to the cow at dawn and the pail fills a little, the way it has every morning lately."
+    ]
   },
   {
     "id": "alva_self",
@@ -9975,7 +10619,11 @@
         "kind": "self"
       }
     ],
-    "response": "Alva scrapes the bottom of the pail for the farmer and hopes he won't look."
+    "response": "Alva scrapes the bottom of the pail for the farmer and hopes he won't look.",
+    "again": [
+      "Alva tips the pail for you and her hands are slow. The farmer is already asking.",
+      "Alva leaves the milk by the door for you and goes to the farmer empty-handed, ready for it."
+    ]
   },
   {
     "id": "alva_harm",
@@ -10007,7 +10655,11 @@
         "kind": "harm"
       }
     ],
-    "response": "The farmer shouts. Alva stands in the yard with the empty pail and doesn't answer."
+    "response": "The farmer shouts. Alva stands in the yard with the empty pail and doesn't answer.",
+    "again": [
+      "Alva is sent to muck out the pigs, and the dry cow gets a new girl from the next farm.",
+      "Alva no longer names the cows for anyone. She just works the yard, and the pail stays empty."
+    ]
   },
   {
     "id": "nikolas_meet_1",
@@ -10146,7 +10798,11 @@
         "kind": "help"
       }
     ],
-    "response": "Nikolas closes the case and the clock ticks, and he listens like it's his own heart."
+    "response": "Nikolas closes the case and the clock ticks, and he listens like it's his own heart.",
+    "again": [
+      "Nikolas hands you the glass before he opens the case, and his hands seem steadier for it.",
+      "Nikolas has the glass in your hand and his tweezers moving before you've taken off your coat."
+    ]
   },
   {
     "id": "nikolas_help_again",
@@ -10191,7 +10847,11 @@
         "kind": "help"
       }
     ],
-    "response": "Nikolas works until the light goes, and then a little after, because you're still holding it."
+    "response": "Nikolas works until the light goes, and then a little after, because you're still holding it.",
+    "again": [
+      "Nikolas talks to the clock as he works now, and sometimes to you, and doesn't notice which.",
+      "Nikolas just nods at the lamp when you come in, and you lift it, and he bends to work."
+    ]
   },
   {
     "id": "nikolas_self",
@@ -10222,7 +10882,11 @@
         "kind": "self"
       }
     ],
-    "response": "Nikolas wraps the clock without its hands. It will never say a time."
+    "response": "Nikolas wraps the clock without its hands. It will never say a time.",
+    "again": [
+      "Nikolas wraps another handless clock for you, and keeps his eyes on the paper, not your coins.",
+      "Nikolas has the unfinished clocks lined up for you at the end of the bench. He's stopped trying."
+    ]
   },
   {
     "id": "nikolas_harm",
@@ -10254,7 +10918,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Nikolas sets every clock in the shop against the church bell, and they're right."
+    "response": "Nikolas sets every clock in the shop against the church bell, and they're right.",
+    "again": [
+      "Nikolas hears a customer repeat it and laughs, then checks the clocks again after she leaves.",
+      "Nikolas winds every clock at noon and listens to them with his eyes shut, waiting for a lie."
+    ]
   },
   {
     "id": "sanne_meet_1",
@@ -10393,7 +11061,11 @@
         "kind": "help"
       }
     ],
-    "response": "Sanne shows you a knot her grandmother taught her, and then makes you do it."
+    "response": "Sanne shows you a knot her grandmother taught her, and then makes you do it.",
+    "again": [
+      "Sanne watches your knot, unpicks it, and ties it again slower so you can see where the thread goes.",
+      "Sanne passes you the needle as you sit, mid-sentence, and the net grows between you without counting."
+    ]
   },
   {
     "id": "sanne_help_again",
@@ -10438,7 +11110,11 @@
         "kind": "help"
       }
     ],
-    "response": "Sanne's hands and yours go along the long net together till you meet in the middle."
+    "response": "Sanne's hands and yours go along the long net together till you meet in the middle.",
+    "again": [
+      "Sanne sings a boat song while you work, and you learn the words somewhere along the mending.",
+      "Sanne leaves the far end of the net on your chair now, waiting, as if you'd always mended it."
+    ]
   },
   {
     "id": "sanne_self",
@@ -10469,7 +11145,11 @@
         "kind": "self"
       }
     ],
-    "response": "Sanne writes your name on her slate. It's a short slate, and she rubs out a lot."
+    "response": "Sanne writes your name on her slate. It's a short slate, and she rubs out a lot.",
+    "again": [
+      "Sanne writes your name smaller this time, squeezed in where an old debt was rubbed out.",
+      "Sanne doesn't write it down any more. She hands you the net and turns back to the tear she's on."
+    ]
   },
   {
     "id": "sanne_harm",
@@ -10501,7 +11181,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Sanne pulls every knot of a net tight that wasn't loose, to be sure."
+    "response": "Sanne pulls every knot of a net tight that wasn't loose, to be sure.",
+    "again": [
+      "Sanne lays her nets out on the quay for the boatmen to tug at. They tug, and walk on to the next stall.",
+      "Sanne has learned whose tongue it was. She mends with her back to the lane now when you go by."
+    ]
   },
   {
     "id": "wilhelm_meet_1",
@@ -10640,7 +11324,11 @@
         "kind": "help"
       }
     ],
-    "response": "Wilhelm reads it over your shoulder and sits up straighter in his chair."
+    "response": "Wilhelm reads it over your shoulder and sits up straighter in his chair.",
+    "again": [
+      "Wilhelm dictates this letter himself, with all the honours, and makes you underline the regiment.",
+      "Wilhelm has the paper and ink out on the table when you come, and the date written in at the top."
+    ]
   },
   {
     "id": "wilhelm_help_again",
@@ -10685,7 +11373,11 @@
         "kind": "help"
       }
     ],
-    "response": "Wilhelm salutes you, a little wrong, and laughs at himself for it."
+    "response": "Wilhelm salutes you, a little wrong, and laughs at himself for it.",
+    "again": [
+      "Wilhelm reads your name at the bottom of the page aloud, as though adding it to the regiment roll.",
+      "Wilhelm hands you the pen and looks out the window while you sign, like it's always been your job."
+    ]
   },
   {
     "id": "wilhelm_self",
@@ -10716,7 +11408,11 @@
         "kind": "self"
       }
     ],
-    "response": "Wilhelm tells the same war story three times, and you let him, and the jug is empty."
+    "response": "Wilhelm tells the same war story three times, and you let him, and the jug is empty.",
+    "again": [
+      "Wilhelm pours, and the story goes wrong in the middle, and he starts it over from the top.",
+      "Wilhelm has the jug out and the cups filled before you sit. The pension tin rattles lighter."
+    ]
   },
   {
     "id": "wilhelm_harm",
@@ -10748,7 +11444,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Wilhelm takes his medal off his coat and puts it in a drawer."
+    "response": "Wilhelm takes his medal off his coat and puts it in a drawer.",
+    "again": [
+      "Wilhelm stops sitting by the window. The neighbours pass and do not salute him now.",
+      "Wilhelm doesn't name his regiment to anyone anymore. The drawer stays shut."
+    ]
   },
   {
     "id": "partner_meet_1",
@@ -10887,7 +11587,11 @@
         "kind": "help"
       }
     ],
-    "response": "Wren holds the door with their foot and says you needn't have. They leave it open a while after."
+    "response": "Wren holds the door with their foot and says you needn't have. They leave it open a while after.",
+    "again": [
+      "Wren has left their scuttle at the foot of the stairs beside yours, as if you'd agreed on it.",
+      "Wren's coal and yours go up together now. Their door stands open on the landing without a thought."
+    ]
   },
   {
     "id": "partner_help_again",
@@ -10933,7 +11637,11 @@
         "kind": "help"
       }
     ],
-    "response": "Wren pulls the second chair out from under the coats. It hasn't been sat in for a long time."
+    "response": "Wren pulls the second chair out from under the coats. It hasn't been sat in for a long time.",
+    "again": [
+      "Wren has wiped the spare chair and set out a cup for you, and the bread is cut, not torn.",
+      "Wren sets your plate down without asking if you're staying. Supper has a shape now."
+    ]
   },
   {
     "id": "partner_ask_stay",
@@ -10990,7 +11698,11 @@
         "kind": "help"
       }
     ],
-    "response": "Wren carries their one box across the landing, and that is all it takes."
+    "response": "Wren carries their one box across the landing, and that is all it takes.",
+    "again": [
+      "Wren's coat is on your hook this morning, and their boots are by yours, drying.",
+      "Wren reaches across you for the salt without a word, and the room is simply theirs too."
+    ]
   },
   {
     "id": "partner_borrow",
@@ -11021,7 +11733,11 @@
         "kind": "self"
       }
     ],
-    "response": "Wren counts it out on the table and doesn't ask when you'll pay it back."
+    "response": "Wren counts it out on the table and doesn't ask when you'll pay it back.",
+    "again": [
+      "Wren counts it out again, slower, and puts the empty purse back in the drawer.",
+      "Wren leaves the rent on the table before you've asked. They don't look at you while they do it."
+    ]
   },
   {
     "id": "partner_send_away",
@@ -11057,7 +11773,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Wren takes the box back across the landing. The door clicks, and then the stairs."
+    "response": "Wren takes the box back across the landing. The door clicks, and then the stairs.",
+    "again": [
+      "Wren passes you on the stairs and steps to the wall to let you by, the way strangers do.",
+      "Wren's door across the landing stays shut, and some nights you hear them eating standing up."
+    ]
   },
   {
     "id": "child_read",
@@ -11084,7 +11804,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pim follows the line with a finger and gets the long word on the second try."
+    "response": "Pim follows the line with a finger and gets the long word on the second try.",
+    "again": [
+      "Pim reads the next page out loud to you, slowly, and stops to ask what a lighthouse is for.",
+      "Pim has the book open on the sill when you come in, and leans against you without looking up."
+    ]
   },
   {
     "id": "child_feed",
@@ -11116,7 +11840,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pim eats with both hands and talks with their mouth full, and you let them."
+    "response": "Pim eats with both hands and talks with their mouth full, and you let them.",
+    "again": [
+      "Pim saves the crust for last and eats it slowly, watching you, to see if there'll be more tomorrow.",
+      "Pim sits down and waits for their plate now, swinging their feet, sure it will come."
+    ]
   },
   {
     "id": "child_walk",
@@ -11143,7 +11871,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pim holds your sleeve past the fish stalls, then lets go of it by the well."
+    "response": "Pim holds your sleeve past the fish stalls, then lets go of it by the well.",
+    "again": [
+      "Pim says their own name to the fish woman before you can, and she says it back.",
+      "Pim runs ahead of you through the market now, and the stallholders call out to them by name."
+    ]
   },
   {
     "id": "child_send_work",
@@ -11163,7 +11895,11 @@
         "kind": "self"
       }
     ],
-    "response": "Pim comes home white with flour and puts the coins on the table without a word."
+    "response": "Pim comes home white with flour and puts the coins on the table without a word.",
+    "again": [
+      "Pim leaves for the mill before you're up, and the coins are on the table when you come down.",
+      "Pim doesn't wait to be sent. They tie their sleeves at the door and are gone before the bread is cut."
+    ]
   },
   {
     "id": "child_shout",
@@ -11185,7 +11921,11 @@
         "kind": "harm"
       }
     ],
-    "response": "Pim goes very quiet and finds somewhere small to sit."
+    "response": "Pim goes very quiet and finds somewhere small to sit.",
+    "again": [
+      "Pim keeps to the corner by the stove now and asks permission before they cross the room.",
+      "Pim steps out of your way before you say anything. They've learned where your feet go."
+    ]
   },
   {
     "id": "child_give_storefront",
@@ -11212,7 +11952,11 @@
         "kind": "help"
       }
     ],
-    "response": "Pim stands under the sign and reads their own name on it, slowly, twice."
+    "response": "Pim stands under the sign and reads their own name on it, slowly, twice.",
+    "again": [
+      "Pim sweeps the step under the sign every morning, and stops when anyone walks by, to be seen doing it.",
+      "Pim unlocks the storefront like they always have, and calls good morning to the street."
+    ]
   },
   {
     "id": "child_give_rebuilt",
@@ -11239,6 +11983,10 @@
         "kind": "help"
       }
     ],
-    "response": "Pim runs a hand along the new wall, where the builder's marks still show."
+    "response": "Pim runs a hand along the new wall, where the builder's marks still show.",
+    "again": [
+      "Pim chalks their height on the new doorframe, beside the builder's marks, and grins at you.",
+      "Pim keeps the rebuilt shop as if it had always been theirs, the builder's marks painted over now."
+    ]
   }
 ]

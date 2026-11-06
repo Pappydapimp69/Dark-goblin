@@ -30,7 +30,7 @@ None of this is needed to play — it is for changing the game.
 ```sh
 npm install
 npm run dev            # dev server with hot reload
-npm test               # 141 unit tests
+npm test               # 145 unit tests
 npm run sim            # 100 games per bot, writes sim-report.csv
 npm run art            # write every SVG asset into art/, plus a contact sheet
 npm run build          # static build into dist/
