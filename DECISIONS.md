@@ -585,3 +585,34 @@ spends any one action a day on the child never loses a goal to neglect. Child
 goals refund +5 each, but the generous life moved only from 6.5 to 6.7 days
 (0.67 child goals met per life): raising a child does not, on its own, answer
 T202.
+
+## Getting to know people
+
+**D-75 — Nobody's choices appear until you have met them on two different
+days.** Asked for after playing the live build: tapping someone showed every
+choice at once, with no relationship before it. Every person but the player and
+the child starts with `known: 0`. Their only choice is a first meeting; once you
+have met them that day, they offer nothing more until tomorrow (a nightly tick
+clears `met_today`); the second meeting, on a later day, opens their real
+choices. Each meeting has its own line, and the second lets slip the trouble
+their help choices address, so the help means something when it appears. The
+child needs no introduction, and the aftermath choice stays reachable.
+
+All of it is content: two meeting choices and a tick rule per person, and one
+extra `{ npc, key: "known", gte: 2 }` condition wrapped around each of their
+existing choices. The engine reads none of it; `meeting: true` is a marker for
+the tests, the bots and the dialogue's greeting. A meeting is a neutral act, so
+like any act it costs the day one action.
+
+**D-76 — The two strict-preference bots meet people first.** With the gate in,
+the selfish and generous bots took the first self or help that opened and never
+met anyone else: they came to know 11–13% of the town, the selfish one stopped
+meeting anyone it could harm (harms 2.54 → 0.25 a day) and lived 54 loops
+instead of 24 — a result of the bot, not the game. They now take any meeting
+they can before choosing by preference. Mixed and human already met 99% and
+93% of the town on their own and are unchanged.
+
+Measured after both (100 games per bot): selfish 19.5 loops (was 23.8 — the
+first days go on meetings), generous 7.0 (was 6.7); the child now comes on day
+6 rather than 4.5, in 85% of generous lives and 17% of the human bot's (was
+39%), because Wren has to be known before they can be courted.

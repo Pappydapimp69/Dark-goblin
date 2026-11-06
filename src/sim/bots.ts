@@ -63,11 +63,27 @@ function unlocksPlayerGoal(state: GameState, choice: Choice, content: Content): 
 
 // ------------------------------------------------------------ §9's four bots
 
+/**
+ * Any player has to get to know people before there is anything to do with
+ * them. A strict-preference bot left alone takes the first help (or self) that
+ * opens and never meets anyone else: measured, the selfish and generous bots
+ * came to know 11-13% of the town and the selfish one stopped meeting anyone it
+ * could harm, which doubled its life for a reason no player would share. So
+ * the two policy bots meet whoever they still can, first, and are judged on
+ * what they do once they know people.
+ */
+function meetFirst(choices: Choice[], rng: RngState): BotMove | null {
+  const meetings = choices.filter((c) => c.meeting === true);
+  return meetings.length > 0 ? take(meetings, rng) : null;
+}
+
 const selfish: Bot = {
   id: "selfish",
   describe: "prefers self; harms when it unlocks a player goal",
   move({ state, choices, content, rng }) {
     if (choices.length === 0) return { move: "sleep", rng };
+    const meeting = meetFirst(choices, rng);
+    if (meeting) return meeting;
 
     const mine = choices.filter((c) => has(c, "self"));
     if (mine.length > 0) return take(mine, rng);
@@ -83,6 +99,8 @@ const generous: Bot = {
   id: "generous",
   describe: "prefers help; never harms",
   move({ choices, rng }) {
+    const meeting = meetFirst(choices, rng);
+    if (meeting) return meeting;
     const kind = choices.filter((c) => !has(c, "harm"));
     if (kind.length === 0) return { move: "sleep", rng };
     return take(prefer(kind, "help", "neutral", "self"), rng);

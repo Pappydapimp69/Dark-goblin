@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { content } from "../src/content";
+import { acquainted } from "./harness";
 import { availableChoices, interact, newGame } from "../src/engine/engine";
 import { Store, sceneFor } from "../src/ui/store";
 import type { GameState } from "../src/engine/types";
@@ -10,14 +11,14 @@ describe("the aftermath choice", () => {
   // Caught by playing the built game: Aldo was offering "He is sitting on the
   // step. He doesn't look up." on the first morning, before anything happened.
   it("is hidden until the person breaks", () => {
-    const state = newGame(1, content);
+    const state = acquainted(newGame(1, content));
     const offered = availableChoices(state, content).map((c) => c.id);
     expect(offered).not.toContain("shop_aftermath");
     expect(offered).toContain("shop_listen_first");
   });
 
   it("is the only thing left once they have", () => {
-    const broken = interact(newGame(1, content), "shop_tell_creditor", content);
+    const broken = interact(acquainted(newGame(1, content)), "shop_tell_creditor", content);
     const day: GameState = { ...broken, npcs: { ...broken.npcs, shopkeeper: { ...broken.npcs["shopkeeper"]!, broken: true } }, status: "day", pendingGoblin: null };
 
     const theirs = availableChoices(day, content).filter((c) => c.npc === "shopkeeper");

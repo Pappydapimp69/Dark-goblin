@@ -50,8 +50,8 @@ for (const status of ["goblin_nightfall", "review"] as const) {
 }
 
 /**
- * The family line: Wren moves in on the first day, and the child arrives two
- * mornings later. "family_morning" parks on that first morning (the Mirror's
+ * The family line: Wren is met on the first two days and moves in on the
+ * second, and the child arrives two mornings later. "family_morning" parks on that first morning (the Mirror's
  * one line about it); "family_review" is the same life read back at its end,
  * with one of the child's goals met, so the review's child lines are drawn.
  */
@@ -64,8 +64,12 @@ function settle(state: GameState): GameState {
   }
   return next;
 }
+// Wren has to be known first: met on one day, met again on the next.
 let family = newGame(1, content);
-for (const id of ["partner_help_first", "partner_help_again", "partner_ask_stay"]) family = interact(family, id, content);
+family = settle(sleep(settle(interact(family, "partner_meet_1", content)), content));
+for (const id of ["partner_meet_2", "partner_help_first", "partner_help_again", "partner_ask_stay"]) {
+  family = settle(interact(family, id, content));
+}
 family = settle(sleep(settle(family), content));
 family = settle(sleep(family, content));
 const morning = family;

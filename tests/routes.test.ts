@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { content } from "../src/content";
+import { acquainted } from "./harness";
 import { acknowledgeGoblin, answerGoblin, availableChoices, interact, newGame, sleep } from "../src/engine/engine";
 import type { GameState } from "../src/engine/types";
 
@@ -29,7 +30,7 @@ function settle(state: GameState): GameState {
   return next;
 }
 
-const start = (): GameState => newGame(1, content);
+const start = (): GameState => acquainted(newGame(1, content));
 
 /**
  * §10: the storefront has to reach the baker by all three routes. These are

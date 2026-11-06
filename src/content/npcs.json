@@ -53,7 +53,9 @@
     "state": {
       "readiness": 0,
       "helped_this_loop": 0,
-      "trusts_player": false
+      "trusts_player": false,
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "baker_shop"
@@ -78,6 +80,21 @@
             "value": 0
           }
         ]
+      },
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "baker",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "baker",
+            "key": "met_today",
+            "value": false
+          }
+        ]
       }
     ],
     "art": {
@@ -94,7 +111,9 @@
     "state": {
       "debt": 4,
       "retire_ready": 0,
-      "trusts_player": false
+      "trusts_player": false,
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "shopkeeper_income",
@@ -124,6 +143,21 @@
             "delta": 1
           }
         ]
+      },
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "shopkeeper",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "shopkeeper",
+            "key": "met_today",
+            "value": false
+          }
+        ]
       }
     ],
     "art": {
@@ -139,7 +173,9 @@
     "location": "wrecked",
     "state": {
       "jobs": 0,
-      "trusts_player": false
+      "trusts_player": false,
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "builder_work"
@@ -149,7 +185,24 @@
       "head": "hood",
       "prop": "plank",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "builder",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "builder",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "mara",
@@ -158,7 +211,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the well-keeper"
+      "trade": "the well-keeper",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "mara_need"
@@ -168,7 +223,24 @@
       "head": "hat",
       "prop": "rope",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "mara",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "mara",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "otto",
@@ -177,7 +249,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the night watchman"
+      "trade": "the night watchman",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "otto_need"
@@ -187,7 +261,24 @@
       "head": "hood",
       "prop": "lamp",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "otto",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "otto",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lise",
@@ -196,7 +287,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the seamstress"
+      "trade": "the seamstress",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "lise_need"
@@ -206,7 +299,24 @@
       "head": "scarf",
       "prop": "cloth",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "lise",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "lise",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "per",
@@ -215,7 +325,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the fishmonger"
+      "trade": "the fishmonger",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "per_need"
@@ -225,7 +337,24 @@
       "head": "bare",
       "prop": "fish",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "per",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "per",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "greta",
@@ -234,7 +363,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the widow"
+      "trade": "the widow",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "greta_need"
@@ -244,7 +375,24 @@
       "head": "scarf",
       "prop": "none",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "greta",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "greta",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "hansi",
@@ -253,7 +401,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the boy"
+      "trade": "the boy",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "hansi_need"
@@ -263,7 +413,24 @@
       "head": "bare",
       "prop": "none",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "hansi",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "hansi",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "tobias",
@@ -272,7 +439,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the schoolteacher"
+      "trade": "the schoolteacher",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "tobias_need"
@@ -282,7 +451,24 @@
       "head": "bare",
       "prop": "book",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "tobias",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "tobias",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "anneke",
@@ -291,7 +477,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the midwife"
+      "trade": "the midwife",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "anneke_need"
@@ -301,7 +489,24 @@
       "head": "scarf",
       "prop": "lamp",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "anneke",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "anneke",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "klaus",
@@ -310,7 +515,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the cooper"
+      "trade": "the cooper",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "klaus_need"
@@ -320,7 +527,24 @@
       "head": "cap",
       "prop": "tool",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "klaus",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "klaus",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sofie",
@@ -329,7 +553,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the laundress"
+      "trade": "the laundress",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "sofie_need"
@@ -339,7 +565,24 @@
       "head": "hat",
       "prop": "cloth",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "sofie",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "sofie",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "emil",
@@ -348,7 +591,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the smith's son"
+      "trade": "the smith's son",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "emil_need"
@@ -358,7 +603,24 @@
       "head": "hat",
       "prop": "tool",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "emil",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "emil",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "rike",
@@ -367,7 +629,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the beekeeper"
+      "trade": "the beekeeper",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "rike_need"
@@ -377,7 +641,24 @@
       "head": "tied",
       "prop": "basket",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "rike",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "rike",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "jonas",
@@ -386,7 +667,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the ferryman"
+      "trade": "the ferryman",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "jonas_need"
@@ -396,7 +679,24 @@
       "head": "bare",
       "prop": "lamp",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "jonas",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "jonas",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "hedda",
@@ -405,7 +705,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the innkeeper"
+      "trade": "the innkeeper",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "hedda_need"
@@ -415,7 +717,24 @@
       "head": "tied",
       "prop": "none",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "hedda",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "hedda",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "viktor",
@@ -424,7 +743,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the cartwright"
+      "trade": "the cartwright",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "viktor_need"
@@ -434,7 +755,24 @@
       "head": "scarf",
       "prop": "tool",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "viktor",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "viktor",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "nell",
@@ -443,7 +781,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the herbalist"
+      "trade": "the herbalist",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "nell_need"
@@ -453,7 +793,24 @@
       "head": "bare",
       "prop": "basket",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "nell",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "nell",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "bram",
@@ -462,7 +819,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the ropemaker"
+      "trade": "the ropemaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "bram_need"
@@ -472,7 +831,24 @@
       "head": "scarf",
       "prop": "rope",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "bram",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "bram",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "ilse",
@@ -481,7 +857,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the goatherd"
+      "trade": "the goatherd",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "ilse_need"
@@ -491,7 +869,24 @@
       "head": "scarf",
       "prop": "basket",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "ilse",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "ilse",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "ansel",
@@ -500,7 +895,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the stonemason"
+      "trade": "the stonemason",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "ansel_need"
@@ -510,7 +907,24 @@
       "head": "cap",
       "prop": "tool",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "ansel",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "ansel",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "dorte",
@@ -519,7 +933,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the candlemaker"
+      "trade": "the candlemaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "dorte_need"
@@ -529,7 +945,24 @@
       "head": "tied",
       "prop": "vessel",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "dorte",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "dorte",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "rurik",
@@ -538,7 +971,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the drover"
+      "trade": "the drover",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "rurik_need"
@@ -548,7 +983,24 @@
       "head": "cap",
       "prop": "none",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "rurik",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "rurik",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "maike",
@@ -557,7 +1009,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the potter"
+      "trade": "the potter",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "maike_need"
@@ -567,7 +1021,24 @@
       "head": "tied",
       "prop": "vessel",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "maike",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "maike",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "stefan",
@@ -576,7 +1047,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the sexton"
+      "trade": "the sexton",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "stefan_need"
@@ -586,7 +1059,24 @@
       "head": "hat",
       "prop": "book",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "stefan",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "stefan",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "ebba",
@@ -595,7 +1085,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the weaver"
+      "trade": "the weaver",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "ebba_need"
@@ -605,7 +1097,24 @@
       "head": "bare",
       "prop": "cloth",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "ebba",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "ebba",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lukas",
@@ -614,7 +1123,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the miller"
+      "trade": "the miller",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "lukas_need"
@@ -624,7 +1135,24 @@
       "head": "cap",
       "prop": "vessel",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "lukas",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "lukas",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "gunda",
@@ -633,7 +1161,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the cheesemaker"
+      "trade": "the cheesemaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "gunda_need"
@@ -643,7 +1173,24 @@
       "head": "bare",
       "prop": "vessel",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "gunda",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "gunda",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "arne",
@@ -652,7 +1199,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the thatcher"
+      "trade": "the thatcher",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "arne_need"
@@ -662,7 +1211,24 @@
       "head": "scarf",
       "prop": "tool",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "arne",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "arne",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "pia",
@@ -671,7 +1237,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the apothecary's girl"
+      "trade": "the apothecary's girl",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "pia_need"
@@ -681,7 +1249,24 @@
       "head": "tied",
       "prop": "book",
       "tone": "rust"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "pia",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "pia",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "henrik",
@@ -690,7 +1275,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the tanner"
+      "trade": "the tanner",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "henrik_need"
@@ -700,7 +1287,24 @@
       "head": "cap",
       "prop": "cloth",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "henrik",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "henrik",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "birgit",
@@ -709,7 +1313,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the glazier"
+      "trade": "the glazier",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "birgit_need"
@@ -719,7 +1325,24 @@
       "head": "hat",
       "prop": "none",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "birgit",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "birgit",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "matthias",
@@ -728,7 +1351,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the charcoal burner"
+      "trade": "the charcoal burner",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "matthias_need"
@@ -738,7 +1363,24 @@
       "head": "hood",
       "prop": "none",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "matthias",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "matthias",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "runa",
@@ -747,7 +1389,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the spinner"
+      "trade": "the spinner",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "runa_need"
@@ -757,7 +1401,24 @@
       "head": "bare",
       "prop": "cloth",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "runa",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "runa",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "erik",
@@ -766,7 +1427,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the farrier"
+      "trade": "the farrier",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "erik_need"
@@ -776,7 +1439,24 @@
       "head": "bare",
       "prop": "tool",
       "tone": "ash"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "erik",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "erik",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "thea",
@@ -785,7 +1465,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the basketmaker"
+      "trade": "the basketmaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "thea_need"
@@ -795,7 +1477,24 @@
       "head": "hood",
       "prop": "basket",
       "tone": "umber"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "thea",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "thea",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "jost",
@@ -804,7 +1503,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the woodcutter"
+      "trade": "the woodcutter",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "jost_need"
@@ -814,7 +1515,24 @@
       "head": "scarf",
       "prop": "tool",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "jost",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "jost",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "alva",
@@ -823,7 +1541,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the dairymaid"
+      "trade": "the dairymaid",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "alva_need"
@@ -833,7 +1553,24 @@
       "head": "tied",
       "prop": "vessel",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "alva",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "alva",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "nikolas",
@@ -842,7 +1579,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the clockmaker"
+      "trade": "the clockmaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "nikolas_need"
@@ -852,7 +1591,24 @@
       "head": "bare",
       "prop": "book",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "nikolas",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "nikolas",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sanne",
@@ -861,7 +1617,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the netmaker"
+      "trade": "the netmaker",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "sanne_need"
@@ -871,7 +1629,24 @@
       "head": "bare",
       "prop": "rope",
       "tone": "moss"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "sanne",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "sanne",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "wilhelm",
@@ -880,7 +1655,9 @@
     "state": {
       "helped": 0,
       "trusts_player": false,
-      "trade": "the old soldier"
+      "trade": "the old soldier",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "wilhelm_need"
@@ -890,7 +1667,24 @@
       "head": "cap",
       "prop": "none",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "wilhelm",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "wilhelm",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "partner",
@@ -900,7 +1694,9 @@
       "helped": 0,
       "trusts_player": false,
       "stays": false,
-      "trade": "the lodger across the landing"
+      "trade": "the lodger across the landing",
+      "known": 0,
+      "met_today": false
     },
     "goalIds": [
       "partner_need"
@@ -910,7 +1706,24 @@
       "head": "scarf",
       "prop": "cloth",
       "tone": "bone"
-    }
+    },
+    "tick": [
+      {
+        "id": "meeting_new_day",
+        "when": {
+          "npc": "partner",
+          "key": "met_today",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "partner",
+            "key": "met_today",
+            "value": false
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "child",

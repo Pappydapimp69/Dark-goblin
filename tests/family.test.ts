@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { content } from "../src/content";
+import { acquainted } from "./harness";
 import { acknowledgeGoblin, answerGoblin, availableChoices, interact, newGame, sleep } from "../src/engine/engine";
 import type { GameState, Goal } from "../src/engine/types";
 import { computeVerdict } from "../src/engine/verdict";
@@ -54,7 +55,7 @@ describe("the partner and the child", () => {
   });
 
   it("asking them to stay brings the child two mornings later, not sooner", () => {
-    let state = moveIn(newGame(1, content));
+    let state = moveIn(acquainted(newGame(1, content)));
     expect(state.slots["partner"]!.holder).toBe("partner");
     state = night(state);
     expect(state.loop).toBe(2);
@@ -68,14 +69,14 @@ describe("the partner and the child", () => {
   });
 
   it("a goal the player lost is handed down to the child first", () => {
-    let state = moveIn(loseDebtGoal(newGame(1, content)));
+    let state = moveIn(loseDebtGoal(acquainted(newGame(1, content))));
     state = night(night(state));
     expect(childGoals(state).map((g) => g.id)).toContain("child_clear_debt");
   });
 
   it("the arrival draws the same number of times whatever was handed down", () => {
     const drawsAt = (lost: boolean): number => {
-      let state = moveIn(lost ? loseDebtGoal(newGame(1, content)) : newGame(1, content));
+      let state = moveIn(lost ? loseDebtGoal(acquainted(newGame(1, content))) : acquainted(newGame(1, content)));
       state = night(state);
       const before = state.rng.count;
       state = act(state);
@@ -86,7 +87,7 @@ describe("the partner and the child", () => {
   });
 
   it("a child goal fulfilled by the player scores as the player's own: +5, max unchanged", () => {
-    let state = night(night(moveIn(newGame(1, content))));
+    let state = night(night(moveIn(acquainted(newGame(1, content)))));
     const goal = childGoals(state).find((g) => g.id === "child_learns" || g.id === "child_known")!;
     const choice = goal.id === "child_learns" ? "child_read" : "child_walk";
     state = act(state, choice, choice);
@@ -100,7 +101,7 @@ describe("the partner and the child", () => {
   });
 
   it("three untended days in a row close the child's goals, and the goblin comes that night", () => {
-    let state = night(night(moveIn(newGame(1, content))));
+    let state = night(night(moveIn(acquainted(newGame(1, content)))));
     const arrivedOn = state.loop;
     state = night(night(state));
     expect(childGoals(state).every((g) => g.status === "open")).toBe(true);
@@ -116,7 +117,7 @@ describe("the partner and the child", () => {
   });
 
   it("one evening with them resets the count, so neglect never dead-ends", () => {
-    let state = night(night(moveIn(newGame(1, content))));
+    let state = night(night(moveIn(acquainted(newGame(1, content)))));
     state = night(night(state));
     state = night(act(state, "child_read"));
     state = night(night(state));
@@ -124,7 +125,7 @@ describe("the partner and the child", () => {
   });
 
   it("hurting the child twice fails their goals by the player's hand: −3 each, no break", () => {
-    let state = night(night(moveIn(newGame(1, content))));
+    let state = night(night(moveIn(acquainted(newGame(1, content)))));
     state = act(state, "child_shout", "child_shout");
     expect(state.status).toBe("day");
     const failed = state.ledger.filter((e) => e.kind === "goal" && e.owner === "child");
@@ -134,7 +135,7 @@ describe("the partner and the child", () => {
   });
 
   it("the verdict leaves the child's goals out and lists them on their own", () => {
-    let state = night(night(moveIn(newGame(1, content))));
+    let state = night(night(moveIn(acquainted(newGame(1, content)))));
     const goal = childGoals(state).find((g) => g.id === "child_learns" || g.id === "child_known")!;
     const choice = goal.id === "child_learns" ? "child_read" : "child_walk";
     const before = computeVerdict(state);
@@ -146,7 +147,7 @@ describe("the partner and the child", () => {
   });
 
   it("sending Wren away frees the slot and stops the child coming if it was not already due", () => {
-    let state = act(newGame(1, content), "partner_help_first", "partner_send_away");
+    let state = act(acquainted(newGame(1, content)), "partner_help_first", "partner_send_away");
     expect(availableChoices(state, content).some((c) => c.npc === "partner")).toBe(false);
     state = night(night(night(state)));
     expect(state.npcs["child"]!.present).toBe(false);

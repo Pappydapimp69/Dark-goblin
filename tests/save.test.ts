@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { content } from "../src/content";
+import { acquainted } from "./harness";
 import { canonical, fingerprint } from "../src/engine/canonical";
 import { acknowledgeGoblin, answerGoblin, interact, newGame, sleep } from "../src/engine/engine";
 import { SCHEMA, clear, hasSave, isGameState, load, save } from "../src/ui/save";
@@ -46,7 +47,7 @@ afterEach(() => {
   Reflect.deleteProperty(globalThis as object, "localStorage");
 });
 
-const start = (): GameState => newGame(7, content);
+const start = (): GameState => acquainted(newGame(7, content));
 
 /** Sleep through a whole day, letting the goblin have his turn if he comes. */
 function rest(state: GameState): GameState {
