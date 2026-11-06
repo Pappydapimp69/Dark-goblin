@@ -557,9 +557,15 @@ seats — and therefore every seed's town — are unchanged.
 seed the child's pool". When the child arrives, the child version of each
 player goal that has already failed is dealt first (in goal-id order), and the
 rest are drawn from `rules.childGoalPool`. The draw always runs the full count,
-so the stream never depends on what the player lost (tested). In practice the
-generous bot loses a goal in 90 of 100 lives (median day 5) and the others
-rarely do, so inheritance mostly happens to the lives that gave too much.
+so the stream never depends on what the player lost (tested). Measured on the
+current build (with the get-to-know step, D-75): only the generous bot ever
+inherits. Its unpaid debt grows by exactly the rent each day, so its debt goal
+fails on loop 6 in every life where that goal was dealt; children first seen on
+day 7 or later inherit it (at the 2-in-3 odds it was dealt), and children who
+arrive on day 5 or 6 never do — 26 of 85 generous children, 30.6%, and a one-day
+shift in arrival would make it 13.3% or 57.3%. Mixed and human bots never
+inherit. So inheritance happens to the lives that gave too much, on a knife-edge
+of when the child comes (Brain training, inheritance-at-arrival).
 
 **D-73 — Neglect closes the child's goals after three days in a row, and one
 evening resets it.** Brain od76#E9: penalise neglect, but keep the recovery

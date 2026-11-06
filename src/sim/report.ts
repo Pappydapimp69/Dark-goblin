@@ -23,7 +23,10 @@ export interface Row {
   playerGoalsFulfilled: number;
   goalsFailed: number;
   breaks: number;
+  /** Nights the goblin came for a lost goal (visits, not questions). */
   nightfalls: number;
+  /** Questions he asked across those visits (1-3 each). */
+  goblinQuestions: number;
   interactions: number;
   finalDebt: number;
   verdict: string;
@@ -102,7 +105,8 @@ export function playGame(bot: Bot, seed: number, content: Content): Row {
     playerGoalsFulfilled: goals.filter((g) => g.status === "fulfilled" && g.owner === "player").length,
     goalsFailed: goals.filter((g) => g.status === "failed").length,
     breaks: state.goblinLog.filter((e) => e.kind === "break").length,
-    nightfalls: state.goblinLog.filter((e) => e.kind === "nightfall").length,
+    nightfalls: new Set(state.goblinLog.filter((e) => e.kind === "nightfall").map((e) => e.loop)).size,
+    goblinQuestions: state.goblinLog.filter((e) => e.kind === "nightfall").length,
     interactions,
     finalDebt: state.debt,
     verdict: verdict.verdict,
@@ -127,7 +131,7 @@ export function runAll(content: Content, games = DEFAULT_GAMES): Row[] {
 
 const HEADERS: (keyof Row)[] = [
   "seed", "bot", "loops", "lifespanLeft", "npcGoalsFulfilled", "playerGoalsFulfilled",
-  "goalsFailed", "breaks", "nightfalls", "interactions", "finalDebt", "verdict", "tracked",
+  "goalsFailed", "breaks", "nightfalls", "goblinQuestions", "interactions", "finalDebt", "verdict", "tracked",
   "childArrived", "childGoalsFulfilled", "childGoalsFailed",
 ];
 

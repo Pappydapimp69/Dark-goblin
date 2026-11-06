@@ -3,6 +3,7 @@ import type { Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
 import { cue, CUES } from "../ui/sound";
 import { button, typeOut } from "../ui/widgets";
+import { reactionFor } from "../ui/reaction";
 import type { Choice, NpcState } from "../engine/types";
 
 /**
@@ -139,13 +140,14 @@ export class Dialogue extends Phaser.Scene {
 
     for (const control of this.buttons) control.setVisible(false).setActive(false);
 
-    if (!choice.response) {
+    const line = reactionFor(choice, store.state);
+    if (!line) {
       this.close(true);
       return;
     }
 
     this.responseLine.setAlpha(1);
-    typeOut(this, this.responseLine, choice.response, {
+    typeOut(this, this.responseLine, line, {
       msPerChar: 24,
       onDone: () => {
         this.time.delayedCall(260, () => {

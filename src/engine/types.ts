@@ -109,6 +109,11 @@ export interface Choice {
   npc: NpcId;
   text: string;
   response?: string;
+  /**
+   * Presentation only: the reaction the second and third time this choice is
+   * taken (the last one is the act becoming routine). After those, no line.
+   */
+  again?: string[];
   available: Condition;
   effects: Effect[];
   impacts: Impact[];
