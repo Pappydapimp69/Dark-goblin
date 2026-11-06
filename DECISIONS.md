@@ -334,7 +334,7 @@ selfishness costs (1 with the bill paid). Giving costs 13 and lasts about 6
 days; sleeping through life lasts 27. Player goals that fail overnight cost no
 life at all, because the world tick runs after the day is cashed out (step 3
 before step 4). The spec's own table implies all of this, so it stands; whether
-withdrawal should be the safest life is open as Brain tension T201.
+withdrawal should be the safest life is open as Brain tension T202.
 
 ## Phase 6 — decisions taken in the polish pass
 
