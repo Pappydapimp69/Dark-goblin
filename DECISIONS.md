@@ -323,7 +323,7 @@ away" to someone who gave nothing. The rule is the spec's, so it stands. If it
 should read differently, the fix is a third ending for an empty life rather
 than a change to the comparison.
 
-**Why an empty life outlives a generous one (measured, D-70).** Under §5.2–5.3
+**Why an empty life outlives a generous one (measured).** Under §5.2–5.3
 each day's life loss is an identity:
 `2 + helps + neutrals + 2·harms + (goal max − goal score, before the bill) − bill score`.
 It matches the engine on 7,499 of 7,627 bot-days, and every miss is a clamp day.
