@@ -156,7 +156,7 @@ const someoneOut = () =>
     const named = street.children.list
       .filter((n) => n.input && Array.isArray(n.list))
       .flatMap((n) => n.list.filter((c) => c.type === "Text").map((c) => c.text))
-      .filter((label) => label && label !== "Sleep");
+      .filter((label) => label && label !== "Sleep" && label !== "Journal");
     return named[0] ?? null;
   });
 
@@ -214,6 +214,13 @@ if (firstChoice?.response) {
 }
 await until("the street again", (s) => on("Street")(s) && !on("Dialogue")(s));
 await shot("05-after-choice");
+
+// The journal opens over the town and closes back onto it.
+await press("Journal");
+await until("the journal", (s) => on("Journal")(s) && s.texts.includes("What you want"));
+await shot("05b-journal");
+await press("Back");
+await until("the town after the journal", (s) => on("Street")(s) && !on("Journal")(s));
 
 await press("Sleep"); // in Your Room
 await until("nightfall", on("Night"));

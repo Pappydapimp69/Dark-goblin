@@ -5,6 +5,7 @@ import { content } from "./content";
 import { Boot } from "./scenes/Boot";
 import { Dialogue } from "./scenes/Dialogue";
 import { Goblin } from "./scenes/Goblin";
+import { Journal } from "./scenes/Journal";
 import { Mirror } from "./scenes/Mirror";
 import { Night } from "./scenes/Night";
 import { Review } from "./scenes/Review";
@@ -26,7 +27,7 @@ const game = new Phaser.Game({
     width: WIDTH,
     height: HEIGHT,
   },
-  scene: [Boot, Mirror, Street, Dialogue, Night, Goblin, Review],
+  scene: [Boot, Mirror, Street, Dialogue, Journal, Night, Goblin, Review],
 });
 
 // A handle for tools/smoke.mjs, which asserts on live scene state rather than

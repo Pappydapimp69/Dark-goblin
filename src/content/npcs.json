@@ -44,7 +44,13 @@
           }
         ]
       }
-    ]
+    ],
+    "art": {
+      "build": "slight",
+      "head": "hood",
+      "prop": "none",
+      "tone": "umber"
+    }
   },
   {
     "id": "baker",

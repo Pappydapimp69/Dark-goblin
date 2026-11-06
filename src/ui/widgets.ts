@@ -25,7 +25,7 @@ interface Hotspot {
   y2: number;
   press(): void;
   release(): void;
-  pick(): void;
+  pick(p: Phaser.Input.Pointer): void;
   alive(): boolean;
 }
 
@@ -58,7 +58,7 @@ function spotsFor(scene: Phaser.Scene): Hotspot[] {
   scene.input.on("pointerup", (p: Phaser.Input.Pointer) => {
     const over = at(p);
     for (const s of spots) if (s.alive()) s.release();
-    if (over && over === armed) over.pick();
+    if (over && over === armed) over.pick(p);
     armed = undefined;
   });
 
@@ -214,4 +214,23 @@ export function typeOut(
 
   scene.input.once("pointerdown", finish);
   return finish;
+}
+
+/**
+ * Open ground: a tap anywhere inside the rectangle that no control claims.
+ * Register it BEFORE the controls drawn over it — the last registered spot
+ * wins, so people and buttons on the ground still take their own taps.
+ */
+export function groundSpot(
+  scene: Phaser.Scene,
+  area: { x1: number; y1: number; x2: number; y2: number },
+  onTap: (x: number, y: number) => void,
+): void {
+  spotsFor(scene).push({
+    ...area,
+    alive: () => scene.sys.isActive(),
+    press: () => {},
+    release: () => {},
+    pick: (p) => onTap(p.x, p.y),
+  });
 }

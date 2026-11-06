@@ -633,3 +633,32 @@ happens without comment. The line is picked in `src/ui/reaction.ts` from the
 ledger the engine already keeps, so scoring and determinism are untouched.
 Measured after: repeats 0% for every bot; a life still hears 44–60 distinct
 lines.
+
+## The town as a place you walk
+
+**D-78 — RPG, without changing the player.** Asked for: "more like an RPG".
+§1 says the player never changes, so there are no stats, levels or gear; the
+role-playing lives in the world. The Street is now a top-down town you walk:
+you are a figure with a warm ring at your feet; tap open ground to go there, tap
+someone to walk up beside them and talk, tap Sleep to walk home to bed. Each
+place is a drawn building (shop with an awning, a market stall and well, a
+broken shell, your cottage with its window lit). Walking costs nothing: the day
+is still counted only in acts (§5.1), and nothing in the engine changed, so
+scoring, the sim and every balance figure stand.
+
+**D-79 — The whole town fits one screen.** Hit testing is done in screen space
+(D-65) because Phaser's own failed on a real phone; a scrolling camera would put
+every tap through a second transform. `src/ui/town.ts` holds the layout as pure
+numbers, and a test lays out the fullest town for 300 seeds: everyone in town
+is drawn, on screen, 100px or more apart and off every building; nobody is
+more than about two seconds' walk from your door.
+
+**D-80 — A journal, in words.** What you want (your goals, each "still wanting
+it", "yours now" or "gone"); each person you have come to know and the trouble
+they told you on the second day, or "Settled." / "Too late now." / "Ruined. You
+saw to that."; and the child's goals once there is a child. Strangers are not
+in it. It reads state and writes nothing; a test walks whole lives to check no
+number reaches the page.
+
+**D-81 — The sun is the day's clock.** It crosses the sky as the day's acts are
+spent and the sky darkens with it. It is a position, not a number (§0).
