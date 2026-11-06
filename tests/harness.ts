@@ -33,3 +33,16 @@ export function play(state: GameState, script: readonly string[], content: Conte
   }
   return trace;
 }
+
+/**
+ * Everyone already known, as if the two days of meeting them had been lived.
+ * For tests about what happens AFTER the relationship exists; the meeting
+ * itself is tested on its own in acquaintance.test.ts.
+ */
+export function acquainted(state: GameState): GameState {
+  const npcs = { ...state.npcs };
+  for (const [id, npc] of Object.entries(npcs)) {
+    if (typeof npc.state["known"] === "number") npcs[id] = { ...npc, state: { ...npc.state, known: 2 } };
+  }
+  return { ...state, npcs };
+}

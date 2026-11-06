@@ -23,6 +23,36 @@ const WARM = [
   "{name} makes room without being asked.",
 ];
 
+// Before you know someone, there is nothing to do with them but get to know
+// them — and only once a day. These read off the same npc.state keys the
+// meeting choices write (known, met_today); nothing here writes back.
+const STRANGER = [
+  "{name} doesn't know your face.",
+  "{name} looks at you the way you look at weather.",
+  "{name} nods, the way people nod at strangers.",
+  "{name} waits to see what you want.",
+];
+const MET = [
+  "{name} half-remembers you.",
+  "{name} seems to place you, after a moment.",
+  "{name} gives you the beginning of a smile.",
+  "{name} knows your face now, if not much else.",
+];
+const LATER = [
+  "{name} nods. You've already talked today.",
+  "{name} is busy. Tomorrow, maybe.",
+  "{name} has said what they had to say for today.",
+  "{name} lifts a hand. Another day.",
+];
+
+/** How well you know someone, from the meeting keys. Undefined `known` means no gate. */
+export function acquaintance(npc: NpcState): "stranger" | "met" | "later" | "known" {
+  const known = npc.state["known"];
+  if (typeof known !== "number" || known >= 2) return "known";
+  if (npc.state["met_today"] === true) return "later";
+  return known === 0 ? "stranger" : "met";
+}
+
 function pick(pool: string[], key: string): string {
   let hash = 0;
   for (let i = 0; i < key.length; i += 1) hash = (hash + key.charCodeAt(i)) | 0;
@@ -30,7 +60,12 @@ function pick(pool: string[], key: string): string {
 }
 
 function greetingFor(npc: NpcState): string {
-  const pool = npc.state["trusts_player"] === true ? WARM : OPENING;
+  const stage = acquaintance(npc);
+  const pool =
+    stage === "stranger" ? STRANGER
+    : stage === "met" ? MET
+    : stage === "later" ? LATER
+    : npc.state["trusts_player"] === true ? WARM : OPENING;
   return pick(pool, npc.id).replace("{name}", npc.name);
 }
 

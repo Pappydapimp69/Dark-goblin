@@ -114,6 +114,11 @@ export interface Choice {
   impacts: Impact[];
   /** The single choice that stays available after this NPC breaks (§5.4). */
   aftermath?: boolean;
+  /**
+   * A get-to-know meeting. Content-only marker: the engine does not read it.
+   * A person's other choices are gated in content on `known`, which these write.
+   */
+  meeting?: boolean;
 }
 
 export interface ScheduledEffect {

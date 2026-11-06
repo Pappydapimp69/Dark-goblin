@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { brokenKey, figureKey, placeKey } from "../art";
 import { content } from "../content";
+import { acquaintance } from "./Dialogue";
 import type { NpcState } from "../engine/types";
 import { DevOverlay } from "../ui/DevOverlay";
 import { sceneFor, type Store } from "../ui/store";
@@ -83,7 +84,11 @@ export class Street extends Phaser.Scene {
   }
 
   private open(store: Store, npcId: string): void {
-    if (store.choicesFor(npcId).length === 0) return;
+    // Someone you are still getting to know always answers, even on a day
+    // you have already talked — so the tap says "tomorrow" instead of nothing.
+    const npc = store.state.npcs[npcId];
+    const gettingToKnow = npc !== undefined && acquaintance(npc) !== "known";
+    if (store.choicesFor(npcId).length === 0 && !gettingToKnow) return;
     this.scene.pause();
     this.scene.launch("Dialogue", { npcId });
   }
