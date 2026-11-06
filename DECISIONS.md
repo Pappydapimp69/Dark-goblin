@@ -504,3 +504,17 @@ touch fix routes taps through scene-level hotspots in `widgets.ts`, where a
 control is considered live by `active`, not by visibility. When a response line
 is typing, old choices are both hidden and deactivated so their invisible
 hotspots cannot eat the tap that should advance the conversation.
+
+**D-69 — Every reaction line belongs to one person and one act.** The first
+pass of `Choice.response` drew 175 lines from 29 shared templates with the
+name swapped in, so "Something in Otto eases, just slightly" and "Something
+in Wilhelm eases, just slightly" were the same line. Measured over the sim
+seeds (`npx vite-node tools/repeat-audit.ts`), 36% (human bot) to 64%
+(generous bot) of the reactions a life heard were lines it had already heard
+from someone else — the town reading as one voice, against §1's "the town
+changes". Each line is now written for its choice and names something of
+that person's trade or what happens next. A blind reader given 50 lines with
+names masked placed 47 with the right person; word overlap with the choice
+text placed only 15%, because the lines describe consequence rather than
+restating the act — so overlap is the wrong instrument for this.
+`tests/responses.test.ts` fails if two people ever share a line again.

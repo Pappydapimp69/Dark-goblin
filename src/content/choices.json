@@ -50,7 +50,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka's shoulders drop, just for a moment."
+    "response": "Ilka turns the sack over twice, like she's checking it's real, and goes back to the oven humming."
   },
   {
     "id": "baker_help_again",
@@ -91,7 +91,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka doesn't look surprised to see you helping again. That's its own kind of trust."
+    "response": "Ilka laughs, then stops laughing, and looks across the street at it for a long while."
   },
   {
     "id": "baker_takes_storefront",
@@ -127,7 +127,7 @@
         "kind": "help"
       }
     ],
-    "response": "For a moment Ilka just stands there, taking it in."
+    "response": "Ilka puts her hand flat on the door, the way you'd touch a sleeping animal."
   },
   {
     "id": "baker_takes_wrecked",
@@ -166,7 +166,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ilka's eyes go wide, like they hadn't let themself expect this."
+    "response": "Ilka walks the new floor end to end, counting where the ovens will go under her breath."
   },
   {
     "id": "baker_shop_for_self",
@@ -192,7 +192,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilka steps back, like distance is the only thing left to give."
+    "response": "Ilka wipes her hands on her apron and keeps wiping them long after they're clean."
   },
   {
     "id": "baker_wrecked_for_self",
@@ -225,7 +225,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilka looks at what's left, then at you."
+    "response": "Ilka had already measured the window for her bread. She doesn't say so."
   },
   {
     "id": "baker_sell_her_flour",
@@ -247,7 +247,7 @@
         "kind": "self"
       }
     ],
-    "response": "Ilka pockets it and says nothing more."
+    "response": "Ilka counts out the coins slowly. The loaves will be smaller this week."
   },
   {
     "id": "baker_drive_out",
@@ -270,7 +270,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Ilka something to hear."
+    "response": "Ilka doesn't argue. She just starts looking at the road out of town."
   },
   {
     "id": "shop_pay_down",
@@ -311,7 +311,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Aldo crosses a line out in his little book and doesn't thank you, which is how you know."
   },
   {
     "id": "shop_listen_first",
@@ -356,7 +356,7 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo nods slowly, like deciding whether to trust it."
+    "response": "Aldo talks about his daughter's kitchen by the sea until the kettle goes cold."
   },
   {
     "id": "shop_listen_again",
@@ -394,7 +394,7 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo hands you the next thing before you ask."
+    "response": "Aldo looks at the shelves like he's already saying goodbye to them."
   },
   {
     "id": "shop_help_him_go",
@@ -435,7 +435,7 @@
         "kind": "help"
       }
     ],
-    "response": "Aldo's eyes go wide, like they hadn't let themself expect this."
+    "response": "Aldo wraps the scales in a shirt so they won't knock on the cart. He leaves the bell on the door."
   },
   {
     "id": "shop_tell_creditor",
@@ -468,7 +468,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Aldo something to hear."
+    "response": "The creditor writes something down. Across the street, Aldo is still sweeping his step."
   },
   {
     "id": "shop_buy_cheap",
@@ -508,7 +508,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Aldo steps back, like distance is the only thing left to give."
+    "response": "Aldo helps you carry it out. He holds the door, because he always holds the door."
   },
   {
     "id": "shop_aftermath",
@@ -572,7 +572,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ves looks caught off guard, like no one does this without being asked."
+    "response": "Ves weighs the hammer in his hand and his whole arm remembers."
   },
   {
     "id": "builder_encourage",
@@ -610,7 +610,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ves makes room for you without thinking about it."
+    "response": "Ves kicks a fallen beam, then crouches and looks at where it used to sit."
   },
   {
     "id": "builder_first_job",
@@ -649,7 +649,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ves's eyes go wide, like they hadn't let themself expect this."
+    "response": "Ves is up a ladder before you've finished talking. He's whistling something old."
   },
   {
     "id": "builder_hire_out",
@@ -675,7 +675,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Something closes in Ves's face."
+    "response": "Ves takes what you hand him and doesn't ask what the job paid."
   },
   {
     "id": "builder_drive_off",
@@ -698,7 +698,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Somewhere, Ves's life just got smaller, and they don't know why yet."
+    "response": "Ves leaves the tools where they are. He doesn't come back for them."
   },
   {
     "id": "mara_help_first",
@@ -746,7 +746,7 @@
         "kind": "help"
       }
     ],
-    "response": "Mara looks caught off guard, like no one does this without being asked."
+    "response": "Mara runs the splice through her fingers, and the bucket comes up without a jerk for the first time in weeks."
   },
   {
     "id": "mara_help_again",
@@ -782,7 +782,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Mara finds the trough full and stands over it with her shawl still on, smiling at the water."
   },
   {
     "id": "mara_self",
@@ -804,7 +804,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Mara doesn't linger on it."
+    "response": "Mara pays, and knots the old rope back on anyway, to make the new one last."
   },
   {
     "id": "mara_harm",
@@ -827,7 +827,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Mara doesn't know yet. That's the worst part."
+    "response": "Mara lowers the bucket the way she always has. The rope creaks, and she trusts it."
   },
   {
     "id": "otto_help_first",
@@ -875,7 +875,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Otto eases, just slightly."
+    "response": "Otto talks the whole round, about nothing, like he's been saving it up for years."
   },
   {
     "id": "otto_help_again",
@@ -911,7 +911,7 @@
         "kind": "help"
       }
     ],
-    "response": "Otto makes room for you without thinking about it."
+    "response": "Otto hands you the lantern at the cold corner without asking, and blows on his fingers."
   },
   {
     "id": "otto_self",
@@ -933,7 +933,7 @@
         "kind": "self"
       }
     ],
-    "response": "Otto shrugs and moves on to the next thing."
+    "response": "Otto turns his lantern down a little so it won't wake you, and walks on alone."
   },
   {
     "id": "otto_harm",
@@ -956,7 +956,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Otto even hears about it."
+    "response": "They take his lantern by morning. The wall is darker than you thought it would be."
   },
   {
     "id": "lise_help_first",
@@ -1004,7 +1004,7 @@
         "kind": "help"
       }
     ],
-    "response": "Lise looks caught off guard, like no one does this without being asked."
+    "response": "Lise holds a needle up to the window and laughs, because she can see the eye again."
   },
   {
     "id": "lise_help_again",
@@ -1040,7 +1040,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Lise sews faster with you there. She hums the same three notes over and over."
   },
   {
     "id": "lise_self",
@@ -1062,7 +1062,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Lise doesn't linger on it."
+    "response": "Lise folds the coat with care, the way she'd fold it for anyone, and says it suits you."
   },
   {
     "id": "lise_harm",
@@ -1085,7 +1085,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Lise doesn't know yet. That's the worst part."
+    "response": "Lise sits in the window with a dress half done, and nobody comes to collect it."
   },
   {
     "id": "per_help_first",
@@ -1133,7 +1133,7 @@
         "kind": "help"
       }
     ],
-    "response": "Per looks caught off guard, like no one does this without being asked."
+    "response": "Per runs his hand along the seam and nods to the boat, not to you."
   },
   {
     "id": "per_help_again",
@@ -1169,7 +1169,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Per bails with his back to the sea and talks about his father, who also bailed."
   },
   {
     "id": "per_self",
@@ -1191,7 +1191,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Per doesn't linger on it."
+    "response": "Per writes your name on the board by the stall. The chalk will still be there next week."
   },
   {
     "id": "per_harm",
@@ -1214,7 +1214,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Per doesn't know yet. That's the worst part."
+    "response": "In the morning Per stands on the jetty with the cut end of the line in his hand."
   },
   {
     "id": "greta_help_first",
@@ -1262,7 +1262,7 @@
         "kind": "help"
       }
     ],
-    "response": "Greta looks caught off guard, like no one does this without being asked."
+    "response": "Greta brings you tea in her husband's cup and doesn't explain why that one."
   },
   {
     "id": "greta_help_again",
@@ -1298,7 +1298,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Greta counts the cords by the wall and does the sum for winter. It comes out right."
   },
   {
     "id": "greta_self",
@@ -1320,7 +1320,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Greta doesn't linger on it."
+    "response": "Greta watches you carry the tools out. She'd kept them oiled."
   },
   {
     "id": "greta_harm",
@@ -1343,7 +1343,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Greta doesn't know yet. That's the worst part."
+    "response": "Greta starts wrapping her plates in newspaper, one at a time, very carefully."
   },
   {
     "id": "hansi_help_first",
@@ -1391,7 +1391,7 @@
         "kind": "help"
       }
     ],
-    "response": "Hansi looks caught off guard, like no one does this without being asked."
+    "response": "Hansi calls until his voice cracks, then lets you call for a while."
   },
   {
     "id": "hansi_help_again",
@@ -1427,7 +1427,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Out past the last ditch, Hansi stops and listens hard, and you both hear something."
   },
   {
     "id": "hansi_self",
@@ -1449,7 +1449,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Hansi doesn't linger on it."
+    "response": "Hansi pays you everything in his pocket and runs off the wrong way, sure of it."
   },
   {
     "id": "hansi_harm",
@@ -1472,7 +1472,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Hansi doesn't know yet. That's the worst part."
+    "response": "Hansi stops calling. Somewhere out past the ditches, the dog is still waiting."
   },
   {
     "id": "tobias_help_first",
@@ -1520,7 +1520,7 @@
         "kind": "help"
       }
     ],
-    "response": "Tobias nods slowly, like deciding whether to trust it."
+    "response": "Tobias writes the date on the board in big letters, just because he can."
   },
   {
     "id": "tobias_help_again",
@@ -1556,7 +1556,7 @@
         "kind": "help"
       }
     ],
-    "response": "Tobias hands you the next thing before you ask."
+    "response": "Tobias catches your eye over the slow ones' heads and mouths, thank you."
   },
   {
     "id": "tobias_self",
@@ -1578,7 +1578,7 @@
         "kind": "self"
       }
     ],
-    "response": "Tobias pockets it and says nothing more."
+    "response": "Tobias reads the next lesson to them from memory. The shelf behind him is bare."
   },
   {
     "id": "tobias_harm",
@@ -1601,7 +1601,7 @@
         "kind": "harm"
       }
     ],
-    "response": "The words are already out. There's no taking them back."
+    "response": "Fewer children come on the second morning. Tobias sets out the same number of slates."
   },
   {
     "id": "anneke_help_first",
@@ -1649,7 +1649,7 @@
         "kind": "help"
       }
     ],
-    "response": "Anneke looks at you a beat too long before saying thanks."
+    "response": "Anneke tells you about every baby she's lost the road for, and the one that came early in a ditch."
   },
   {
     "id": "anneke_help_again",
@@ -1685,7 +1685,7 @@
         "kind": "help"
       }
     ],
-    "response": "Anneke works alongside you like it's ordinary now."
+    "response": "Anneke falls asleep walking, nearly, with her hand on your sleeve."
   },
   {
     "id": "anneke_self",
@@ -1707,7 +1707,7 @@
         "kind": "self"
       }
     ],
-    "response": "Anneke takes the deal. It's just business, today."
+    "response": "Anneke pays for the oil out of the eggs a farmer gave her. She doesn't argue."
   },
   {
     "id": "anneke_harm",
@@ -1730,7 +1730,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Anneke something to hear."
+    "response": "Anneke goes out without the lantern. She knows the road. She says she knows the road."
   },
   {
     "id": "klaus_help_first",
@@ -1778,7 +1778,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Klaus eases, just slightly."
+    "response": "Klaus taps the barrels as you roll them off, listening, proud of the sound."
   },
   {
     "id": "klaus_help_again",
@@ -1814,7 +1814,7 @@
         "kind": "help"
       }
     ],
-    "response": "Klaus makes room for you without thinking about it."
+    "response": "Klaus knows you don't need it. He picks you a good one anyway."
   },
   {
     "id": "klaus_self",
@@ -1836,7 +1836,7 @@
         "kind": "self"
       }
     ],
-    "response": "Klaus shrugs and moves on to the next thing."
+    "response": "Klaus takes it. He'll go without hoops this week to make it come out."
   },
   {
     "id": "klaus_harm",
@@ -1859,7 +1859,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Klaus even hears about it."
+    "response": "The brewer's cart goes past Klaus's yard without stopping."
   },
   {
     "id": "sofie_help_first",
@@ -1907,7 +1907,7 @@
         "kind": "help"
       }
     ],
-    "response": "Sofie nods slowly, like deciding whether to trust it."
+    "response": "Sofie rubs the salve in and keeps her hands open on her lap, as if they were new."
   },
   {
     "id": "sofie_help_again",
@@ -1943,7 +1943,7 @@
         "kind": "help"
       }
     ],
-    "response": "Sofie hands you the next thing before you ask."
+    "response": "Sofie sits down on an upturned tub for the first time all day and just breathes."
   },
   {
     "id": "sofie_self",
@@ -1965,7 +1965,7 @@
         "kind": "self"
       }
     ],
-    "response": "Sofie pockets it and says nothing more."
+    "response": "Sofie counts it twice to be sure, and then says it's fine, and folds your shirts."
   },
   {
     "id": "sofie_harm",
@@ -1988,7 +1988,7 @@
         "kind": "harm"
       }
     ],
-    "response": "The words are already out. There's no taking them back."
+    "response": "Sofie washes the same sheet three times. It came out white the first time."
   },
   {
     "id": "emil_help_first",
@@ -2036,7 +2036,7 @@
         "kind": "help"
       }
     ],
-    "response": "Emil looks caught off guard, like no one does this without being asked."
+    "response": "Emil finds his father's handwriting in the margins and goes quiet over it."
   },
   {
     "id": "emil_help_again",
@@ -2072,7 +2072,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Emil looks at your name next to his father's and doesn't know where to put his hands."
   },
   {
     "id": "emil_self",
@@ -2094,7 +2094,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Emil doesn't linger on it."
+    "response": "Emil helps you lift the anvil onto the cart. He knew it would go one day. Not today."
   },
   {
     "id": "emil_harm",
@@ -2117,7 +2117,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Emil doesn't know yet. That's the worst part."
+    "response": "They come at first light. Emil stands in the empty forge with the fire still in."
   },
   {
     "id": "rike_help_first",
@@ -2165,7 +2165,7 @@
         "kind": "help"
       }
     ],
-    "response": "Rike's shoulders drop, just for a moment."
+    "response": "Rike leans close to the hive in the sun and listens. The hum is louder."
   },
   {
     "id": "rike_help_again",
@@ -2201,7 +2201,7 @@
         "kind": "help"
       }
     ],
-    "response": "Rike doesn't look surprised to see you helping again. That's its own kind of trust."
+    "response": "Rike lets the bees walk over her bare wrist and doesn't brush them off."
   },
   {
     "id": "rike_self",
@@ -2223,7 +2223,7 @@
         "kind": "self"
       }
     ],
-    "response": "Rike counts it out without meeting your eyes."
+    "response": "Rike watches you take it and says nothing. There aren't many jars left on the shelf."
   },
   {
     "id": "rike_harm",
@@ -2246,7 +2246,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Somewhere, Rike's life just got smaller, and they don't know why yet."
+    "response": "In the morning Rike walks the row of hives, lifting each lid, and stops speaking."
   },
   {
     "id": "jonas_help_first",
@@ -2294,7 +2294,7 @@
         "kind": "help"
       }
     ],
-    "response": "Jonas doesn't say much, but they remember it."
+    "response": "Jonas pushes off into the deep water and lets out a long breath like he's been holding it since spring."
   },
   {
     "id": "jonas_help_again",
@@ -2330,7 +2330,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Jonas sings on the far side of the rope, badly, and doesn't care that you hear."
   },
   {
     "id": "jonas_self",
@@ -2352,7 +2352,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Jonas's face says whether it cost them anything."
+    "response": "Jonas ties up behind you without a word, and rows back across for nobody."
   },
   {
     "id": "jonas_harm",
@@ -2375,7 +2375,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Jonas find out."
+    "response": "Jonas waits at the landing all afternoon with his hand on the bell."
   },
   {
     "id": "hedda_help_first",
@@ -2423,7 +2423,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Hedda eases, just slightly."
+    "response": "Hedda opens a window in every room, as if someone were coming."
   },
   {
     "id": "hedda_help_again",
@@ -2459,7 +2459,7 @@
         "kind": "help"
       }
     ],
-    "response": "Hedda makes room for you without thinking about it."
+    "response": "Hedda sets two cups on the table, and then, after a moment, a third for no one."
   },
   {
     "id": "hedda_self",
@@ -2481,7 +2481,7 @@
         "kind": "self"
       }
     ],
-    "response": "Hedda shrugs and moves on to the next thing."
+    "response": "Hedda chalks it up behind the bar under the other names, where the chalk is thickest."
   },
   {
     "id": "hedda_harm",
@@ -2504,7 +2504,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Hedda even hears about it."
+    "response": "The carters' wagons go through without stopping. Hedda keeps the fire lit anyway."
   },
   {
     "id": "viktor_help_first",
@@ -2552,7 +2552,7 @@
         "kind": "help"
       }
     ],
-    "response": "Viktor doesn't say much, but they remember it."
+    "response": "Viktor spins the finished wheel on its pin and watches it till it stops, true."
   },
   {
     "id": "viktor_help_again",
@@ -2588,7 +2588,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "The tyre hisses on and Viktor laughs out loud, once, at the steam."
   },
   {
     "id": "viktor_self",
@@ -2610,7 +2610,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Viktor's face says whether it cost them anything."
+    "response": "Viktor looks at the empty spot on the wall and starts the same wheel again from the hub."
   },
   {
     "id": "viktor_harm",
@@ -2633,7 +2633,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Viktor find out."
+    "response": "Viktor finishes the wheel anyway and leans it by the door for someone who isn't coming."
   },
   {
     "id": "nell_help_first",
@@ -2681,7 +2681,7 @@
         "kind": "help"
       }
     ],
-    "response": "Nell's shoulders drop, just for a moment."
+    "response": "Nell's first customer in a week comes in behind you, nervous, and buys mint."
   },
   {
     "id": "nell_help_again",
@@ -2717,7 +2717,7 @@
         "kind": "help"
       }
     ],
-    "response": "Nell doesn't look surprised to see you helping again. That's its own kind of trust."
+    "response": "Nell wraps it in paper and ties it with string, like it was something fine."
   },
   {
     "id": "nell_self",
@@ -2739,7 +2739,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nell counts it out without meeting your eyes."
+    "response": "Nell listens to your talk and nods, and lets you go with the jar."
   },
   {
     "id": "nell_harm",
@@ -2762,7 +2762,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Somewhere, Nell's life just got smaller, and they don't know why yet."
+    "response": "Nell takes her bunches of drying sage down from the window and closes the shutter."
   },
   {
     "id": "bram_help_first",
@@ -2810,7 +2810,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Bram eases, just slightly."
+    "response": "Bram sniffs the hemp, then sniffs it again, and says it might do yet."
   },
   {
     "id": "bram_help_again",
@@ -2846,7 +2846,7 @@
         "kind": "help"
       }
     ],
-    "response": "Bram makes room for you without thinking about it."
+    "response": "Bram starts twisting a strand while you turn, just to feel the hemp take."
   },
   {
     "id": "bram_self",
@@ -2868,7 +2868,7 @@
         "kind": "self"
       }
     ],
-    "response": "Bram shrugs and moves on to the next thing."
+    "response": "Bram coils it for you neatly. It's the best rope he has, and he knows you know."
   },
   {
     "id": "bram_harm",
@@ -2891,7 +2891,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Bram even hears about it."
+    "response": "Bram twists rope all afternoon that no one will buy, because his hands don't know how to stop."
   },
   {
     "id": "ilse_help_first",
@@ -2939,7 +2939,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ilse looks caught off guard, like no one does this without being asked."
+    "response": "Ilse sleeps in the hut till dawn, properly, for the first time since lambing."
   },
   {
     "id": "ilse_help_again",
@@ -2975,7 +2975,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Ilse brings you a cup of milk still warm from the goat and sits with you at the end."
   },
   {
     "id": "ilse_self",
@@ -2997,7 +2997,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Ilse doesn't linger on it."
+    "response": "Ilse counts again in the evening and gets one less, and counts again."
   },
   {
     "id": "ilse_harm",
@@ -3020,7 +3020,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Ilse doesn't know yet. That's the worst part."
+    "response": "Ilse spends the whole day on the high field calling them in, one name at a time."
   },
   {
     "id": "ansel_help_first",
@@ -3068,7 +3068,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ansel looks caught off guard, like no one does this without being asked."
+    "response": "Ansel sets the stone you carried and pats it, the way you'd pat a horse."
   },
   {
     "id": "ansel_help_again",
@@ -3104,7 +3104,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Ansel says nothing either. The wall goes up a course before dark."
   },
   {
     "id": "ansel_self",
@@ -3126,7 +3126,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Ansel doesn't linger on it."
+    "response": "Ansel watches you lay the first stone from across the road. He doesn't correct you."
   },
   {
     "id": "ansel_harm",
@@ -3149,7 +3149,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Ansel doesn't know yet. That's the worst part."
+    "response": "Ansel walks the length of his old walls with his hand on them, checking."
   },
   {
     "id": "dorte_help_first",
@@ -3197,7 +3197,7 @@
         "kind": "help"
       }
     ],
-    "response": "Dorte looks at you a beat too long before saying thanks."
+    "response": "Dorte dips the first candle and holds it up to the light, pleased with the colour."
   },
   {
     "id": "dorte_help_again",
@@ -3233,7 +3233,7 @@
         "kind": "help"
       }
     ],
-    "response": "Dorte works alongside you like it's ordinary now."
+    "response": "Dorte has started leaving a lit candle in the window for when you pass."
   },
   {
     "id": "dorte_self",
@@ -3255,7 +3255,7 @@
         "kind": "self"
       }
     ],
-    "response": "Dorte takes the deal. It's just business, today."
+    "response": "Dorte wraps them in paper for you. Two streets over, you'll sell them by the pair."
   },
   {
     "id": "dorte_harm",
@@ -3278,7 +3278,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Dorte something to hear."
+    "response": "Dorte trims the wicks shorter and shorter, trying to find what's wrong with them."
   },
   {
     "id": "rurik_help_first",
@@ -3326,7 +3326,7 @@
         "kind": "help"
       }
     ],
-    "response": "Rurik doesn't say much, but they remember it."
+    "response": "Rurik whistles the beasts through the gap and laughs when the last one makes it."
   },
   {
     "id": "rurik_help_again",
@@ -3362,7 +3362,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Rurik walks with his hand on the lead cow's neck and tells you her name."
   },
   {
     "id": "rurik_self",
@@ -3384,7 +3384,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Rurik's face says whether it cost them anything."
+    "response": "Rurik's beasts stand at the fence looking at the grass. He moves them on."
   },
   {
     "id": "rurik_harm",
@@ -3407,7 +3407,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Rurik find out."
+    "response": "Rurik is gone two days. He comes back with one beast fewer and doesn't say where."
   },
   {
     "id": "maike_help_first",
@@ -3455,7 +3455,7 @@
         "kind": "help"
       }
     ],
-    "response": "Maike looks caught off guard, like no one does this without being asked."
+    "response": "Maike lights the kiln and sits right up against its warmth, like an old friend."
   },
   {
     "id": "maike_help_again",
@@ -3491,7 +3491,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Maike packs the last pot in and holds her breath, then lets it go."
   },
   {
     "id": "maike_self",
@@ -3513,7 +3513,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Maike doesn't linger on it."
+    "response": "Maike looks at the empty shelf where the good ones stood, and wedges more clay."
   },
   {
     "id": "maike_harm",
@@ -3536,7 +3536,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Maike doesn't know yet. That's the worst part."
+    "response": "Maike stops at the wheel with her hands wet and looks at the clay for a long time."
   },
   {
     "id": "stefan_help_first",
@@ -3584,7 +3584,7 @@
         "kind": "help"
       }
     ],
-    "response": "Stefan doesn't say much, but they remember it."
+    "response": "The bell sounds across the whole town, and Stefan stands under it with his cap off."
   },
   {
     "id": "stefan_help_again",
@@ -3620,7 +3620,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Stefan sits on the step with his eyes shut and counts the hours with you."
   },
   {
     "id": "stefan_self",
@@ -3642,7 +3642,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Stefan's face says whether it cost them anything."
+    "response": "It rains in the night. Stefan puts a bucket under the drip and doesn't look up either."
   },
   {
     "id": "stefan_harm",
@@ -3665,7 +3665,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Stefan find out."
+    "response": "The town forgets what hour it is. Stefan climbs the tower, and climbs back down."
   },
   {
     "id": "ebba_help_first",
@@ -3713,7 +3713,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Ebba eases, just slightly."
+    "response": "Ebba throws the shuttle and it runs straight across for the first time all winter."
   },
   {
     "id": "ebba_help_again",
@@ -3749,7 +3749,7 @@
         "kind": "help"
       }
     ],
-    "response": "Ebba makes room for you without thinking about it."
+    "response": "Ebba weaves into the dark, and the pattern comes out like she meant it."
   },
   {
     "id": "ebba_self",
@@ -3771,7 +3771,7 @@
         "kind": "self"
       }
     ],
-    "response": "Ebba shrugs and moves on to the next thing."
+    "response": "Ebba starts the cloth again from the first thread. She doesn't sing at the loom this time."
   },
   {
     "id": "ebba_harm",
@@ -3794,7 +3794,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Ebba even hears about it."
+    "response": "Ebba measures every bolt twice, then three times. They were always full length."
   },
   {
     "id": "lukas_help_first",
@@ -3842,7 +3842,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Lukas eases, just slightly."
+    "response": "Lukas feels the new grooves with his thumb and grins with flour in his eyebrows."
   },
   {
     "id": "lukas_help_again",
@@ -3878,7 +3878,7 @@
         "kind": "help"
       }
     ],
-    "response": "Lukas makes room for you without thinking about it."
+    "response": "The stone turns sweet and Lukas listens to it the way other men listen to music."
   },
   {
     "id": "lukas_self",
@@ -3900,7 +3900,7 @@
         "kind": "self"
       }
     ],
-    "response": "Lukas shrugs and moves on to the next thing."
+    "response": "Lukas writes it down on the mill door, under the other harvests that never came."
   },
   {
     "id": "lukas_harm",
@@ -3923,7 +3923,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Lukas even hears about it."
+    "response": "Lukas sifts his own flour three times looking for the grit, and doesn't find any."
   },
   {
     "id": "gunda_help_first",
@@ -3971,7 +3971,7 @@
         "kind": "help"
       }
     ],
-    "response": "Gunda doesn't say much, but they remember it."
+    "response": "Gunda stands in the cellar with the water gone and laughs at her wet boots."
   },
   {
     "id": "gunda_help_again",
@@ -4007,7 +4007,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Gunda rubs salt into the rinds by the warm wall, telling each wheel it's safe now."
   },
   {
     "id": "gunda_self",
@@ -4029,7 +4029,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Gunda's face says whether it cost them anything."
+    "response": "Gunda lets you take it. The ones left behind are going soft."
   },
   {
     "id": "gunda_harm",
@@ -4052,7 +4052,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Gunda find out."
+    "response": "Gunda opens her cellar door to show people. No one comes down to look."
   },
   {
     "id": "arne_help_first",
@@ -4100,7 +4100,7 @@
         "kind": "help"
       }
     ],
-    "response": "Arne looks at you a beat too long before saying thanks."
+    "response": "Arne cuts as the sun goes, quick and quiet, so you won't stop before he does."
   },
   {
     "id": "arne_help_again",
@@ -4136,7 +4136,7 @@
         "kind": "help"
       }
     ],
-    "response": "Arne works alongside you like it's ordinary now."
+    "response": "Arne ties the last bundle and sits on it, and offers you half his bread."
   },
   {
     "id": "arne_self",
@@ -4158,7 +4158,7 @@
         "kind": "self"
       }
     ],
-    "response": "Arne takes the deal. It's just business, today."
+    "response": "Arne thatches your roof first. His own still drips at the corner."
   },
   {
     "id": "arne_harm",
@@ -4181,7 +4181,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Arne something to hear."
+    "response": "Arne climbs up on his own roof in the rain to show it doesn't leak. Nobody watches."
   },
   {
     "id": "pia_help_first",
@@ -4229,7 +4229,7 @@
         "kind": "help"
       }
     ],
-    "response": "Pia looks at you a beat too long before saying thanks."
+    "response": "Pia says the word back to you, slowly, and then again, faster, proud of it."
   },
   {
     "id": "pia_help_again",
@@ -4265,7 +4265,7 @@
         "kind": "help"
       }
     ],
-    "response": "Pia works alongside you like it's ordinary now."
+    "response": "Pia reads one all on her own and looks up to see if you heard."
   },
   {
     "id": "pia_self",
@@ -4287,7 +4287,7 @@
         "kind": "self"
       }
     ],
-    "response": "Pia takes the deal. It's just business, today."
+    "response": "Pia hands it over with a careful smile. She'll get it right one day. Not on yours."
   },
   {
     "id": "pia_harm",
@@ -4310,7 +4310,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It costs you nothing to say. It will cost Pia something to hear."
+    "response": "Pia sweeps the floor of the apothecary's shop and isn't allowed near the shelves now."
   },
   {
     "id": "henrik_help_first",
@@ -4358,7 +4358,7 @@
         "kind": "help"
       }
     ],
-    "response": "Henrik doesn't say much, but they remember it."
+    "response": "Henrik stands upwind of his own pits for once and breathes all the way in."
   },
   {
     "id": "henrik_help_again",
@@ -4394,7 +4394,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Henrik leans on his spade and tells you the town will come back round. Maybe."
   },
   {
     "id": "henrik_self",
@@ -4416,7 +4416,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Henrik's face says whether it cost them anything."
+    "response": "Henrik takes it, and holds his breath, and you can't tell if it's the smell."
   },
   {
     "id": "henrik_harm",
@@ -4439,7 +4439,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Henrik find out."
+    "response": "Henrik scrubs his hands until they're raw, and they still smell of the pits."
   },
   {
     "id": "birgit_help_first",
@@ -4487,7 +4487,7 @@
         "kind": "help"
       }
     ],
-    "response": "Birgit doesn't say much, but they remember it."
+    "response": "Birgit holds a whole pane up to the sky and the light comes through it clean."
   },
   {
     "id": "birgit_help_again",
@@ -4523,7 +4523,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Birgit picks a small piece of blue out of the sweepings and puts it in her pocket."
   },
   {
     "id": "birgit_self",
@@ -4545,7 +4545,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Birgit's face says whether it cost them anything."
+    "response": "Birgit wraps the panes in straw for your cart. Her own window still has a board in it."
   },
   {
     "id": "birgit_harm",
@@ -4568,7 +4568,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Birgit find out."
+    "response": "Birgit stops leaving her glass out in the sun to show the colours."
   },
   {
     "id": "matthias_help_first",
@@ -4616,7 +4616,7 @@
         "kind": "help"
       }
     ],
-    "response": "Matthias's shoulders drop, just for a moment."
+    "response": "Matthias stands at the back while you speak, black to the elbows, and nods once."
   },
   {
     "id": "matthias_help_again",
@@ -4652,7 +4652,7 @@
         "kind": "help"
       }
     ],
-    "response": "Matthias doesn't look surprised to see you helping again. That's its own kind of trust."
+    "response": "Matthias doesn't say anything on the walk home. He just keeps looking at the trees."
   },
   {
     "id": "matthias_self",
@@ -4674,7 +4674,7 @@
         "kind": "self"
       }
     ],
-    "response": "Matthias counts it out without meeting your eyes."
+    "response": "Matthias shovels it into your sack and the last smoke goes out behind him."
   },
   {
     "id": "matthias_harm",
@@ -4697,7 +4697,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Somewhere, Matthias's life just got smaller, and they don't know why yet."
+    "response": "Matthias's clamp goes cold. He sits beside it at night as if it were still burning."
   },
   {
     "id": "runa_help_first",
@@ -4745,7 +4745,7 @@
         "kind": "help"
       }
     ],
-    "response": "Runa nods slowly, like deciding whether to trust it."
+    "response": "Runa pulls the wool between her fingers and starts spinning before you've gone."
   },
   {
     "id": "runa_help_again",
@@ -4781,7 +4781,7 @@
         "kind": "help"
       }
     ],
-    "response": "Runa hands you the next thing before you ask."
+    "response": "Runa spins your wool into something soft and gives you back a little of it."
   },
   {
     "id": "runa_self",
@@ -4803,7 +4803,7 @@
         "kind": "self"
       }
     ],
-    "response": "Runa pockets it and says nothing more."
+    "response": "Runa says you're welcome and means it. Her wheel stops early that night."
   },
   {
     "id": "runa_harm",
@@ -4826,7 +4826,7 @@
         "kind": "harm"
       }
     ],
-    "response": "The words are already out. There's no taking them back."
+    "response": "Runa tests every hank against her own strength. None of them break."
   },
   {
     "id": "erik_help_first",
@@ -4874,7 +4874,7 @@
         "kind": "help"
       }
     ],
-    "response": "Erik's shoulders drop, just for a moment."
+    "response": "Erik holds your horse's hoof in his lap like it was something precious."
   },
   {
     "id": "erik_help_again",
@@ -4910,7 +4910,7 @@
         "kind": "help"
       }
     ],
-    "response": "Erik doesn't look surprised to see you helping again. That's its own kind of trust."
+    "response": "Erik has two horses tied at his post today. He doesn't say anything, but he's whistling."
   },
   {
     "id": "erik_self",
@@ -4932,7 +4932,7 @@
         "kind": "self"
       }
     ],
-    "response": "Erik counts it out without meeting your eyes."
+    "response": "Erik waves you off. Later he writes it on the wall, with a little horse drawn next to it."
   },
   {
     "id": "erik_harm",
@@ -4955,7 +4955,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Somewhere, Erik's life just got smaller, and they don't know why yet."
+    "response": "Erik shoes the same horse again, slower, checking every nail."
   },
   {
     "id": "thea_help_first",
@@ -5003,7 +5003,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Thea eases, just slightly."
+    "response": "Thea weaves the first basket right there on the bank, quick, and gives it you."
   },
   {
     "id": "thea_help_again",
@@ -5039,7 +5039,7 @@
         "kind": "help"
       }
     ],
-    "response": "Thea makes room for you without thinking about it."
+    "response": "Thea's hands are green to the wrist and she's telling you about her mother."
   },
   {
     "id": "thea_self",
@@ -5061,7 +5061,7 @@
         "kind": "self"
       }
     ],
-    "response": "Thea shrugs and moves on to the next thing."
+    "response": "Thea leaves one by the door each morning now, in case. She doesn't say why."
   },
   {
     "id": "thea_harm",
@@ -5084,7 +5084,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Thea even hears about it."
+    "response": "Thea stands in the stubble where the willow was and doesn't know where to put her knife."
   },
   {
     "id": "jost_help_first",
@@ -5132,7 +5132,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Jost eases, just slightly."
+    "response": "Jost swings the axe and it rings true, and he takes a whole tree down for the joy of it."
   },
   {
     "id": "jost_help_again",
@@ -5168,7 +5168,7 @@
         "kind": "help"
       }
     ],
-    "response": "Jost makes room for you without thinking about it."
+    "response": "Jost stacks the last of the cord and leans on it, red-faced and pleased."
   },
   {
     "id": "jost_self",
@@ -5190,7 +5190,7 @@
         "kind": "self"
       }
     ],
-    "response": "Jost shrugs and moves on to the next thing."
+    "response": "Jost curses the road and the carters on it. He goes back out in the cold for more."
   },
   {
     "id": "jost_harm",
@@ -5213,7 +5213,7 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Jost even hears about it."
+    "response": "Jost swings, and the head comes off and flies, and he looks at his empty hands."
   },
   {
     "id": "alva_help_first",
@@ -5261,7 +5261,7 @@
         "kind": "help"
       }
     ],
-    "response": "Alva nods slowly, like deciding whether to trust it."
+    "response": "Alva sleeps against the cow's warm side, and you let her."
   },
   {
     "id": "alva_help_again",
@@ -5297,7 +5297,7 @@
         "kind": "help"
       }
     ],
-    "response": "Alva hands you the next thing before you ask."
+    "response": "By morning there's a little milk again. Alva laughs at the pail like it told her a joke."
   },
   {
     "id": "alva_self",
@@ -5319,7 +5319,7 @@
         "kind": "self"
       }
     ],
-    "response": "Alva pockets it and says nothing more."
+    "response": "Alva scrapes the bottom of the pail for the farmer and hopes he won't look."
   },
   {
     "id": "alva_harm",
@@ -5342,7 +5342,7 @@
         "kind": "harm"
       }
     ],
-    "response": "The words are already out. There's no taking them back."
+    "response": "The farmer shouts. Alva stands in the yard with the empty pail and doesn't answer."
   },
   {
     "id": "nikolas_help_first",
@@ -5390,7 +5390,7 @@
         "kind": "help"
       }
     ],
-    "response": "Nikolas looks caught off guard, like no one does this without being asked."
+    "response": "Nikolas closes the case and the clock ticks, and he listens like it's his own heart."
   },
   {
     "id": "nikolas_help_again",
@@ -5426,7 +5426,7 @@
         "kind": "help"
       }
     ],
-    "response": "No words pass between you. None are needed anymore."
+    "response": "Nikolas works until the light goes, and then a little after, because you're still holding it."
   },
   {
     "id": "nikolas_self",
@@ -5448,7 +5448,7 @@
         "kind": "self"
       }
     ],
-    "response": "A plain trade. Nikolas doesn't linger on it."
+    "response": "Nikolas wraps the clock without its hands. It will never say a time."
   },
   {
     "id": "nikolas_harm",
@@ -5471,7 +5471,7 @@
         "kind": "harm"
       }
     ],
-    "response": "Nikolas doesn't know yet. That's the worst part."
+    "response": "Nikolas sets every clock in the shop against the church bell, and they're right."
   },
   {
     "id": "sanne_help_first",
@@ -5519,7 +5519,7 @@
         "kind": "help"
       }
     ],
-    "response": "Sanne doesn't say much, but they remember it."
+    "response": "Sanne shows you a knot her grandmother taught her, and then makes you do it."
   },
   {
     "id": "sanne_help_again",
@@ -5555,7 +5555,7 @@
         "kind": "help"
       }
     ],
-    "response": "It's become a habit between you, and neither of you comments on it."
+    "response": "Sanne's hands and yours go along the long net together till you meet in the middle."
   },
   {
     "id": "sanne_self",
@@ -5577,7 +5577,7 @@
         "kind": "self"
       }
     ],
-    "response": "Nothing in Sanne's face says whether it cost them anything."
+    "response": "Sanne writes your name on her slate. It's a short slate, and she rubs out a lot."
   },
   {
     "id": "sanne_harm",
@@ -5600,7 +5600,7 @@
         "kind": "harm"
       }
     ],
-    "response": "You don't stay to see Sanne find out."
+    "response": "Sanne pulls every knot of a net tight that wasn't loose, to be sure."
   },
   {
     "id": "wilhelm_help_first",
@@ -5648,7 +5648,7 @@
         "kind": "help"
       }
     ],
-    "response": "Something in Wilhelm eases, just slightly."
+    "response": "Wilhelm reads it over your shoulder and sits up straighter in his chair."
   },
   {
     "id": "wilhelm_help_again",
@@ -5684,7 +5684,7 @@
         "kind": "help"
       }
     ],
-    "response": "Wilhelm makes room for you without thinking about it."
+    "response": "Wilhelm salutes you, a little wrong, and laughs at himself for it."
   },
   {
     "id": "wilhelm_self",
@@ -5706,7 +5706,7 @@
         "kind": "self"
       }
     ],
-    "response": "Wilhelm shrugs and moves on to the next thing."
+    "response": "Wilhelm tells the same war story three times, and you let him, and the jug is empty."
   },
   {
     "id": "wilhelm_harm",
@@ -5729,6 +5729,6 @@
         "kind": "harm"
       }
     ],
-    "response": "It's done before Wilhelm even hears about it."
+    "response": "Wilhelm takes his medal off his coat and puts it in a drawer."
   }
 ]
