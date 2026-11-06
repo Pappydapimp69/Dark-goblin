@@ -531,3 +531,57 @@ names masked placed 47 with the right person; word overlap with the choice
 text placed only 15%, because the lines describe consequence rather than
 restating the act — so overlap is the wrong instrument for this.
 `tests/responses.test.ts` fails if two people ever share a line again.
+
+## v2 — the partner and the child
+
+§6 deferred these and asked only for schema hooks; v2 builds them. Every
+choice below was taken without a ruling from the designer, on the evidence
+noted, and each is easy to reverse.
+
+**D-70 — The child is an arrival, not a new effect.** No effect kind was added
+to §4's DSL. An `NpcDef` may carry `arrives: Condition`; such a person is never
+dealt into the opening town and comes into town at the first world tick on
+which the condition holds. Asking Wren to stay schedules `child_due` two loops
+out (player-sourced), so the child is first seen on the morning two days after
+the asking. Arrivals run last in the tick and stamp `arrivedOn`, which the
+Mirror reads for its one line on that first morning.
+
+**D-71 — One dedicated partner, always in town.** Measured over 500 seeds,
+only the three named people are in town every life; the other five are dealt
+from thirty-nine. A partner drawn from the townsfolk would be missing from most
+lives, and the baker or builder would tangle the storefront routes. Wren is
+pinned, lives in Your Room, and `townSize` went from 8 to 9 so the five dealt
+seats — and therefore every seed's town — are unchanged.
+
+**D-72 — A lost goal is handed down first.** §6: "given-up player goals can
+seed the child's pool". When the child arrives, the child version of each
+player goal that has already failed is dealt first (in goal-id order), and the
+rest are drawn from `rules.childGoalPool`. The draw always runs the full count,
+so the stream never depends on what the player lost (tested). In practice the
+generous bot loses a goal in 90 of 100 lives (median day 5) and the others
+rarely do, so inheritance mostly happens to the lives that gave too much.
+
+**D-73 — Neglect closes the child's goals after three days in a row, and one
+evening resets it.** Brain od76#E9: penalise neglect, but keep the recovery
+action available so it cannot dead-end. The child's tick counts untended days
+and any time spent with them resets the count; hurting them twice also closes
+their goals. Neglect is the world's doing at the tick, so it never touches the
+meter (§5.2) but does bring the nightfall goblin (§5.6), with two questions
+keyed to the child's goals.
+
+**D-74 — The review reads the child in words.** The engine's outcome words
+(`fulfilled` / `failed` / `open`) used to be printed raw in §5.7 step 4. Each
+child goal now carries a `childLine` per outcome, and the review stacks its
+lines off measured heights, dropping the oldest first if the page runs out.
+
+**Measured, not tuned (§9 posture).** 100 games per bot: the child came in 98%
+of generous lives (median day 4.5), 47% of mixed, 39% of the human bot's, and
+never for the selfish or isolated bots, which never court anyone. The human bot
+attends the child on only 19% of days — it is built to return to whoever it
+already knows, so a newcomer is under-served — and loses 1.56 of 2 child goals.
+That is partly the bot (Brain dark-goblin#E1) and partly a real risk that the
+arrival goes unnoticed, which is why the Mirror now marks it. A player who
+spends any one action a day on the child never loses a goal to neglect. Child
+goals refund +5 each, but the generous life moved only from 6.5 to 6.7 days
+(0.67 child goals met per life): raising a child does not, on its own, answer
+T202.

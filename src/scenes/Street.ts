@@ -54,8 +54,12 @@ export class Street extends Phaser.Scene {
       // with room under it for a name.
       const groundLine = y + panelHeight / 2 - 32;
       const spread = Math.min(here.length, 5);
+      // Your Room keeps the right side for the Sleep button once someone
+      // lives there with you.
+      const shared = place.id === "room" && here.length > 0;
+      const centre = shared ? WIDTH / 2 - 130 : WIDTH / 2;
       here.slice(0, 5).forEach((npc, i) => {
-        const x = WIDTH / 2 + (i - (spread - 1) / 2) * (spread > 3 ? 118 : 138);
+        const x = centre + (i - (spread - 1) / 2) * (spread > 3 ? 118 : 138);
         const key = npc.broken ? brokenKey(npc.id) : figureKey(npc.id);
         personToken(
           this,
@@ -64,13 +68,14 @@ export class Street extends Phaser.Scene {
           npc.name,
           this.textures.exists(key) ? key : figureKey(npc.id),
           () => this.open(store, npc.id),
-          { broken: npc.broken, height: Math.min(140, panelHeight - 86) },
+          // The child stands at about two-thirds of an adult's height.
+          { broken: npc.broken, height: Math.min(140, panelHeight - 86) * (npc.id === "child" ? 0.68 : 1) },
         );
       });
 
       if (place.id === "room") {
-        button(this, WIDTH / 2, y + panelHeight / 2 - 60, "Sleep", () => leave(this, "Night"), {
-          width: 300,
+        button(this, shared ? WIDTH - 200 : WIDTH / 2, y + panelHeight / 2 - 60, "Sleep", () => leave(this, "Night"), {
+          width: shared ? 220 : 300,
           size: 26,
         });
       }

@@ -5730,5 +5730,369 @@
       }
     ],
     "response": "Wilhelm takes his medal off his coat and puts it in a drawer."
+  },
+  {
+    "id": "partner_help_first",
+    "npc": "partner",
+    "text": "Carry their coal up the stairs with yours.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "partner_gone"
+          }
+        },
+        {
+          "not": {
+            "npc": "partner",
+            "key": "trusts_player",
+            "eq": true
+          }
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "partner",
+        "key": "helped",
+        "delta": 1
+      },
+      {
+        "setNpc": "partner",
+        "key": "trusts_player",
+        "value": true
+      },
+      {
+        "addNpc": "player",
+        "key": "trust_count",
+        "delta": 1
+      },
+      {
+        "money": -1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "partner",
+        "kind": "help"
+      }
+    ],
+    "response": "Wren holds the door with their foot and says you needn't have. They leave it open a while after."
+  },
+  {
+    "id": "partner_help_again",
+    "npc": "partner",
+    "text": "Eat supper with them instead of alone.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "partner_gone"
+          }
+        },
+        {
+          "npc": "partner",
+          "key": "trusts_player",
+          "eq": true
+        },
+        {
+          "slotHolder": "partner",
+          "is": null
+        }
+      ]
+    },
+    "effects": [
+      {
+        "addNpc": "partner",
+        "key": "helped",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "partner",
+        "kind": "help"
+      }
+    ],
+    "response": "Wren pulls the second chair out from under the coats. It hasn't been sat in for a long time."
+  },
+  {
+    "id": "partner_ask_stay",
+    "npc": "partner",
+    "text": "Ask them to stay.",
+    "available": {
+      "all": [
+        {
+          "not": {
+            "flag": "partner_gone"
+          }
+        },
+        {
+          "npc": "partner",
+          "key": "helped",
+          "gte": 2
+        },
+        {
+          "slotHolder": "partner",
+          "is": null
+        }
+      ]
+    },
+    "effects": [
+      {
+        "moveSlot": "partner",
+        "to": "partner"
+      },
+      {
+        "setNpc": "partner",
+        "key": "stays",
+        "value": true
+      },
+      {
+        "schedule": {
+          "setFlag": "child_due",
+          "value": true
+        },
+        "inLoops": 2
+      }
+    ],
+    "impacts": [
+      {
+        "target": "partner",
+        "kind": "help"
+      }
+    ],
+    "response": "Wren carries their one box across the landing, and that is all it takes."
+  },
+  {
+    "id": "partner_borrow",
+    "npc": "partner",
+    "text": "Let them cover the rent this week.",
+    "available": {
+      "not": {
+        "flag": "partner_gone"
+      }
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ],
+    "response": "Wren counts it out on the table and doesn't ask when you'll pay it back."
+  },
+  {
+    "id": "partner_send_away",
+    "npc": "partner",
+    "text": "Tell them you were always better alone.",
+    "available": {
+      "not": {
+        "flag": "partner_gone"
+      }
+    },
+    "effects": [
+      {
+        "moveSlot": "partner",
+        "to": null
+      },
+      {
+        "setFlag": "partner_gone",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "partner",
+        "kind": "harm"
+      }
+    ],
+    "response": "Wren takes the box back across the landing. The door clicks, and then the stairs."
+  },
+  {
+    "id": "child_read",
+    "npc": "child",
+    "text": "Read with them by the window.",
+    "available": {
+      "loopGte": 1
+    },
+    "effects": [
+      {
+        "addNpc": "child",
+        "key": "lessons",
+        "delta": 1
+      },
+      {
+        "setNpc": "child",
+        "key": "tended",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "help"
+      }
+    ],
+    "response": "Pim follows the line with a finger and gets the long word on the second try."
+  },
+  {
+    "id": "child_feed",
+    "npc": "child",
+    "text": "Buy them a proper meal.",
+    "available": {
+      "money": {
+        "gte": 2
+      }
+    },
+    "effects": [
+      {
+        "money": -2
+      },
+      {
+        "addNpc": "child",
+        "key": "fed",
+        "delta": 1
+      },
+      {
+        "setNpc": "child",
+        "key": "tended",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "help"
+      }
+    ],
+    "response": "Pim eats with both hands and talks with their mouth full, and you let them."
+  },
+  {
+    "id": "child_walk",
+    "npc": "child",
+    "text": "Walk them round the market and say their name to people.",
+    "available": {
+      "loopGte": 1
+    },
+    "effects": [
+      {
+        "addNpc": "child",
+        "key": "walks",
+        "delta": 1
+      },
+      {
+        "setNpc": "child",
+        "key": "tended",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "help"
+      }
+    ],
+    "response": "Pim holds your sleeve past the fish stalls, then lets go of it by the well."
+  },
+  {
+    "id": "child_send_work",
+    "npc": "child",
+    "text": "Send them to carry sacks for the miller.",
+    "available": {
+      "loopGte": 1
+    },
+    "effects": [
+      {
+        "money": 3
+      }
+    ],
+    "impacts": [
+      {
+        "target": "player",
+        "kind": "self"
+      }
+    ],
+    "response": "Pim comes home white with flour and puts the coins on the table without a word."
+  },
+  {
+    "id": "child_shout",
+    "npc": "child",
+    "text": "Tell them to stay out from under your feet.",
+    "available": {
+      "loopGte": 1
+    },
+    "effects": [
+      {
+        "addNpc": "child",
+        "key": "hurt",
+        "delta": 1
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "harm"
+      }
+    ],
+    "response": "Pim goes very quiet and finds somewhere small to sit."
+  },
+  {
+    "id": "child_give_storefront",
+    "npc": "child",
+    "text": "Put the storefront in their name.",
+    "available": {
+      "slotHolder": "storefront",
+      "is": "player"
+    },
+    "effects": [
+      {
+        "moveSlot": "storefront",
+        "to": "child"
+      },
+      {
+        "setNpc": "child",
+        "key": "tended",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "help"
+      }
+    ],
+    "response": "Pim stands under the sign and reads their own name on it, slowly, twice."
+  },
+  {
+    "id": "child_give_rebuilt",
+    "npc": "child",
+    "text": "Put the rebuilt shop in their name.",
+    "available": {
+      "slotHolder": "wrecked_shop",
+      "is": "player"
+    },
+    "effects": [
+      {
+        "moveSlot": "wrecked_shop",
+        "to": "child"
+      },
+      {
+        "setNpc": "child",
+        "key": "tended",
+        "value": true
+      }
+    ],
+    "impacts": [
+      {
+        "target": "child",
+        "kind": "help"
+      }
+    ],
+    "response": "Pim runs a hand along the new wall, where the builder's marks still show."
   }
 ]

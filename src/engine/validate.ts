@@ -42,6 +42,16 @@ export function validateContent(content: Content): void {
     if (goal.owner !== "player" && goal.owner !== "child" && !npcIds.has(goal.owner)) {
       throw new ContentError(`owner "${goal.owner}" is not an npc`, where);
     }
+    if (goal.childVariant !== undefined) {
+      const variant = content.goals.find((g) => g.id === goal.childVariant);
+      if (!variant) throw new ContentError(`childVariant references unknown goal "${goal.childVariant}"`, where);
+      if (variant.owner !== "child") throw new ContentError(`childVariant "${variant.id}" is not owned by the child`, where);
+    }
+  }
+  for (const id of content.rules.childGoalPool ?? []) {
+    const goal = content.goals.find((g) => g.id === id);
+    if (!goal) throw new ContentError(`childGoalPool references unknown goal "${id}"`, FILES.rules);
+    if (goal.owner !== "child") throw new ContentError(`childGoalPool goal "${id}" is not owned by the child`, FILES.rules);
   }
 
   for (const choice of content.choices) {
@@ -72,6 +82,12 @@ export function validateContent(content: Content): void {
         throw new ContentError(`unknown goal "${id}"`, `${FILES.npcs} "${npc.id}"`);
       }
     }
+    if (npc.arrives !== undefined) {
+      assertCondition(npc.arrives, `${FILES.npcs} "${npc.id}".arrives`);
+      if ((content.rules.pinnedNpcs ?? []).includes(npc.id)) {
+        throw new ContentError("is pinned into town but also arrives later", `${FILES.npcs} "${npc.id}"`);
+      }
+    }
     for (const rule of npc.tick ?? []) {
       const where = `${FILES.npcs} "${npc.id}".tick "${rule.id}"`;
       assertCondition(rule.when, `${where}.when`);
@@ -92,7 +108,7 @@ export function validateContent(content: Content): void {
     throw new ContentError("playerGoalPool is smaller than playerGoalsAtStart", FILES.rules);
   }
 
-  const townspeople = content.npcs.filter((n) => n.role !== "player");
+  const townspeople = content.npcs.filter((n) => n.role !== "player" && n.arrives === undefined);
   const pinned = content.rules.pinnedNpcs ?? [];
   for (const id of pinned) {
     if (!townspeople.some((n) => n.id === id)) {

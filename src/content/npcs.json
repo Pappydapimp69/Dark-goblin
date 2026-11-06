@@ -891,5 +891,96 @@
       "prop": "none",
       "tone": "bone"
     }
+  },
+  {
+    "id": "partner",
+    "name": "Wren",
+    "location": "room",
+    "state": {
+      "helped": 0,
+      "trusts_player": false,
+      "stays": false,
+      "trade": "the lodger across the landing"
+    },
+    "goalIds": [
+      "partner_need"
+    ],
+    "art": {
+      "build": "slight",
+      "head": "scarf",
+      "prop": "cloth",
+      "tone": "bone"
+    }
+  },
+  {
+    "id": "child",
+    "name": "Pim",
+    "location": "room",
+    "arrives": {
+      "flag": "child_due",
+      "eq": true
+    },
+    "state": {
+      "lessons": 0,
+      "fed": 0,
+      "walks": 0,
+      "hurt": 0,
+      "neglect": 0,
+      "tended": false,
+      "trusts_player": false,
+      "trade": "your child"
+    },
+    "goalIds": [],
+    "tick": [
+      {
+        "id": "left_alone",
+        "when": {
+          "npc": "child",
+          "key": "tended",
+          "eq": false
+        },
+        "effects": [
+          {
+            "addNpc": "child",
+            "key": "neglect",
+            "delta": 1
+          }
+        ]
+      },
+      {
+        "id": "seen_to",
+        "when": {
+          "npc": "child",
+          "key": "tended",
+          "eq": true
+        },
+        "effects": [
+          {
+            "setNpc": "child",
+            "key": "neglect",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "id": "new_day",
+        "when": {
+          "loopGte": 1
+        },
+        "effects": [
+          {
+            "setNpc": "child",
+            "key": "tended",
+            "value": false
+          }
+        ]
+      }
+    ],
+    "art": {
+      "build": "small",
+      "head": "bare",
+      "prop": "none",
+      "tone": "rust"
+    }
   }
 ]

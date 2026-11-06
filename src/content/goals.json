@@ -35,7 +35,8 @@
           ]
         }
       }
-    ]
+    ],
+    "childVariant": "child_own_place"
   },
   {
     "id": "player_clear_debt",
@@ -56,7 +57,8 @@
           "gte": 20
         }
       }
-    ]
+    ],
+    "childVariant": "child_clear_debt"
   },
   {
     "id": "player_be_known",
@@ -75,7 +77,8 @@
           "flag": "you_are_nobody"
         }
       }
-    ]
+    ],
+    "childVariant": "child_known"
   },
   {
     "id": "baker_shop",
@@ -1907,5 +1910,214 @@
         }
       }
     ]
+  },
+  {
+    "id": "partner_need",
+    "owner": "partner",
+    "critical": false,
+    "label": "Wren, someone to come home to",
+    "paths": [
+      {
+        "id": "stays",
+        "complete": {
+          "slotHolder": "partner",
+          "is": "partner"
+        },
+        "closed": {
+          "flag": "partner_gone"
+        }
+      }
+    ]
+  },
+  {
+    "id": "child_learns",
+    "owner": "child",
+    "critical": false,
+    "label": "Pim learns their letters",
+    "paths": [
+      {
+        "id": "grown",
+        "complete": {
+          "npc": "child",
+          "key": "lessons",
+          "gte": 3
+        },
+        "closed": {
+          "any": [
+            {
+              "npc": "child",
+              "key": "neglect",
+              "gte": 3
+            },
+            {
+              "npc": "child",
+              "key": "hurt",
+              "gte": 2
+            }
+          ]
+        }
+      }
+    ],
+    "childLine": {
+      "fulfilled": "Pim learned to read at your window, and read to someone else's children after.",
+      "failed": "Pim never did learn their letters. They signed things with a mark, and didn't say why.",
+      "open": "Pim was still sounding out the long words when your days ran out."
+    }
+  },
+  {
+    "id": "child_fed",
+    "owner": "child",
+    "critical": false,
+    "label": "Pim grows up fed",
+    "paths": [
+      {
+        "id": "grown",
+        "complete": {
+          "npc": "child",
+          "key": "fed",
+          "gte": 3
+        },
+        "closed": {
+          "any": [
+            {
+              "npc": "child",
+              "key": "neglect",
+              "gte": 3
+            },
+            {
+              "npc": "child",
+              "key": "hurt",
+              "gte": 2
+            }
+          ]
+        }
+      }
+    ],
+    "childLine": {
+      "fulfilled": "Pim grew tall. They never once went to bed hungry under your roof.",
+      "failed": "Pim learned early which doors gave bread and which didn't.",
+      "open": "Pim was still growing into their coat when your days ran out."
+    }
+  },
+  {
+    "id": "child_known",
+    "owner": "child",
+    "critical": false,
+    "label": "Pim is known in town",
+    "paths": [
+      {
+        "id": "grown",
+        "complete": {
+          "npc": "child",
+          "key": "walks",
+          "gte": 3
+        },
+        "closed": {
+          "any": [
+            {
+              "npc": "child",
+              "key": "neglect",
+              "gte": 3
+            },
+            {
+              "npc": "child",
+              "key": "hurt",
+              "gte": 2
+            }
+          ]
+        }
+      }
+    ],
+    "childLine": {
+      "fulfilled": "Half the market knew Pim's name, and said it kindly.",
+      "failed": "Pim grew up a stranger in their own street.",
+      "open": "The town was only starting to learn Pim's face when your days ran out."
+    }
+  },
+  {
+    "id": "child_own_place",
+    "owner": "child",
+    "critical": false,
+    "label": "Pim has a place of their own",
+    "paths": [
+      {
+        "id": "grown",
+        "complete": {
+          "any": [
+            {
+              "slotHolder": "storefront",
+              "is": "child"
+            },
+            {
+              "slotHolder": "wrecked_shop",
+              "is": "child"
+            }
+          ]
+        },
+        "closed": {
+          "any": [
+            {
+              "npc": "child",
+              "key": "neglect",
+              "gte": 3
+            },
+            {
+              "npc": "child",
+              "key": "hurt",
+              "gte": 2
+            }
+          ]
+        }
+      }
+    ],
+    "childLine": {
+      "fulfilled": "The shop has Pim's name over the door now. It was yours once.",
+      "failed": "Pim never had a door of their own to shut.",
+      "open": "Pim was still waiting on a door of their own when your days ran out."
+    }
+  },
+  {
+    "id": "child_clear_debt",
+    "owner": "child",
+    "critical": false,
+    "label": "Pim owes nothing",
+    "paths": [
+      {
+        "id": "grown",
+        "complete": {
+          "npc": "player",
+          "key": "debt_clear_streak",
+          "gte": 3
+        },
+        "closed": {
+          "any": [
+            {
+              "any": [
+                {
+                  "npc": "child",
+                  "key": "neglect",
+                  "gte": 3
+                },
+                {
+                  "npc": "child",
+                  "key": "hurt",
+                  "gte": 2
+                }
+              ]
+            },
+            {
+              "npc": "player",
+              "key": "debt",
+              "gte": 30
+            }
+          ]
+        }
+      }
+    ],
+    "childLine": {
+      "fulfilled": "Pim never had to carry what you owed. You paid it off before it reached them.",
+      "failed": "What you owed went to Pim when you went. They are paying it still.",
+      "open": "The debt was still on the slate when your days ran out, with Pim's name under yours."
+    }
   }
 ]

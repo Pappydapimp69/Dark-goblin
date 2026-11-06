@@ -4,13 +4,15 @@ import { availableChoices, newGame, sleep } from "../src/engine/engine";
 import { evaluate } from "../src/engine/conditions";
 import type { Content, GameState, NpcId } from "../src/engine/types";
 
-const roster = content.npcs.filter((n) => n.role !== "player");
+// The town is dealt from the roster; anyone who arrives later is not in it.
+const roster = content.npcs.filter((n) => n.role !== "player" && n.arrives === undefined);
 const townOf = (state: GameState): NpcId[] =>
   Object.values(state.npcs).filter((n) => n.present && n.id !== "player").map((n) => n.id).sort();
 
 describe("the roster and the town", () => {
-  it("holds 42 townspeople plus the player", () => {
-    expect(roster).toHaveLength(42);
+  it("holds 43 townspeople plus the player, and one who arrives later", () => {
+    expect(roster).toHaveLength(43);
+    expect(content.npcs.filter((n) => n.arrives !== undefined).map((n) => n.id)).toEqual(["child"]);
     expect(content.npcs.filter((n) => n.role === "player")).toHaveLength(1);
   });
 

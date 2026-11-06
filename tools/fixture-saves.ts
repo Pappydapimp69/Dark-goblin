@@ -4,7 +4,7 @@
 import { writeFileSync } from "node:fs";
 import { mkdirSync } from "node:fs";
 import { content } from "../src/content";
-import { acknowledgeGoblin, answerGoblin, newGame, sleep } from "../src/engine/engine";
+import { acknowledgeGoblin, answerGoblin, interact, newGame, sleep } from "../src/engine/engine";
 import type { GameState } from "../src/engine/types";
 
 const SCHEMA = 1;
@@ -47,4 +47,37 @@ for (const status of ["goblin_nightfall", "review"] as const) {
   const envelope = { schema: SCHEMA, savedAt: new Date().toISOString(), state };
   writeFileSync(`smoke-shots/${status}.json`, JSON.stringify(envelope), "utf8");
   process.stdout.write(`${status}: seed ${state.seed}, loop ${state.loop}\n`);
+}
+
+/**
+ * The family line: Wren moves in on the first day, and the child arrives two
+ * mornings later. "family_morning" parks on that first morning (the Mirror's
+ * one line about it); "family_review" is the same life read back at its end,
+ * with one of the child's goals met, so the review's child lines are drawn.
+ */
+function settle(state: GameState): GameState {
+  let next = settleBreaks(state);
+  while (next.status === "goblin_nightfall") {
+    const visit = next.pendingGoblin!;
+    const question = content.goblin.questions.find((q) => q.id === visit.questionIds[visit.cursor])!;
+    next = settleBreaks(answerGoblin(next, question.answers[0]!.id, content));
+  }
+  return next;
+}
+let family = newGame(1, content);
+for (const id of ["partner_help_first", "partner_help_again", "partner_ask_stay"]) family = interact(family, id, content);
+family = settle(sleep(settle(family), content));
+family = settle(sleep(family, content));
+const morning = family;
+const firstGoal = Object.values(family.goals).find((g) => g.owner === "child" && (g.id === "child_learns" || g.id === "child_known"))!;
+const tend = firstGoal.id === "child_learns" ? "child_read" : "child_walk";
+for (let i = 0; i < 3; i += 1) family = settle(interact(family, tend, content));
+for (let guard = 0; guard < 400 && family.status !== "review"; guard += 1) {
+  family = settle(family.status === "day" ? interact(family, tend, content) : family);
+  if (family.status === "day" && family.day.interactions >= 1) family = settle(sleep(family, content));
+}
+for (const [name, state] of [["family_morning", morning], ["family_review", family]] as const) {
+  const envelope = { schema: SCHEMA, savedAt: new Date().toISOString(), state };
+  writeFileSync(`smoke-shots/${name}.json`, JSON.stringify(envelope), "utf8");
+  process.stdout.write(`${name}: seed ${state.seed}, loop ${state.loop}, status ${state.status}\n`);
 }

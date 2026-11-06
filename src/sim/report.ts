@@ -29,6 +29,10 @@ export interface Row {
   verdict: string;
   /** Which of the content's tracked chains this life completed. */
   tracked: string;
+  /** The loop the child arrived on, or 0 if no child came in this life. */
+  childArrived: number;
+  childGoalsFulfilled: number;
+  childGoalsFailed: number;
 }
 
 /**
@@ -50,6 +54,7 @@ export function playGame(bot: Bot, seed: number, content: Content): Row {
 
   let interactions = 0;
   let turns = 0;
+  let childArrived = 0;
 
   while (state.status !== "review" && turns < MAX_TURNS) {
     turns += 1;
@@ -78,6 +83,7 @@ export function playGame(bot: Bot, seed: number, content: Content): Row {
       state = interact(state, decision.move, content);
       interactions += 1;
     }
+    if (!childArrived && state.npcs["child"]?.present) childArrived = state.loop;
   }
 
   if (turns >= MAX_TURNS) throw new Error(`${bot.id} on seed ${seed} never reached the review`);
@@ -103,6 +109,9 @@ export function playGame(bot: Bot, seed: number, content: Content): Row {
     tracked: (content.rules.trackedGoals ?? [])
       .filter((id) => state.goals[id]?.status === "fulfilled")
       .join(";"),
+    childArrived,
+    childGoalsFulfilled: goals.filter((g) => g.owner === "child" && g.status === "fulfilled").length,
+    childGoalsFailed: goals.filter((g) => g.owner === "child" && g.status === "failed").length,
   };
 }
 
@@ -119,6 +128,7 @@ export function runAll(content: Content, games = DEFAULT_GAMES): Row[] {
 const HEADERS: (keyof Row)[] = [
   "seed", "bot", "loops", "lifespanLeft", "npcGoalsFulfilled", "playerGoalsFulfilled",
   "goalsFailed", "breaks", "nightfalls", "interactions", "finalDebt", "verdict", "tracked",
+  "childArrived", "childGoalsFulfilled", "childGoalsFailed",
 ];
 
 export const CSV_HEADERS = HEADERS;
@@ -189,6 +199,30 @@ export function chainReport(rows: readonly Row[], tracked: readonly string[]): s
         ...tracked.map((goal) =>
           pct(mine.filter((r) => r.tracked.split(";").includes(goal)).length, mine.length).padStart(20),
         ),
+      ].join(""),
+    );
+  }
+  return lines.join("\n");
+}
+
+/** The family line: how often a child comes, when, and how their goals end. */
+export function familyReport(rows: readonly Row[]): string {
+  const lines = [
+    ["bot", "child came", "arrival day", "child goals met", "child goals lost"]
+      .map((h, i) => (i === 0 ? h.padEnd(10) : h.padStart(17)))
+      .join(""),
+  ];
+  for (const bot of BOTS) {
+    const mine = rows.filter((r) => r.bot === bot.id);
+    if (mine.length === 0) continue;
+    const born = mine.filter((r) => r.childArrived > 0);
+    lines.push(
+      [
+        bot.id.padEnd(10),
+        pct(born.length, mine.length).padStart(17),
+        (born.length ? String(median(born.map((r) => r.childArrived))) : "—").padStart(17),
+        (born.length ? mean(born.map((r) => r.childGoalsFulfilled)).toFixed(2) : "—").padStart(17),
+        (born.length ? mean(born.map((r) => r.childGoalsFailed)).toFixed(2) : "—").padStart(17),
       ].join(""),
     );
   }

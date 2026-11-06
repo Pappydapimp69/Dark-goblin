@@ -10,5 +10,11 @@
     "kind": "storefront",
     "holder": null,
     "exists": false
+  },
+  {
+    "id": "partner",
+    "kind": "partner",
+    "holder": null,
+    "exists": true
   }
 ]

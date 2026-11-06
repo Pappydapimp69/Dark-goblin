@@ -269,6 +269,21 @@ await poke(VW / 2, VH / 2); // one tap brings the rest of the reading
 await until("the verdict", (s) => s.texts.some((t) => /lived for/.test(t)));
 await shot("12-review");
 
+// The family line: the first morning after the child arrives, the room with
+// them in it, and a review that reads the child back on their own.
+await parkOn("family_morning");
+await until("the morning they arrive", (s) => on("Mirror")(s) && s.texts.some((t) => /asleep in the corner/.test(t)));
+await shot("13-family-morning");
+await press("Go out");
+await until("the street with them in it", on("Street"));
+await shot("14-family-room");
+
+await parkOn("family_review");
+await until("the family review", on("Review"));
+await poke(VW / 2, VH / 2);
+await until("the family verdict", (s) => s.texts.some((t) => /lived for/.test(t)) && s.texts.some((t) => /Pim/.test(t)));
+await shot("15-family-review");
+
 const numbers = [...everythingSeen].filter((t) => /\d/.test(t));
 if (numbers.length > 0) {
   errors.push(`a number reached the player: ${JSON.stringify(numbers)}`);
@@ -281,4 +296,4 @@ if (errors.length) {
   console.error("SMOKE FAILURES:\n" + errors.join("\n"));
   process.exit(1);
 }
-console.log(`clean run at ${VW}x${VH} via ${TOUCH ? "TOUCH" : "mouse"} — ${OUT}/01-boot.png through 12-review.png`);
+console.log(`clean run at ${VW}x${VH} via ${TOUCH ? "TOUCH" : "mouse"} — ${OUT}/01-boot.png through 15-family-review.png`);

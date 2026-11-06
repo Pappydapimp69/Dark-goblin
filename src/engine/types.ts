@@ -234,6 +234,13 @@ export interface NpcDef {
    * validates them.
    */
   art?: { build: string; head: string; prop: string; tone: string };
+  /**
+   * Someone who is not in town at the start of a life and arrives at the
+   * world tick on which this first holds. Never dealt into the opening town.
+   * An arriving person whose id is "child" has their goals rolled on arrival
+   * (rules.childGoalPool, plus the child versions of goals the player lost).
+   */
+  arrives?: Condition;
 }
 
 export interface SlotDef {
@@ -250,6 +257,13 @@ export interface GoalTemplate {
   label: string;
   paths: Path[];
   adjacentPool?: GoalId[];
+  /**
+   * Player goals only: the child's version of this goal. If the player's goal
+   * has failed by the time a child arrives, this one is handed down.
+   */
+  childVariant?: GoalId;
+  /** Child goals only: how the review reads this goal back, per outcome. */
+  childLine?: { fulfilled: string; failed: string; open: string };
 }
 
 export interface GoblinAnswer {
@@ -308,6 +322,9 @@ export interface RulesContent {
   trackedGoals?: GoalId[];
   /** The places a person can be found. An npc placed anywhere else is unreachable. */
   locations?: string[];
+  /** Child goal templates rolled when the child arrives, and how many. */
+  childGoalPool?: GoalId[];
+  childGoalsAtArrival?: number;
 }
 
 export interface Content {

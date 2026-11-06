@@ -13,8 +13,8 @@ describe("every person can be drawn", () => {
   // signal when an entry is missing — the figure just draws as something
   // generic and nobody notices. So the spec throws, and the whole cast is
   // walked through it here, exactly as content validation walks the sim ids.
-  it("has an art spec that resolves, for all forty-two", () => {
-    expect(folk).toHaveLength(42);
+  it("has an art spec that resolves, for all forty-four", () => {
+    expect(folk).toHaveLength(44);
     for (const npc of folk) {
       expect(() => readSpec(npc.id, npc.art)).not.toThrow();
     }

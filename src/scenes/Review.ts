@@ -53,14 +53,18 @@ export class Review extends Phaser.Scene {
     }
     lines.push(`You kept ${inWords(verdict.selfPoints, total)} for yourself.`);
     lines.push(`You gave ${inWords(verdict.othersPoints, total)} away.`);
+    // §5.7 step 4: the child's outcomes, read apart from the verdict. The
+    // engine's words for an outcome never reach the player — each goal
+    // carries its own line for each ending.
     for (const child of verdict.childOutcomes) {
-      lines.push(`The child: ${child.label} — ${child.outcome}.`);
+      const template = content.goals.find((g) => g.id === child.goalId);
+      lines.push(template?.childLine?.[child.outcome] ?? `${child.label}.`);
     }
 
     const shown = lines.slice(-7); // he reads back a life, not a transcript
-    const objects = shown.map((text, i) =>
+    const objects = shown.map((text) =>
       this.add
-        .text(WIDTH / 2, 150 + i * 96, text, { ...font(23, CSS.inkDim), align: "center" })
+        .text(WIDTH / 2, 0, text, { ...font(23, CSS.inkDim), align: "center" })
         .setOrigin(0.5, 0)
         .setAlpha(0),
     );
@@ -81,6 +85,19 @@ export class Review extends Phaser.Scene {
     }).setAlpha(0);
     again.y = HEIGHT - 110;
     ending.y = again.y - again.height / 2 - 40 - ending.height;
+
+    // The read-back stacks off measured heights too: the child's lines wrap
+    // to two or three rows. If the page runs out, the oldest lines go first.
+    const gap = 26;
+    const room = ending.y - 40 - 130;
+    const heightOf = (list: Phaser.GameObjects.Text[]): number =>
+      list.reduce((sum, o) => sum + o.height, 0) + gap * Math.max(0, list.length - 1);
+    while (objects.length > 1 && heightOf(objects) > room) objects.shift()!.destroy();
+    let y = 130;
+    for (const object of objects) {
+      object.y = y;
+      y += object.height + gap;
+    }
 
     const reveal = [...objects, ending, again];
     reveal.forEach((object, i) => {

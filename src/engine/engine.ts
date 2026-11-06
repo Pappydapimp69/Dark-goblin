@@ -210,7 +210,8 @@ export function answerGoblin(state: GameState, answerId: string, content: Conten
  * The draw count is fixed by the rules, never by how the deal goes.
  */
 function rollTown(rng: RngState, content: Content): [Set<string>, RngState] {
-  const townspeople = content.npcs.filter((n) => n.role !== "player");
+  // Someone who arrives later is never dealt into the opening town.
+  const townspeople = content.npcs.filter((n) => n.role !== "player" && n.arrives === undefined);
   const present = new Set(content.npcs.filter((n) => n.role === "player").map((n) => n.id));
 
   const size = content.rules.townSize ?? townspeople.length;

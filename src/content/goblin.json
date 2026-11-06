@@ -124,6 +124,60 @@
           "text": "Only you."
         }
       ]
+    },
+    {
+      "id": "q_pim",
+      "text": "The little one waited up. Where were you?",
+      "forGoals": [
+        "child_learns",
+        "child_fed",
+        "child_known",
+        "child_own_place",
+        "child_clear_debt"
+      ],
+      "answers": [
+        {
+          "id": "q_pim_a",
+          "text": "Out. Doing things that mattered more."
+        },
+        {
+          "id": "q_pim_b",
+          "text": "I thought there'd be another evening."
+        },
+        {
+          "id": "q_pim_c",
+          "text": "I didn't know they were waiting."
+        }
+      ]
+    },
+    {
+      "id": "q_pim_after",
+      "text": "What did you hope they'd become?",
+      "forGoals": [
+        "child_learns",
+        "child_fed",
+        "child_known",
+        "child_own_place",
+        "child_clear_debt"
+      ],
+      "answers": [
+        {
+          "id": "q_pim_after_a",
+          "text": "Better than me."
+        },
+        {
+          "id": "q_pim_after_b",
+          "text": "Just someone who stays."
+        },
+        {
+          "id": "q_pim_after_c",
+          "text": "I hadn't thought that far."
+        },
+        {
+          "id": "q_pim_after_d",
+          "text": "Whatever they wanted. Not what I wanted."
+        }
+      ]
     }
   ],
   "breaks": [

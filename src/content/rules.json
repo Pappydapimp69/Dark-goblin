@@ -28,22 +28,30 @@
     "player_be_known"
   ],
   "playerGoalsAtStart": 2,
-  "townSize": 8,
+  "townSize": 9,
   "pinnedNpcs": [
     "baker",
     "shopkeeper",
-    "builder"
+    "builder",
+    "partner"
   ],
   "trackedGoals": [
     "baker_shop",
     "builder_work",
     "shopkeeper_retire",
-    "shopkeeper_income"
+    "shopkeeper_income",
+    "partner_need"
   ],
   "locations": [
     "storefront",
     "market",
     "wrecked",
     "room"
-  ]
+  ],
+  "childGoalPool": [
+    "child_learns",
+    "child_fed",
+    "child_known"
+  ],
+  "childGoalsAtArrival": 2
 }

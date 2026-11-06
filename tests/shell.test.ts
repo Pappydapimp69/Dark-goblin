@@ -42,7 +42,7 @@ describe("everyone can be found", () => {
       const town = Object.values(state.npcs).filter((n) => n.present && n.id !== "player");
       const placed = town.filter((n) => {
         const def = content.npcs.find((d) => d.id === n.id)!;
-        return def.location !== "room" && content.rules.locations!.includes(def.location!);
+        return content.rules.locations!.includes(def.location!);
       });
       expect(placed).toHaveLength(town.length);
     }
