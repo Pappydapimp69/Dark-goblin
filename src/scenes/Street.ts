@@ -6,7 +6,7 @@ import type { NpcState } from "../engine/types";
 import { DevOverlay } from "../ui/DevOverlay";
 import { sceneFor, type Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
-import { BUILDING, FIGURE_HEIGHT, GROUND, HOME, PLACES, besideSpot, clampToGround, standingSpot, walkMs } from "../ui/town";
+import { BUILDING, FIGURE_HEIGHT, GROUND, HOME, PLACES, besideSpot, clampToGround, townView, walkMs } from "../ui/town";
 import { button, groundSpot, leave, personToken } from "../ui/widgets";
 
 type Point = { x: number; y: number };
@@ -42,30 +42,26 @@ export class Street extends Phaser.Scene {
 
     this.drawPaths();
 
-    const where = new Map<string, string>();
-    for (const def of content.npcs) where.set(def.id, def.location ?? "market");
-
-    for (const place of PLACES) {
-      this.add.image(place.x, place.y, buildingKey(place.id)).setDisplaySize(BUILDING.width, BUILDING.height);
+    // The town as it is today: who has gone, who holds which shop, what was rebuilt.
+    const view = townView(state, content);
+    for (const place of view.places) {
+      const art = place.look === "rebuilt" ? buildingKey("rebuilt") : buildingKey(place.id);
+      this.add.image(place.x, place.y, art).setDisplaySize(BUILDING.width, BUILDING.height);
       this.add.text(place.x, place.y - BUILDING.height / 2 - 2, place.name, font(20, CSS.inkDim)).setOrigin(0.5, 1);
-
-      const here = Object.values(state.npcs).filter(
-        (npc): npc is NpcState => npc.present && npc.id !== "player" && where.get(npc.id) === place.id,
+    }
+    for (const person of view.people) {
+      const npc = state.npcs[person.id] as NpcState;
+      const key = npc.broken ? brokenKey(npc.id) : figureKey(npc.id);
+      personToken(
+        this,
+        person.x,
+        person.y,
+        npc.name,
+        this.textures.exists(key) ? key : figureKey(npc.id),
+        () => this.approach(store, npc.id, person),
+        // The child stands at about two-thirds of an adult's height.
+        { broken: npc.broken, height: FIGURE_HEIGHT * (npc.id === "child" ? 0.68 : 1) },
       );
-      here.forEach((npc, i) => {
-        const spot = standingSpot(place.id, i);
-        const key = npc.broken ? brokenKey(npc.id) : figureKey(npc.id);
-        personToken(
-          this,
-          spot.x,
-          spot.y,
-          npc.name,
-          this.textures.exists(key) ? key : figureKey(npc.id),
-          () => this.approach(store, npc.id, spot),
-          // The child stands at about two-thirds of an adult's height.
-          { broken: npc.broken, height: FIGURE_HEIGHT * (npc.id === "child" ? 0.68 : 1) },
-        );
-      });
     }
 
     // You, where you were standing — or at your own door, if it is a new morning.

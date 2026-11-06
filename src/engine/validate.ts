@@ -82,6 +82,7 @@ export function validateContent(content: Content): void {
         throw new ContentError(`unknown goal "${id}"`, `${FILES.npcs} "${npc.id}"`);
       }
     }
+    if (npc.away !== undefined) assertCondition(npc.away, `${FILES.npcs} "${npc.id}".away`);
     if (npc.arrives !== undefined) {
       assertCondition(npc.arrives, `${FILES.npcs} "${npc.id}".arrives`);
       if ((content.rules.pinnedNpcs ?? []).includes(npc.id)) {

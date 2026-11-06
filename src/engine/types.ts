@@ -251,6 +251,12 @@ export interface NpcDef {
    * (rules.childGoalPool, plus the child versions of goals the player lost).
    */
   arrives?: Condition;
+  /**
+   * Presentation only: once this holds, they have left — the town map no
+   * longer draws them. The engine does not read it (their own choices are
+   * already closed by the same flag).
+   */
+  away?: Condition;
 }
 
 export interface SlotDef {

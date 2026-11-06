@@ -108,6 +108,10 @@
       "head": "scarf",
       "prop": "apron",
       "tone": "ash"
+    },
+    "away": {
+      "flag": "baker_left_town",
+      "eq": true
     }
   },
   {
@@ -171,6 +175,10 @@
       "head": "cap",
       "prop": "ledger",
       "tone": "moss"
+    },
+    "away": {
+      "flag": "shopkeeper_retired",
+      "eq": true
     }
   },
   {
@@ -208,7 +216,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "builder_gone",
+      "eq": true
+    }
   },
   {
     "id": "mara",
@@ -246,7 +258,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "mara_gone",
+      "eq": true
+    }
   },
   {
     "id": "otto",
@@ -284,7 +300,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "otto_gone",
+      "eq": true
+    }
   },
   {
     "id": "lise",
@@ -322,7 +342,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "lise_gone",
+      "eq": true
+    }
   },
   {
     "id": "per",
@@ -360,7 +384,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "per_gone",
+      "eq": true
+    }
   },
   {
     "id": "greta",
@@ -398,7 +426,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "greta_gone",
+      "eq": true
+    }
   },
   {
     "id": "hansi",
@@ -436,7 +468,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "hansi_gone",
+      "eq": true
+    }
   },
   {
     "id": "tobias",
@@ -474,7 +510,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "tobias_gone",
+      "eq": true
+    }
   },
   {
     "id": "anneke",
@@ -512,7 +552,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "anneke_gone",
+      "eq": true
+    }
   },
   {
     "id": "klaus",
@@ -550,7 +594,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "klaus_gone",
+      "eq": true
+    }
   },
   {
     "id": "sofie",
@@ -588,7 +636,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "sofie_gone",
+      "eq": true
+    }
   },
   {
     "id": "emil",
@@ -626,7 +678,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "emil_gone",
+      "eq": true
+    }
   },
   {
     "id": "rike",
@@ -664,7 +720,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "rike_gone",
+      "eq": true
+    }
   },
   {
     "id": "jonas",
@@ -702,7 +762,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "jonas_gone",
+      "eq": true
+    }
   },
   {
     "id": "hedda",
@@ -740,7 +804,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "hedda_gone",
+      "eq": true
+    }
   },
   {
     "id": "viktor",
@@ -778,7 +846,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "viktor_gone",
+      "eq": true
+    }
   },
   {
     "id": "nell",
@@ -816,7 +888,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "nell_gone",
+      "eq": true
+    }
   },
   {
     "id": "bram",
@@ -854,7 +930,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "bram_gone",
+      "eq": true
+    }
   },
   {
     "id": "ilse",
@@ -892,7 +972,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "ilse_gone",
+      "eq": true
+    }
   },
   {
     "id": "ansel",
@@ -930,7 +1014,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "ansel_gone",
+      "eq": true
+    }
   },
   {
     "id": "dorte",
@@ -968,7 +1056,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "dorte_gone",
+      "eq": true
+    }
   },
   {
     "id": "rurik",
@@ -1006,7 +1098,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "rurik_gone",
+      "eq": true
+    }
   },
   {
     "id": "maike",
@@ -1044,7 +1140,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "maike_gone",
+      "eq": true
+    }
   },
   {
     "id": "stefan",
@@ -1082,7 +1182,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "stefan_gone",
+      "eq": true
+    }
   },
   {
     "id": "ebba",
@@ -1120,7 +1224,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "ebba_gone",
+      "eq": true
+    }
   },
   {
     "id": "lukas",
@@ -1158,7 +1266,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "lukas_gone",
+      "eq": true
+    }
   },
   {
     "id": "gunda",
@@ -1196,7 +1308,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "gunda_gone",
+      "eq": true
+    }
   },
   {
     "id": "arne",
@@ -1234,7 +1350,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "arne_gone",
+      "eq": true
+    }
   },
   {
     "id": "pia",
@@ -1272,7 +1392,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "pia_gone",
+      "eq": true
+    }
   },
   {
     "id": "henrik",
@@ -1310,7 +1434,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "henrik_gone",
+      "eq": true
+    }
   },
   {
     "id": "birgit",
@@ -1348,7 +1476,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "birgit_gone",
+      "eq": true
+    }
   },
   {
     "id": "matthias",
@@ -1386,7 +1518,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "matthias_gone",
+      "eq": true
+    }
   },
   {
     "id": "runa",
@@ -1424,7 +1560,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "runa_gone",
+      "eq": true
+    }
   },
   {
     "id": "erik",
@@ -1462,7 +1602,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "erik_gone",
+      "eq": true
+    }
   },
   {
     "id": "thea",
@@ -1500,7 +1644,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "thea_gone",
+      "eq": true
+    }
   },
   {
     "id": "jost",
@@ -1538,7 +1686,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "jost_gone",
+      "eq": true
+    }
   },
   {
     "id": "alva",
@@ -1576,7 +1728,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "alva_gone",
+      "eq": true
+    }
   },
   {
     "id": "nikolas",
@@ -1614,7 +1770,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "nikolas_gone",
+      "eq": true
+    }
   },
   {
     "id": "sanne",
@@ -1652,7 +1812,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "sanne_gone",
+      "eq": true
+    }
   },
   {
     "id": "wilhelm",
@@ -1690,7 +1854,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "wilhelm_gone",
+      "eq": true
+    }
   },
   {
     "id": "partner",
@@ -1729,7 +1897,11 @@
           }
         ]
       }
-    ]
+    ],
+    "away": {
+      "flag": "partner_gone",
+      "eq": true
+    }
   },
   {
     "id": "child",

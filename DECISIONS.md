@@ -662,3 +662,16 @@ number reaches the page.
 
 **D-81 — The sun is the day's clock.** It crosses the sky as the day's acts are
 spent and the sky darkens with it. It is a position, not a number (§0).
+
+**D-82 — The map shows the town as it is now.** §1: the player never changes,
+the town does — but measured over the sim's lives, every permanent change was
+invisible on the map: about 3 a life for the generous bot and 8 for mixed, in
+all 100 lives each, and in 46 of the human bot's. People who had gone were still
+drawn, shops that changed hands looked the same, the rebuilt shop was still a
+ruin. Now `townView` (src/ui/town.ts, pure) draws the town from state: someone
+whose `away` condition holds (content, one per person: their `_gone` flag, or
+`baker_left_town`, `shopkeeper_retired`, `partner_gone`) is not drawn; whoever
+holds a shop stands at it and the place takes their name ("Ilka's Shop"); the
+ruin is drawn rebuilt once the rebuilt shop exists. A foreclosed shopkeeper is
+deliberately still there, ruined, for his aftermath line. Re-measured: no
+permanent change goes unseen, for any bot.

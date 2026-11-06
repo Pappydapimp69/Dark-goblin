@@ -1,3 +1,5 @@
+import { evaluate } from "../engine/conditions";
+import type { Content, GameState } from "../engine/types";
 import { HEIGHT, WIDTH } from "./theme";
 
 /**
@@ -70,4 +72,64 @@ export const WALK_SPEED = 560;
 
 export function walkMs(from: { x: number; y: number }, to: { x: number; y: number }): number {
   return Math.round((Math.hypot(to.x - from.x, to.y - from.y) / WALK_SPEED) * 1000);
+}
+
+// ---------------------------------------------------------------- the view
+
+/** Which drawing of a building, by what has happened to it. */
+export type BuildingLook = "standing" | "rebuilt";
+
+export interface TownView {
+  places: { id: string; name: string; look: BuildingLook; x: number; y: number }[];
+  people: { id: string; place: string; x: number; y: number }[];
+}
+
+/** Each held slot is a place you can stand at: whoever holds it stands there. */
+const SLOT_PLACE: Record<string, string> = { storefront: "storefront", wrecked_shop: "wrecked" };
+
+/**
+ * The town as it is today, not as it was authored: §1 says the town changes,
+ * so the map has to show it. Someone who has gone is not drawn; whoever holds
+ * a shop stands at it and the place takes their name; the ruin is drawn
+ * rebuilt once the rebuilt shop exists. Pure: reads state, writes nothing.
+ */
+export function townView(state: GameState, content: Content): TownView {
+  const home = new Map(content.npcs.map((n) => [n.id, n.location ?? "market"]));
+  for (const [slotId, placeId] of Object.entries(SLOT_PLACE)) {
+    const holder = state.slots[slotId]?.holder;
+    if (holder && holder !== "player" && state.slots[slotId]?.exists) home.set(holder, placeId);
+  }
+
+  const gone = (id: string): boolean => {
+    const away = content.npcs.find((n) => n.id === id)?.away;
+    return away !== undefined && evaluate(away, state, `npcs.json "${id}".away`);
+  };
+
+  const people: TownView["people"] = [];
+  for (const place of PLACES) {
+    const here = Object.values(state.npcs)
+      .filter((n) => n.present && n.id !== "player" && !gone(n.id) && home.get(n.id) === place.id)
+      .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+    here.forEach((n, i) => people.push({ id: n.id, place: place.id, ...standingSpot(place.id, i) }));
+  }
+
+  const nameOf = (id: string | null | undefined): string | undefined =>
+    id === "player" ? "Yours" : id ? state.npcs[id]?.name : undefined;
+  const places = PLACES.map((p) => {
+    let name = p.name;
+    let look: BuildingLook = "standing";
+    if (p.id === "storefront") {
+      const holder = state.slots["storefront"]?.holder;
+      const original = content.slots.find((s) => s.id === "storefront")?.holder;
+      if (holder !== original) name = holder === "player" ? "The Storefront — yours now" : holder ? `${nameOf(holder)}'s Shop` : "The Storefront, empty";
+    }
+    if (p.id === "wrecked" && state.slots["wrecked_shop"]?.exists) {
+      look = "rebuilt";
+      const holder = state.slots["wrecked_shop"]?.holder;
+      name = holder === "player" ? "The Rebuilt Shop — yours" : holder ? `${nameOf(holder)}'s Shop` : "The Rebuilt Shop";
+    }
+    return { id: p.id, name, look, x: p.x, y: p.y };
+  });
+
+  return { places, people };
 }

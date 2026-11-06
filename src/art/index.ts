@@ -111,6 +111,15 @@ function buildingSvg(id: string): string {
       <rect x="60" y="72" width="26" height="22" fill="#120f0d"/>
       <rect x="186" y="82" width="24" height="20" fill="#120f0d"/>
       <path d="M40 116 V52 L84 34 L98 60 L132 30 V116 Z" fill="url(#h-${id})"/>`,
+    rebuilt: `
+      <rect x="44" y="40" width="212" height="76" fill="#78543e" stroke="${ink}" stroke-width="4"/>
+      <path d="M32 44 L150 8 L268 44 Z" fill="#b66e4f" stroke="${ink}" stroke-width="4"/>
+      <path d="M44 62 H256 M44 86 H256" stroke="#5a3f30" stroke-width="3" opacity="0.7"/>
+      <rect x="70" y="72" width="70" height="32" fill="#d7b982" opacity="0.6" stroke="${ink}" stroke-width="3"/>
+      <rect x="168" y="70" width="40" height="46" fill="#3a2c24" stroke="${ink}" stroke-width="3"/>
+      <rect x="112" y="48" width="76" height="14" fill="#2a211c"/>
+      <path d="M232 116 L248 92 L262 116 Z" fill="#b8a982" stroke="${ink}" stroke-width="2"/>
+      <rect x="44" y="40" width="212" height="76" fill="url(#h-${id})"/>`,
     room: `
       <rect x="70" y="50" width="160" height="66" fill="#4a3a30" stroke="${ink}" stroke-width="4"/>
       <path d="M56 54 L150 10 L244 54 Z" fill="#563b2d" stroke="${ink}" stroke-width="4"/>
@@ -153,6 +162,7 @@ export function assetManifest(content: Content): Asset[] {
     if (!["storefront", "market", "wrecked", "room"].includes(id)) throw new Error(`no backdrop for ${id}`);
     out.push(asset(placeKey(id), placeSvg(id)));
     out.push(asset(buildingKey(id), buildingSvg(id)));
+    if (id === "wrecked") out.push(asset(buildingKey("rebuilt"), buildingSvg("rebuilt")));
   }
   for (let stage = 0; stage < PORTRAIT_STAGES; stage += 1) out.push(asset(portraitKey(stage), portraitSvg(stage)));
   out.push(asset(GOBLIN_KEY, goblinSvg()));

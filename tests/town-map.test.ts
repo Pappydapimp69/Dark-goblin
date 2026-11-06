@@ -3,20 +3,14 @@ import { content } from "../src/content";
 import { interact, newGame, sleep } from "../src/engine/engine";
 import { journal } from "../src/ui/journal";
 import { HEIGHT, WIDTH } from "../src/ui/theme";
-import { BUILDING, FIGURE_HEIGHT, GROUND, HOME, PLACES, standingSpot, walkMs } from "../src/ui/town";
+import { BUILDING, FIGURE_HEIGHT, GROUND, HOME, PLACES, standingSpot, townView, walkMs } from "../src/ui/town";
 import { acquainted } from "./harness";
 
 const where = new Map(content.npcs.map((n) => [n.id, n.location ?? "market"]));
 
 /** Everyone the Street scene would draw, with the spot it would draw them at. */
-function drawn(state: ReturnType<typeof newGame>) {
-  const out: { id: string; x: number; y: number }[] = [];
-  for (const place of PLACES) {
-    const here = Object.values(state.npcs).filter((n) => n.present && n.id !== "player" && where.get(n.id) === place.id);
-    here.forEach((n, i) => out.push({ id: n.id, ...standingSpot(place.id, i) }));
-  }
-  return out;
-}
+const drawn = (state: ReturnType<typeof newGame>) => townView(state, content).people;
+void where;
 
 describe("the town you walk", () => {
   it("draws everyone in town, on screen, apart from each other and off the buildings, for every seed", () => {
@@ -73,5 +67,42 @@ describe("the journal", () => {
         while (state.status !== "day" && state.status !== "review") break;
       }
     }
+  });
+});
+
+describe("the map shows the town as it is now", () => {
+  const start = () => acquainted(newGame(1, content));
+
+  it("someone harmed into leaving is no longer drawn", () => {
+    let state = start();
+    const victim = Object.values(state.npcs).find((n) => n.present && content.choices.some((c) => c.id === `${n.id}_harm`))!;
+    expect(townView(state, content).people.map((p) => p.id)).toContain(victim.id);
+    state = interact(state, `${victim.id}_harm`, content);
+    expect(townView(state, content).people.map((p) => p.id)).not.toContain(victim.id);
+  });
+
+  it("whoever holds a shop stands at it, and it takes their name", () => {
+    const base = start();
+    const state = { ...base, slots: { ...base.slots, storefront: { ...base.slots["storefront"]!, holder: "baker" } } };
+    const view = townView(state, content);
+    expect(view.people.find((p) => p.id === "baker")?.place).toBe("storefront");
+    expect(view.places.find((p) => p.id === "storefront")?.name).toBe("Ilka's Shop");
+  });
+
+  it("the ruin is drawn rebuilt once the rebuilt shop exists", () => {
+    const base = start();
+    const state = { ...base, slots: { ...base.slots, wrecked_shop: { ...base.slots["wrecked_shop"]!, exists: true, holder: "baker" } } };
+    const wrecked = townView(state, content).places.find((p) => p.id === "wrecked")!;
+    expect(wrecked.look).toBe("rebuilt");
+    expect(wrecked.name).toBe("Ilka's Shop");
+    expect(townView(state, content).people.find((p) => p.id === "baker")?.place).toBe("wrecked");
+  });
+
+  it("the ruined shopkeeper stays in town for his aftermath; a retired one has gone", () => {
+    const base = start();
+    const ruined = { ...base, flags: { ...base.flags, shopkeeper_foreclosed: true } };
+    expect(townView(ruined, content).people.map((p) => p.id)).toContain("shopkeeper");
+    const retired = { ...base, flags: { ...base.flags, shopkeeper_retired: true } };
+    expect(townView(retired, content).people.map((p) => p.id)).not.toContain("shopkeeper");
   });
 });
