@@ -323,6 +323,19 @@ away" to someone who gave nothing. The rule is the spec's, so it stands. If it
 should read differently, the fix is a third ending for an empty life rather
 than a change to the comparison.
 
+**Why an empty life outlives a generous one (measured, D-70).** Under §5.2–5.3
+each day's life loss is an identity:
+`2 + helps + neutrals + 2·harms + (goal max − goal score, before the bill) − bill score`.
+It matches the engine on 7,499 of 7,627 bot-days, and every miss is a clamp day.
+A help is +0 against +1 max, so each one costs a life. A self act (+1/+1), a
+finished NPC goal (+2/+2) and an idle day cost nothing beyond the fixed 2 and
+the bill. So a day of doing nothing costs exactly what a day of pure
+selfishness costs (1 with the bill paid). Giving costs 13 and lasts about 6
+days; sleeping through life lasts 27. Player goals that fail overnight cost no
+life at all, because the world tick runs after the day is cashed out (step 3
+before step 4). The spec's own table implies all of this, so it stands; whether
+withdrawal should be the safest life is open as Brain tension T201.
+
 ## Phase 6 — decisions taken in the polish pass
 
 **D-46 — Sound hooks exist; sound does not.** §9 asks for the hooks with no
