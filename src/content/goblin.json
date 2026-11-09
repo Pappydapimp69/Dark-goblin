@@ -11,19 +11,23 @@
       "answers": [
         {
           "id": "q_wanted_a",
-          "text": "Nothing changed. I ran out of days."
+          "text": "Nothing changed. I ran out of days.",
+          "reply": "He nods at the window. The days are still out there. He doesn't say so."
         },
         {
           "id": "q_wanted_b",
-          "text": "Someone needed the day more than I did."
+          "text": "Someone needed the day more than I did.",
+          "reply": "He looks at your hands for a while, as if checking what they gave away."
         },
         {
           "id": "q_wanted_c",
-          "text": "I stopped wanting it and didn't notice."
+          "text": "I stopped wanting it and didn't notice.",
+          "reply": "He writes something small and does not show you."
         },
         {
           "id": "q_wanted_d",
-          "text": "I never really wanted it."
+          "text": "I never really wanted it.",
+          "reply": "He smiles at that, the way you smile at a child who has lied well."
         }
       ]
     },
@@ -33,15 +37,18 @@
       "answers": [
         {
           "id": "q_first_a",
-          "text": "Myself. I usually do."
+          "text": "Myself. I usually do.",
+          "reply": "He seems to find that honest, and honesty seems to tire him."
         },
         {
           "id": "q_first_b",
-          "text": "Someone out there in the cold."
+          "text": "Someone out there in the cold.",
+          "reply": "He turns his head toward the cold, as though he can hear them from here."
         },
         {
           "id": "q_first_c",
-          "text": "No one. I just got up."
+          "text": "No one. I just got up.",
+          "reply": "He takes that the way he takes everything: without hurry."
         }
       ]
     },
@@ -51,19 +58,23 @@
       "answers": [
         {
           "id": "q_worth_a",
-          "text": "Yes. Ask me again tomorrow."
+          "text": "Yes. Ask me again tomorrow.",
+          "reply": "He laughs once, quietly. Tomorrow is a joke only the two of you share."
         },
         {
           "id": "q_worth_b",
-          "text": "No. But I'd do it again."
+          "text": "No. But I'd do it again.",
+          "reply": "He sets his cup down very gently, and leaves it there."
         },
         {
           "id": "q_worth_c",
-          "text": "I don't know what it cost."
+          "text": "I don't know what it cost.",
+          "reply": "He holds up nothing, and looks at it, and puts it away."
         },
         {
           "id": "q_worth_d",
-          "text": "Nothing costs anything here. It all comes back."
+          "text": "Nothing costs anything here. It all comes back.",
+          "reply": "He doesn't argue. He touches the wall, which is older than it was."
         }
       ]
     },
@@ -73,15 +84,18 @@
       "answers": [
         {
           "id": "q_name_a",
-          "text": "Of course I could."
+          "text": "Of course I could.",
+          "reply": "He waits, in case you'll say it now. You don't."
         },
         {
           "id": "q_name_b",
-          "text": "I could this morning."
+          "text": "I could this morning.",
+          "reply": "He nods. Mornings are where names live, he seems to think."
         },
         {
           "id": "q_name_c",
-          "text": "Does it matter, if the day starts over?"
+          "text": "Does it matter, if the day starts over?",
+          "reply": "He studies you a long moment, the way you'd study a stopped clock."
         }
       ]
     },
@@ -91,19 +105,23 @@
       "answers": [
         {
           "id": "q_again_a",
-          "text": "The same. It works."
+          "text": "The same. It works.",
+          "reply": "He folds his hands. Something in how he does it is approving, and something isn't."
         },
         {
           "id": "q_again_b",
-          "text": "I'll start somewhere else."
+          "text": "I'll start somewhere else.",
+          "reply": "He shifts his chair a little, to see which way you'll go."
         },
         {
           "id": "q_again_c",
-          "text": "I'll try to get further."
+          "text": "I'll try to get further.",
+          "reply": "He glances at the dark past the window, measuring how far further is."
         },
         {
           "id": "q_again_d",
-          "text": "I've stopped planning it."
+          "text": "I've stopped planning it.",
+          "reply": "He lets the quiet sit there between you, unplanned."
         }
       ]
     },
@@ -113,15 +131,18 @@
       "answers": [
         {
           "id": "q_notice_a",
-          "text": "They noticed."
+          "text": "They noticed.",
+          "reply": "He seems glad of it, and sorry, both at once."
         },
         {
           "id": "q_notice_b",
-          "text": "I hope not."
+          "text": "I hope not.",
+          "reply": "He nods slowly. Hoping is something he's watched before."
         },
         {
           "id": "q_notice_c",
-          "text": "Only you."
+          "text": "Only you.",
+          "reply": "He bows his head, very slightly, as if that were a kindness."
         }
       ]
     },
@@ -138,15 +159,18 @@
       "answers": [
         {
           "id": "q_pim_a",
-          "text": "Out. Doing things that mattered more."
+          "text": "Out. Doing things that mattered more.",
+          "reply": "He looks at the small coat on its hook, and says nothing about it."
         },
         {
           "id": "q_pim_b",
-          "text": "I thought there'd be another evening."
+          "text": "I thought there'd be another evening.",
+          "reply": "He counts the evenings on his fingers and stops before the end."
         },
         {
           "id": "q_pim_c",
-          "text": "I didn't know they were waiting."
+          "text": "I didn't know they were waiting.",
+          "reply": "He looks toward the little bed as though it had told him otherwise."
         }
       ]
     },
@@ -163,19 +187,23 @@
       "answers": [
         {
           "id": "q_pim_after_a",
-          "text": "Better than me."
+          "text": "Better than me.",
+          "reply": "He tilts his head. Better is a long road, he seems to say."
         },
         {
           "id": "q_pim_after_b",
-          "text": "Just someone who stays."
+          "text": "Just someone who stays.",
+          "reply": "He looks at the door, and then at you, and then at the door."
         },
         {
           "id": "q_pim_after_c",
-          "text": "I hadn't thought that far."
+          "text": "I hadn't thought that far.",
+          "reply": "He waits, as if you might think that far now. The room stays quiet."
         },
         {
           "id": "q_pim_after_d",
-          "text": "Whatever they wanted. Not what I wanted."
+          "text": "Whatever they wanted. Not what I wanted.",
+          "reply": "He nods, and for a moment he looks almost fond of you."
         }
       ]
     }

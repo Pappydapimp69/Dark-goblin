@@ -61,7 +61,8 @@
       "helped_this_loop": 0,
       "trusts_player": false,
       "known": 0,
-      "met_today": false
+      "met_today": false,
+      "trade": "the baker"
     },
     "goalIds": [
       "baker_shop"
@@ -123,7 +124,8 @@
       "retire_ready": 0,
       "trusts_player": false,
       "known": 0,
-      "met_today": false
+      "met_today": false,
+      "trade": "the shopkeeper"
     },
     "goalIds": [
       "shopkeeper_income",
@@ -189,7 +191,8 @@
       "jobs": 0,
       "trusts_player": false,
       "known": 0,
-      "met_today": false
+      "met_today": false,
+      "trade": "the builder"
     },
     "goalIds": [
       "builder_work"
@@ -1868,7 +1871,7 @@
       "helped": 0,
       "trusts_player": false,
       "stays": false,
-      "trade": "the lodger across the landing",
+      "trade": "the lodger",
       "known": 0,
       "met_today": false
     },

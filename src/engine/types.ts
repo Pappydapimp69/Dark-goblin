@@ -285,6 +285,8 @@ export interface GoalTemplate {
 export interface GoblinAnswer {
   id: string;
   text: string;
+  /** Presentation only: how he takes it. The answer itself changes nothing (§5.6). */
+  reply?: string;
 }
 
 export interface GoblinQuestion {

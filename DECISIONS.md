@@ -691,3 +691,28 @@ letter, that every door and standing spot can be walked to from home, and — fo
 300 seeds of the fullest town — that everyone is on their own walkable tile and
 can be walked up to. The first run of that test found a boxed-in tile beside the
 wrecked building where Henrik would have stood out of reach on seed 23.
+
+**D-84 — Every act answers back, at once and for good.** Asked for: no action
+should feel pointless. Measured first over the sim's lives: after 76.5% of the
+selfish bot's acts and 52.1% of the human bot's, nothing the player could see
+changed at all — the line had gone quiet (D-77) and money, the only thing a
+self act moved, is never shown. Now, all presentation, nothing scored:
+
+- *At once:* back on the map, the person bobs and a sign rises from them —
+  warmth for a help, a coin for something taken, a crack for a harm, a word for
+  anything else — and the purse jingles if money moved. No tap needed (Brain
+  od75#E3: interruption in proportion to the consequence).
+- *For good* (`src/ui/marks.ts`, read from the ledger): each help grows a flower
+  at that person's feet, each thing taken wears the ground bare, each harm
+  cracks it (two rings, up to sixteen of each); your purse sits on the map and
+  swells or hangs empty with a slip when you owe; Pim grows with every lesson,
+  meal and walk; strangers are labelled by their trade until you meet them,
+  then by name.
+- *Nothing silent:* the goblin answers every answer with a line of his own
+  (presentation only — §5.6's answers still change nothing), and the ruined
+  shopkeeper's aftermath has lines.
+
+Re-measured: every act gets its reaction, and the world keeps a lasting mark
+of 100% of the generous bot's acts, 98.5% of mixed, 92.5% of the human bot's
+and 81.8% of the selfish bot's. What remains is repetition past sixteen marks
+on one person, or coins into a full purse.

@@ -54,6 +54,13 @@ export function acquaintance(npc: NpcState): "stranger" | "met" | "later" | "kno
   return known === 0 ? "stranger" : "met";
 }
 
+/** Until you have met someone you know them only by what they do: "The well-keeper", not "Mara". */
+export function shownName(npc: NpcState): string {
+  if (acquaintance(npc) !== "stranger") return npc.name;
+  const trade = typeof npc.state["trade"] === "string" ? (npc.state["trade"] as string) : "a stranger";
+  return trade.charAt(0).toUpperCase() + trade.slice(1);
+}
+
 function pick(pool: string[], key: string): string {
   let hash = 0;
   for (let i = 0; i < key.length; i += 1) hash = (hash + key.charCodeAt(i)) | 0;
@@ -67,7 +74,7 @@ function greetingFor(npc: NpcState): string {
     : stage === "met" ? MET
     : stage === "later" ? LATER
     : npc.state["trusts_player"] === true ? WARM : OPENING;
-  return pick(pool, npc.id).replace("{name}", npc.name);
+  return pick(pool, npc.id).replace("{name}", shownName(npc));
 }
 
 /** The choice overlay. It dispatches and closes; it decides nothing. */
@@ -95,7 +102,7 @@ export class Dialogue extends Phaser.Scene {
     panel.setY(18);
 
     const trade = typeof npc.state["trade"] === "string" ? npc.state["trade"] : "";
-    panel.add(this.add.text(WIDTH / 2, 150, npc.name, font(40)).setOrigin(0.5));
+    panel.add(this.add.text(WIDTH / 2, 150, shownName(npc), font(40)).setOrigin(0.5));
     if (trade) panel.add(this.add.text(WIDTH / 2, 200, trade, font(24, CSS.inkDim)).setOrigin(0.5));
 
     if (!npc.broken) {
@@ -135,6 +142,8 @@ export class Dialogue extends Phaser.Scene {
 
   private pick(store: Store, choice: Choice): void {
     const before = store.state.money;
+    // The town answers every act when you are back on the street: who, and what kind.
+    this.registry.set("lastAct", { npcId: choice.npc, kinds: choice.impacts.map((i) => i.kind), moneyBefore: before });
     store.interact(choice.id);
     cue(this, store.state.money === before ? CUES.choice : CUES.coin);
 

@@ -10,6 +10,7 @@ import {
   COLS, FIGURE_HEIGHT, GRID, HOME_TILE, MAP_TOP, PLACES, ROWS, TILE, TILES_PER_SECOND,
   besideTile, feet, nearestFree, path, tileKey, townView, type Tile,
 } from "../ui/town";
+import { actSign, childGrowth, marksFor, purse } from "../ui/marks";
 import { button, groundSpot, leave, personToken } from "../ui/widgets";
 
 /** A cheap, stable hash of a tile, so grass tufts and ripples sit in the same place every day. */
@@ -30,6 +31,8 @@ export class Street extends Phaser.Scene {
   private at: Tile = HOME_TILE;
   private occupied = new Set<string>();
   private walking?: Phaser.Tweens.TweenChain;
+  private tokens = new Map<string, Phaser.GameObjects.Container>();
+  private purseArt?: Phaser.GameObjects.Container;
 
   constructor() {
     super("Street");
@@ -65,17 +68,21 @@ export class Street extends Phaser.Scene {
 
     // Everyone stands on their own tile, with a shadow under their feet.
     this.occupied = new Set(view.people.map((p) => tileKey(p.tile)));
+    this.tokens.clear();
     for (const person of [...view.people].sort((a, b) => a.y - b.y)) {
       const npc = state.npcs[person.id] as NpcState;
-      const height = FIGURE_HEIGHT * (npc.id === "child" ? 0.68 : 1);
+      // Pim grows with every lesson, meal and walk you give them.
+      const height = FIGURE_HEIGHT * (npc.id === "child" ? 0.55 + 0.3 * childGrowth(state) : 1);
+      this.drawMarks(person.x, person.y, marksFor(state, content, npc.id));
       this.add.ellipse(person.x, person.y, 34, 10, 0x000000, 0.35);
       const key = npc.broken ? brokenKey(npc.id) : figureKey(npc.id);
-      personToken(
-        this, person.x, person.y, npc.name,
+      const token = personToken(
+        this, person.x, person.y, person.label,
         this.textures.exists(key) ? key : figureKey(npc.id),
         () => this.approach(store, npc.id, person.tile),
         { broken: npc.broken, height },
       ).setDepth(3 + person.y / 10000);
+      this.tokens.set(npc.id, token);
     }
 
     // You: where you were standing, or at your own door on a new morning.
@@ -90,11 +97,103 @@ export class Street extends Phaser.Scene {
     // Dusk comes down over the whole map as the day's acts are spent.
     this.add.rectangle(WIDTH / 2, MAP_TOP + (ROWS * TILE) / 2, WIDTH, ROWS * TILE, 0x0b0c1a, 0.45 * spent).setDepth(6);
 
+    this.drawPurse(state.money, state.debt);
+    this.answerLastAct(state.money);
+
     button(this, 140, HEIGHT - 60, "Journal", () => this.openJournal(), { width: 220, size: 24 }).setDepth(7);
     button(this, WIDTH - 140, HEIGHT - 60, "Sleep", () => this.walkTo(HOME_TILE, () => leave(this, "Night")), {
       width: 220,
       size: 24,
     }).setDepth(7);
+  }
+
+  /**
+   * What you have done here stays on the ground: a flower for each help, bare
+   * worn earth for each thing taken, a crack for each harm.
+   */
+  private drawMarks(x: number, y: number, m: { flowers: number; worn: number; cracks: number }): void {
+    const g = this.add.graphics().setDepth(2);
+    // Two rings of eight: the inner one first, then the wider one around it.
+    const ring = (i: number): { a: number; r: number } => ({ a: ((i % 8) / 8) * Math.PI * 2 + (i >= 8 ? 0.4 : 0), r: i >= 8 ? 1.6 : 1 });
+    for (let i = 0; i < m.worn; i += 1) {
+      const { a, r } = ring(i);
+      g.fillStyle(0x6b5845, 0.85).fillEllipse(x + Math.cos(a + 0.4) * 14 * r, y + 4 + Math.sin(a + 0.4) * 6 * r, 16, 7);
+    }
+    g.lineStyle(2, 0x0c0908, 0.9);
+    for (let i = 0; i < m.cracks; i += 1) {
+      const sx = x - 18 + (i % 4) * 11;
+      const sy = y + 4 + Math.floor(i / 4) * 6;
+      g.beginPath().moveTo(sx, sy).lineTo(sx + 4, sy - 4).lineTo(sx + 8, sy + 1).lineTo(sx + 12, sy - 3).strokePath();
+    }
+    const colours = [0xd9a066, 0xb8a982, 0xb66e4f, 0xd7b982];
+    for (let i = 0; i < m.flowers; i += 1) {
+      const { a, r } = ring(i);
+      const fx = x + Math.cos(a + 1.1) * 22 * r;
+      const fy = y + 2 + Math.sin(a + 1.1) * 8 * r;
+      g.fillStyle(0x4f7a3e, 1).fillRect(fx - 1, fy - 2, 2, 6);
+      g.fillStyle(colours[i % colours.length]!, 1).fillCircle(fx, fy - 4, 3.5);
+      g.fillStyle(0x120f0d, 0.6).fillCircle(fx, fy - 4, 1.2);
+    }
+  }
+
+  /** Your purse, between the buttons: it swells with what you hold and hangs empty, with a slip tied on, when you owe. */
+  private drawPurse(money: number, debt: number): void {
+    const p = purse(money, debt);
+    const g = this.add.graphics();
+    const s = 0.55 + 0.75 * p.fullness;
+    g.fillStyle(0x000000, 0.35).fillEllipse(0, 22, 60 * s, 12);
+    g.fillStyle(p.owing ? 0x4a3c34 : 0x78543e, 1).fillEllipse(0, 6, 54 * s, 42 * s);
+    g.lineStyle(3, 0x120f0d, 1).strokeEllipse(0, 6, 54 * s, 42 * s);
+    g.fillStyle(0x5a3f30, 1).fillRect(-10 * s, 6 - 24 * s, 20 * s, 8);
+    g.lineStyle(2, 0xd7b982, 0.8).lineBetween(-12 * s, 6 - 18 * s, 12 * s, 6 - 18 * s);
+    if (p.fullness > 0.45 && !p.owing) {
+      g.fillStyle(0xd9a066, 1).fillCircle(10 * s, 6 - 22 * s, 6).fillCircle(-6 * s, 6 - 24 * s, 5);
+      g.lineStyle(2, 0x8a6a4a, 1).strokeCircle(10 * s, 6 - 22 * s, 6);
+    }
+    if (p.owing) {
+      g.fillStyle(0xe8dcc0, 1).fillRect(20 * s, 0, 16, 20);
+      g.lineStyle(1, 0x120f0d, 1).strokeRect(20 * s, 0, 16, 20).lineBetween(22 * s + 2, 6, 20 * s + 14, 6).lineBetween(22 * s + 2, 11, 20 * s + 12, 11);
+    }
+    this.purseArt = this.add.container(WIDTH / 2, HEIGHT - 66, [g]).setDepth(7);
+  }
+
+  /**
+   * The town answers every act, the moment you are back out: the person bobs
+   * and a sign rises from them — warmth for a help, a coin for something
+   * taken, a crack for a harm, a word for anything else — and the purse
+   * jingles if money moved. Short, and no tap needed (Brain od75#E3: spend
+   * interruption in proportion to the consequence).
+   */
+  private answerLastAct(moneyNow: number): void {
+    const act = this.registry.get("lastAct") as { npcId: string; kinds: string[]; moneyBefore: number } | undefined;
+    if (!act) return;
+    this.registry.remove("lastAct");
+    const token = this.tokens.get(act.npcId);
+    if (token) {
+      this.tweens.add({ targets: token, y: token.y - 9, duration: 140, yoyo: true, repeat: 1, ease: "Sine.easeOut" });
+      const sign = this.drawSign(actSign(act.kinds));
+      sign.setPosition(token.x, token.y - FIGURE_HEIGHT - 10).setDepth(8);
+      this.tweens.add({ targets: sign, y: sign.y - 46, alpha: 0, duration: 1100, delay: 150, ease: "Sine.easeOut", onComplete: () => sign.destroy() });
+    }
+    if (moneyNow !== act.moneyBefore && this.purseArt) {
+      this.tweens.add({ targets: this.purseArt, scale: moneyNow > act.moneyBefore ? 1.18 : 0.86, duration: 130, yoyo: true, repeat: 1 });
+    }
+  }
+
+  private drawSign(kind: "warm" | "coin" | "crack" | "word"): Phaser.GameObjects.Container {
+    const g = this.add.graphics();
+    if (kind === "warm") {
+      g.fillStyle(0xd9a066, 1).fillCircle(-6, -4, 7).fillCircle(6, -4, 7).fillTriangle(-12, -1, 12, -1, 0, 13);
+    } else if (kind === "coin") {
+      g.fillStyle(0xd9a066, 1).fillCircle(0, 0, 11);
+      g.lineStyle(2, 0x8a6a4a, 1).strokeCircle(0, 0, 11).strokeCircle(0, 0, 6);
+    } else if (kind === "crack") {
+      g.lineStyle(4, 0x0c0908, 1).beginPath().moveTo(-12, -10).lineTo(-3, -1).lineTo(-8, 4).lineTo(4, 12).strokePath();
+      g.lineStyle(2, 0xb66e4f, 1).beginPath().moveTo(-12, -10).lineTo(-3, -1).lineTo(-8, 4).lineTo(4, 12).strokePath();
+    } else {
+      g.fillStyle(0xd7b982, 1).fillCircle(-9, 0, 3.5).fillCircle(0, 0, 3.5).fillCircle(9, 0, 3.5);
+    }
+    return this.add.container(0, 0, [g]);
   }
 
   /** The day's clock: the sun crosses the sky as the day's acts are spent. A position, not a number. */

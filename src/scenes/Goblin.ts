@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { GOBLIN_KEY } from "../art";
 import { content } from "../content";
 import { sceneFor, type Store } from "../ui/store";
-import { COLOR, HEIGHT, WIDTH, font } from "../ui/theme";
+import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
 import { cue, CUES } from "../ui/sound";
 import { button, leave, typeOut } from "../ui/widgets";
 
@@ -94,12 +94,28 @@ export class Goblin extends Phaser.Scene {
   }
 
   private pick(store: Store, answerId: string): void {
+    // Every answer gets a reaction from him before he moves on. It changes
+    // nothing (§5.6); it is only how he takes it.
+    const reply = content.goblin.questions.flatMap((q) => q.answers).find((a) => a.id === answerId)?.reply;
     store.answer(answerId);
     const next = store.state;
-    if (next.status === "goblin_nightfall") {
-      this.scene.restart();
-      return;
+    const go = (): void => {
+      if (next.status === "goblin_nightfall") {
+        this.scene.restart();
+        return;
+      }
+      leave(this, sceneFor(next) === "Street" ? "Mirror" : sceneFor(next));
+    };
+    if (!reply) return go();
+    for (const child of [...this.children.list]) {
+      if (child.input) (child as Phaser.GameObjects.Container).setVisible(false).setActive(false);
     }
-    leave(this, sceneFor(next) === "Street" ? "Mirror" : sceneFor(next));
+    const said = this.add
+      .text(WIDTH / 2, 700, "", { ...font(25, CSS.warm), align: "center" })
+      .setOrigin(0.5, 0);
+    typeOut(this, said, reply, {
+      msPerChar: 30,
+      onDone: () => this.time.delayedCall(260, () => this.input.once("pointerdown", go)),
+    });
   }
 }

@@ -870,6 +870,11 @@
         "target": "shopkeeper",
         "kind": "neutral"
       }
+    ],
+    "response": "Aldo moves over on the step without looking up, to make room. That's all.",
+    "again": [
+      "Aldo hands you half his bread. He's stopped saying anything at all.",
+      "Aldo is there every morning now, on the step, and the door behind him stays shut."
     ]
   },
   {

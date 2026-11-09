@@ -103,7 +103,7 @@ export const PLACES: Place[] = [
   {
     id: "wrecked", name: "The Wrecked Building",
     footprint: { col: 1, row: 13, cols: 5, rows: 4 }, door: { col: 6, row: 15 },
-    spots: [{ col: 6, row: 13 }, { col: 7, row: 16 }, { col: 2, row: 12 }, { col: 4, row: 12 }, { col: 0, row: 14 }, { col: 6, row: 11 }],
+    spots: [{ col: 6, row: 13 }, { col: 7, row: 16 }, { col: 1, row: 10 }, { col: 4, row: 10 }, { col: 0, row: 14 }, { col: 6, row: 11 }],
   },
   {
     id: "room", name: "Your Room",
@@ -197,7 +197,8 @@ export type BuildingLook = "standing" | "rebuilt";
 
 export interface TownView {
   places: { id: string; name: string; look: BuildingLook }[];
-  people: { id: string; place: string; tile: Tile; x: number; y: number }[];
+  /** label: their name once you have met them; until then, only what they do ("the well-keeper"). */
+  people: { id: string; place: string; tile: Tile; x: number; y: number; label: string }[];
 }
 
 /** Each held slot is a place you can stand at: whoever holds it stands there. */
@@ -226,7 +227,9 @@ export function townView(state: GameState, content: Content): TownView {
       .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     here.forEach((n, i) => {
       const tile = place.spots[i] ?? overflowSpot(place, i);
-      people.push({ id: n.id, place: place.id, tile, ...feet(tile) });
+      const met = typeof n.state["known"] !== "number" || (n.state["known"] as number) > 0;
+      const trade = typeof n.state["trade"] === "string" ? (n.state["trade"] as string) : "a stranger";
+      people.push({ id: n.id, place: place.id, tile, ...feet(tile), label: met ? n.name : trade });
     });
   }
 
