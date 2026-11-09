@@ -71,6 +71,10 @@
         "setNpc": "baker",
         "key": "met_today",
         "value": true
+      },
+      {
+        "setFlag": "heard_of_work",
+        "value": true
       }
     ],
     "impacts": [
@@ -79,7 +83,7 @@
         "kind": "neutral"
       }
     ],
-    "response": "Ilka bakes in a neighbour's oven before light, her flour sack nearly empty, eyes on every shop window."
+    "response": "Ilka bakes in a neighbour's oven before light, her flour sack nearly empty, eyes on every shop window. She'd give anything for a proper oven of her own, if anyone could build one."
   },
   {
     "id": "baker_help_first",
@@ -638,6 +642,10 @@
         "addNpc": "shopkeeper",
         "key": "retire_ready",
         "delta": 1
+      },
+      {
+        "setFlag": "heard_of_work",
+        "value": true
       }
     ],
     "impacts": [
@@ -1074,27 +1082,35 @@
   {
     "id": "builder_first_job",
     "npc": "builder",
-    "text": "Find him the first small job.",
+    "text": "Tell him Ilka needs an oven built.",
     "available": {
       "all": [
         {
-          "npc": "builder",
-          "key": "known",
-          "gte": 2
-        },
-        {
           "all": [
             {
-              "not": {
-                "flag": "builder_gone"
-              }
+              "npc": "builder",
+              "key": "known",
+              "gte": 2
             },
             {
-              "npc": "builder",
-              "key": "jobs",
-              "gte": 2
+              "all": [
+                {
+                  "not": {
+                    "flag": "builder_gone"
+                  }
+                },
+                {
+                  "npc": "builder",
+                  "key": "jobs",
+                  "gte": 2
+                }
+              ]
             }
           ]
+        },
+        {
+          "flag": "heard_of_work",
+          "eq": true
         }
       ]
     },
@@ -1432,14 +1448,23 @@
     "available": {
       "all": [
         {
-          "npc": "mara",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "mara",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "mara_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "mara_gone"
-          }
+          "npc": "mara",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -1695,14 +1720,23 @@
     "available": {
       "all": [
         {
-          "npc": "otto",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "otto",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "otto_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "otto_gone"
-          }
+          "npc": "otto",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -1958,14 +1992,23 @@
     "available": {
       "all": [
         {
-          "npc": "lise",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "lise",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "lise_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "lise_gone"
-          }
+          "npc": "lise",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -2221,14 +2264,23 @@
     "available": {
       "all": [
         {
-          "npc": "per",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "per",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "per_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "per_gone"
-          }
+          "npc": "per",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -2484,14 +2536,23 @@
     "available": {
       "all": [
         {
-          "npc": "greta",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "greta",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "greta_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "greta_gone"
-          }
+          "npc": "greta",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -2747,14 +2808,23 @@
     "available": {
       "all": [
         {
-          "npc": "hansi",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "hansi",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "hansi_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "hansi_gone"
-          }
+          "npc": "hansi",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -3010,14 +3080,23 @@
     "available": {
       "all": [
         {
-          "npc": "tobias",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "tobias",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "tobias_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "tobias_gone"
-          }
+          "npc": "tobias",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -3273,14 +3352,23 @@
     "available": {
       "all": [
         {
-          "npc": "anneke",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "anneke",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "anneke_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "anneke_gone"
-          }
+          "npc": "anneke",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -3532,18 +3620,27 @@
   {
     "id": "klaus_harm",
     "npc": "klaus",
-    "text": "Tell the brewer his barrels leak.",
+    "text": "Tell the brewer Klaus's barrels leak.",
     "available": {
       "all": [
         {
-          "npc": "klaus",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "klaus",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "klaus_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "klaus_gone"
-          }
+          "npc": "klaus",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -3799,14 +3896,23 @@
     "available": {
       "all": [
         {
-          "npc": "sofie",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "sofie",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "sofie_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "sofie_gone"
-          }
+          "npc": "sofie",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -4062,14 +4168,23 @@
     "available": {
       "all": [
         {
-          "npc": "emil",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "emil",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "emil_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "emil_gone"
-          }
+          "npc": "emil",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -4325,14 +4440,23 @@
     "available": {
       "all": [
         {
-          "npc": "rike",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "rike",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "rike_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "rike_gone"
-          }
+          "npc": "rike",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -4588,14 +4712,23 @@
     "available": {
       "all": [
         {
-          "npc": "jonas",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "jonas",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "jonas_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "jonas_gone"
-          }
+          "npc": "jonas",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -4847,18 +4980,27 @@
   {
     "id": "hedda_harm",
     "npc": "hedda",
-    "text": "Tell the carters her beds have lice.",
+    "text": "Tell the carters Hedda's beds have lice.",
     "available": {
       "all": [
         {
-          "npc": "hedda",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "hedda",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "hedda_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "hedda_gone"
-          }
+          "npc": "hedda",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -5114,14 +5256,23 @@
     "available": {
       "all": [
         {
-          "npc": "viktor",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "viktor",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "viktor_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "viktor_gone"
-          }
+          "npc": "viktor",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -5377,14 +5528,23 @@
     "available": {
       "all": [
         {
-          "npc": "nell",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "nell",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "nell_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "nell_gone"
-          }
+          "npc": "nell",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -5636,18 +5796,27 @@
   {
     "id": "bram_harm",
     "npc": "bram",
-    "text": "Tell the boatmen his rope is rotten.",
+    "text": "Tell the boatmen Bram's rope is rotten.",
     "available": {
       "all": [
         {
-          "npc": "bram",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "bram",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "bram_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "bram_gone"
-          }
+          "npc": "bram",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -5903,14 +6072,23 @@
     "available": {
       "all": [
         {
-          "npc": "ilse",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "ilse",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "ilse_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "ilse_gone"
-          }
+          "npc": "ilse",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -6166,14 +6344,23 @@
     "available": {
       "all": [
         {
-          "npc": "ansel",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "ansel",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "ansel_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "ansel_gone"
-          }
+          "npc": "ansel",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -6429,14 +6616,23 @@
     "available": {
       "all": [
         {
-          "npc": "dorte",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "dorte",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "dorte_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "dorte_gone"
-          }
+          "npc": "dorte",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -6692,14 +6888,23 @@
     "available": {
       "all": [
         {
-          "npc": "rurik",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "rurik",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "rurik_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "rurik_gone"
-          }
+          "npc": "rurik",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -6955,14 +7160,23 @@
     "available": {
       "all": [
         {
-          "npc": "maike",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "maike",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "maike_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "maike_gone"
-          }
+          "npc": "maike",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -7218,14 +7432,23 @@
     "available": {
       "all": [
         {
-          "npc": "stefan",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "stefan",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "stefan_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "stefan_gone"
-          }
+          "npc": "stefan",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -7477,18 +7700,27 @@
   {
     "id": "ebba_harm",
     "npc": "ebba",
-    "text": "Tell the market her cloth runs short.",
+    "text": "Tell the market Ebba's cloth runs short.",
     "available": {
       "all": [
         {
-          "npc": "ebba",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "ebba",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "ebba_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "ebba_gone"
-          }
+          "npc": "ebba",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -7744,14 +7976,23 @@
     "available": {
       "all": [
         {
-          "npc": "lukas",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "lukas",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "lukas_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "lukas_gone"
-          }
+          "npc": "lukas",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -8003,18 +8244,27 @@
   {
     "id": "gunda_harm",
     "npc": "gunda",
-    "text": "Tell them her cellar is fouled.",
+    "text": "Tell them Gunda's cellar is fouled.",
     "available": {
       "all": [
         {
-          "npc": "gunda",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "gunda",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "gunda_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "gunda_gone"
-          }
+          "npc": "gunda",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -8266,18 +8516,27 @@
   {
     "id": "arne_harm",
     "npc": "arne",
-    "text": "Tell the village his roofs let water.",
+    "text": "Tell the village Arne's roofs let water.",
     "available": {
       "all": [
         {
-          "npc": "arne",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "arne",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "arne_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "arne_gone"
-          }
+          "npc": "arne",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -8533,14 +8792,23 @@
     "available": {
       "all": [
         {
-          "npc": "pia",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "pia",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "pia_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "pia_gone"
-          }
+          "npc": "pia",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -8796,14 +9064,23 @@
     "available": {
       "all": [
         {
-          "npc": "henrik",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "henrik",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "henrik_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "henrik_gone"
-          }
+          "npc": "henrik",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -9059,14 +9336,23 @@
     "available": {
       "all": [
         {
-          "npc": "birgit",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "birgit",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "birgit_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "birgit_gone"
-          }
+          "npc": "birgit",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -9322,14 +9608,23 @@
     "available": {
       "all": [
         {
-          "npc": "matthias",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "matthias",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "matthias_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "matthias_gone"
-          }
+          "npc": "matthias",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -9581,18 +9876,27 @@
   {
     "id": "runa_harm",
     "npc": "runa",
-    "text": "Tell them her yarn breaks.",
+    "text": "Tell them Runa's yarn breaks.",
     "available": {
       "all": [
         {
-          "npc": "runa",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "runa",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "runa_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "runa_gone"
-          }
+          "npc": "runa",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -9848,14 +10152,23 @@
     "available": {
       "all": [
         {
-          "npc": "erik",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "erik",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "erik_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "erik_gone"
-          }
+          "npc": "erik",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -10111,14 +10424,23 @@
     "available": {
       "all": [
         {
-          "npc": "thea",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "thea",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "thea_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "thea_gone"
-          }
+          "npc": "thea",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -10374,14 +10696,23 @@
     "available": {
       "all": [
         {
-          "npc": "jost",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "jost",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "jost_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "jost_gone"
-          }
+          "npc": "jost",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -10637,14 +10968,23 @@
     "available": {
       "all": [
         {
-          "npc": "alva",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "alva",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "alva_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "alva_gone"
-          }
+          "npc": "alva",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -10900,14 +11240,23 @@
     "available": {
       "all": [
         {
-          "npc": "nikolas",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "nikolas",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "nikolas_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "nikolas_gone"
-          }
+          "npc": "nikolas",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -11159,18 +11508,27 @@
   {
     "id": "sanne_harm",
     "npc": "sanne",
-    "text": "Tell the boats her nets part.",
+    "text": "Tell the boats Sanne's nets part.",
     "available": {
       "all": [
         {
-          "npc": "sanne",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "sanne",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "sanne_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "sanne_gone"
-          }
+          "npc": "sanne",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },
@@ -11426,14 +11784,23 @@
     "available": {
       "all": [
         {
-          "npc": "wilhelm",
-          "key": "known",
-          "gte": 2
+          "all": [
+            {
+              "npc": "wilhelm",
+              "key": "known",
+              "gte": 2
+            },
+            {
+              "not": {
+                "flag": "wilhelm_gone"
+              }
+            }
+          ]
         },
         {
-          "not": {
-            "flag": "wilhelm_gone"
-          }
+          "npc": "wilhelm",
+          "key": "trusts_player",
+          "eq": true
         }
       ]
     },

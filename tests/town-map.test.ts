@@ -93,7 +93,7 @@ describe("the map shows the town as it is now", () => {
     let state = start();
     const victim = Object.values(state.npcs).find((n) => n.present && content.choices.some((c) => c.id === `${n.id}_harm`))!;
     expect(townView(state, content).people.map((p) => p.id)).toContain(victim.id);
-    state = interact(state, `${victim.id}_harm`, content);
+    state = interact(interact(state, `${victim.id}_help_first`, content), `${victim.id}_harm`, content);
     expect(townView(state, content).people.map((p) => p.id)).not.toContain(victim.id);
   });
 

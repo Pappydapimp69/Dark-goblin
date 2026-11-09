@@ -20,6 +20,7 @@ describe("every consequence is said, with its cause", () => {
   it("the clockmaker does not just vanish: his leaving is told, its cause named, and the journal keeps it", () => {
     let state = acquainted(newGame(1, content));
     state = { ...state, npcs: { ...state.npcs, nikolas: { ...state.npcs["nikolas"]!, present: true } } };
+    state = interact(state, "nikolas_help_first", content);
     const before = state;
     state = interact(state, "nikolas_harm", content);
     const said = happenings(before, state, content);

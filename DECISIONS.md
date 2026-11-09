@@ -733,3 +733,10 @@ trouble. Measured over 100 lives per bot: about 2,800 such consequences, every
 one with its own line, none falling back to a generic sentence. (Brain:
 an explanation must name the real cause, not the kind of event —
 sandbox-combined-narrative-flags#E1.)
+
+**D-86 — Choices open as you learn them.** Hiring Ves for his first job now
+waits until you have heard someone wants something built (meeting Ilka a second
+time, where she says she wants an oven, or listening to Aldo). A townsperson's
+harmful choice waits until they trust you: there is nothing to betray before
+that. Harmful lines spoken to someone else now name whose thing it is ("Tell the
+brewer Klaus's barrels leak", not "his barrels").

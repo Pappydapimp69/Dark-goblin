@@ -75,7 +75,8 @@ describe("the three routes to the storefront", () => {
   });
 
   it("help — the ruin is rebuilt and she takes that one instead", () => {
-    let state = start();
+    // Meeting Ilka a second time is where you hear she wants an oven built.
+    let state = { ...start(), flags: { heard_of_work: true } };
     state = day(state, "baker_help_first", "builder_tools_first");
     state = day(state, "baker_help_again", "builder_encourage");
     state = day(state, "baker_help_again", "builder_first_job");
