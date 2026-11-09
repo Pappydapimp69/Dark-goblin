@@ -143,7 +143,7 @@ export class Dialogue extends Phaser.Scene {
   private pick(store: Store, choice: Choice): void {
     const before = store.state.money;
     // The town answers every act when you are back on the street: who, and what kind.
-    this.registry.set("lastAct", { npcId: choice.npc, kinds: choice.impacts.map((i) => i.kind), moneyBefore: before });
+    this.registry.set("lastAct", { npcId: choice.npc, kinds: choice.impacts.map((i) => i.kind), moneyBefore: before, before: store.state });
     store.interact(choice.id);
     cue(this, store.state.money === before ? CUES.choice : CUES.coin);
 

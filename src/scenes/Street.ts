@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { brokenKey, figureKey, topdownKey } from "../art";
 import { content } from "../content";
 import { acquaintance } from "./Dialogue";
-import type { NpcState } from "../engine/types";
+import type { GameState, NpcState } from "../engine/types";
 import { DevOverlay } from "../ui/DevOverlay";
 import { sceneFor, type Store } from "../ui/store";
 import { CSS, HEIGHT, WIDTH, font } from "../ui/theme";
@@ -11,6 +11,7 @@ import {
   besideTile, feet, nearestFree, path, tileKey, townView, type Tile,
 } from "../ui/town";
 import { actSign, childGrowth, marksFor, purse } from "../ui/marks";
+import { goneFromTown, happenings } from "../ui/news";
 import { button, groundSpot, leave, personToken } from "../ui/widgets";
 
 /** A cheap, stable hash of a tile, so grass tufts and ripples sit in the same place every day. */
@@ -33,6 +34,7 @@ export class Street extends Phaser.Scene {
   private walking?: Phaser.Tweens.TweenChain;
   private tokens = new Map<string, Phaser.GameObjects.Container>();
   private purseArt?: Phaser.GameObjects.Container;
+  private noticeBox?: Phaser.GameObjects.Container;
 
   constructor() {
     super("Street");
@@ -97,8 +99,9 @@ export class Street extends Phaser.Scene {
     // Dusk comes down over the whole map as the day's acts are spent.
     this.add.rectangle(WIDTH / 2, MAP_TOP + (ROWS * TILE) / 2, WIDTH, ROWS * TILE, 0x0b0c1a, 0.45 * spent).setDepth(6);
 
+    this.drawShutSigns(state, view.people);
     this.drawPurse(state.money, state.debt);
-    this.answerLastAct(state.money);
+    this.answerLastAct(state);
 
     button(this, 140, HEIGHT - 60, "Journal", () => this.openJournal(), { width: 220, size: 24 }).setDepth(7);
     button(this, WIDTH - 140, HEIGHT - 60, "Sleep", () => this.walkTo(HOME_TILE, () => leave(this, "Night")), {
@@ -164,10 +167,16 @@ export class Street extends Phaser.Scene {
    * jingles if money moved. Short, and no tap needed (Brain od75#E3: spend
    * interruption in proportion to the consequence).
    */
-  private answerLastAct(moneyNow: number): void {
-    const act = this.registry.get("lastAct") as { npcId: string; kinds: string[]; moneyBefore: number } | undefined;
+  private answerLastAct(state: GameState): void {
+    const moneyNow = state.money;
+    const act = this.registry.get("lastAct") as { npcId: string; kinds: string[]; moneyBefore: number; before?: GameState } | undefined;
     if (!act) return;
     this.registry.remove("lastAct");
+    // If the act changed the town for good, say so now, in words, with its cause.
+    if (act.before) {
+      const lines = happenings(act.before, state, content).map((h) => h.text);
+      if (lines.length > 0) this.notice(lines);
+    }
     const token = this.tokens.get(act.npcId);
     if (token) {
       this.tweens.add({ targets: token, y: token.y - 9, duration: 140, yoyo: true, repeat: 1, ease: "Sine.easeOut" });
@@ -177,6 +186,49 @@ export class Street extends Phaser.Scene {
     }
     if (moneyNow !== act.moneyBefore && this.purseArt) {
       this.tweens.add({ targets: this.purseArt, scale: moneyNow > act.moneyBefore ? 1.18 : 0.86, duration: 130, yoyo: true, repeat: 1 });
+    }
+  }
+
+  /**
+   * A notice across the top of the map: what just happened, in words. Tap it
+   * to put it away; it does not stop you walking.
+   */
+  private notice(lines: string[]): void {
+    this.noticeBox?.destroy();
+    const text = this.add.text(WIDTH / 2, 18, lines.join("\n\n"), { ...font(19, CSS.ink), align: "center", wordWrap: { width: WIDTH - 90 } }).setOrigin(0.5, 0);
+    const h = text.height + 26;
+    const plate = this.add.rectangle(WIDTH / 2, 6, WIDTH - 40, h, 0x120f0d, 0.92).setOrigin(0.5, 0).setStrokeStyle(2, 0xd9a066, 0.8);
+    const box = this.add.container(0, 0, [plate, text]).setDepth(9).setAlpha(0);
+    this.noticeBox = box;
+    this.tweens.add({ targets: box, alpha: 1, duration: 300 });
+    let open = true;
+    groundSpot(
+      this,
+      { x1: 20, y1: 6, x2: WIDTH - 20, y2: 6 + h },
+      () => {
+        open = false;
+        this.tweens.add({ targets: box, alpha: 0, duration: 250, onComplete: () => box.destroy() });
+      },
+      () => open && box.active,
+    );
+  }
+
+  /** Where someone used to stand, a shut sign: tap it to read what became of them. */
+  private drawShutSigns(state: GameState, people: { place: string; tile: Tile }[]): void {
+    for (const place of PLACES) {
+      const left = goneFromTown(state, content).filter((g) => g.place === place.id);
+      const used = people.filter((p) => p.place === place.id).length;
+      left.forEach((g, i) => {
+        const tile = place.spots[used + i];
+        if (!tile || this.occupied.has(tileKey(tile))) return;
+        const f = feet(tile);
+        const sign = this.add.graphics().setDepth(2);
+        sign.fillStyle(0x000000, 0.3).fillEllipse(f.x, f.y, 26, 8);
+        sign.fillStyle(0x3a2c24, 1).fillRect(f.x - 2, f.y - 30, 4, 30);
+        sign.fillStyle(0xb8a982, 1).fillRect(f.x - 15, f.y - 40, 30, 16);
+        sign.lineStyle(2, 0x120f0d, 1).strokeRect(f.x - 15, f.y - 40, 30, 16).lineBetween(f.x - 10, f.y - 32, f.x + 10, f.y - 32);
+        groundSpot(this, { x1: f.x - 20, y1: f.y - 44, x2: f.x + 20, y2: f.y + 4 }, () => this.notice([g.text]));
+      });
     }
   }
 

@@ -257,6 +257,12 @@ export interface NpcDef {
    * already closed by the same flag).
    */
   away?: Condition;
+  /**
+   * Presentation only: what became of them, in words, when it happens —
+   * why they left, what your help changed, how they were ruined. Shown on the
+   * map, in the morning's news and in the journal. The engine never reads it.
+   */
+  outcomes?: { left?: string; settled?: string; ruined?: string };
 }
 
 export interface SlotDef {

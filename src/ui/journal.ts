@@ -1,4 +1,5 @@
 import type { Content, GameState, Goal, NpcState } from "../engine/types";
+import { fateOf } from "./news";
 
 export interface JournalSection {
   heading: string;
@@ -55,6 +56,9 @@ export function journal(state: GameState, content: Content): JournalSection[] {
 }
 
 function troubleOf(npc: NpcState, state: GameState, content: Content): string {
+  // What became of them, in their own words, once something has.
+  const fate = fateOf(state, content, npc.id);
+  if (fate) return fate;
   const theirs = npc.goalIds.map((id) => state.goals[id]).filter((g): g is Goal => g !== undefined);
   if (npc.broken) return "Ruined. You saw to that.";
   if (theirs.some((g) => g.status === "fulfilled")) return "Settled.";

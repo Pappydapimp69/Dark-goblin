@@ -225,10 +225,11 @@ export function groundSpot(
   scene: Phaser.Scene,
   area: { x1: number; y1: number; x2: number; y2: number },
   onTap: (x: number, y: number) => void,
+  alive: () => boolean = () => true,
 ): void {
   spotsFor(scene).push({
     ...area,
-    alive: () => scene.sys.isActive(),
+    alive: () => scene.sys.isActive() && alive(),
     press: () => {},
     release: () => {},
     pick: (p) => onTap(p.x, p.y),

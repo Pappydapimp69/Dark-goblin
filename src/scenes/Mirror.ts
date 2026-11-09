@@ -1,5 +1,8 @@
 import Phaser from "phaser";
 import { figureKey, portraitKey, portraitStage } from "../art";
+import { content } from "../content";
+import type { GameState } from "../engine/types";
+import { happenings } from "../ui/news";
 import type { Store } from "../ui/store";
 import { COLOR, CSS, HEIGHT, WIDTH, font } from "../ui/theme";
 import { cue, CUES } from "../ui/sound";
@@ -40,11 +43,21 @@ export class Mirror extends Phaser.Scene {
     }
     if (child && this.textures.exists(figureKey(child.id))) {
       this.add.image(WIDTH - 96, 700, figureKey(child.id)).setOrigin(0.5, 1).setDisplaySize(84, 118);
-      if (child.state["arrivedOn"] === state.loop) {
-        this.add
-          .text(WIDTH / 2, 240, "Someone small is asleep in the corner.", font(24, CSS.warm))
-          .setOrigin(0.5);
-      }
+    }
+
+    // The town's news since the last morning: what changed, and why, in words.
+    const last = this.registry.get("lastMorning") as GameState | undefined;
+    const news = last && last.loop < state.loop ? happenings(last, state, content).map((h) => h.text).slice(0, 4) : [];
+    // A save opened on the child's first morning has no yesterday to compare with; say it anyway.
+    if (news.length === 0 && child && child.state["arrivedOn"] === state.loop) {
+      news.push(`${child.name} has come to live with you. Someone small is asleep in the corner.`);
+    }
+    this.registry.set("lastMorning", state);
+    let y = 780;
+    for (const line of news) {
+      const text = this.add.text(WIDTH / 2, y, line, { ...font(20, CSS.warm), align: "center", wordWrap: { width: WIDTH - 110 } }).setOrigin(0.5, 0);
+      y += text.height + 12;
+      if (y > HEIGHT - 320) break;
     }
     cue(this, CUES.mirror, 0.4);
 
