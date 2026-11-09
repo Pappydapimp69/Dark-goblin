@@ -133,6 +133,66 @@ function buildingSvg(id: string): string {
   return svgDoc(300, 120, `${shade}<rect width="300" height="120" fill="transparent"/>${bodies[id] ?? bodies["market"]!}`);
 }
 
+/**
+ * Buildings for the tile map, seen from above at a slant: roof on top, the
+ * front wall and its door below. Each is drawn at its footprint's exact size
+ * (40px a tile) so the door lands on the tile in front of it.
+ */
+function topdownSvg(id: string): string {
+  const ink = "#120f0d";
+  const pat = hatch(`t-${id}`);
+  const art: Record<string, [number, number, string]> = {
+    storefront: [240, 160, `
+      <rect x="4" y="96" width="232" height="62" fill="#4a3a30" stroke="${ink}" stroke-width="4"/>
+      <path d="M0 100 L14 10 H226 L240 100 Z" fill="#6a4433" stroke="${ink}" stroke-width="4"/>
+      <path d="M14 10 L120 52 L226 10 M120 52 V100" stroke="${ink}" stroke-width="3" opacity="0.6" fill="none"/>
+      <path d="M20 40 H220 M10 70 H230" stroke="#4d3125" stroke-width="3" opacity="0.7"/>
+      <path d="M8 100 H232 L224 118 H16 Z" fill="#b66e4f" stroke="${ink}" stroke-width="3"/>
+      <path d="M40 100 L36 118 M72 100 L70 118 M104 100 L104 118 M136 100 L138 118 M168 100 L172 118 M200 100 L206 118" stroke="#d7b982" stroke-width="6" opacity="0.6"/>
+      <rect x="140" y="124" width="70" height="26" fill="#d7b982" opacity="0.5" stroke="${ink}" stroke-width="3"/>
+      <rect x="84" y="120" width="32" height="38" fill="#241c18" stroke="${ink}" stroke-width="3"/>
+      <rect x="0" y="0" width="240" height="160" fill="url(#t-${id})" opacity="0.6"/>`],
+    market: [160, 80, `
+      <rect x="6" y="46" width="148" height="32" fill="#4a3a30" stroke="${ink}" stroke-width="4"/>
+      <path d="M0 50 L10 4 H150 L160 50 Z" fill="#5f854f" stroke="${ink}" stroke-width="4"/>
+      <path d="M34 4 L28 50 M64 4 L62 50 M96 4 L98 50 M126 4 L132 50" stroke="#d7b982" stroke-width="7" opacity="0.5"/>
+      <rect x="16" y="54" width="26" height="18" fill="#b8a982" stroke="${ink}" stroke-width="3"/>
+      <rect x="66" y="54" width="26" height="18" fill="#b66e4f" stroke="${ink}" stroke-width="3"/>
+      <rect x="116" y="54" width="26" height="18" fill="#d9a066" stroke="${ink}" stroke-width="3"/>`],
+    wrecked: [200, 160, `
+      <path d="M4 158 V46 L40 20 L64 40 L96 8 L120 30 L150 14 L196 44 V158 Z" fill="#3e3029" stroke="${ink}" stroke-width="4"/>
+      <path d="M30 60 L70 96 L52 120 Z M110 50 L150 70 L126 104 Z" fill="#15110f"/>
+      <path d="M14 140 L180 40 M40 30 L170 150 M90 20 L96 150" stroke="#78543e" stroke-width="9" stroke-linecap="round"/>
+      <path d="M0 150 Q60 132 110 146 T200 140" fill="none" stroke="#2f2924" stroke-width="12"/>
+      <rect x="172" y="84" width="24" height="36" fill="#15110f" stroke="${ink}" stroke-width="3"/>
+      <rect x="0" y="0" width="200" height="160" fill="url(#t-${id})" opacity="0.6"/>`],
+    rebuilt: [200, 160, `
+      <rect x="4" y="96" width="192" height="62" fill="#78543e" stroke="${ink}" stroke-width="4"/>
+      <path d="M0 100 L12 8 H188 L200 100 Z" fill="#b66e4f" stroke="${ink}" stroke-width="4"/>
+      <path d="M12 8 L100 50 L188 8 M100 50 V100" stroke="${ink}" stroke-width="3" opacity="0.5" fill="none"/>
+      <path d="M18 36 H182 M8 68 H192" stroke="#8d4f36" stroke-width="3" opacity="0.7"/>
+      <rect x="24" y="116" width="70" height="28" fill="#d7b982" opacity="0.6" stroke="${ink}" stroke-width="3"/>
+      <rect x="172" y="84" width="24" height="36" fill="#3a2c24" stroke="${ink}" stroke-width="3"/>
+      <rect x="0" y="0" width="200" height="160" fill="url(#t-${id})" opacity="0.4"/>`],
+    room: [160, 160, `
+      <rect x="4" y="96" width="152" height="62" fill="#4a3a30" stroke="${ink}" stroke-width="4"/>
+      <path d="M0 100 L12 10 H148 L160 100 Z" fill="#563b2d" stroke="${ink}" stroke-width="4"/>
+      <path d="M12 10 L80 50 L148 10 M80 50 V100" stroke="${ink}" stroke-width="3" opacity="0.6" fill="none"/>
+      <rect x="112" y="20" width="20" height="26" fill="#3a2c24" stroke="${ink}" stroke-width="3"/>
+      <rect x="92" y="114" width="42" height="30" fill="#d9a066" opacity="0.9" stroke="${ink}" stroke-width="3"/>
+      <path d="M113 114 V144 M92 129 H134" stroke="${ink}" stroke-width="3"/>
+      <rect x="44" y="114" width="32" height="44" fill="#2a211c" stroke="${ink}" stroke-width="3"/>
+      <circle cx="70" cy="138" r="3" fill="#d7b982"/>
+      <rect x="0" y="0" width="160" height="160" fill="url(#t-${id})" opacity="0.5"/>`],
+  };
+  const [w, h, body] = art[id] ?? art["market"]!;
+  return svgDoc(w, h, `${pat}<rect width="${w}" height="${h}" fill="transparent"/>${body}`);
+}
+
+export function topdownKey(id: string): string {
+  return `topdown:${id}`;
+}
+
 function goblinSvg(): string {
   return svgDoc(
     240,
@@ -163,6 +223,8 @@ export function assetManifest(content: Content): Asset[] {
     out.push(asset(placeKey(id), placeSvg(id)));
     out.push(asset(buildingKey(id), buildingSvg(id)));
     if (id === "wrecked") out.push(asset(buildingKey("rebuilt"), buildingSvg("rebuilt")));
+    out.push(asset(topdownKey(id), topdownSvg(id)));
+    if (id === "wrecked") out.push(asset(topdownKey("rebuilt"), topdownSvg("rebuilt")));
   }
   for (let stage = 0; stage < PORTRAIT_STAGES; stage += 1) out.push(asset(portraitKey(stage), portraitSvg(stage)));
   out.push(asset(GOBLIN_KEY, goblinSvg()));

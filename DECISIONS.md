@@ -675,3 +675,19 @@ holds a shop stands at it and the place takes their name ("Ilka's Shop"); the
 ruin is drawn rebuilt once the rebuilt shop exists. A foreclosed shopkeeper is
 deliberately still there, ruined, for his aftermath line. Re-measured: no
 permanent change goes unseen, for any bot.
+
+**D-83 — A real map: a tile town, walked along its roads.** The owner looked at
+D-78's town and said it was not a map: buildings and figures on a black field
+read as a diagram. The town is now an 18 x 26 grid of 40px tiles, written as
+text in `src/ui/town.ts` (grass, roads, a cobbled market square and its well, a
+river with a bridge, trees), with the four buildings drawn from above at their
+exact footprints and a door on the tile in front of each. You walk tile by tile
+along a shortest path round trees, walls and water; tapping someone takes you
+to a free tile beside them, never onto theirs (Brain 0101#E1); everyone stands
+on their own tile with a shadow (flood#E121), and dusk comes down over the map
+as the day's acts are spent. It still fits one screen (D-79), so taps stay in
+screen space. Tests check every tile row, that each footprint is its own
+letter, that every door and standing spot can be walked to from home, and — for
+300 seeds of the fullest town — that everyone is on their own walkable tile and
+can be walked up to. The first run of that test found a boxed-in tile beside the
+wrecked building where Henrik would have stood out of reach on seed 23.

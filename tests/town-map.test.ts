@@ -2,45 +2,61 @@ import { describe, expect, it } from "vitest";
 import { content } from "../src/content";
 import { interact, newGame, sleep } from "../src/engine/engine";
 import { journal } from "../src/ui/journal";
-import { HEIGHT, WIDTH } from "../src/ui/theme";
-import { BUILDING, FIGURE_HEIGHT, GROUND, HOME, PLACES, standingSpot, townView, walkMs } from "../src/ui/town";
+import { WIDTH } from "../src/ui/theme";
+import { COLS, GRID, HOME_TILE, PLACES, ROWS, TILE, TILES_PER_SECOND, besideTile, path, tileAt, tileKey, townView, walkable } from "../src/ui/town";
 import { acquainted } from "./harness";
 
-const where = new Map(content.npcs.map((n) => [n.id, n.location ?? "market"]));
 
-/** Everyone the Street scene would draw, with the spot it would draw them at. */
-const drawn = (state: ReturnType<typeof newGame>) => townView(state, content).people;
-void where;
 
 describe("the town you walk", () => {
-  it("draws everyone in town, on screen, apart from each other and off the buildings, for every seed", () => {
-    for (let seed = 1; seed <= 300; seed += 1) {
-      let state = newGame(seed, content);
-      // the fullest town: Wren and the child at home as well
-      state = { ...state, npcs: { ...state.npcs, child: { ...state.npcs["child"]!, present: true } } };
-      const people = drawn(state);
-      const inTown = Object.values(state.npcs).filter((n) => n.present && n.id !== "player");
-      expect(people.map((p) => p.id).sort()).toEqual(inTown.map((n) => n.id).sort());
-      for (const p of people) {
-        expect(p.x - 50 >= 0 && p.x + 50 <= WIDTH, `${p.id} x on seed ${seed}`).toBe(true);
-        expect(p.y - FIGURE_HEIGHT >= GROUND.y1 && p.y + 26 <= HEIGHT - 120, `${p.id} y on seed ${seed}`).toBe(true);
-        for (const place of PLACES) {
-          const overlaps =
-            Math.abs(p.x - place.x) < BUILDING.width / 2 + 40 &&
-            p.y - FIGURE_HEIGHT < place.y + BUILDING.height / 2 && p.y > place.y - BUILDING.height / 2;
-          expect(overlaps, `${p.id} stands on ${place.id} on seed ${seed}`).toBe(false);
-        }
-      }
-      for (const a of people) for (const b of people) {
-        if (a === b) continue;
-        expect(Math.hypot(a.x - b.x, a.y - b.y) >= 100, `${a.id} and ${b.id} overlap on seed ${seed}`).toBe(true);
+  const LETTER: Record<string, string> = { storefront: "S", market: "M", wrecked: "W", room: "H" };
+
+  it("is a whole grid, and each building's footprint is its own letter", () => {
+    expect(GRID).toHaveLength(ROWS);
+    for (const row of GRID) expect(row).toHaveLength(COLS);
+    expect(COLS * TILE).toBe(WIDTH);
+    for (const place of PLACES) {
+      const f = place.footprint;
+      for (let r = f.row; r < f.row + f.rows; r += 1) for (let c = f.col; c < f.col + f.cols; c += 1) {
+        expect(tileAt({ col: c, row: r }), `${place.id} ${c},${r}`).toBe(LETTER[place.id]);
       }
     }
   });
 
-  it("nobody is more than about two seconds' walk from your door", () => {
-    for (const place of PLACES) for (let i = 0; i < 6; i += 1) {
-      expect(walkMs(HOME, standingSpot(place.id, i))).toBeLessThanOrEqual(2200);
+  it("every door and every place to stand can be walked to from your door", () => {
+    for (const place of PLACES) {
+      expect(path(HOME_TILE, place.door), `${place.id} door`).not.toBeNull();
+      for (const s of place.spots) {
+        expect(walkable(s), `${place.id} spot ${s.col},${s.row}`).toBe(true);
+        expect(path(HOME_TILE, s), `${place.id} spot ${s.col},${s.row}`).not.toBeNull();
+      }
+    }
+    // Your own door is home; every other door and spot is somewhere else.
+    expect(tileKey(PLACES.find((p) => p.id === "room")!.door)).toBe(tileKey(HOME_TILE));
+    const all = PLACES.flatMap((p) => [...p.spots, ...(p.id === "room" ? [] : [p.door])]).map(tileKey);
+    expect(new Set(all).size).toBe(all.length);
+    expect(all).not.toContain(tileKey(HOME_TILE));
+  });
+
+  it("for 300 seeds of the fullest town, everyone is drawn on their own tile and can be walked up to and talked to", () => {
+    for (let seed = 1; seed <= 300; seed += 1) {
+      let state = newGame(seed, content);
+      state = { ...state, npcs: { ...state.npcs, child: { ...state.npcs["child"]!, present: true } } };
+      const people = townView(state, content).people;
+      const inTown = Object.values(state.npcs).filter((n) => n.present && n.id !== "player");
+      expect(people.map((p) => p.id).sort()).toEqual(inTown.map((n) => n.id).sort());
+      const occupied = new Set(people.map((p) => tileKey(p.tile)));
+      expect(occupied.size, `two people on one tile, seed ${seed}`).toBe(people.length);
+      for (const p of people) {
+        expect(walkable(p.tile), `${p.id} on seed ${seed}`).toBe(true);
+        expect(besideTile(p.tile, HOME_TILE, occupied), `${p.id} unreachable on seed ${seed}`).not.toBeNull();
+      }
+    }
+  });
+
+  it("nobody is more than about three seconds' walk from your door", () => {
+    for (const place of PLACES) for (const s of place.spots) {
+      expect(path(HOME_TILE, s)!.length / TILES_PER_SECOND).toBeLessThanOrEqual(3.2);
     }
   });
 });
