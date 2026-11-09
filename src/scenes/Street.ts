@@ -84,6 +84,12 @@ export class Street extends Phaser.Scene {
         () => this.approach(store, npc.id, person.tile),
         { broken: npc.broken, height },
       ).setDepth(3 + person.y / 10000);
+      // Someone at the map's edge keeps their whole name on screen.
+      const label = token.list.find((o): o is Phaser.GameObjects.Text => o instanceof Phaser.GameObjects.Text);
+      if (label) {
+        const half = label.width / 2;
+        label.x = Math.min(WIDTH - 4 - half, Math.max(4 + half, person.x)) - person.x;
+      }
       this.tokens.set(npc.id, token);
     }
 

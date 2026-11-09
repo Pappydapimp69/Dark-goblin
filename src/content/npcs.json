@@ -113,6 +113,10 @@
     "away": {
       "flag": "baker_left_town",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After being told there was nothing here for her, Ilka took the early coach out of town. The neighbour's oven stands cold before light now.",
+      "settled": "Ilka has a shop of her own, her name over the door and her own oven warm before light. The flour sacks by her counter stay full."
     }
   },
   {
@@ -181,6 +185,11 @@
     "away": {
       "flag": "shopkeeper_retired",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Aldo went to his daughter by the sea, the shop packed neat and the bell left on the door. He writes that the gulls wake him, and he doesn't mind.",
+      "settled": "The little book under Aldo's till has stopped growing. The shop stayed his for as long as he wanted it, and his daughter's letters got answered.",
+      "ruined": "The creditor came, as you'd told him to, and took the shop with Aldo's book still under the till. Aldo sits on the step now. He has nowhere he wants to go."
     }
   },
   {
@@ -223,6 +232,10 @@
     "away": {
       "flag": "builder_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Hearing the ruin was coming down, Ves gave up on the town and walked off toward the quarries. His tools are still in the pawnshop window.",
+      "settled": "Ves has his tools back and work in his hands again. People stop by the ruin to watch him raise new beams where the roof came in."
     }
   },
   {
@@ -265,6 +278,10 @@
     "away": {
       "flag": "mara_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Mara trusted the rope she'd been told would hold, and it parted at the top. The bucket went down the well, and she went to live by her cousin's mill stream.",
+      "settled": "Mara's rope is spliced tight, and the bucket comes up without a jolt. She draws water now without gripping hard at the top."
     }
   },
   {
@@ -307,6 +324,10 @@
     "away": {
       "flag": "otto_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Otto lost the watch when it was reported he slept on the wall. He went off in his coat without a lantern, and the cold corner of the round goes unwalked.",
+      "settled": "Otto's round isn't lonely any more, and the cold corner is shared. He stays awake the whole night through and greets the dawn on his feet."
     }
   },
   {
@@ -349,6 +370,10 @@
     "away": {
       "flag": "lise_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Her customers heard her stitching had gone and stayed away, so Lise went to sew piecework in the city. The half-done dress is still pinned in her window.",
+      "settled": "Lise keeps threaded needles ready on her cushion and doesn't squint the evening away. The dresses in her window get finished and collected."
     }
   },
   {
@@ -391,6 +416,10 @@
     "away": {
       "flag": "per_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "With his mooring cut loose in the night, Per's father's boat drifted out and broke on the rocks. He took work on a trawler up the coast and hasn't come home.",
+      "settled": "The dark seam in Per's boat is tarred shut, and he doesn't bail at dawn any more. He goes straight out with the tide in his father's boat."
     }
   },
   {
@@ -433,6 +462,10 @@
     "away": {
       "flag": "greta_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Greta believed her house was wanted by someone else and went to her sister inland, plates in newspaper. The low woodpile still leans on the empty wall.",
+      "settled": "Greta's woodpile stands high against the wall, split and stacked. She sits by a warm stove in the evenings and leaves the heavy axe on its hook."
     }
   },
   {
@@ -475,6 +508,10 @@
     "away": {
       "flag": "hansi_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Believing his dog was dead, Hansi stopped calling, and his family moved away before spring. The dog came back to the ditches after, and found the house shut.",
+      "settled": "Hansi's dog came home out of the far ditches, muddy and thin. Now he walks the lanes with it at his heels and doesn't call into the dark."
     }
   },
   {
@@ -517,6 +554,10 @@
     "away": {
       "flag": "tobias_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After the parents heard he drank, the schoolroom emptied slate by slate, and Tobias took a post where nobody knew him. His chalk stub is still on the sill.",
+      "settled": "Tobias writes with a long stick of chalk that doesn't pinch, and the slow ones at the back have caught up. He frets less over them now."
     }
   },
   {
@@ -559,6 +600,10 @@
     "away": {
       "flag": "anneke_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Left to walk the dark road alone, Anneke turned her ankle in a ditch and lay there till morning. She moved out to the far farms and delivers babies there now.",
+      "settled": "Anneke doesn't come home in the dark without a light now. She gets to the far farms and back with company and a lantern, and sleeps better for it."
     }
   },
   {
@@ -601,6 +646,10 @@
     "away": {
       "flag": "klaus_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "From the day the brewer heard the barrels leaked, his cart never stopped at Klaus's yard again. Klaus sold the stacks for firewood and went to work the docks downriver.",
+      "settled": "Klaus's yard has gaps in the stacks where barrels have gone out. The brewer noticed and has started ordering from him again."
     }
   },
   {
@@ -643,6 +692,10 @@
     "away": {
       "flag": "sofie_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Sofie's customers took their washing elsewhere after hearing it came back grey. She sold the mangle and went into service in a big house, and her lines hang bare.",
+      "settled": "Sofie's knuckles have healed under the good salve, and the mangle turns easier with help. She hands the washing over now without wincing."
     }
   },
   {
@@ -685,6 +738,10 @@
     "away": {
       "flag": "emil_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The creditors stripped the forge bare, knowing where the tools were kept. Emil let the fire burn down and went off to work for a smith he'd never met.",
+      "settled": "Emil can follow his father's ledgers now, and the debts to strangers have shrunk to a size he can carry. The forge rings in the mornings again."
     }
   },
   {
@@ -727,6 +784,10 @@
     "away": {
       "flag": "rike_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "With the lids left off overnight, Rike's last bees died in the cold. She sold the empty hives and went to keep house for her brother over the hill.",
+      "settled": "Rike's hives sit in the sun now, out of the ruin's shadow, and the bees are loud again. There will be new jars on her shelf come summer."
     }
   },
   {
@@ -769,6 +830,10 @@
     "away": {
       "flag": "jonas_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Travellers believed the ferry had stopped, so nobody rang for Jonas any more. He tied the boat up for good and went downriver where the water runs deep.",
+      "settled": "Jonas gets the ferry over the low bar without hauling it alone now. Travellers ring the bell at the landing, and he comes."
     }
   },
   {
@@ -811,6 +876,10 @@
     "away": {
       "flag": "hedda_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Talk of lice in her beds turned every carter away, and Hedda closed the inn for a cook's place in the market town. The beds upstairs are still made.",
+      "settled": "Hedda's rooms are swept and aired, and a carter stopped in last week and told the others. Her fire warms guests now, not just the empty hall."
     }
   },
   {
@@ -853,6 +922,10 @@
     "away": {
       "flag": "viktor_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After his customer was told the order would not come, Viktor's trade dried up. He took his tools to the cartworks in the city, and the wheel still leans by the door.",
+      "settled": "Viktor's wheel is finished and rolling under somebody's cart. With the rim held, he set the tyre true, and he's taking orders again."
     }
   },
   {
@@ -895,6 +968,10 @@
     "away": {
       "flag": "nell_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The talk about Nell grew louder until nobody would cross her threshold. She packed her remedies in a handcart and went into the hills, and the shutter stays closed.",
+      "settled": "Nell has customers again now that folk have seen her doorway in use. The sage hangs in her window, and nobody crosses the street to pass her by."
     }
   },
   {
@@ -937,6 +1014,10 @@
     "away": {
       "flag": "bram_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The boatmen took his rope for rotten and bought elsewhere. Bram burned the spoiled hemp at last and walked to the coast to work on the ships.",
+      "settled": "Bram's hemp dried out in the yard and twisted into good rope after all. The shed smells of tar again, and he didn't have to burn a thing."
     }
   },
   {
@@ -979,6 +1060,10 @@
     "away": {
       "flag": "ilse_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The gate left open let the goats scatter, and the foxes took what Ilse couldn't call back. She sold what was left and went up into the mountains to herd for a stranger.",
+      "settled": "Ilse sleeps at night again with someone else on the high field. The foxes have stopped trying, and she gets through a sentence without yawning."
     }
   },
   {
@@ -1021,6 +1106,10 @@
     "away": {
       "flag": "ansel_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The rumour that his walls were coming down lost Ansel his trade. He went to his son in the valley, and his old walls still stand along the lanes, sound as ever.",
+      "settled": "Ansel's walls are going up again, with the big stones lifted for him. His back still aches, but he lays the courses and feels useful doing it."
     }
   },
   {
@@ -1063,6 +1152,10 @@
     "away": {
       "flag": "dorte_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "When her buyers heard her candles smoked, they stopped coming, and Dorte gave up the pot. She went to dip candles for the church in the next parish.",
+      "settled": "Dorte's pot is full of tallow now, with enough left over to make a candle for herself. Her own window is lit in the evenings."
     }
   },
   {
@@ -1105,6 +1198,10 @@
     "away": {
       "flag": "rurik_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Sent down the road that was gone, Rurik lost a beast to the river and his trust in the town. He drove the rest of his herd away by the hill tracks.",
+      "settled": "Rurik has a way round the washed-out road now. His beasts reached the market by the long way and are putting the weight back on."
     }
   },
   {
@@ -1147,6 +1244,10 @@
     "away": {
       "flag": "maike_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Told the clay here was always bad, Maike let her wheel stand still. She went to a pottery town upriver, and the cracked kiln sits cold behind her house.",
+      "settled": "Maike's kiln is re-laid and whole, and her last firing came out without a crack. The pots on her shelf ring when she taps them."
     }
   },
   {
@@ -1189,6 +1290,10 @@
     "away": {
       "flag": "stefan_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "With the bell left silent, Stefan gave up the tower and a town that had stopped minding the hour. He went to his daughter's farm, and the snapped rope still hangs.",
+      "settled": "The bell rings the hours again on a new rope. Stefan listens from the foot of the tower, and the town knows what time it is."
     }
   },
   {
@@ -1231,6 +1336,10 @@
     "away": {
       "flag": "ebba_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The market believed her cloth ran short, though every bolt was full length. Ebba took her loom apart and went to weave in a mill town to the south.",
+      "settled": "Ebba's loom stands true now, and the shuttle runs clean through. Her rows come out straight, and her cloth has gone back to market."
     }
   },
   {
@@ -1273,6 +1382,10 @@
     "away": {
       "flag": "lukas_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The bakers took the grit in his flour as true and went to another mill. Lukas let the wheel stop and went to grind for an estate, and the worn stone sits idle.",
+      "settled": "Lukas's millstone has been dressed and grinds fine again. The flour he sends out is soft as it should be, and the bakers are pleased."
     }
   },
   {
@@ -1315,6 +1428,10 @@
     "away": {
       "flag": "gunda_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Nobody would buy from a cellar they'd heard was fouled, and Gunda let the water have it. She went to make cheese on an upland farm and left the planks empty.",
+      "settled": "Gunda's cellar is bailed dry and her cheeses sit up out of the wet. They've stopped sweating, and they're ripening the way they should."
     }
   },
   {
@@ -1357,6 +1474,10 @@
     "away": {
       "flag": "arne_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The village believed his roofs let water and stopped hiring Arne. He left the reed beds uncut and went to thatch for the farms out on the marsh.",
+      "settled": "Arne's reeds were cut and bundled before the frost. He has all he needs to thatch through the winter, and he didn't cut them by himself."
     }
   },
   {
@@ -1399,6 +1520,10 @@
     "away": {
       "flag": "pia_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After the apothecary learned she couldn't read, Pia was kept from the shelves and then let go. She went to scrub floors at an inn on the coach road.",
+      "settled": "Pia knows the labels by sound now as well as by colour, and the words have stopped moving. She mixes at the apothecary's bench without going red."
     }
   },
   {
@@ -1441,6 +1566,10 @@
     "away": {
       "flag": "henrik_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The complaints about the smell grew until the town had Henrik's pits filled in. He took his hides to a tannery downriver, and his yard has gone to nettles.",
+      "settled": "Henrik's pits sit downwind now, and the smell no longer drifts into town. People have stopped complaining and started buying his leather again."
     }
   },
   {
@@ -1483,6 +1612,10 @@
     "away": {
       "flag": "birgit_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Nobody would order glass from a woman said to have broken her own shipment. Birgit sold the shards for scrap and went home to her family in the north.",
+      "settled": "Birgit has sorted the glass that survived and swept the rest away. She's set the good panes out in the sun again to show the colours."
     }
   },
   {
@@ -1525,6 +1658,10 @@
     "away": {
       "flag": "matthias_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "With the forest kept shut, Matthias's clamp went cold for good. He went to burn charcoal in another lord's woods, and a ring of ash by his hut is all that's left.",
+      "settled": "The forest was opened to Matthias again after someone spoke for him. His clamp is smoking under its turf, and he has wood enough to keep it in."
     }
   },
   {
@@ -1567,6 +1704,10 @@
     "away": {
       "flag": "runa_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Nobody wanted yarn they'd been told would break, so Runa packed her wheel onto a cart and went over the hill after the sheep.",
+      "settled": "Runa's wheel is turning on real wool again. She's spinning hanks for the weaver and has a basket of fleece waiting by the hearth."
     }
   },
   {
@@ -1609,6 +1750,10 @@
     "away": {
       "flag": "erik_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Afraid his nails would lame their horses, people stopped coming to Erik at all. He let his fire go out and went to shoe horses for the army.",
+      "settled": "Erik's yard has horses waiting again, not all of them bound for the town smith. His fire is hot for a reason now."
     }
   },
   {
@@ -1651,6 +1796,10 @@
     "away": {
       "flag": "thea_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "With the willow stand cut back to nothing, Thea had nothing to weave. She went to live by another river where the willow grows, and took her mother's knife.",
+      "settled": "Thea's willow was cut and stripped before it hardened. Her baskets are stacked by the door, and she says the work felt the way it did with her mother."
     }
   },
   {
@@ -1693,6 +1842,10 @@
     "away": {
       "flag": "jost_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Told the loose axe head was fine, Jost swung it and it flew. He hasn't picked up an axe since, and went to the city to carry sacks on the quay.",
+      "settled": "Jost's axe head sits tight on the haft, wedged and sound. He swings it without flinching now, and the woodpile behind his hut is growing."
     }
   },
   {
@@ -1735,6 +1888,10 @@
     "away": {
       "flag": "alva_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After the farmer was told she let the cow go dry, Alva was turned off the farm. She walked to the next valley to find a dairy that would take her on.",
+      "settled": "Alva's cow is milking again after the long nights sitting up with her. The pail comes back full, and the farmer has stopped counting drops."
     }
   },
   {
@@ -1777,6 +1934,10 @@
     "away": {
       "flag": "nikolas_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "Word got round that Nikolas's clocks ran slow, and nobody brought him a clock to mend. He shut the shop, every clock still right, and went to his nephew in the city.",
+      "settled": "With the glass held steady, Nikolas finished the clock that had beaten him. His hands still tremble, but the fine work is getting done."
     }
   },
   {
@@ -1819,6 +1980,10 @@
     "away": {
       "flag": "sanne_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The boats heard her nets parted and bought from elsewhere. Sanne left the long net half mended on its frame and went to her son's on the islands.",
+      "settled": "Sanne's long net is whole again and back on the boats. She didn't spend the winter mending it by herself, a hand's width at a time."
     }
   },
   {
@@ -1861,6 +2026,10 @@
     "away": {
       "flag": "wilhelm_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "The town took it that he was never in the regiment, and stopped greeting Wilhelm. He went to the old soldiers' home in the capital and left his medal in the drawer.",
+      "settled": "The town answered about Wilhelm's pension at last, and the money has started coming. He wears his medal on his coat to collect it."
     }
   },
   {
@@ -1904,6 +2073,10 @@
     "away": {
       "flag": "partner_gone",
       "eq": true
+    },
+    "outcomes": {
+      "left": "After hearing you were always better alone, Wren took the box down the stairs and found a room across town. Their door on the landing stays shut.",
+      "settled": "Wren has moved in for good. The coal comes up the stairs together now, and supper is eaten sitting down at the same table."
     }
   },
   {

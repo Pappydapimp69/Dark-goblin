@@ -716,3 +716,20 @@ Re-measured: every act gets its reaction, and the world keeps a lasting mark
 of 100% of the generous bot's acts, 98.5% of mixed, 92.5% of the human bot's
 and 81.8% of the selfish bot's. What remains is repetition past sixteen marks
 on one person, or coins into a full purse.
+
+**D-85 — Consequences are said, with their cause.** The owner: "the
+clockmaker disappears without an explanation". Saying his clocks ran slow set
+his gone flag and he simply vanished from the map; the line he gave was about
+the sting, not the leaving, and the journal still listed his old trouble. Now
+every person carries authored `outcomes` in content — why they left (naming the
+act that drove them out), what your help changed, and for the shopkeeper how he
+was ruined — and `src/ui/news.ts` diffs two states into what happened, with
+that line. It is said three ways: a notice across the top of the map the moment
+you are back from the act; a shut sign where they used to stand, tappable to
+read it again; and the morning's news on the Mirror for everything since the
+last morning (shop handovers, the rebuild, the child's arrival, settled
+troubles). The journal gives each known person's fate in place of their old
+trouble. Measured over 100 lives per bot: about 2,800 such consequences, every
+one with its own line, none falling back to a generic sentence. (Brain:
+an explanation must name the real cause, not the kind of event —
+sandbox-combined-narrative-flags#E1.)
